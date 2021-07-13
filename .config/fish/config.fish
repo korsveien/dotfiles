@@ -1,5 +1,3 @@
-set -x XDG_CONFIG_HOME ~/.config
-
 ##### ABBREVIATIONS #####
 abbr --add y yadm
 abbr --add j autojump
@@ -8,10 +6,6 @@ abbr --add l exa -l
 abbr --add ll exa -la
 abbr --add v nvim
 abbr --add vim nvim
-
-abbr --add iws iwctl station wlan0 scan
-abbr --add iwg iwctl station wlan0 get-networks
-abbr --add iwi iwctl station wlan0 connect \"Peder sin iPhone\"
 
 # Git
 abbr --add g git
@@ -25,6 +19,7 @@ abbr --add gl git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cres
 abbr --add gcl git clone
 abbr --add grhh git reset --hard HEAD
 abbr --add gp git push
+abbr --add gst git status
 
 # Docker
 abbr --add d docker
@@ -45,16 +40,20 @@ function pi
     pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
 end
 
+function yi
+    yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro sudo yay -S
+end
+
 function fs
-    source "$XDG_CONFIG_HOME/fish/config.fish"
+    source "~/.config/fish/config.fish"
 end
 
 function fv
-    nvim  "$XDG_CONFIG_HOME/fish/config.fish"
+    nvim  "~/.config/fish/config.fish"
 end
 
 function av
-    nvim "$XDG_CONFIG_HOME/alacritty/alacritty.yml"
+    nvim "~/.config/alacritty/alacritty.yml"
 end
 
 ##### THIRD PARTY UTILITIES ####
