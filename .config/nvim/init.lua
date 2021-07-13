@@ -29,7 +29,7 @@ map('n', '<C-f>', '<cmd>Telescope live_grep<cr>')  -- Search text in files
 map('n', '<C-b>', '<cmd>Telescope buffers<cr>')    -- Search for buffer
 map('n', '<C-t>', '<cmd>Telescope help_tags<cr>')  -- Search in help
 map('n', '<C-l>', ':NV<cr>')                       -- Search notes
-map('n', '<C-h>', ':NerdTreeToggle<cr>')           -- Toggle file sidebar
+map('n', '<C-h>', ':NERDTreeToggle<cr>')           -- Toggle file sidebar
 
 map('n', '<leader><leader>', 'C-^')
 

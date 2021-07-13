@@ -34,7 +34,6 @@ abbr --add mtree envchain nexus mvn dependency:tree
 # Path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
 
-
 ##### FUNCTIONS ####
 function pi
     pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
@@ -45,15 +44,15 @@ function yi
 end
 
 function fs
-    source "~/.config/fish/config.fish"
+    source ~/.config/fish/config.fish
 end
 
 function fv
-    nvim  "~/.config/fish/config.fish"
+    nvim  ~/.config/fish/config.fish
 end
 
 function av
-    nvim "~/.config/alacritty/alacritty.yml"
+    nvim ~/.config/alacritty/alacritty.yml
 end
 
 ##### THIRD PARTY UTILITIES ####
