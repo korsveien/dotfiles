@@ -162,4 +162,4 @@ schemes:
       white:   '0xebdbb2'
 
 colors: *light
-# colors: *dark
+colors: *dark

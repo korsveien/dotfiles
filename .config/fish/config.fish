@@ -40,7 +40,7 @@ function pi
 end
 
 function yi
-    yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro sudo yay -S
+    yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S
 end
 
 function fs
