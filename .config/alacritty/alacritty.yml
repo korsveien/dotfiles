@@ -161,5 +161,5 @@ schemes:
       cyan:    '0x8ec07c'
       white:   '0xebdbb2'
 
-colors: *dark
 colors: *light
+colors: *dark

@@ -73,13 +73,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/peder/.local/share/nvim/site/pack/packer/start/LuaSnip"
   },
-  ["base16-vim"] = {
-    loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/base16-vim"
-  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/peder/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
+  gruvbox = {
+    loaded = true,
+    path = "/home/peder/.local/share/nvim/site/pack/packer/start/gruvbox"
   },
   nerdtree = {
     loaded = true,
@@ -97,6 +97,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/peder/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/peder/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/peder/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
@@ -109,9 +113,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/peder/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/home/peder/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/home/peder/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
   ["vim-commentary"] = {
     loaded = true,
     path = "/home/peder/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
+  ["vim-devicons"] = {
+    loaded = true,
+    path = "/home/peder/.local/share/nvim/site/pack/packer/start/vim-devicons"
   },
   ["vim-easy-align"] = {
     loaded = true,

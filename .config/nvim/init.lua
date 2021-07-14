@@ -72,25 +72,26 @@ require('packer').startup(function()
     use 'tpope/vim-rhubarb'
     use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
-    -- Files, search and tags
-    -- use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
+    -- -- Files, search and tags
+    use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
     use 'ludovicchabant/vim-gutentags'
     use 'scrooloose/nerdtree'
 
-    -- Syntax, LSP and autocomplete
-    -- use 'nvim-treesitter/nvim-treesitter'
-    -- use 'nvim-treesitter/nvim-treesitter-textobjects'
+    -- -- Syntax, LSP and autocomplete
+    use 'nvim-treesitter/nvim-treesitter'
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-compe'
     use 'L3MON4D3/LuaSnip'
 
-    -- Colors,icons and syntax
+    -- -- Colors,icons and syntax
     use 'kyazdani42/nvim-web-devicons'
+    use 'ryanoasis/vim-devicons'
     use 'etdev/vim-hexcolor'
-    use 'chriskempson/base16-vim'
+    use 'morhetz/gruvbox'
+
     use 'alok/notational-fzf-vim'
 
-    -- Editing
+    -- -- Editing
     use 'junegunn/vim-easy-align'
     use 'tpope/vim-commentary'
     use 'terryma/vim-multiple-cursors'
@@ -112,53 +113,8 @@ require('compe').setup {
 require('nvim-treesitter.configs').setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
-    enable = false, -- false will disable the whole extension
-  },
-  -- incremental_selection = {
-  --   enable = true,
-  --   keymaps = {
-  --     init_selection = 'gnn',
-  --     node_incremental = 'grn',
-  --     scope_incremental = 'grc',
-  --     node_decremental = 'grm',
-  --   },
-  -- },
-  -- indent = {
-  --   enable = true,
-  -- },
-  -- textobjects = {
-  --   select = {
-  --     enable = true,
-  --     lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-  --     keymaps = {
-  --       -- You can use the capture groups defined in textobjects.scm
-  --       ['af'] = '@function.outer',
-  --       ['if'] = '@function.inner',
-  --       ['ac'] = '@class.outer',
-  --       ['ic'] = '@class.inner',
-  --     },
-  --   },
-  --   move = {
-  --     enable = true,
-  --     set_jumps = true, -- whether to set jumps in the jumplist
-  --     goto_next_start = {
-  --       [']m'] = '@function.outer',
-  --       [']]'] = '@class.outer',
-  --     },
-  --     goto_next_end = {
-  --       [']M'] = '@function.outer',
-  --       [']['] = '@class.outer',
-  --     },
-  --     goto_previous_start = {
-  --       ['[m'] = '@function.outer',
-  --       ['[['] = '@class.outer',
-  --     },
-  --     goto_previous_end = {
-  --       ['[M'] = '@function.outer',
-  --       ['[]'] = '@class.outer',
-  --     },
-  --   },
-  -- },
+    enable = true, -- false will disable the whole extension
+  }
 }
 
 -- LSP
@@ -252,8 +208,7 @@ vim.cmd [[set undofile]]
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
-cmd 'colorscheme base16-gruvbox-dark-hard'
-cmd 'colorscheme base16-gruvbox-light-hard'
+cmd 'colorscheme gruvbox'
 
 -------------------- COMMANDS -------------------------------
 cmd 'au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}' -- highlight on yank

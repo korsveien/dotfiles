@@ -19,7 +19,6 @@ SETUVAR _fish_abbr_gst:git\x20status
 SETUVAR _fish_abbr_iwg:iwctl\x20station\x20wlan0\x20get\x2dnetworks
 SETUVAR _fish_abbr_iwi:iwctl\x20station\x20wlan0\x20connect\x20\x22Peder\x20sin\x20iPhone\x22
 SETUVAR _fish_abbr_iws:iwctl\x20station\x20wlan0\x20scan
-SETUVAR _fish_abbr_j:autojump
 SETUVAR _fish_abbr_l:exa\x20\x2dl
 SETUVAR _fish_abbr_ll:exa\x20\x2dla
 SETUVAR _fish_abbr_mci:envchain\x20nexus\x20mvn\x20clean\x20install

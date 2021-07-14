@@ -9,8 +9,6 @@ abbr --add yp yadm push
 abbr --add ys yadm status
 abbr --add yc yadm commit -m \"Update config\"
 
-abbr --add j autojump
-
 abbr --add l exa -l
 abbr --add ll exa -la
 abbr --add v nvim
@@ -65,5 +63,6 @@ function av
 end
 
 ##### THIRD PARTY UTILITIES ####
-[ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
-
+if test -f /usr/share/autojump/autojump.fish
+    source /usr/share/autojump/autojump.fish
+end

@@ -165,6 +165,8 @@ input * {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    for_window [class="1Password"] floating enable
 #
 # Scratchpad:
 #
