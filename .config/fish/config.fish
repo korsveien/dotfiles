@@ -1,5 +1,8 @@
 ##### ABBREVIATIONS #####
 abbr --add y yadm
+abbr --add yp yadm push
+abbr --add ys yadm status
+
 abbr --add j autojump
 
 abbr --add l exa -l

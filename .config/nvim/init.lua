@@ -65,40 +65,36 @@ vim.api.nvim_exec(
 
 local use = require('packer').use
 require('packer').startup(function()
-    use 'wbthomason/packer.nvim' -- Package manager
-    use 'tpope/vim-fugitive' -- Git commands in nvim
-    use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
-    use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
-    use 'ludovicchabant/vim-gutentags' -- Automatic tags management
-    -- UI to select things (files, grep results, open buffers...)
-    use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
-    use 'joshdick/onedark.vim' -- Theme inspired by Atom
-    use 'scrooloose/nerdtree'
-    -- Add indentation guides even on blank lines
-    use 'lukas-reineke/indent-blankline.nvim'
-    -- Add git related info in the signs columns and popups
+    use 'wbthomason/packer.nvim'
+
+    -- Git
+    use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
     use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-    -- Highlight, edit, and navigate code using a fast incremental parsing library
-    use 'nvim-treesitter/nvim-treesitter'
-    -- Additional textobjects for treesitter
-    use 'nvim-treesitter/nvim-treesitter-textobjects'
-    use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-    use 'hrsh7th/nvim-compe' -- Autocompletion plugin
-    use 'L3MON4D3/LuaSnip' -- Snippets plugin
+
+    -- Files, search and tags
+    -- use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
+    use 'ludovicchabant/vim-gutentags'
+    use 'scrooloose/nerdtree'
+
+    -- Syntax, LSP and autocomplete
+    -- use 'nvim-treesitter/nvim-treesitter'
+    -- use 'nvim-treesitter/nvim-treesitter-textobjects'
+    use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/nvim-compe'
+    use 'L3MON4D3/LuaSnip'
+
     -- Colors,icons and syntax
     use 'kyazdani42/nvim-web-devicons'
     use 'etdev/vim-hexcolor'
     use 'chriskempson/base16-vim'
-    use 'lukas-reineke/indent-blankline.nvim'
     use 'alok/notational-fzf-vim'
 
+    -- Editing
     use 'junegunn/vim-easy-align'
+    use 'tpope/vim-commentary'
     use 'terryma/vim-multiple-cursors'
 end)
-
--- Fuzzy Search
--- paq {'junegunn/fzf', run = fn['fzf#install']}
--- paq 'junegunn/fzf.vim'
 
 require('compe').setup {
   source = {
@@ -114,54 +110,55 @@ require('compe').setup {
 }
 
 require('nvim-treesitter.configs').setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
-    enable = true, -- false will disable the whole extension
+    enable = false, -- false will disable the whole extension
   },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = 'gnn',
-      node_incremental = 'grn',
-      scope_incremental = 'grc',
-      node_decremental = 'grm',
-    },
-  },
-  indent = {
-    enable = true,
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
-    },
-  },
+  -- incremental_selection = {
+  --   enable = true,
+  --   keymaps = {
+  --     init_selection = 'gnn',
+  --     node_incremental = 'grn',
+  --     scope_incremental = 'grc',
+  --     node_decremental = 'grm',
+  --   },
+  -- },
+  -- indent = {
+  --   enable = true,
+  -- },
+  -- textobjects = {
+  --   select = {
+  --     enable = true,
+  --     lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+  --     keymaps = {
+  --       -- You can use the capture groups defined in textobjects.scm
+  --       ['af'] = '@function.outer',
+  --       ['if'] = '@function.inner',
+  --       ['ac'] = '@class.outer',
+  --       ['ic'] = '@class.inner',
+  --     },
+  --   },
+  --   move = {
+  --     enable = true,
+  --     set_jumps = true, -- whether to set jumps in the jumplist
+  --     goto_next_start = {
+  --       [']m'] = '@function.outer',
+  --       [']]'] = '@class.outer',
+  --     },
+  --     goto_next_end = {
+  --       [']M'] = '@function.outer',
+  --       [']['] = '@class.outer',
+  --     },
+  --     goto_previous_start = {
+  --       ['[m'] = '@function.outer',
+  --       ['[['] = '@class.outer',
+  --     },
+  --     goto_previous_end = {
+  --       ['[M'] = '@function.outer',
+  --       ['[]'] = '@class.outer',
+  --     },
+  --   },
+  -- },
 }
 
 -- LSP
@@ -195,50 +192,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Enable the following language servers
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+local servers = { 'rust_analyzer', 'pyright', 'tsserver' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
   }
 end
-
--- Example custom server
-local sumneko_root_path = vim.fn.getenv("HOME").."/.local/bin/sumneko_lua" -- Change to your sumneko root installation
-local sumneko_binary = sumneko_root_path .. '/bin/linux/lua-language-server'
-
--- Make runtime files discoverable to the server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
-require('lspconfig').sumneko_lua.setup {
-  cmd = { sumneko_binary, '-E', sumneko_root_path .. '/main.lua' },
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file('', true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
 
 require('gitsigns').setup {
   signs = {
@@ -250,6 +210,17 @@ require('gitsigns').setup {
   },
 }
 
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ["<esc>"] = require('telescope.actions').close,
+        ['<C-j>'] = require('telescope.actions').move_selection_next,
+        ['<C-k>'] = require('telescope.actions').move_selection_previous,
+      },
+    },
+  },
+}
 
 -- Notes
 cmd('let g:nv_search_paths = ["~/Jottacloud/notes"]')
@@ -282,6 +253,7 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 cmd 'colorscheme base16-gruvbox-dark-hard'
+cmd 'colorscheme base16-gruvbox-light-hard'
 
 -------------------- COMMANDS -------------------------------
 cmd 'au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}' -- highlight on yank
