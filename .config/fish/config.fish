@@ -1,7 +1,13 @@
+fzf_key_bindings
+
+bind \cj up-or-search
+bind \ck down-or-search
+
 ##### ABBREVIATIONS #####
 abbr --add y yadm
 abbr --add yp yadm push
 abbr --add ys yadm status
+abbr --add yc yadm commit
 
 abbr --add j autojump
 
