@@ -28,7 +28,7 @@ SETUVAR _fish_abbr_mtree:envchain\x20nexus\x20mvn\x20dependency\x3atree
 SETUVAR _fish_abbr_v:nvim
 SETUVAR _fish_abbr_vim:nvim
 SETUVAR _fish_abbr_y:yadm
-SETUVAR _fish_abbr_yc:yadm\x20commit
+SETUVAR _fish_abbr_yc:yadm\x20commit\x20\x2dm\x20\x22Update\x20config\x22
 SETUVAR _fish_abbr_yp:yadm\x20push
 SETUVAR _fish_abbr_ys:yadm\x20status
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
