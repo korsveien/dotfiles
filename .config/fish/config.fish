@@ -7,7 +7,7 @@ bind \ck down-or-search
 abbr --add y yadm
 abbr --add yp yadm push
 abbr --add ys yadm status
-abbr --add yc yadm commit
+abbr --add yc yadm commit -m "Update config"
 
 abbr --add j autojump
 
