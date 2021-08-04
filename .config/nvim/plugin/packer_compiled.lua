@@ -73,6 +73,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/peder/.local/share/nvim/site/pack/packer/start/LuaSnip"
   },
+  ["fzf.vim"] = {
+    loaded = true,
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/fzf.vim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/Users/peder/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
@@ -112,14 +116,6 @@ _G.packer_plugins = {
   ["plenary.nvim"] = {
     loaded = true,
     path = "/Users/peder/.local/share/nvim/site/pack/packer/start/plenary.nvim"
-  },
-  ["popup.nvim"] = {
-    loaded = true,
-    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/popup.nvim"
-  },
-  ["telescope.nvim"] = {
-    loaded = true,
-    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,

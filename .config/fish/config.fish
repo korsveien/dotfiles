@@ -4,6 +4,8 @@ bind \cj up-or-search
 bind \ck down-or-search
 
 ##### ABBREVIATIONS #####
+abbr --add ea envchain aws
+
 abbr --add y yadm
 abbr --add yp yadm push
 abbr --add ys yadm status
@@ -16,13 +18,13 @@ abbr --add vim nvim
 
 # Git
 abbr --add g git
+abbr --add gl git log --all --decorate --oneline --graph
 abbr --add gc git commit -m
 abbr --add gs git status
 abbr --add gco git checkout
 abbr --add ga git add -p
 abbr --add gamend git commit --amend --reuse-message=HEAD
 abbr --add gb git branch
-abbr --add gl git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 abbr --add gcl git clone
 abbr --add grhh git reset --hard HEAD
 abbr --add gp git push
@@ -42,6 +44,16 @@ abbr --add mtree envchain nexus mvn dependency:tree
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
 
 ##### FUNCTIONS ####
+function co
+    set repo (git remote show origin | rg github.com | head -n 1 | cut -d':' -f3 | cut -d'.' -f1)
+    open "https://app.circleci.com/pipelines/github/$repo"
+end
+
+function ho
+    set repo (git remote show origin | rg github.com | head -n 1 | cut -d':' -f3 | cut -d'.' -f1)
+    open "https://github.com/$repo"
+end
+
 function pi
     pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
 end

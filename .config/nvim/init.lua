@@ -23,10 +23,6 @@ map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
 map('n', '<leader>w', '<cmd>noh<CR>') -- Clear highlights
 
-map('n', '<C-p>', '<cmd>Telescope find_files<cr>') -- Search for file
-map('n', '<C-f>', '<cmd>Telescope live_grep<cr>')  -- Search text in files
-map('n', '<C-b>', '<cmd>Telescope buffers<cr>')    -- Search for buffer
-map('n', '<C-t>', '<cmd>Telescope help_tags<cr>')  -- Search in help
 map('n', '<C-l>', ':NV<cr>')                       -- Search notes
 map('n', '<C-h>', ':NERDTreeToggle<cr>')           -- Toggle file sidebar
 
@@ -44,6 +40,9 @@ map('n', '<bs>', 'ddk')    -- Remove blank line
 map('n', ':W', ':w')
 map('n', ':Q', ':q')
 map('n', ':X', ':x')
+
+map('n', '<C-f>', '<cmd>Rg<cr>')
+map('n', '<C-p>', '<cmd>Files<cr>')
 
 -------------------- PLUGINS -------------------------------
 -- Install packer
@@ -73,9 +72,9 @@ require('packer').startup(function()
     use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
     -- -- Files, search and tags
-    use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
     use 'ludovicchabant/vim-gutentags'
     use 'scrooloose/nerdtree'
+    use 'junegunn/fzf.vim'
 
     -- -- Syntax, LSP and autocomplete
     use 'nvim-treesitter/nvim-treesitter'
@@ -140,7 +139,6 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
@@ -163,18 +161,6 @@ require('gitsigns').setup {
     delete = { hl = 'GitGutterDelete', text = '_' },
     topdelete = { hl = 'GitGutterDelete', text = '‾' },
     changedelete = { hl = 'GitGutterChange', text = '~' },
-  },
-}
-
-require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ["<esc>"] = require('telescope.actions').close,
-        ['<C-j>'] = require('telescope.actions').move_selection_next,
-        ['<C-k>'] = require('telescope.actions').move_selection_previous,
-      },
-    },
   },
 }
 
