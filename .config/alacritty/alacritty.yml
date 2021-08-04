@@ -132,34 +132,68 @@ schemes:
       magenta: '0xd3869b'
       cyan:    '0x8ec07c'
       white:   '0xebdbb2'
-    # Default colors
+
+  tomorrow_night: &tomorrow
     primary:
-      # hard contrast: background = '0x1d2021'
-      background: '0x282828'
-      # soft contrast: background = '0x32302f'
-      foreground: '0xebdbb2'
+      background: '0x1d1f21'
+      foreground: '0xc5c8c6'
+
+    # Colors the cursor will use if `custom_cursor_colors` is true
+    cursor:
+      text: '0x1d1f21'
+      cursor: '0xffffff'
 
     # Normal colors
     normal:
-      black:   '0x282828'
-      red:     '0xcc241d'
-      green:   '0x98971a'
-      yellow:  '0xd79921'
-      blue:    '0x458588'
-      magenta: '0xb16286'
-      cyan:    '0x689d6a'
-      white:   '0xa89984'
+      black:   '0x1d1f21'
+      red:     '0xcc6666'
+      green:   '0xb5bd68'
+      yellow:  '0xe6c547'
+      blue:    '0x81a2be'
+      magenta: '0xb294bb'
+      cyan:    '0x70c0ba'
+      white:   '0x373b41'
 
     # Bright colors
     bright:
-      black:   '0x928374'
-      red:     '0xfb4934'
-      green:   '0xb8bb26'
-      yellow:  '0xfabd2f'
-      blue:    '0x83a598'
-      magenta: '0xd3869b'
-      cyan:    '0x8ec07c'
-      white:   '0xebdbb2'
+      black:   '0x666666'
+      red:     '0xff3334'
+      green:   '0x9ec400'
+      yellow:  '0xf0c674'
+      blue:    '0x81a2be'
+      magenta: '0xb77ee0'
+      cyan:    '0x54ced6'
+      white:   '0x282a2e'
+  chalk: &chalk
+    bright:
+      black: '#323232'
+      blue: '#aaaadb'
+      cyan: '#aadadb'
+      green: '#aadbaa'
+      magenta: '#dbaada'
+      red: '#dbaaaa'
+      white: '#ffffff'
+      yellow: '#dadbaa'
+    cursor:
+      cursor: '#d9e6f2'
+      text: '#29262f'
+    normal:
+      black: '#000000'
+      blue: '#7372c3'
+      cyan: '#72c2c3'
+      green: '#72c373'
+      magenta: '#c372c2'
+      red: '#c37372'
+      white: '#d9d9d9'
+      yellow: '#c2c372'
+    primary:
+      background: '#29262f'
+      foreground: '#d9e6f2'
+    selection:
+      background: '#073642'
+      text: '#ffffff'
 
 colors: *light
 colors: *dark
+colors: *chalk
+colors: *tomorrow

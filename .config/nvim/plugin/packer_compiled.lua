@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/peder/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?.lua;/home/peder/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?/init.lua;/home/peder/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?.lua;/home/peder/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/peder/.cache/nvim/packer_hererocks/2.0.5/lib/lua/5.1/?.so"
+local package_path_str = "/Users/peder/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/peder/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/peder/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/peder/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/peder/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -71,87 +71,87 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   LuaSnip = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/LuaSnip"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/LuaSnip"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
   gruvbox = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/gruvbox"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/gruvbox"
   },
   nerdtree = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/nerdtree"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/nerdtree"
   },
   ["notational-fzf-vim"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/notational-fzf-vim"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/notational-fzf-vim"
   },
   ["nvim-compe"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/vim-commentary"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
   ["vim-devicons"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/vim-devicons"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/vim-devicons"
   },
   ["vim-easy-align"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/vim-easy-align"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/vim-easy-align"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
   ["vim-gutentags"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/vim-gutentags"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/vim-gutentags"
   },
   ["vim-hexcolor"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/vim-hexcolor"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/vim-hexcolor"
   },
   ["vim-multiple-cursors"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/vim-multiple-cursors"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/vim-multiple-cursors"
   },
   ["vim-rhubarb"] = {
     loaded = true,
-    path = "/home/peder/.local/share/nvim/site/pack/packer/start/vim-rhubarb"
+    path = "/Users/peder/.local/share/nvim/site/pack/packer/start/vim-rhubarb"
   }
 }
 
