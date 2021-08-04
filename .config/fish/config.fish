@@ -78,3 +78,7 @@ end
 if test -f /usr/share/autojump/autojump.fish
     source /usr/share/autojump/autojump.fish
 end
+
+set fish_function_path $fish_function_path ~/repo/plugin-foreign-env/functions
+fenv source ~/.nix-profile/etc/profile.d/nix.sh
+fenv source ~/.bashrc
