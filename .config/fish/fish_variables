@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export JAVA_HOME:/Library/Java/JavaVirtualMachines/adoptopenjdk\x2d8\x2ejdk/Contents/Home
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_d:docker
 SETUVAR _fish_abbr_di:docker\x20images
@@ -17,9 +18,14 @@ SETUVAR _fish_abbr_gp:git\x20push
 SETUVAR _fish_abbr_grhh:git\x20reset\x20\x2d\x2dhard\x20HEAD
 SETUVAR _fish_abbr_gs:git\x20status
 SETUVAR _fish_abbr_gst:git\x20status
+SETUVAR _fish_abbr_ij:envchain\x20nexus\x20idea
 SETUVAR _fish_abbr_iwg:iwctl\x20station\x20wlan0\x20get\x2dnetworks
 SETUVAR _fish_abbr_iwi:iwctl\x20station\x20wlan0\x20connect\x20\x22Peder\x20sin\x20iPhone\x22
 SETUVAR _fish_abbr_iws:iwctl\x20station\x20wlan0\x20scan
+SETUVAR _fish_abbr_jh:echo\x20/Library/Java/JavaVirtualMachines/adoptopenjdk\x2d8\x2ejdk/Contents/Home
+SETUVAR _fish_abbr_jhome:echo\x20/Library/Java/JavaVirtualMachines/adoptopenjdk\x2d8\x2ejdk/Contents/Home
+SETUVAR _fish_abbr_jls:/usr/libexec/java_home\x20\x2dV
+SETUVAR _fish_abbr_jv:/usr/libexec/java_home\x20\x2dv
 SETUVAR _fish_abbr_l:exa\x20\x2dl
 SETUVAR _fish_abbr_ll:exa\x20\x2dla
 SETUVAR _fish_abbr_mci:envchain\x20nexus\x20mvn\x20clean\x20install

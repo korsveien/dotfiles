@@ -40,10 +40,18 @@ abbr --add mci envchain nexus mvn clean install
 abbr --add mcid envchain nexus mvn clean install -DskipTests
 abbr --add mtree envchain nexus mvn dependency:tree
 
+# Java
+abbr --add jls /usr/libexec/java_home -V
+abbr --add jh echo $JAVA_HOME
+
 # Path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
 
 ##### FUNCTIONS ####
+function jset
+    set -Ux JAVA_HOME (/usr/libexec/java_home -v $argv[1])
+end
+
 function co
     set repo (git remote show origin | rg github.com | head -n 1 | cut -d':' -f3 | cut -d'.' -f1)
     open "https://app.circleci.com/pipelines/github/$repo"
@@ -74,11 +82,13 @@ function av
     nvim ~/.config/alacritty/alacritty.yml
 end
 
-##### THIRD PARTY UTILITIES ####
-if test -f /usr/share/autojump/autojump.fish
-    source /usr/share/autojump/autojump.fish
+function gcm
+    git checkout main || git checkout master
 end
 
+##### THIRD PARTY UTILITIES ####
+[ -f /usr/share/autojump/autojump.fish ];       and source /usr/share/autojump/autojump.fish
+[ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
+
 set fish_function_path $fish_function_path ~/repo/plugin-foreign-env/functions
-fenv source ~/.nix-profile/etc/profile.d/nix.sh
 fenv source ~/.bashrc
