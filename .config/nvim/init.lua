@@ -195,7 +195,6 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 cmd 'colorscheme gruvbox'
-cmd 'colorscheme base16-tomorrow-night'
 
 -------------------- COMMANDS -------------------------------
 cmd 'au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}' -- highlight on yank
