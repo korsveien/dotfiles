@@ -1,5 +1,8 @@
 default_border pixel 2
 smart_borders on
+smart_gaps off
+gaps inner 10
+#gaps outer 2
 
 set $mod Mod1
 
