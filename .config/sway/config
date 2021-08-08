@@ -16,7 +16,7 @@ set $menu wofi --show=run | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/arch.webp fill
+output * bg ~/.config/sway/mountains.jpg fill
 #
 # Example configuration:
 #
