@@ -5,6 +5,7 @@ bind \ck down-or-search
 
 ##### ABBREVIATIONS #####
 abbr --add ea envchain aws
+abbr --add en envchain nexus
 
 abbr --add y yadm
 abbr --add yp yadm push
@@ -43,6 +44,18 @@ abbr --add mtree envchain nexus mvn dependency:tree
 # Java
 abbr --add jls /usr/libexec/java_home -V
 abbr --add jh echo $JAVA_HOME
+
+# Terraform
+abbr --add tf envchain aws terraform
+
+# AWS
+abbr --add aws envchain aws aws
+
+# Tmux
+abbr --add tl tmux list-sessions
+abbr --add ta tmux attach-session -t
+abbr --add tk tmux kill-session -t
+
 
 # Path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin

@@ -2,7 +2,7 @@ local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
-
+ 
 local function map(mode, lhs, rhs, opts)
   local options = {noremap = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
@@ -45,56 +45,43 @@ map('n', '<C-f>', '<cmd>Rg<cr>')
 map('n', '<C-p>', '<cmd>Files<cr>')
 
 -------------------- PLUGINS -------------------------------
--- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-end
+local Plug = vim.fn['plug#']
+vim.call('plug#begin', '~/.config/nvim/plugged')
 
-vim.api.nvim_exec(
-  [[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost init.lua PackerCompile
-  augroup end
-]],
-  false
-)
+--Plug('nvim-lua/plenary.nvim')
 
-local use = require('packer').use
-require('packer').startup(function()
-    use 'wbthomason/packer.nvim'
+-- Git
+Plug('tpope/vim-fugitive')
+Plug('tpope/vim-rhubarb')
+Plug('lewis6991/gitsigns.nvim')
 
-    -- Git
-    use 'tpope/vim-fugitive'
-    use 'tpope/vim-rhubarb'
-    use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+-- -- Files, search and tags
+Plug('ludovicchabant/vim-gutentags')
+Plug('scrooloose/nerdtree', {on = 'NERDTreeToggle'})
+Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
 
-    -- -- Files, search and tags
-    use 'ludovicchabant/vim-gutentags'
-    use 'scrooloose/nerdtree'
-    use 'junegunn/fzf.vim'
+-- -- Syntax, LSP and autocomplete
+Plug('nvim-treesitter/nvim-treesitter')
+Plug('neovim/nvim-lspconfig')
+Plug('hrsh7th/nvim-compe')
+Plug('L3MON4D3/LuaSnip')
 
-    -- -- Syntax, LSP and autocomplete
-    use 'nvim-treesitter/nvim-treesitter'
-    use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/nvim-compe'
-    use 'L3MON4D3/LuaSnip'
+-- -- Colors,icons and syntax
+Plug('kyazdani42/nvim-web-devicons')
+Plug('ryanoasis/vim-devicons')
+Plug('etdev/vim-hexcolor')
+Plug('morhetz/gruvbox')
 
-    -- -- Colors,icons and syntax
-    use 'kyazdani42/nvim-web-devicons'
-    use 'ryanoasis/vim-devicons'
-    use 'etdev/vim-hexcolor'
-    use 'morhetz/gruvbox'
+-- -- Notes
+Plug('alok/notational-fzf-vim')
 
-    use 'alok/notational-fzf-vim'
+-- -- Editing
+Plug('junegunn/vim-easy-align')
+Plug('tpope/vim-commentary')
+Plug('terryma/vim-multiple-cursors')
 
-    -- -- Editing
-    use 'junegunn/vim-easy-align'
-    use 'tpope/vim-commentary'
-    use 'terryma/vim-multiple-cursors'
-end)
+vim.call('plug#end')
 
 require('compe').setup {
   source = {
@@ -194,8 +181,7 @@ vim.cmd [[set undofile]]
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
-cmd 'colorscheme gruvbox'
+cmd 'colorscheme base16-tomorrow-night'
 
 -------------------- COMMANDS -------------------------------
 cmd 'au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}' -- highlight on yank
-
