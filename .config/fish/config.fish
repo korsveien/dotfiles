@@ -104,4 +104,4 @@ end
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 
 set fish_function_path $fish_function_path ~/repo/plugin-foreign-env/functions
-fenv source ~/.bashrc
+fenv source ~/.bashrc || true
