@@ -49,7 +49,7 @@ map('n', '<C-p>', '<cmd>Files<cr>')
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
 
---Plug('nvim-lua/plenary.nvim')
+Plug('nvim-lua/plenary.nvim')
 
 -- Git
 Plug('tpope/vim-fugitive')
@@ -152,7 +152,7 @@ require('gitsigns').setup {
 }
 
 -- Notes
-cmd('let g:nv_search_paths = ["~/Jottacloud/notes"]')
+vim.cmd 'let g:nv_search_paths = ["~/Jottacloud/notes"]'
 
 -------------------- OPTIONS -------------------------------
 opt.completeopt   = {'menuone', 'noinsert', 'noselect'} -- completion options (for nvim-compe)
@@ -181,7 +181,7 @@ vim.cmd [[set undofile]]
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
-cmd 'colorscheme base16-tomorrow-night'
+cmd 'colorscheme gruvbox'
 
 -------------------- COMMANDS -------------------------------
 cmd 'au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}' -- highlight on yank
