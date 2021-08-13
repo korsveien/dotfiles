@@ -45,6 +45,9 @@ abbr --add mtree envchain nexus mvn dependency:tree
 abbr --add jls /usr/libexec/java_home -V
 abbr --add jh echo $JAVA_HOME
 
+# IntelliJ
+abbr --add ij envchain nexus,aws idea
+
 # Terraform
 abbr --add tf envchain aws terraform
 
@@ -104,4 +107,4 @@ end
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 
 set fish_function_path $fish_function_path ~/repo/plugin-foreign-env/functions
-fenv source ~/.bashrc || true
+fenv source ~/.bashrc

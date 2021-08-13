@@ -13,6 +13,7 @@ SETUVAR _fish_abbr_ga:git\x20add\x20\x2dp
 SETUVAR _fish_abbr_gamend:git\x20commit\x20\x2d\x2damend\x20\x2d\x2dreuse\x2dmessage\x3dHEAD
 SETUVAR _fish_abbr_gb:git\x20branch
 SETUVAR _fish_abbr_gc:git\x20commit\x20\x2dm
+SETUVAR _fish_abbr_gcb:git\x20checkout\x20branch
 SETUVAR _fish_abbr_gcl:git\x20clone
 SETUVAR _fish_abbr_gco:git\x20checkout
 SETUVAR _fish_abbr_gl:git\x20log\x20\x2d\x2dall\x20\x2d\x2ddecorate\x20\x2d\x2doneline\x20\x2d\x2dgraph
@@ -20,7 +21,7 @@ SETUVAR _fish_abbr_gp:git\x20push
 SETUVAR _fish_abbr_grhh:git\x20reset\x20\x2d\x2dhard\x20HEAD
 SETUVAR _fish_abbr_gs:git\x20status
 SETUVAR _fish_abbr_gst:git\x20status
-SETUVAR _fish_abbr_ij:envchain\x20nexus\x20idea
+SETUVAR _fish_abbr_ij:envchain\x20nexus\x2caws\x20idea
 SETUVAR _fish_abbr_iwg:iwctl\x20station\x20wlan0\x20get\x2dnetworks
 SETUVAR _fish_abbr_iwi:iwctl\x20station\x20wlan0\x20connect\x20\x22Peder\x20sin\x20iPhone\x22
 SETUVAR _fish_abbr_iws:iwctl\x20station\x20wlan0\x20scan

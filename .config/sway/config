@@ -1,9 +1,8 @@
-default_border pixel 3
+default_border pixel 2
+smart_borders on
 smart_gaps off
 gaps inner 10
 #gaps outer 2
-
-client.focused #282828 #b16286 #ebdbb2 #b16286
 
 set $mod Mod1
 
@@ -73,7 +72,6 @@ input * {
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    bindsym $mod+q exec wofi-emoji
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -109,7 +107,6 @@ input * {
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-
     # Ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
@@ -172,10 +169,7 @@ input * {
     # Move focus to the parent container
     bindsym $mod+a focus parent
 
-    # Run `swaymsg -t get_tree` to find class
     for_window [class="1Password"] floating enable
-    for_window [app_id="zenity"] floating enable
-
 #
 # Scratchpad:
 #
@@ -232,5 +226,9 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86Search exec bemenu-run
+
+# Wayland overlay bar
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 
 include /etc/sway/config.d/*
