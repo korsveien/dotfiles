@@ -75,6 +75,7 @@ Plug('morhetz/gruvbox')
 
 -- -- Notes
 Plug('alok/notational-fzf-vim')
+Plug('vim-scripts/DrawIt')
 
 -- -- Editing
 Plug('junegunn/vim-easy-align')

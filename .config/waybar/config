@@ -8,8 +8,9 @@
         "tray",
         "cpu",
         "memory",
-        "pulseaudio",
         "backlight",
+        "pulseaudio",
+        "custom/nordvpn",
         "network",
         "battery",
         "clock"
@@ -60,10 +61,10 @@
     },
     "network": {
         "interval": 5,
-        "format-wifi": "  {essid} ({signalStrength}%)",
+        "format-wifi": " ",
         "format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
-        "format-253b86442dae4d07d872e8b963fa33b5f8819594disconnected": "⚠  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}"
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{essid}\n{ipaddr}\n{signalStrength}%"
     },
     "temperature": {
       "critical-threshold": 80,
@@ -108,4 +109,8 @@
         "on-scroll-up": "playerctl next",
         "on-scroll-down": "playerctl previous"
     },
+    "custom/nordvpn": {
+        "interval": 10,
+        "exec" : "nordvpn status | rg City | cut -d':' -f2"
+    }
 }
