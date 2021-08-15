@@ -24,7 +24,7 @@ map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 map('n', '<leader>w', '<cmd>noh<CR>') -- Clear highlights
 
 map('n', '<C-l>', ':NV<cr>')                       -- Search notes
-map('n', '<C-h>', ':NERDTreeToggle<cr>')           -- Toggle file sidebar
+map('n', '<C-h>', ':CHADopen<cr>')           -- Toggle file sidebar
 
 map('n', '<leader><leader>', 'C-^')
 
@@ -59,12 +59,15 @@ Plug('lewis6991/gitsigns.nvim')
 -- -- Files, search and tags
 Plug('ludovicchabant/vim-gutentags')
 Plug('scrooloose/nerdtree', {on = 'NERDTreeToggle'})
+Plug('ms-jpq/chadtree', { branch = 'chad', ['do'] = 'python3 -m chadtree deps'})
 Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
+Plug('junegunn/fzf.vim')
 
 -- -- Syntax, LSP and autocomplete
 Plug('nvim-treesitter/nvim-treesitter')
 Plug('neovim/nvim-lspconfig')
-Plug('hrsh7th/nvim-compe')
+Plug('ms-jpq/coq_nvim', { branch = 'coq' })
+Plug('ms-jpq/coq.artifacts', { branch = 'artifacts' })
 Plug('L3MON4D3/LuaSnip')
 
 -- -- Colors,icons and syntax
@@ -84,25 +87,24 @@ Plug('terryma/vim-multiple-cursors')
 
 vim.call('plug#end')
 
-require('compe').setup {
-  source = {
-    path = true,
-    nvim_lsp = true,
-    luasnip = true,
-    buffer = false,
-    calc = false,
-    nvim_lua = false,
-    vsnip = false,
-    ultisnips = false,
-  },
-}
-
 require('nvim-treesitter.configs').setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true, -- false will disable the whole extension
   }
 }
+
+-- File explorer
+local chadtree_settings = {
+    view = {
+        width = 30
+    },
+    theme = {
+        text_colour_set = "nerdtree_syntax_dark"
+    }
+}
+vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
+
 
 -- LSP
 local nvim_lsp = require 'lspconfig'
