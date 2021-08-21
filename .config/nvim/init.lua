@@ -351,3 +351,4 @@ cmd 'colorscheme gruvbox'
 -------------------- COMMANDS -------------------------------
 cmd 'au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}' -- highlight on yank
 cmd 'au BufWrite * :Autoformat'
+cmd 'autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo'
