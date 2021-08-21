@@ -59,7 +59,6 @@ abbr --add tl tmux list-sessions
 abbr --add ta tmux attach-session -t
 abbr --add tk tmux kill-session -t
 
-
 # Path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
 
@@ -91,7 +90,7 @@ function fs
 end
 
 function fv
-    nvim  ~/.config/fish/config.fish
+    nvim ~/.config/fish/config.fish
 end
 
 function av
@@ -103,7 +102,7 @@ function gcm
 end
 
 ##### THIRD PARTY UTILITIES ####
-[ -f /usr/share/autojump/autojump.fish ];       and source /usr/share/autojump/autojump.fish
+[ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 
 set fish_function_path $fish_function_path ~/repo/plugin-foreign-env/functions
