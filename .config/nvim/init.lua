@@ -83,7 +83,7 @@ Plug('etdev/vim-hexcolor')
 Plug('morhetz/gruvbox')
 
 -- -- Notes
-Plug('alok/notational-fzf-vim')
+--Plug('alok/notational-fzf-vim')
 
 -- -- Editing
 Plug('junegunn/vim-easy-align')
@@ -191,11 +191,6 @@ g.nvim_tree_bindings = {
     { key = "?", cb = tree_cb("toggle_help") },
 }
 
--- hide statusline when nvim tree is opened
-vim.cmd(
-[[au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif]]
-)
-
 -- Autocomplete
 g.coq_settings = {
     auto_start = true
@@ -291,7 +286,6 @@ local on_attach = function(_, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -317,7 +311,7 @@ require('gitsigns').setup {
 }
 
 -- Notes
-vim.cmd 'let g:nv_search_paths = ["~/Jottacloud/notes"]'
+--vim.cmd('let g:nv_search_paths = ["~/Jottacloud/notes"]')
 
 -------------------- OPTIONS -------------------------------
 opt.completeopt   = {'menuone', 'noinsert', 'noselect'} -- completion options
@@ -350,5 +344,5 @@ cmd 'colorscheme gruvbox'
 
 -------------------- COMMANDS -------------------------------
 cmd 'au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}' -- highlight on yank
-cmd 'au BufWrite * :Autoformat'
+cmd 'au BufWrite *.rs :Autoformat'
 cmd 'autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo'
