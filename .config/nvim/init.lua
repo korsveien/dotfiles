@@ -78,7 +78,8 @@ Plug('ray-x/lsp_signature.nvim')
 Plug('ms-jpq/coq_nvim', {branch = 'coq'})
 
 -- -- Colors,icons and syntax
-Plug('nvim-treesitter/nvim-treesitter')
+Plug('nvim-treesitter/nvim-treesitter') -- Very slow
+Plug('sheerun/vim-polyglot')
 Plug('etdev/vim-hexcolor')
 Plug('morhetz/gruvbox')
 
@@ -97,7 +98,7 @@ vim.call('plug#end')
 require('nvim-treesitter.configs').setup {
     ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     highlight = {
-        enable = true, -- false will disable the whole extension
+        enable = false, -- false will disable the whole extension
     }
 }
 
