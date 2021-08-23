@@ -24,7 +24,7 @@ map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 map('n', '<leader>w', '<cmd>noh<CR>') -- Clear highlights
 
 map('n', '<C-l>', ':NV<cr>')                       -- Search notes
-map('n', '<C-h>', ':NvimTreeOpen<cr>')           -- Toggle file sidebar
+map('n', '<C-h>', ':NvimTreeToggle<cr>')           -- Toggle file sidebar
 
 map('n', '<leader><leader>', '<C-^>')
 
