@@ -59,6 +59,11 @@ abbr --add tl tmux list-sessions
 abbr --add ta tmux attach-session -t
 abbr --add tk tmux kill-session -t
 
+abbr --add fv nvim ~/.config/fish/config.fish
+abbr --add fs source ~/.config/fish/config.fish
+abbr --add av nvim ~/.config/alacritty/alacritty.yml
+abbr --add sv nvim ~/.config/sway/config
+
 # Path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
 
@@ -83,18 +88,6 @@ end
 
 function yi
     yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S
-end
-
-function fs
-    source ~/.config/fish/config.fish
-end
-
-function fv
-    nvim ~/.config/fish/config.fish
-end
-
-function av
-    nvim ~/.config/alacritty/alacritty.yml
 end
 
 function gcm
