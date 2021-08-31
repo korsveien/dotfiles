@@ -24,7 +24,7 @@ map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 map('n', '<leader>w', '<cmd>noh<CR>') -- Clear highlights
 
 map('n', '<C-l>', ':NV<cr>')                       -- Search notes
-map('n', '<C-h>', ':NvimTreeToggle<cr>')           -- Toggle file sidebar
+map('n', '<C-h>', ':NERDTreeToggle<cr>')           -- Toggle file sidebar
 
 map('n', '<leader><leader>', '<C-^>')
 
@@ -63,8 +63,11 @@ Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
 Plug('junegunn/fzf.vim')
 
 -- File tree
+Plug('preservim/nerdtree')
+
+-- Icons
+Plug('ryanoasis/vim-devicons')
 Plug('kyazdani42/nvim-web-devicons')
-Plug('kyazdani42/nvim-tree.lua')
 
 -- Buffers
 Plug('akinsho/nvim-bufferline.lua')
@@ -77,7 +80,7 @@ Plug('ray-x/lsp_signature.nvim')
 -- Autocomplete
 Plug('ms-jpq/coq_nvim', {branch = 'coq'})
 
--- -- Colors,icons and syntax
+-- -- Colors and syntax
 Plug('nvim-treesitter/nvim-treesitter') -- Very slow
 Plug('sheerun/vim-polyglot')
 Plug('etdev/vim-hexcolor')
@@ -334,16 +337,17 @@ opt.termguicolors = true                                -- True color support
 opt.wildmode      = {'list', 'longest'}                 -- Command-line completion mode
 opt.wrap          = false                               -- Disable line wrap
 
+--Decrease update time
+opt.updatetime = 250
+opt.signcolumn = 'yes'
+
 --Save undo history
 vim.cmd [[set undofile]]
 
---Decrease update time
-vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
 
 cmd 'colorscheme gruvbox'
 
--------------------- COMMANDS -------------------------------
+-------------------- AUTOCOMMANDS -------------------------------
 cmd 'au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}' -- highlight on yank
 cmd 'au BufWrite *.rs,*.swift :Autoformat'
 cmd 'autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo'
