@@ -194,7 +194,7 @@ g.nvim_tree_bindings = {
 
 -- Autocomplete
 g.coq_settings = {
-    auto_start = true
+    auto_start = false
 }
 
 -- LSP
@@ -345,5 +345,5 @@ cmd 'colorscheme gruvbox'
 
 -------------------- COMMANDS -------------------------------
 cmd 'au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}' -- highlight on yank
-cmd 'au BufWrite *.rs :Autoformat'
+cmd 'au BufWrite *.rs,*.swift :Autoformat'
 cmd 'autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo'

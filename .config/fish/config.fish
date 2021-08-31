@@ -4,6 +4,8 @@ bind \cj up-or-search
 bind \ck down-or-search
 
 ##### ABBREVIATIONS #####
+abbr --add p python3
+
 abbr --add ea envchain aws
 abbr --add en envchain nexus
 
