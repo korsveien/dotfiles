@@ -50,7 +50,7 @@ Plug('etdev/vim-hexcolor')
 Plug('morhetz/gruvbox')
 
 -- -- Notes
---Plug('alok/notational-fzf-vim')
+Plug('alok/notational-fzf-vim')
 
 -- -- Editing
 Plug('junegunn/vim-easy-align')
@@ -240,7 +240,7 @@ require('gitsigns').setup {
 }
 
 -- Notes
---vim.cmd('let g:nv_search_paths = ["~/Jottacloud/notes"]')
+g.nv_search_paths = { '~/Jottacloud/notes' }
 
 -------------------- OPTIONS -------------------------------
 opt.completeopt   = {'menuone', 'noinsert', 'noselect'} -- completion options
@@ -267,9 +267,9 @@ opt.updatetime = 250
 opt.signcolumn = 'yes'
 
 --Save undo history
-vim.cmd [[set undofile]]
+cmd 'set undofile'
 
-
+--Set color scheme
 cmd 'colorscheme gruvbox'
 
 -------------------- AUTOCOMMANDS -------------------------------
