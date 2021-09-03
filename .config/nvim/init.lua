@@ -68,8 +68,6 @@ map('', '<leader>y', '"+y')       -- Copy to clipboard in normal, visual, select
 map('i', '<C-u>', '<C-j>u<C-u>')  -- Make <C-u> undo-friendly
 map('i', '<C-w>', '<C-g>u<C-w>')  -- Make <C-w> undo-friendly
 
-map('', '<C-s>', ':sus<cr>') -- Suspend to terminal
-
 map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
 map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
@@ -79,9 +77,6 @@ map('n', '<C-l>', ':NV<cr>')                       -- Search notes
 map('n', '<C-h>', ':NERDTreeToggle<cr>')           -- Toggle file sidebar
 
 map('n', '<leader><leader>', '<C-^>')
-
-map('n', '<leader>r', ':make run<cr>')                              -- Source current file
-map('n', '<leader>m', ':make')                              -- Source current file
 
 map('n', '<leader>c', ":edit ~/.config/nvim/init.lua<cr>")   -- Edit config file
 map('n', '<leader>v', ":source ~/.config/nvim/init.lua<cr>") -- Source config file
@@ -97,6 +92,7 @@ map('n', ':X', ':x')
 
 map('n', '<C-f>', '<cmd>Rg<cr>')
 map('n', '<C-p>', '<cmd>Files<cr>')
+map('n', '<C-e>', '<cmd>Buffers<cr>')
 
 
 require('nvim-treesitter.configs').setup {
