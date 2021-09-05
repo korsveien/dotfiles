@@ -60,11 +60,13 @@ output * bg ~/.config/sway/mountains.jpg fill
 #
 # Example configuration:
 #
+bindsym $mod+shift+p exec swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8
+
 exec swayidle -w \
-         timeout 600 'swaylock -f --image ~/.config/swaylock/lock.png' \
+         timeout 600 'swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8' \
          timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'playerctl pause' \
-         before-sleep 'swaylock -f --image ~/.config/swaylock/lock.png'
+         before-sleep 'swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
