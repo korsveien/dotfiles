@@ -11,62 +11,69 @@ end
 
 -------------------- PLUGINS -------------------------------
 
-local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.config/nvim/plugged')
+cmd [[packadd packer.nvim]]
 
-Plug('nvim-lua/plenary.nvim')
+require('packer').startup(function(use)
+
+use 'wbthomason/packer.nvim'
+
+use 'nvim-lua/plenary.nvim'
+use 'nvim-lua/popup.nvim'
 
 -- Git
-Plug('tpope/vim-fugitive')
-Plug('tpope/vim-rhubarb')
-Plug('lewis6991/gitsigns.nvim')
+use 'tpope/vim-fugitive'
+use 'tpope/vim-rhubarb'
+use 'lewis6991/gitsigns.nvim'
+use 'sindrets/diffview.nvim'
 
 -- Search
-Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
-Plug('junegunn/fzf.vim')
+use 'nvim-telescope/telescope.nvim'
 
 -- File tree
-Plug('preservim/nerdtree')
+use 'preservim/nerdtree'
 
 -- Icons
-Plug('ryanoasis/vim-devicons')
-Plug('kyazdani42/nvim-web-devicons')
+use 'ryanoasis/vim-devicons'
+use 'kyazdani42/nvim-web-devicons'
 
 -- Buffers
-Plug('akinsho/nvim-bufferline.lua')
+use 'akinsho/nvim-bufferline.lua'
 
 -- LSP
-Plug('neovim/nvim-lspconfig')
-Plug('kabouzeid/nvim-lspinstall')
-Plug('ray-x/lsp_signature.nvim')
+use 'neovim/nvim-lspconfig'
+use 'kabouzeid/nvim-lspinstall'
+use 'ray-x/lsp_signature.nvim'
+
 
 -- Autocomplete
-Plug('ms-jpq/coq_nvim', {branch = 'coq'})
+use {'ms-jpq/coq_nvim', branch = 'coq'}
 
--- -- Colors and syntax
-Plug('nvim-treesitter/nvim-treesitter') -- Very slow
-Plug('sheerun/vim-polyglot')
-Plug('etdev/vim-hexcolor')
-Plug('morhetz/gruvbox')
+-- Treesitter
+use { 'nvim-treesitter/nvim-treesitter', branch = '0.5-compat', run = ':TSUpdate' }
+use 'nvim-treesitter/nvim-treesitter-textobjects'
+
+-- Colorschemes
+use 'sheerun/vim-polyglot'
+use 'morhetz/gruvbox'
+use 'Mofiqul/vscode.nvim'
 
 -- -- Notes
-Plug('alok/notational-fzf-vim')
+use 'alok/notational-fzf-vim'
 
 -- -- Editing
-Plug('junegunn/vim-easy-align')
-Plug('tpope/vim-commentary')
-Plug('terryma/vim-multiple-cursors')
-Plug('vim-autoformat/vim-autoformat')
-Plug('jiangmiao/auto-pairs')
+use 'junegunn/vim-easy-align'
+use 'tpope/vim-commentary'
+use 'terryma/vim-multiple-cursors'
+use 'vim-autoformat/vim-autoformat'
+use 'jiangmiao/auto-pairs'
 
-vim.call('plug#end')
+
+end)
 
 -------------------- MAPPINGS -------------------------------
 vim.g.mapleader = ' '
 
 map('', '<leader>y', '"+y')       -- Copy to clipboard in normal, visual, select and operator modes
-map('i', '<C-u>', '<C-j>u<C-u>')  -- Make <C-u> undo-friendly
-map('i', '<C-w>', '<C-g>u<C-w>')  -- Make <C-w> undo-friendly
 
 map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
 map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
@@ -90,17 +97,36 @@ map('n', ':W', ':w')
 map('n', ':Q', ':q')
 map('n', ':X', ':x')
 
-map('n', '<C-f>', '<cmd>Rg<cr>')
-map('n', '<C-p>', '<cmd>Files<cr>')
-map('n', '<C-e>', '<cmd>Buffers<cr>')
-
-
 require('nvim-treesitter.configs').setup {
     ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     highlight = {
-        enable = false, -- false will disable the whole extension
+        enable = true, -- false will disable the whole extension
     }
 }
+
+local actions = require('telescope.actions')
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close,
+        ["<c-j"] = actions.move_selection_next,
+        ["<c-k"] = actions.move_selection_previous,
+      },
+      n = {
+        ["<c-j"] = actions.move_selection_next,
+        ["<c-k"] = actions.move_selection_previous,
+      }
+    },
+  }
+}
+
+map('n', '<c-p>', ':Telescope find_files<CR>')
+map('n', '<c-e>', ':Telescope buffers<CR>')
+map('n', '<c-f>', ':Telescope live_grep<CR>')
+map('n', '<leader>r', ':Telescope registers<CR>')
+map('n', '<leader>a', ':Telescope lsp_code_actions<CR>')
+
 
 -- Bufferline
 require("bufferline").setup({
@@ -122,10 +148,12 @@ require("bufferline").setup({
 
 -- Autocomplete
 g.coq_settings = {
-    auto_start = false
+    auto_start = 'shut-up'
 }
 
 -- LSP
+cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
+
 local nvim_lsp = require 'lspconfig'
 local coq      = require 'coq'
 
@@ -158,8 +186,7 @@ vim.fn.sign_define(
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 vim.lsp.diagnostic.on_publish_diagnostics,
 {
-    -- virtual_text = false,
-    virtual_text = { prefix = "" },
+    virtual_text = false,
     signs = true,
     update_in_insert = false,
 }
@@ -209,7 +236,7 @@ local on_attach = function(_, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
@@ -261,18 +288,20 @@ opt.tabstop       = 2                                   -- Number of spaces tabs
 opt.termguicolors = true                                -- True color support
 opt.wildmode      = {'list', 'longest'}                 -- Command-line completion mode
 opt.wrap          = false                               -- Disable line wrap
-
---Decrease update time
-opt.updatetime = 250
 opt.signcolumn = 'yes'
+opt.updatetime = 250
 
 --Save undo history
-cmd 'set undofile'
+cmd [[ set undofile ]]
 
 --Set color scheme
-cmd 'colorscheme gruvbox'
+g.vscode_style = "dark"
+cmd [[ colorscheme vscode ]]
+--cmd 'colorscheme gruvbox'
 
 -------------------- AUTOCOMMANDS -------------------------------
-cmd 'au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}' -- highlight on yank
-cmd 'au BufWrite *.rs,*.swift :Autoformat'
-cmd 'autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo'
+cmd [[au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}]] -- highlight on yank
+cmd [[au BufWrite *.rs,*.swift :Autoformat]]
+cmd [[autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo]]
+-- Global mark I for last edit
+cmd [[autocmd InsertLeave * execute 'normal! mI']]

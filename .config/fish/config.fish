@@ -96,6 +96,10 @@ function gcm
     git checkout main || git checkout master
 end
 
+function rente_studie
+    curl -s 'https://www.lanekassen.no/api/episerver/v2.0/content/7344' | jq .flytendeRente.value
+end
+
 ##### THIRD PARTY UTILITIES ####
 [ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
