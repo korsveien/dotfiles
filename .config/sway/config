@@ -10,7 +10,7 @@ set $blue #458588
 
 # Colors #93cee9
 # class                     border  backgr. text  indicator child_border
-    client.focused          #4c7899 $blue   #ffffff $blue $blue
+    client.focused          #4c7899 $blue   #ffffff $purple $purple
     client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
     client.unfocused        #333333 #222222 #888888 #292d2e #222222
     client.urgent           #2f343a #900000 #ffffff #900000 #900000
@@ -29,11 +29,11 @@ set $menu wofi --show=run | xargs swaymsg exec --
 
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Gruvbox-Material-Dark'
-    gsettings set $gnome-schema icon-theme 'Gruvbox-Material-Dark'
+    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+    gsettings set $gnome-schema icon-theme 'Adwaita-dark'
     gsettings set $gnome-schema font-name 'Roboto Regular 10'
     gsettings set $gnome-schema monospace-font-name 'Fira Code 10'
-    gsettings set $gnome-schema document-font-name 'Roboto Regular 10'
+    gsettings set $gnome-schema document-font-name 'Roboto Regular 12'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Regular 10'
     gsettings set org.gnome.desktop.wm.preferences button-layout ''
     gsettings set org.gnome.desktop.default-applications.terminal exec $term
