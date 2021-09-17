@@ -24,7 +24,6 @@ abbr --add g git
 abbr --add gl git log --all --decorate --oneline --graph
 abbr --add gc git commit -m
 abbr --add gs git status
-abbr --add gco git checkout
 abbr --add ga git add -p
 abbr --add gamend git commit --amend --reuse-message=HEAD
 abbr --add gb git branch
@@ -66,10 +65,16 @@ abbr --add fs source ~/.config/fish/config.fish
 abbr --add av nvim ~/.config/alacritty/alacritty.yml
 abbr --add sv nvim ~/.config/sway/config
 
+abbr --add puip wget -O - -q icanhazip.com
+
 # Path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
 
 ##### FUNCTIONS ####
+function gco
+    git checkout (git for-each-ref refs/heads/ --format='%(refname:short)' | fzf)
+end
+
 function jset
     set -Ux JAVA_HOME (/usr/libexec/java_home -v $argv[1])
 end
