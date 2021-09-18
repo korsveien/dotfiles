@@ -165,6 +165,6 @@ schemes:
       cyan:    '0x54ced6'
       white:   '0x282a2e'
 
-colors: *tomorrow
 colors: *light
 colors: *dark
+colors: *tomorrow

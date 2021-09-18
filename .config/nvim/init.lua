@@ -56,6 +56,7 @@ use 'nvim-treesitter/nvim-treesitter-textobjects'
 use 'sheerun/vim-polyglot'
 use 'morhetz/gruvbox'
 use 'Mofiqul/vscode.nvim'
+use 'ap/vim-css-color'
 
 -- -- Notes
 use 'alok/notational-fzf-vim'
