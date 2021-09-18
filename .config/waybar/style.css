@@ -1,9 +1,9 @@
-@define-color background #1d2021;
-@define-color foreground #ffffff;
-@define-color yellow     #fabd2f;
-@define-color red        #fb4934;
-@define-color green      #b8bb26;
-@define-color purple     #d3869b;
+@define-color background #242424;
+@define-color foreground #dedede;
+@define-color yellow     #FFD60A;
+@define-color red        #FF453A;
+@define-color green      #32D74B;
+@define-color purple     #cf83f5;
 
 * {
   border: none;
