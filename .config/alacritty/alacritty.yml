@@ -166,5 +166,5 @@ schemes:
       white:   '0x282a2e'
 
 colors: *light
-colors: *dark
 colors: *tomorrow
+colors: *dark
