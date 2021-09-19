@@ -75,14 +75,14 @@ set $down j
 set $up k
 set $right l
 
-# Kill window with right mouse button
+# Kill window with alt and right mouse button
 bindsym --whole-window $mod+button2 kill
 
 # Lock screen
 bindsym $mod+shift+p exec swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8
 
 # Clipboard manager
-bindsym $mod+c exec clipman pick -t wofi
+bindsym $mod+c exec clipman pick -t rofi
 
 # Start a terminal
 bindsym $mod+e exec $term
@@ -102,7 +102,7 @@ bindsym $mod+Shift+r reload
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
-# Toggling workspaces
+# Search windows
 bindsym $mod+p exec ~/.config/sway/switch_window.py
 
 # Move your focus around
