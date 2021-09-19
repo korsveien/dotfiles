@@ -58,6 +58,9 @@ use 'morhetz/gruvbox'
 use 'Mofiqul/vscode.nvim'
 use 'ap/vim-css-color'
 
+-- Syntax
+use 'mboughaba/i3config.vim'
+
 -- -- Notes
 use 'alok/notational-fzf-vim'
 
@@ -306,3 +309,10 @@ cmd [[au BufWrite *.rs,*.swift :Autoformat]]
 cmd [[autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo]]
 -- Global mark I for last edit
 cmd [[autocmd InsertLeave * execute 'normal! mI']]
+
+-- Syntax highlight sway config
+cmd [[aug i3config_ft_detection
+        au!
+        au BufNewFile,BufRead ~/.config/sway/config set filetype=i3config
+    aug end
+]]
