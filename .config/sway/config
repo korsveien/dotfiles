@@ -4,7 +4,6 @@ smart_borders on
 smart_gaps on
 gaps inner 8
 
-
 # Colors
 # https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/
 #
@@ -48,8 +47,7 @@ exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/cli
 exec swayidle -w \
          timeout 600 'swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8' \
          timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'playerctl pause' \
-         before-sleep 'swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8'
+         before-sleep 'playerctl pause && swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -76,6 +74,9 @@ set $left h
 set $down j
 set $up k
 set $right l
+
+# Kill window with right mouse button
+bindsym --whole-window button2 kill
 
 # Lock screen
 bindsym $mod+shift+p exec swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8

@@ -53,13 +53,13 @@ use { 'nvim-treesitter/nvim-treesitter', branch = '0.5-compat', run = ':TSUpdate
 use 'nvim-treesitter/nvim-treesitter-textobjects'
 
 -- Colorschemes
-use 'sheerun/vim-polyglot'
 use 'morhetz/gruvbox'
 use 'Mofiqul/vscode.nvim'
-use 'ap/vim-css-color'
 
 -- Syntax
 use 'mboughaba/i3config.vim'
+use 'sheerun/vim-polyglot'
+use 'ap/vim-css-color'
 
 -- -- Notes
 use 'alok/notational-fzf-vim'
@@ -78,9 +78,6 @@ end)
 vim.g.mapleader = ' '
 
 map('', '<leader>y', '"+y')       -- Copy to clipboard in normal, visual, select and operator modes
-
-map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
-map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
 map('n', '<leader>w', '<cmd>noh<CR>') -- Clear highlights
 
