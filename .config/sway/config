@@ -103,7 +103,7 @@ bindsym $mod+Shift+r reload
 bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # Toggling workspaces
-bindsym $mod+tab exec ~/.config/sway/switch_window.py
+bindsym $mod+p exec ~/.config/sway/switch_window.py
 
 # Move your focus around
 bindsym $mod+h focus left
