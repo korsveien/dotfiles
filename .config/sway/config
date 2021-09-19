@@ -21,7 +21,7 @@ set $purple #CF83F5
 set $term alacritty
 
 # Application launcher
-set $menu wofi --show=run | xargs swaymsg exec --
+set $menu rofi -show run
 
 # Gnome settings (gtk)
 set $gnome-schema org.gnome.desktop.interface
@@ -76,7 +76,7 @@ set $up k
 set $right l
 
 # Kill window with right mouse button
-bindsym --whole-window button2 kill
+bindsym --whole-window $mod+button2 kill
 
 # Lock screen
 bindsym $mod+shift+p exec swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8
@@ -103,11 +103,13 @@ bindsym $mod+Shift+r reload
 bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # Toggling workspaces
-bindsym $mod+tab workspace back_and_forth
+bindsym $mod+tab exec ~/.config/sway/switch_window.py
 
 # Move your focus around
 bindsym $mod+h focus left
 bindsym $mod+l focus right
+bindsym $mod+j focus right
+bindsym $mod+k focus left
 
 # Move the focused window
 bindsym $mod+return fullscreen
