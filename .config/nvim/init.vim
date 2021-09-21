@@ -54,7 +54,6 @@ Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
-colorscheme vscode
 
 """"""""""""""""""""""""""""""""""""""""
 " AUTOCOMMANDS
@@ -404,3 +403,5 @@ opt.updatetime = 250
 g.vscode_style = "dark"
 
 EOF
+
+colorscheme vscode
