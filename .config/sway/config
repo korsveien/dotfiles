@@ -68,12 +68,6 @@ input * {
 # Alt as mod key
 set $mod Mod1
 
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-
 # Kill window with alt and right mouse button
 bindsym --whole-window $mod+button2 kill
 
@@ -84,7 +78,7 @@ bindsym $mod+shift+p exec swaylock --screenshots --clock --grace 5 --indicator -
 bindsym $mod+c exec clipman pick -t rofi
 
 # Start a terminal
-bindsym $mod+e exec $term
+bindsym $mod+return exec $term
 
 # Kill focused window
 bindsym $mod+Shift+w kill
@@ -107,25 +101,23 @@ bindsym $mod+p exec ~/.config/sway/switch_window.py
 bindsym $mod+tab focus right
 bindsym $mod+shift+tab focus left
 
-# Move your focus around
-bindsym $mod+h focus left
-bindsym $mod+l focus right
-bindsym $mod+j focus right
-bindsym $mod+k focus left
-
-# Move the focused window
-bindsym $mod+return fullscreen
-bindsym $mod+left move left
-bindsym $mod+right move right
-bindsym $mod+shift+j move right
-bindsym $mod+shift+k move left
+# hjkl keys
+bindsym $mod+h move left
+bindsym $mod+l move right
+bindsym $mod+j fullscreen
 
 #
 # Resizing containers:
 #
-set $resize_factor 25ppt
-bindsym $mod+down resize shrink width $resize_factor
+set $resize_factor 20ppt
+
+bindsym $mod+shift+j resize grow width $resize_factor
+bindsym $mod+shift+k resize shrink width $resize_factor
+
+bindsym $mod+left move left $resize_factor
+bindsym $mod+right move right $resize_factor
 bindsym $mod+up resize grow width $resize_factor
+bindsym $mod+down resize shrink width $resize_factor
 
 #
 # Workspaces:
