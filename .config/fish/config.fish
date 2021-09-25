@@ -1,6 +1,8 @@
 fzf_key_bindings
 
 ##### Variables #####
+set -x _JAVA_AWT_WM_NONREPARENTING 1
+
 #https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_DATA_HOME $HOME/.local/share
