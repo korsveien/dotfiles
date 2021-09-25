@@ -2,12 +2,14 @@
 # VERSION: 3.0
 SETUVAR --export JAVA_HOME:/Library/Java/JavaVirtualMachines/adoptopenjdk\x2d8\x2ejdk/Contents/Home
 SETUVAR __fish_initialized:3100
-SETUVAR _fish_abbr_aws:envchain\x20aws\x20aws
+SETUVAR _fish_abbr_av:nvim\x20/home/peder/\x2econfig/alacritty/alacritty\x2eyml
 SETUVAR _fish_abbr_d:docker
 SETUVAR _fish_abbr_di:docker\x20images
 SETUVAR _fish_abbr_dps:docker\x20ps
 SETUVAR _fish_abbr_ea:envchain\x20aws
 SETUVAR _fish_abbr_en:envchain\x20nexus
+SETUVAR _fish_abbr_fs:source\x20/home/peder/\x2econfig/fish/config\x2efish
+SETUVAR _fish_abbr_fv:nvim\x20/home/peder/\x2econfig/fish/config\x2efish
 SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_ga:git\x20add\x20\x2dp
 SETUVAR _fish_abbr_gamend:git\x20commit\x20\x2d\x2damend\x20\x2d\x2dreuse\x2dmessage\x3dHEAD
@@ -34,6 +36,10 @@ SETUVAR _fish_abbr_ll:exa\x20\x2dla
 SETUVAR _fish_abbr_mci:envchain\x20nexus\x20mvn\x20clean\x20install
 SETUVAR _fish_abbr_mcid:envchain\x20nexus\x20mvn\x20clean\x20install\x20\x2dDskipTests
 SETUVAR _fish_abbr_mtree:envchain\x20nexus\x20mvn\x20dependency\x3atree
+SETUVAR _fish_abbr_p:python3
+SETUVAR _fish_abbr_puip:wget\x20\x2dO\x20\x2d\x20\x2dq\x20icanhazip\x2ecom
+SETUVAR _fish_abbr_sv:nvim\x20/home/peder/\x2econfig/sway/config
+SETUVAR _fish_abbr_t:terraform
 SETUVAR _fish_abbr_ta:tmux\x20attach\x2dsession\x20\x2dt
 SETUVAR _fish_abbr_tf:envchain\x20aws\x20terraform
 SETUVAR _fish_abbr_tk:tmux\x20kill\x2dsession\x20\x2dt

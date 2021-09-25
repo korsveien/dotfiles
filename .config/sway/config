@@ -20,7 +20,9 @@ set $purple #CF83F5
 set $term alacritty
 
 # Application launcher
-set $menu rofi -show run
+set $menu rofi -modi drun -show drun
+
+font pango:Sans 10
 
 # Gnome settings (gtk)
 set $gnome-schema org.gnome.desktop.interface
@@ -40,7 +42,9 @@ exec_always {
 output * bg ~/.config/sway/mountains.jpg fill
 
 # Set up clipboard manager
-exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json" >>1 ~/.logs/clipman
+exec wl-paste -t text --watch clipman store
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+exec clipman restore
 
 ### Idle configuration
 exec swayidle -w \
@@ -72,7 +76,10 @@ set $mod Mod1
 bindsym --whole-window $mod+button2 kill
 
 # Lock screen
-bindsym $mod+shift+p exec swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8
+bindsym $mod+l exec swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8
+
+# Upload screenshot and copy url to clipboard
+bindsym $mod+Shift+Print exec slurp | grim -g - - | curl --form 'file=@-' http://0x0.st | wl-copy && swaynag -m "screenshot uploaded & url copied to clipboard"
 
 # Clipboard manager
 bindsym $mod+c exec clipman pick -t rofi
@@ -84,7 +91,10 @@ bindsym $mod+return exec $term
 bindsym $mod+Shift+w kill
 
 # Start your launcher
-bindsym $mod+space exec $menu
+bindsym $mod+d exec $menu
+
+# Search windows
+bindsym $mod+space exec ~/.config/sway/switch_window.py
 
 # Default shorcuts for floating windows
 floating_modifier $mod normal
@@ -95,15 +105,11 @@ bindsym $mod+Shift+r reload
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
-# Search windows
-bindsym $mod+p exec ~/.config/sway/switch_window.py
 
 bindsym $mod+tab focus right
 bindsym $mod+shift+tab focus left
 
 # hjkl keys
-bindsym $mod+h move left
-bindsym $mod+l move right
 bindsym $mod+j fullscreen
 
 #
@@ -111,11 +117,8 @@ bindsym $mod+j fullscreen
 #
 set $resize_factor 20ppt
 
-bindsym $mod+shift+j resize grow width $resize_factor
-bindsym $mod+shift+k resize shrink width $resize_factor
-
-bindsym $mod+left move left $resize_factor
-bindsym $mod+right move right $resize_factor
+bindsym $mod+left move left
+bindsym $mod+right move right
 bindsym $mod+up resize grow width $resize_factor
 bindsym $mod+down resize shrink width $resize_factor
 
@@ -127,12 +130,24 @@ bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
 bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 0
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
 bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 0
 
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+f floating toggle
