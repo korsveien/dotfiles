@@ -1,5 +1,12 @@
 fzf_key_bindings
 
+##### Variables #####
+#https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
+set -x XDG_CONFIG_HOME $HOME/.config
+set -x XDG_DATA_HOME $HOME/.local/share
+set -x XDG_STATE_HOME $HOME/.local/state
+set -x XDG_CACHE_HOME $HOME/.cache
+
 bind \cj up-or-search
 bind \ck down-or-search
 
