@@ -1,17 +1,11 @@
-/************************************************
- * ROFI Color theme
- * User: leofa
- * Copyright: 2017 leofa
- ***********************************************/
-
 * {
     selected-normal-foreground:  rgba ( 249, 249, 249, 100 % );
     foreground:                  rgba ( 196, 203, 212, 100 % );
     normal-foreground:           @foreground;
-    alternate-normal-background: rgba ( 64, 69, 82, 59 % );
-    red:                         rgba ( 220, 50, 47, 100 % );
+    alternate-normal-background: rgba ( 64, 69, 82, 59% );
+    red:                         rgba ( 255, 69, 58, 100 % );
     selected-urgent-foreground:  rgba ( 249, 249, 249, 100 % );
-    blue:                        rgba ( 38, 139, 210, 100 % );
+    blue:                        rgba ( 10, 132, 255, 100 % );
     urgent-foreground:           rgba ( 204, 102, 102, 100 % );
     alternate-urgent-background: rgba ( 75, 81, 96, 90 % );
     active-foreground:           rgba ( 101, 172, 255, 100 % );
