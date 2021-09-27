@@ -30,6 +30,7 @@ abbr --add vim nvim
 
 # Git
 abbr --add g git
+abbr --add gpf git push -f
 abbr --add gl git log --all --decorate --oneline --graph
 abbr --add gc git commit -m
 abbr --add gs git status
@@ -61,6 +62,9 @@ abbr --add ij envchain nexus,aws idea
 # Terraform
 abbr --add tf envchain aws terraform
 abbr --add t terraform
+
+# AWS
+abbr --add aws envchain aws aws
 
 # Tmux
 abbr --add tl tmux list-sessions

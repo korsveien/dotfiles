@@ -2,8 +2,8 @@
     name = Peder Korsveien
     useConfigOnly = true
     email = pederpus@pm.me
-[includeIf "gitdir:~/vy/"]
-    path = ~/vy/.gitconfig
+[includeIf "gitdir:~/Code/vy/"]
+    path = ~/Code/vy/.gitconfig
 [core]
     editor = nvim
     autocrlf = input
