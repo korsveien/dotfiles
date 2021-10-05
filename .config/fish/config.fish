@@ -63,9 +63,6 @@ abbr --add ij envchain nexus,aws idea
 abbr --add tf envchain aws terraform
 abbr --add t terraform
 
-# AWS
-abbr --add aws envchain aws aws
-
 # Tmux
 abbr --add tl tmux list-sessions
 abbr --add ta tmux attach-session -t
