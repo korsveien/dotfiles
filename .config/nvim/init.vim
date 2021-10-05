@@ -25,9 +25,6 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
-" Buffers
-Plug 'akinsho/nvim-bufferline.lua'
-
 " LSP, autocomplete and so on
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
