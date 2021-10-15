@@ -1,4 +1,6 @@
-require("bufferline").setup{}
+require('feline').setup()
+
+require('bufferline').setup{}
 
 require('nvim-treesitter.configs').setup {
     ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -8,9 +10,13 @@ require('nvim-treesitter.configs').setup {
 }
 
 require'nvim-tree'.setup{
-    auto_close = false,
+    open_on_setup = true,
+    auto_close = true,
     update_focused_file = {
         enable = true
+    },
+    view = {
+        auto_resize = true
     }
 }
 

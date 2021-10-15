@@ -26,6 +26,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 " Lines and stuff
 Plug 'akinsho/bufferline.nvim'
+Plug 'Famiu/feline.nvim'
 
 " LSP, autocomplete and so on
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -239,17 +240,17 @@ map('n', ':Q', ':q')
 map('n', ':X', ':x')
 
 map('n', '<c-p>', ":Telescope find_files<CR>")
-map('n', '<c-e>', ':Telescope buffers<CR>')
-map('n', '<c-f>', ':Telescope live_grep<CR>')
-map('n', '<leader>r', ':Telescope registers<CR>')
-map('n', '<leader>a', ':Telescope lsp_code_actions<CR>')
+map('n', '<c-f>', ":Telescope live_grep<CR>")
+map('n', '<c-e>', ':Telescope commands<CR>')
+map('n', '<c-b>', ':Telescope buffers<CR>')
+map('n', '<leader>fr', ':Telescope registers<CR>')
+map('n', '<leader>ca', ':Telescope lsp_code_actions<CR>')
 EOF
 
 lua require('options')
 lua require ('setup')
 lua require ('lsp')
 
-colorscheme vscode
 colorscheme jellybeans
 
 highlight Search guibg='Orange' guifg='Black'
@@ -278,8 +279,6 @@ nnoremap <silent><mymap> :BufferLineMovePrev<CR>
 nnoremap <silent>be :BufferLineSortByExtension<CR>
 nnoremap <silent>bd :BufferLineSortByDirectory<CR>
 nnoremap <silent><mymap> :lua require'bufferline'.sort_buffers_by(function (buf_a, buf_b) return buf_a.id < buf_b.id end)<CR>
-
-
 
 """"""""""""""""""""""""""""""""""""""""
 "AUTOCOMMANDS

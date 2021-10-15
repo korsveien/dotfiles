@@ -82,7 +82,7 @@ bindsym $mod+l exec swaylock --screenshots --clock --grace 5 --indicator --effec
 bindsym $mod+Shift+Print exec slurp | grim -g - - | curl --form 'file=@-' http://0x0.st | wl-copy && swaynag -m "screenshot uploaded & url copied to clipboard"
 
 # Clipboard manager
-bindsym $mod+c exec clipman pick -t rofi
+bindsym $mod+Shift+c exec clipman pick -t rofi
 
 # Start a terminal
 bindsym $mod+return exec $term
@@ -163,7 +163,7 @@ bindsym $mod+minus scratchpad show
 
 #
 # Status Bar:
-#
+
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     swaybar_command waybar
