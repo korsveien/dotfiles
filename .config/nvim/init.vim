@@ -19,11 +19,13 @@ Plug 'sindrets/diffview.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 " File tree
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Icons
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
+
+" Lines and stuff
+Plug 'akinsho/bufferline.nvim'
 
 " LSP, autocomplete and so on
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -52,8 +54,6 @@ Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
-let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
-
 
 """"""""""""""""""""""""""""""""""""""""
 " AUTOCOMMANDS
@@ -69,31 +69,6 @@ aug i3config_ft_detection
 aug end
 
 autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})
-
-" Check if NERDTree is open or active
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
-
-function! ToggleNerdTree()
-  set eventignore=BufEnter
-  NERDTreeToggle
-  set eventignore=
-endfunction
-
-nmap <C-h> :call ToggleNerdTree()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COC
@@ -263,26 +238,48 @@ map('n', ':W', ':w')
 map('n', ':Q', ':q')
 map('n', ':X', ':x')
 
-map('n', '<c-p>', ":Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<CR>")
+map('n', '<c-p>', ":Telescope find_files<CR>")
 map('n', '<c-e>', ':Telescope buffers<CR>')
 map('n', '<c-f>', ':Telescope live_grep<CR>')
 map('n', '<leader>r', ':Telescope registers<CR>')
 map('n', '<leader>a', ':Telescope lsp_code_actions<CR>')
 EOF
 
-lua require ('plugins')
-lua require ('lsp')
 lua require('options')
+lua require ('setup')
+lua require ('lsp')
 
 colorscheme vscode
 colorscheme jellybeans
 
 highlight Search guibg='Orange' guifg='Black'
 
+nnoremap <C-h> :NvimTreeToggle<CR>
+
 """"""""""""""""""""""""""""""""""""""""
-"MAPPINGS
+"EASYALIGN MAPPINGS
 """"""""""""""""""""""""""""""""""""""""
 vmap ga <Plug>(EasyAlign)
+
+
+""""""""""""""""""""""""""""""""""""""""
+"BUFFERLINE MAPPINGS
+""""""""""""""""""""""""""""""""""""""""
+" These commands will navigate through buffers in order regardless of which mode you are using
+" e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
+nnoremap <silent>[b :BufferLineCycleNext<CR>
+nnoremap <silent>]b :BufferLineCyclePrev<CR>
+
+" These commands will move the current buffer backwards or forwards in the bufferline
+nnoremap <silent><mymap> :BufferLineMoveNext<CR>
+nnoremap <silent><mymap> :BufferLineMovePrev<CR>
+
+" These commands will sort buffers by directory, language, or a custom criteria
+nnoremap <silent>be :BufferLineSortByExtension<CR>
+nnoremap <silent>bd :BufferLineSortByDirectory<CR>
+nnoremap <silent><mymap> :lua require'bufferline'.sort_buffers_by(function (buf_a, buf_b) return buf_a.id < buf_b.id end)<CR>
+
+
 
 """"""""""""""""""""""""""""""""""""""""
 "AUTOCOMMANDS
