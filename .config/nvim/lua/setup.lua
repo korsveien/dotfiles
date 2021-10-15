@@ -1,5 +1,3 @@
-require('feline').setup()
-
 require('bufferline').setup{}
 
 require('nvim-treesitter.configs').setup {
@@ -24,6 +22,10 @@ local actions = require('telescope.actions')
 
 require('telescope').setup{
     defaults = {
+        prompt_prefix = "   ",
+        selection_caret = "  ",
+        entry_prefix = "  ",
+        initial_mode = "insert",
         mappings = {
             i = {
                 ["<esc>"] = actions.close,
@@ -35,10 +37,18 @@ require('telescope').setup{
                 ["<C-k>"] = actions.move_selection_previous,
             }
         },
+        sorting_strategy = "ascending",
+        layout_strategy = "vertical",
+        file_ignore_patterns = {
+            "node_modules",
+            "plugged",
+            "target",
+        }
     },
     pickers = {
         find_files = {
-            layout_strategy = "vertical"
+            layout_strategy = "center",
+            previewer = false
         }
     }
 }
