@@ -6,12 +6,6 @@ require('packer').startup(function(use)
     use('williamboman/nvim-lsp-installer')
 
     use({
-        'glepnir/lspsaga.nvim',
-        config = function()
-            require('lspsaga').init_lsp_saga()
-        end,
-    })
-    use({
         'ray-x/lsp_signature.nvim',
         config = function()
             require('lsp_signature').on_attach()
@@ -121,16 +115,25 @@ require('packer').startup(function(use)
     -- ui
     use('kyazdani42/nvim-web-devicons')
     use('mhinz/vim-startify')
+
+    use({
+        'hoob3rt/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = function()
+            require('lualine').setup({
+                options = {
+                    theme = 'jellybeans',
+                    section_separators = { '', '' },
+                    component_separators = { '', '' },
+                },
+            })
+        end,
+    })
+
     use({
         'akinsho/nvim-bufferline.lua',
         config = function()
             require('bufferline').setup()
-        end,
-    })
-    use({
-        'famiu/feline.nvim',
-        config = function()
-            require('statusline')
         end,
     })
 
@@ -156,7 +159,6 @@ require('packer').startup(function(use)
     })
 
     -- editing
-
     use('tpope/vim-commentary')
     use('terryma/vim-multiple-cursors')
     use('vim-autoformat/vim-autoformat')

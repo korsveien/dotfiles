@@ -8,11 +8,6 @@ require('utils').new_augroup({
     packer_compile = { 'BufWritePost plugins.lua PackerCompile' },
 })
 
-require('plugins')
-require('options')
-require('lsp')
-require('mappings')
-
 vim.cmd([[
 colorscheme jellybeans
 
@@ -35,14 +30,9 @@ vmap ga <Plug>(EasyAlign)
 nnoremap <silent>[b :BufferLineCycleNext<CR>
 nnoremap <silent>]b :BufferLineCyclePrev<CR>
 
-" These commands will move the current buffer backwards or forwards in the bufferline
-nnoremap <silent><mymap> :BufferLineMoveNext<CR>
-nnoremap <silent><mymap> :BufferLineMovePrev<CR>
-
 " These commands will sort buffers by directory, language, or a custom criteria
 nnoremap <silent>be :BufferLineSortByExtension<CR>
 nnoremap <silent>bd :BufferLineSortByDirectory<CR>
-nnoremap <silent><mymap> :lua require'bufferline'.sort_buffers_by(function (buf_a, buf_b) return buf_a.id < buf_b.id end)<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 "AUTOCOMMANDS
@@ -60,3 +50,8 @@ aug end
 
 autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})
 ]])
+
+require('plugins')
+require('options')
+require('lsp')
+require('mappings')
