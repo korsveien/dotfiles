@@ -21,3 +21,4 @@ opt.wrap          = false                               -- Disable line wrap
 opt.signcolumn    = 'yes'
 opt.updatetime    = 250
 opt.cursorline    = true
+opt.undofile      = true                                -- Persistent undo
