@@ -1,17 +1,17 @@
-require'compe'.setup {
+require('compe').setup({
     enables = true,
     preselect = 'always',
     max_abbr_width = 45,
     source = {
-        path       = true,
-        buffer     = true,
-        spell      = true,
-        calc       = true,
-        nvim_lsp   = true,
-        nvim_lua   = true,
-        treesitter = true
-    }
-}
+        path = true,
+        buffer = true,
+        spell = true,
+        calc = true,
+        nvim_lsp = true,
+        nvim_lua = true,
+        treesitter = true,
+    },
+})
 
 do
     local t = function(str)
@@ -20,21 +20,21 @@ do
 
     _G.tab_complete = function()
         if vim.fn.pumvisible() == 1 then
-            return t "<C-n>"
-        elseif vim.fn.call("vsnip#jumpable", {1}) == 1 then
-            return t "<Plug>(vsnip-jump-next)"
+            return t('<C-n>')
+        elseif vim.fn.call('vsnip#jumpable', { 1 }) == 1 then
+            return t('<Plug>(vsnip-jump-next)')
         else
-            return t "<Tab>"
+            return t('<Tab>')
         end
     end
 
     _G.s_tab_complete = function()
         if vim.fn.pumvisible() == 1 then
-            return t "<C-p>"
-        elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-            return t "<Plug>(vsnip-jump-prev)"
+            return t('<C-p>')
+        elseif vim.fn.call('vsnip#jumpable', { -1 }) == 1 then
+            return t('<Plug>(vsnip-jump-prev)')
         else
-            return t "<S-Tab>"
+            return t('<S-Tab>')
         end
     end
 
@@ -45,16 +45,14 @@ do
         if not autocompleteSelected and autocompleteOpen then
             vim.fn['compe#close']('<C-e>')
         elseif vim.api.nvim_eval([[ vsnip#expandable() ]]) == 1 then
-            return t "<Plug>(vsnip-expand)"
+            return t('<Plug>(vsnip-expand)')
         else
-            return vim.fn['compe#confirm']("\n")
+            return vim.fn['compe#confirm']('\n')
         end
     end
 end
 
-
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
+vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.tab_complete()', { expr = true })
+vim.api.nvim_set_keymap('s', '<Tab>', 'v:lua.tab_complete()', { expr = true })
+vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })

@@ -1,21 +1,19 @@
-local packer_path = vim.fn.stdpath('data') ..  '/site/pack/packer/start/packer.nvim'
+local packer_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
-    vim.api.nvim_command(
-        '!git clone https://github.com/wbthomason/packer.nvim --depth 1 ' ..
-            packer_path)
+    vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim --depth 1 ' .. packer_path)
 end
 
-require'utils'.new_augroup {
-    packer_compile = {'BufWritePost plugins.lua PackerCompile'}
-}
+require('utils').new_augroup({
+    packer_compile = { 'BufWritePost plugins.lua PackerCompile' },
+})
 
-require 'plugins'
-require 'options'
-require 'lsp'
-require 'mappings'
+require('plugins')
+require('options')
+require('lsp')
+require('mappings')
 
-vim.cmd [[
+vim.cmd([[
 colorscheme jellybeans
 
 highlight Search guibg='Orange' guifg='Black'
@@ -50,7 +48,7 @@ nnoremap <silent><mymap> :lua require'bufferline'.sort_buffers_by(function (buf_
 "AUTOCOMMANDS
 """"""""""""""""""""""""""""""""""""""""
 au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}
-au BufWrite *.rs,*.swift,*.tf :Autoformat
+au BufWrite *.rs,*.swift,*.tf,*.lua :Autoformat
 autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
 autocmd FileType help wincmd L
 
@@ -61,5 +59,4 @@ aug i3config_ft_detection
 aug end
 
 autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})
-]]
-
+]])

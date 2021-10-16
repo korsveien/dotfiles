@@ -1,6 +1,6 @@
-local colors = require 'theme.colors'
-local lsp = require 'feline.providers.lsp'
-local vi_mode_utils = require 'feline.providers.vi_mode'
+local colors = require('theme.colors')
+local lsp = require('feline.providers.lsp')
+local vi_mode_utils = require('feline.providers.vi_mode')
 
 local vi_mode_colors = {
     NORMAL = colors.green,
@@ -16,7 +16,7 @@ local vi_mode_colors = {
     COMMAND = colors.green,
     SHELL = colors.green,
     TERM = colors.green,
-    NONE = colors.yellow
+    NONE = colors.yellow,
 }
 
 local icons = {
@@ -30,7 +30,7 @@ local icons = {
     hints = ' ',
 
     lsp = ' ',
-    git = ''
+    git = '',
 }
 
 local function file_osinfo()
@@ -51,7 +51,7 @@ local function lsp_diagnostics_info()
         errs = lsp.get_diagnostics_count('Error'),
         warns = lsp.get_diagnostics_count('Warning'),
         infos = lsp.get_diagnostics_count('Information'),
-        hints = lsp.get_diagnostics_count('Hint')
+        hints = lsp.get_diagnostics_count('Hint'),
     }
 end
 
@@ -73,7 +73,7 @@ end
 local function vimode_hl()
     return {
         name = vi_mode_utils.get_mode_highlight_name(),
-        fg = vi_mode_utils.get_mode_color()
+        fg = vi_mode_utils.get_mode_color(),
     }
 end
 
@@ -84,56 +84,56 @@ local comps = {
         left = {
             provider = '▊',
             hl = vimode_hl,
-            right_sep = ' '
+            right_sep = ' ',
         },
         right = {
             provider = '▊',
             hl = vimode_hl,
-            left_sep = ' '
-        }
+            left_sep = ' ',
+        },
     },
     file = {
         info = {
             provider = 'file_info',
             hl = {
                 fg = colors.blue,
-                style = 'bold'
-            }
+                style = 'bold',
+            },
         },
         encoding = {
             provider = 'file_encoding',
             left_sep = ' ',
             hl = {
                 fg = colors.violet,
-                style = 'bold'
-            }
+                style = 'bold',
+            },
         },
         type = {
-            provider = 'file_type'
+            provider = 'file_type',
         },
         os = {
             provider = file_osinfo,
             left_sep = ' ',
             hl = {
                 fg = colors.violet,
-                style = 'bold'
-            }
-        }
+                style = 'bold',
+            },
+        },
     },
     line_percentage = {
         provider = 'line_percentage',
         left_sep = ' ',
         hl = {
-            style = 'bold'
-        }
+            style = 'bold',
+        },
     },
     scroll_bar = {
         provider = 'scroll_bar',
         left_sep = ' ',
         hl = {
             fg = colors.blue,
-            style = 'bold'
-        }
+            style = 'bold',
+        },
     },
     diagnos = {
         err = {
@@ -141,32 +141,32 @@ local comps = {
             left_sep = ' ',
             enabled = diag_enable(lsp_diagnostics_info, 'errs'),
             hl = {
-                fg = colors.red
-            }
+                fg = colors.red,
+            },
         },
         warn = {
             provider = diag_of(lsp_diagnostics_info, 'warns'),
             left_sep = ' ',
             enabled = diag_enable(lsp_diagnostics_info, 'warns'),
             hl = {
-                fg = colors.yellow
-            }
+                fg = colors.yellow,
+            },
         },
         info = {
             provider = diag_of(lsp_diagnostics_info, 'infos'),
             left_sep = ' ',
             enabled = diag_enable(lsp_diagnostics_info, 'infos'),
             hl = {
-                fg = colors.blue
-            }
+                fg = colors.blue,
+            },
         },
         hint = {
             provider = diag_of(lsp_diagnostics_info, 'hints'),
             left_sep = ' ',
             enabled = diag_enable(lsp_diagnostics_info, 'hints'),
             hl = {
-                fg = colors.cyan
-            }
+                fg = colors.cyan,
+            },
         },
     },
     lsp = {
@@ -175,9 +175,9 @@ local comps = {
             left_sep = ' ',
             icon = icons.lsp,
             hl = {
-                fg = colors.yellow
-            }
-        }
+                fg = colors.yellow,
+            },
+        },
     },
     git = {
         branch = {
@@ -186,28 +186,28 @@ local comps = {
             left_sep = ' ',
             hl = {
                 fg = colors.violet,
-                style = 'bold'
+                style = 'bold',
             },
         },
         add = {
             provider = 'git_diff_added',
             hl = {
-                fg = colors.green
-            }
+                fg = colors.green,
+            },
         },
         change = {
             provider = 'git_diff_changed',
             hl = {
-                fg = colors.orange
-            }
+                fg = colors.orange,
+            },
         },
         remove = {
             provider = 'git_diff_removed',
             hl = {
-                fg = colors.red
-            }
-        }
-    }
+                fg = colors.red,
+            },
+        },
+    },
 }
 
 local properties = {
@@ -218,11 +218,11 @@ local properties = {
             'packer',
             'startify',
             'fugitive',
-            'fugitiveblame'
+            'fugitiveblame',
         },
-        buftypes = {'terminal'},
-        bufnames = {}
-    }
+        buftypes = { 'terminal' },
+        bufnames = {},
+    },
 }
 
 local components = {
@@ -234,16 +234,16 @@ local components = {
             comps.diagnos.err,
             comps.diagnos.warn,
             comps.diagnos.hint,
-            comps.diagnos.info
+            comps.diagnos.info,
         },
         inactive = {
             comps.vi_mode.left,
-            comps.file.info
-        }
+            comps.file.info,
+        },
     },
     mid = {
         active = {},
-        inactive = {}
+        inactive = {},
     },
     right = {
         active = {
@@ -254,20 +254,18 @@ local components = {
             comps.git.branch,
             comps.line_percentage,
             comps.scroll_bar,
-            comps.vi_mode.right
+            comps.vi_mode.right,
         },
-        inactive = {}
-    }
+        inactive = {},
+    },
 }
 
 -- LuaFormatter on
 
-require'feline'.setup {
+require('feline').setup({
     default_bg = colors.bg,
     default_fg = colors.fg,
     components = components,
     properties = properties,
-    vi_mode_colors = vi_mode_colors
-}
-
-
+    vi_mode_colors = vi_mode_colors,
+})
