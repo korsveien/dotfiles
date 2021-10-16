@@ -123,8 +123,8 @@ require('packer').startup(function(use)
             require('lualine').setup({
                 options = {
                     theme = 'jellybeans',
-                    section_separators = { '', '' },
-                    component_separators = { '', '' },
+                    section_separators = { '', '' },
+                    component_separators = { '', '' },
                 },
             })
         end,
