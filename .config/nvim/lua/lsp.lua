@@ -28,8 +28,6 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-vim.cmd([[ nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR> ]])
-
 -- lsp-installer
 local lsp_installer_servers = require('nvim-lsp-installer.servers')
 
@@ -47,18 +45,7 @@ if ok then
     end
 end
 
-require('nvim-lsp-installer').settings({
-    ui = {
-        icons = {
-            server_installed = '✓',
-            server_pending = '➜',
-            server_uninstalled = '✗',
-        },
-    },
-})
-
 -- lspconfig
-
 local lspconfig = require('lspconfig')
 
 lspconfig.rust_analyzer.setup({ on_attach = on_attach })
@@ -133,22 +120,6 @@ vim.lsp.protocol.CompletionItemKind = {
     '   (Operator)',
     '   (TypeParameter)',
 }
-
-local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
-
-vim.fn.sign_define('LspDiagnosticsSignError', { text = 'E', numhl = 'LspDiagnosticsSignError' })
-vim.fn.sign_define('LspDiagnosticsSignWarning', { text = '', numhl = 'LspDiagnosticsSignWarning' })
-vim.fn.sign_define('LspDiagnosticsSignInformation', { text = '', numhl = 'LspDiagnosticsSignInformation' })
-vim.fn.sign_define('LspDiagnosticsSignHint', { text = '', numhl = 'LspDiagnosticsSignHint' })
-
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-        prefix = '',
-        spacing = 0,
-    },
-    signs = true,
-    underline = true,
-})
 
 vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
 vim.cmd([[hi LspDiagnosticsVirtualTextError guifg=Red ctermfg=Red]])

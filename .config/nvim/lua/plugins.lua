@@ -11,8 +11,10 @@ require('packer').startup(function(use)
             require('lsp_signature').on_attach()
         end,
     })
+    use('folke/lsp-colors.nvim')
     use({
         'folke/trouble.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
         config = function()
             require('trouble').setup()
         end,
@@ -114,7 +116,6 @@ require('packer').startup(function(use)
 
     -- ui
     use('kyazdani42/nvim-web-devicons')
-    use('mhinz/vim-startify')
 
     use({
         'hoob3rt/lualine.nvim',
@@ -196,7 +197,9 @@ require('packer').startup(function(use)
     use({
         'karb94/neoscroll.nvim',
         config = function()
-            require('neoscroll').setup()
+            require('neoscroll').setup({
+                mappings = { '<C-u>', '<C-d>', 'zt', 'zz', 'zb' },
+            })
         end,
     })
 end)
