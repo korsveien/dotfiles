@@ -48,7 +48,7 @@ nnoremap <silent>bd :BufferLineSortByDirectory<CR>
 "AUTOCOMMANDS
 """"""""""""""""""""""""""""""""""""""""
 au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}
-au BufWrite *.rs,*.swift,*.tf,*.lua :Autoformat
+au BufWrite *.rs,*.swift,*.tf,*.lua,*.ts :Autoformat
 autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
 autocmd FileType help wincmd L
 
