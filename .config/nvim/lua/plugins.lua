@@ -123,7 +123,7 @@ require('packer').startup(function(use)
         config = function()
             require('lualine').setup({
                 options = {
-                    theme = 'jellybeans',
+                    theme = 'vscode',
                     section_separators = { '', '' },
                     component_separators = { '', '' },
                 },
@@ -172,7 +172,8 @@ require('packer').startup(function(use)
     use({ 'junegunn/vim-easy-align' })
 
     -- color and syntax
-    use('nanotech/jellybeans.vim')
+    use('Mofiqul/vscode.nvim')
+
     use('mboughaba/i3config.vim')
     use({
         'nvim-treesitter/nvim-treesitter',

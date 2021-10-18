@@ -38,6 +38,13 @@ if ok then
     end
 end
 
+local ok, tsserver = lsp_installer_servers.get_server('tsserver')
+if ok then
+    if not tsserver:is_installed() then
+        tsserver:install()
+    end
+end
+
 local ok, sumneko_lua = lsp_installer_servers.get_server('sumneko_lua')
 if ok then
     if not sumneko_lua:is_installed() then
@@ -49,6 +56,7 @@ end
 local lspconfig = require('lspconfig')
 
 lspconfig.rust_analyzer.setup({ on_attach = on_attach })
+lspconfig.tsserver.setup({ on_attach = on_attach })
 
 -- lua
 local system_name

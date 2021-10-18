@@ -9,7 +9,6 @@ require('utils').new_augroup({
 })
 
 vim.cmd([[
-colorscheme jellybeans
 
 highlight Search guibg='Orange' guifg='Black'
 highlight NvimTreeOpenedFile guifg=blue gui=bold,underline
@@ -44,8 +43,8 @@ autocmd FileType help wincmd L
 
 " Syntax highlight sway config
 aug i3config_ft_detection
-    au!
-    au BufNewFile,BufRead ~/.config/sway/config set filetype=i3config
+au!
+au BufNewFile,BufRead ~/.config/sway/config set filetype=i3config
 aug end
 
 autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})
@@ -55,3 +54,9 @@ require('plugins')
 require('options')
 require('lsp')
 require('mappings')
+
+-- set colorscheme
+vim.cmd([[
+let g:vscode_style = "dark"
+colorscheme vscode
+]])
