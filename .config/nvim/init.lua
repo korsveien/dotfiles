@@ -46,8 +46,6 @@ aug i3config_ft_detection
 au!
 au BufNewFile,BufRead ~/.config/sway/config set filetype=i3config
 aug end
-
-autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})
 ]])
 
 require('plugins')

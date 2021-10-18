@@ -128,6 +128,3 @@ vim.lsp.protocol.CompletionItemKind = {
     '   (Operator)',
     '   (TypeParameter)',
 }
-
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
-vim.cmd([[hi LspDiagnosticsVirtualTextError guifg=Red ctermfg=Red]])

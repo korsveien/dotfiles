@@ -23,4 +23,5 @@ opt.signcolumn    = 'yes'
 opt.updatetime    = 250
 opt.cursorline    = true
 opt.undofile      = true                                -- Persistent undo
+opt.noswap        = true                                -- Disable swapfiles
 -- stylua: ignore end
