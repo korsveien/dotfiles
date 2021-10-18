@@ -14,6 +14,7 @@ highlight Search guibg='Orange' guifg='Black'
 highlight NvimTreeOpenedFile guifg=blue gui=bold,underline
 
 nnoremap <C-h> :NvimTreeToggle<CR>
+nnoremap <C-j> :TroubleToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 "EASYALIGN MAPPINGS
