@@ -21,6 +21,16 @@ nnoremap <C-j> :TroubleToggle<CR>
 """"""""""""""""""""""""""""""""""""""""
 vmap ga <Plug>(EasyAlign)
 
+""""""""""""""""""""""""""""""""""""""""
+" NVIM-TREE SETTINGS
+""""""""""""""""""""""""""""""""""""""""
+let g:nvim_tree_special_files = {}
+let g:nvim_tree_show_icons = {
+    \ 'git': 0,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
+\}
 
 """"""""""""""""""""""""""""""""""""""""
 "BUFFERLINE MAPPINGS
