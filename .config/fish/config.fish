@@ -28,6 +28,8 @@ abbr --add ll exa -la
 abbr --add v nvim
 abbr --add vim nvim
 
+abbr --add ne nix-env
+
 # Git
 abbr --add g git
 abbr --add gpf git push -f
@@ -119,3 +121,4 @@ end
 
 set fish_function_path $fish_function_path ~/repo/plugin-foreign-env/functions
 fenv source ~/.bashrc
+fenv source $HOME/.nix-profile/etc/profile.d/nix.sh

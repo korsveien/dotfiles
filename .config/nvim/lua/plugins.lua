@@ -131,12 +131,12 @@ require('packer').startup(function(use)
         end,
     })
 
-    use({
-        'akinsho/nvim-bufferline.lua',
-        config = function()
-            require('bufferline').setup()
-        end,
-    })
+    -- use({
+    --     'akinsho/nvim-bufferline.lua',
+    --     config = function()
+    --         require('bufferline').setup()
+    --     end,
+    -- })
 
     -- explorer
     use({
