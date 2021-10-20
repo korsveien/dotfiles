@@ -159,6 +159,10 @@ require('packer').startup(function(use)
         end,
     })
 
+    -- notes
+    use({ 'alok/notational-fzf-vim', requires = 'junegunn/fzf' })
+    vim.cmd("let g:nv_search_paths = ['~/Jottacloud/notes']")
+
     -- editing
     use('tpope/vim-commentary')
     use('terryma/vim-multiple-cursors')

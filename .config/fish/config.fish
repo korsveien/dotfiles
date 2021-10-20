@@ -58,6 +58,7 @@ abbr --add mtree envchain nexus mvn dependency:tree
 abbr --add jls /usr/libexec/java_home -V
 abbr --add jh echo $JAVA_HOME
 
+
 # IntelliJ
 abbr --add ij envchain nexus,aws idea
 
