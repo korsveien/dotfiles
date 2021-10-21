@@ -16,34 +16,6 @@ highlight NvimTreeOpenedFile guifg=blue gui=bold,underline
 nnoremap <C-h> :NvimTreeToggle<CR>
 nnoremap <C-j> :TroubleToggle<CR>
 
-""""""""""""""""""""""""""""""""""""""""
-"EASYALIGN MAPPINGS
-""""""""""""""""""""""""""""""""""""""""
-vmap ga <Plug>(EasyAlign)
-
-""""""""""""""""""""""""""""""""""""""""
-" NVIM-TREE SETTINGS
-""""""""""""""""""""""""""""""""""""""""
-let g:nvim_tree_special_files = {}
-let g:nvim_tree_disable_window_picker = 1
-let g:nvim_tree_show_icons = {
-    \ 'git': 0,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-\}
-
-""""""""""""""""""""""""""""""""""""""""
-"BUFFERLINE MAPPINGS
-""""""""""""""""""""""""""""""""""""""""
-" These commands will navigate through buffers in order regardless of which mode you are using
-" e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
-nnoremap <silent>[b :BufferLineCycleNext<CR>
-nnoremap <silent>]b :BufferLineCyclePrev<CR>
-
-" These commands will sort buffers by directory, language, or a custom criteria
-nnoremap <silent>be :BufferLineSortByExtension<CR>
-nnoremap <silent>bd :BufferLineSortByDirectory<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 "AUTOCOMMANDS

@@ -178,13 +178,6 @@ require('packer').startup(function(use)
         end,
     })
 
-    -- use({
-    --     'akinsho/nvim-bufferline.lua',
-    --     config = function()
-    --         require('bufferline').setup()
-    --     end,
-    -- })
-
     -- explorer
     use({
         'kyazdani42/nvim-tree.lua',
@@ -206,6 +199,17 @@ require('packer').startup(function(use)
         end,
     })
 
+    vim.cmd([[
+        let g:nvim_tree_special_files = {}
+        let g:nvim_tree_disable_window_picker = 1
+        let g:nvim_tree_show_icons = {
+            \ 'git': 0,
+            \ 'folders': 1,
+            \ 'files': 1,
+            \ 'folder_arrows': 1,
+        \}
+    ]])
+
     -- notes
     use({ 'alok/notational-fzf-vim', requires = 'junegunn/fzf' })
     vim.cmd("let g:nv_search_paths = ['~/Jottacloud/notes']")
@@ -221,6 +225,7 @@ require('packer').startup(function(use)
         end,
     })
     use({ 'junegunn/vim-easy-align' })
+    vim.cmd([[ vmap ga <Plug>(EasyAlign) ]])
 
     -- color and syntax
     use('Mofiqul/vscode.nvim')
