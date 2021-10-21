@@ -28,6 +28,11 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+    signs = true,
+})
+
 -- lsp-installer
 local lsp_installer_servers = require('nvim-lsp-installer.servers')
 
@@ -128,3 +133,13 @@ vim.lsp.protocol.CompletionItemKind = {
     '   (Operator)',
     '   (TypeParameter)',
 }
+
+-- replace the default lsp diagnostic symbols
+local function lspSymbol(name, icon)
+    vim.fn.sign_define('LspDiagnosticsSign' .. name, { text = icon, numhl = 'LspDiagnosticsDefault' .. name })
+end
+
+lspSymbol('Error', ' ')
+lspSymbol('Information', ' ')
+lspSymbol('Hint', ' ')
+lspSymbol('Warning', ' ')
