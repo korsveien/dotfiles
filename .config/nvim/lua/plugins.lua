@@ -3,47 +3,10 @@ require('packer').startup(function(use)
 
     use({ 'tyru/open-browser.vim' })
     vim.cmd([[
-        let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
-        nmap gx <Plug>(openbrowser-open)
-        vmap gx <Plug>(openbrowser-open)
-        ]])
-
-    use({
-        's1n7ax/nvim-terminal',
-        config = function()
-            require('nvim-terminal').setup({
-                window = {
-                    position = 'botright',
-                    split = 'sp',
-                    width = 50,
-                    height = 15,
-                },
-
-                disable_default_keymaps = true,
-
-                -- keymap to toggle open and close terminal window
-                toggle_keymap = '<f12>',
-
-                -- increase the window width by when you hit the keymap
-                window_height_change_amount = 2,
-
-                -- increase the window height by when you hit the keymap
-                window_width_change_amount = 2,
-
-                -- keymap to increase the window width
-                increase_width_keymap = '<leader><leader>+',
-
-                -- keymap to decrease the window width
-                decrease_width_keymap = '<leader><leader>-',
-
-                -- keymap to increase the window height
-                increase_height_keymap = '<leader>+',
-
-                -- keymap to decrease the window height
-                decrease_height_keymap = '<leader>-',
-            })
-        end,
-    })
+    let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
+    nmap gx <Plug>(openbrowser-open)
+    vmap gx <Plug>(openbrowser-open)
+    ]])
 
     -- lsp
     use('neovim/nvim-lspconfig')
@@ -188,7 +151,7 @@ require('packer').startup(function(use)
         config = function()
             require('nvim-tree').setup({
                 open_on_setup = true,
-                auto_close = true,
+                auto_close = false,
                 update_focused_file = {
                     enable = true,
                 },
@@ -200,15 +163,15 @@ require('packer').startup(function(use)
     })
 
     vim.cmd([[
-        let g:nvim_tree_special_files = {}
-        let g:nvim_tree_disable_window_picker = 1
-        let g:nvim_tree_show_icons = {
-            \ 'git': 0,
-            \ 'folders': 1,
-            \ 'files': 1,
-            \ 'folder_arrows': 1,
+    let g:nvim_tree_special_files = {}
+    let g:nvim_tree_disable_window_picker = 1
+    let g:nvim_tree_show_icons = {
+        \ 'git': 0,
+        \ 'folders': 1,
+        \ 'files': 1,
+        \ 'folder_arrows': 1,
         \}
-    ]])
+        ]])
 
     -- notes
     use({ 'alok/notational-fzf-vim', requires = 'junegunn/fzf' })

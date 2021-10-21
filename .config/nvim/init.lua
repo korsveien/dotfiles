@@ -30,6 +30,39 @@ aug i3config_ft_detection
 au!
 au BufNewFile,BufRead ~/.config/sway/config set filetype=i3config
 aug end
+
+
+" Terminal Function
+let g:term_buf = 0
+let g:term_win = 0
+function! TermToggle(height)
+    if win_gotoid(g:term_win)
+        hide
+    else
+        botright new
+        exec "resize " . a:height
+        try
+            exec "buffer " . g:term_buf
+        catch
+            call termopen($SHELL, {"detach": 0})
+            let g:term_buf = bufnr("")
+            set nonumber
+            set norelativenumber
+            set signcolumn=no
+        endtry
+        startinsert!
+        let g:term_win = win_getid()
+    endif
+endfunction
+
+" Toggle terminal on/off (neovim)
+nnoremap <F12> :call TermToggle(16)<CR>
+inoremap <F12> <Esc>:call TermToggle(16)<CR>
+tnoremap <F12> <C-\><C-n>:call TermToggle(16)<CR>
+
+" Terminal go back to normal mode
+tnoremap <Esc> <C-\><C-n>
+tnoremap :q! <C-\><C-n>:q!<CR>
 ]])
 
 require('plugins')
