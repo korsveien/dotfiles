@@ -57,9 +57,9 @@ endfunction
 
 
 " Toggle terminal on/off (neovim)
-nnoremap <c-l> :call TermToggle(16)<CR>
-inoremap <c-l> <Esc>:call TermToggle(16)<CR>
-tnoremap <c-l> <C-\><C-n>:call TermToggle(16)<CR>
+nnoremap <F12> :call TermToggle(16)<CR>
+inoremap <F12> <Esc>:call TermToggle(16)<CR>
+tnoremap <F12> <C-\><C-n>:call TermToggle(16)<CR>
 
 " Terminal go back to normal mode
 tnoremap <Esc> <C-\><C-n>
