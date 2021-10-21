@@ -11,8 +11,7 @@ vim.g.mapleader = ' '
 map('', '<leader>y', '"+y') -- Copy to clipboard in normal, visual, select and operator modes
 
 map('n', '<leader>w', '<cmd>noh<CR>') -- Clear highlights
-
-map('n', '<C-l>', ':NV<cr>') -- Search notes
+map('n', '<C-s>', ':NV<cr>') -- Search notes
 
 map('n', '<leader><leader>', '<C-^>')
 

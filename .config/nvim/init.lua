@@ -39,8 +39,8 @@ function! TermToggle(height)
     if win_gotoid(g:term_win)
         hide
     else
-        botright new
-        exec "resize " . a:height
+        vert new
+        "exec "resize " . a:height
         try
             exec "buffer " . g:term_buf
         catch
@@ -55,10 +55,11 @@ function! TermToggle(height)
     endif
 endfunction
 
+
 " Toggle terminal on/off (neovim)
-nnoremap <F12> :call TermToggle(16)<CR>
-inoremap <F12> <Esc>:call TermToggle(16)<CR>
-tnoremap <F12> <C-\><C-n>:call TermToggle(16)<CR>
+nnoremap <c-l> :call TermToggle(16)<CR>
+inoremap <c-l> <Esc>:call TermToggle(16)<CR>
+tnoremap <c-l> <C-\><C-n>:call TermToggle(16)<CR>
 
 " Terminal go back to normal mode
 tnoremap <Esc> <C-\><C-n>
