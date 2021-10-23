@@ -67,6 +67,10 @@ input * {
     xkb_options caps:ctrl_modifier
 }
 
+input pointer {
+    accel_profile adaptive
+}
+
 ### Key bindings
 
 # Alt as mod key
