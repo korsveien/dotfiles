@@ -124,6 +124,7 @@ require('packer').startup(function(use)
         end,
     })
     use('tpope/vim-fugitive')
+    use({ 'tpope/vim-rhubarb', requires = 'tpope/vim-fugitive' })
 
     -- ui
     use('kyazdani42/nvim-web-devicons')

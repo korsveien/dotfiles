@@ -32,3 +32,5 @@ map('n', '<c-f>', ':Telescope live_grep<CR>')
 map('n', '<c-e>', ':Telescope commands<CR>')
 map('n', '<c-b>', ':Telescope buffers<CR>')
 map('n', '<leader>fr', ':Telescope registers<CR>')
+
+map('n', '<c-k>', ':.GBrowse<CR>')
