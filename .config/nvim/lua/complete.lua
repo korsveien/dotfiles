@@ -1,58 +1,53 @@
-require('compe').setup({
-    enables = true,
-    preselect = 'always',
-    max_abbr_width = 45,
-    source = {
-        path = true,
-        buffer = true,
-        spell = true,
-        calc = true,
-        nvim_lsp = true,
-        nvim_lua = true,
-        treesitter = true,
+local cmp = require('cmp')
+
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            vim.fn['vsnip#anonymous'](args.body) -- For `vsnip` users.
+            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+            -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+        end,
+    },
+    mapping = {
+        ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-m>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        }),
+    },
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'vsnip' }, -- For vsnip users.
+        -- { name = 'luasnip' }, -- For luasnip users.
+        -- { name = 'ultisnips' }, -- For ultisnips users.
+        -- { name = 'snippy' }, -- For snippy users.
+    }, {
+        { name = 'buffer' },
+    }),
+})
+
+-- Use buffer source for `/`.
+cmp.setup.cmdline('/', {
+    sources = {
+        { name = 'buffer' },
     },
 })
 
-do
-    local t = function(str)
-        return vim.api.nvim_replace_termcodes(str, true, true, true)
-    end
+-- Use cmdline & path source for ':'.
+cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+        { name = 'path' },
+    }, {
+        { name = 'cmdline' },
+    }),
+})
 
-    _G.tab_complete = function()
-        if vim.fn.pumvisible() == 1 then
-            return t('<C-n>')
-        elseif vim.fn.call('vsnip#jumpable', { 1 }) == 1 then
-            return t('<Plug>(vsnip-jump-next)')
-        else
-            return t('<Tab>')
-        end
-    end
-
-    _G.s_tab_complete = function()
-        if vim.fn.pumvisible() == 1 then
-            return t('<C-p>')
-        elseif vim.fn.call('vsnip#jumpable', { -1 }) == 1 then
-            return t('<Plug>(vsnip-jump-prev)')
-        else
-            return t('<S-Tab>')
-        end
-    end
-
-    _G.enter_with_snippets = function()
-        local autocompleteOpen = vim.fn.pumvisible() == 1
-        local autocompleteSelected = isAutocompleteSelected()
-
-        if not autocompleteSelected and autocompleteOpen then
-            vim.fn['compe#close']('<C-e>')
-        elseif vim.api.nvim_eval([[ vsnip#expandable() ]]) == 1 then
-            return t('<Plug>(vsnip-expand)')
-        else
-            return vim.fn['compe#confirm']('\n')
-        end
-    end
-end
-
-vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.tab_complete()', { expr = true })
-vim.api.nvim_set_keymap('s', '<Tab>', 'v:lua.tab_complete()', { expr = true })
-vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
-vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+-- Setup lspconfig.
