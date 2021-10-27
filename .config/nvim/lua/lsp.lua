@@ -60,9 +60,15 @@ end
 -- lspconfig
 local lspconfig = require('lspconfig')
 
-lspconfig.rust_analyzer.setup({ on_attach = on_attach })
+lspconfig.rust_analyzer.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
 
-lspconfig.tsserver.setup({ on_attach = on_attach })
+lspconfig.tsserver.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
 
 -- lua
 local system_name
