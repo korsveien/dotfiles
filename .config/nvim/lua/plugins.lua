@@ -156,7 +156,7 @@ require('packer').startup(function(use)
         config = function()
             require('nvim-tree').setup({
                 open_on_setup = true,
-                auto_close = false,
+                auto_close = true,
                 update_focused_file = {
                     enable = true,
                 },
