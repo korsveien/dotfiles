@@ -9,11 +9,16 @@ set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_STATE_HOME $HOME/.local/state
 set -x XDG_CACHE_HOME $HOME/.cache
 
+# Disable automatic homebrew update
+set -x HOMEBREW_NO_AUTO_UPDATE 1
+
 bind \cj up-or-search
 bind \ck down-or-search
 
 ##### ABBREVIATIONS #####
 abbr --add p python3
+
+abbr --add nrb npm run build
 
 abbr --add ea envchain aws
 abbr --add en envchain nexus
@@ -50,6 +55,7 @@ abbr --add di docker images
 abbr --add dps docker ps
 
 # Maven
+abbr --add mid envchain nexus mvn install -DskipTests
 abbr --add mci envchain nexus mvn clean install
 abbr --add mcid envchain nexus mvn clean install -DskipTests
 abbr --add mtree envchain nexus mvn dependency:tree
@@ -123,3 +129,4 @@ end
 set fish_function_path $fish_function_path ~/repo/plugin-foreign-env/functions
 fenv source ~/.bashrc
 fenv source $HOME/.nix-profile/etc/profile.d/nix.sh
+fish_add_path /usr/local/sbin
