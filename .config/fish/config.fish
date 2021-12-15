@@ -3,6 +3,8 @@ fzf_key_bindings
 ##### Variables #####
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 
+set -x NVM_DIR $HOME/.nvm
+
 #https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_DATA_HOME $HOME/.local/share
@@ -22,6 +24,7 @@ abbr --add nrb npm run build
 
 abbr --add ea envchain aws
 abbr --add en envchain nexus
+abbr --add eh envchain github
 
 abbr --add y yadm
 abbr --add yp yadm push
@@ -94,6 +97,7 @@ end
 
 function jset
     set -Ux JAVA_HOME (/usr/libexec/java_home -v $argv[1])
+    source ~/.config/fish/config.fish
 end
 
 function co
@@ -121,6 +125,7 @@ end
 function rente_studie
     curl -s 'https://www.lanekassen.no/api/episerver/v2.0/content/7344' | jq .flytendeRente.value
 end
+
 
 ##### THIRD PARTY UTILITIES ####
 [ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
