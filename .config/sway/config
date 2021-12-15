@@ -22,7 +22,7 @@ set $term alacritty
 # Application launcher
 set $menu wofi --show run
 
-font pango:Sans
+font pango:Sans 10
 
 # Gnome settings (gtk)
 set $gnome-schema org.gnome.desktop.interface
@@ -117,10 +117,15 @@ bindsym $mod+j fullscreen
 #
 set $resize_factor 20ppt
 
-bindsym $mod+left move left
-bindsym $mod+right move right
-bindsym $mod+up resize grow width $resize_factor
-bindsym $mod+down resize shrink width $resize_factor
+bindsym $mod+shift+left move left
+bindsym $mod+shift+right move right
+bindsym $mod+shift+up resize grow width $resize_factor
+bindsym $mod+shift+down resize shrink width $resize_factor
+
+bindsym $mod+left focus left
+bindsym $mod+right focus right
+bindsym $mod+up focus up
+bindsym $mod+down focus down
 
 #
 # Workspaces:
@@ -161,7 +166,6 @@ for_window [class="1Password"] floating enable
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-#
 # Status Bar:
 
 # Read `man 5 sway-bar` for more information about this section.
