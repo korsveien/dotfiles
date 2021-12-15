@@ -20,9 +20,9 @@ set $purple #CF83F5
 set $term alacritty
 
 # Application launcher
-set $menu rofi -modi drun -show drun
+set $menu wofi --show run
 
-font pango:Sans 10
+font pango:Sans
 
 # Gnome settings (gtk)
 set $gnome-schema org.gnome.desktop.interface
@@ -45,6 +45,9 @@ output * bg ~/.config/sway/mountains.jpg fill
 exec wl-paste -t text --watch clipman store
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 exec clipman restore
+
+# Set up swayr
+exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
 
 ### Idle configuration
 exec swayidle -w \
@@ -95,10 +98,7 @@ bindsym $mod+return exec $term
 bindsym $mod+Shift+w kill
 
 # Start your launcher
-bindsym $mod+d exec $menu
-
-# Search windows
-bindsym $mod+space exec ~/.config/sway/switch_window.py
+bindsym $mod+Space exec $menu
 
 # Default shorcuts for floating windows
 floating_modifier $mod normal
@@ -108,10 +108,6 @@ bindsym $mod+Shift+r reload
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-
-
-bindsym $mod+tab focus right
-bindsym $mod+shift+tab focus left
 
 # hjkl keys
 bindsym $mod+j fullscreen
@@ -186,3 +182,17 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86Search exec bemenu-run
 
 include /etc/sway/config.d/*
+bindsym Ctrl+Space exec env RUST_BACKTRACE=1 \
+    swayr switch-window >> /tmp/swayr.log 2>&1
+
+bindsym $mod+Delete exec env RUST_BACKTRACE=1 \
+    swayr quit-window > /tmp/swayr.log 2>&1
+
+bindsym $mod+Tab exec env RUST_BACKTRACE=1 \
+    swayr switch-to-urgent-or-lru-window >> /tmp/swayr.log 2>&1
+
+bindsym $mod+c exec env RUST_BACKTRACE=1 \
+    swayr execute-swaymsg-command >> /tmp/swayr.log 2>&1
+
+# bindsym $mod+Shift+c exec env RUST_BACKTRACE=1 \
+#     swayr execute-swayr-command >> /tmp/swayr.log 2>&1

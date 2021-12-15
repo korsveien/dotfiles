@@ -5,11 +5,17 @@ live_config_reload: true
 
 font:
   normal:
-    family: Hack Nerd Font
+    family: monospace
+    style: Regular
   bold:
-    family: Hack Nerd Font
+    family: monospace
+    style: Bold
   italic:
-    family: Hack Nerd Font
+    family: monospace
+    style: Italic
+  bold_italic:
+    family: monospace
+    style: Bold Italic
   size: 16
   use_thin_strokes: true
 
