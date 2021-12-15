@@ -22,7 +22,7 @@ set $term alacritty
 # Application launcher
 set $menu wofi --show run
 
-font pango:Sans 10
+font pango:Adobe Source Sans Pro 10
 
 # Gnome settings (gtk)
 set $gnome-schema org.gnome.desktop.interface
