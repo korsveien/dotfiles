@@ -22,21 +22,22 @@ set $term alacritty
 # Application launcher
 set $menu wofi --show run
 
-font pango:Adobe Source Sans Pro 10
 
-# Gnome settings (gtk)
+# # Gnome settings (gtk)
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Sierra-dark'
     gsettings set $gnome-schema icon-theme 'Papirus-dark'
-    gsettings set $gnome-schema font-name 'Roboto Regular 10'
-    gsettings set $gnome-schema monospace-font-name 'Fira Code 10'
-    gsettings set $gnome-schema document-font-name 'Roboto Regular 10'
-    gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Regular 10'
+    gsettings set $gnome-schema font-name 'Source Sans Pro 12'
+    gsettings set $gnome-schema document-font-name 'Source Sans Pro 12'
+    gsettings set $gnome-schema monospace-font-name 'Source Code Pro 12'
+    gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Source Sans 3 Regular'
     gsettings set org.gnome.desktop.wm.preferences button-layout ''
     gsettings set org.gnome.desktop.default-applications.terminal exec $term
     gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
 }
+
+font pango:SourceSansPro Medium 11
 
 # Wallpaper
 output * bg ~/.config/sway/mountains.jpg fill
@@ -161,6 +162,7 @@ bindsym $mod+Shift+f floating toggle
 bindsym $mod+f focus mode_toggle
 
 for_window [class="1Password"] floating enable
+for_window [class="Signal"] floating enable
 
 # Move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad

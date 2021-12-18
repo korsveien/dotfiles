@@ -1,2 +1,4 @@
 [aws]
 symbol = " "
+[rust]
+symbol = "🦀"
