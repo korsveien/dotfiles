@@ -26,7 +26,7 @@ require('packer').startup(function(use)
             require('trouble').setup({
                 auto_open = false,
                 auto_close = true,
-                use_lsp_diagnostic_signs = true,
+                use_diagnostic_signs = true,
             })
         end,
     })
