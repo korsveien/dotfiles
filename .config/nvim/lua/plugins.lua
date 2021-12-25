@@ -155,7 +155,7 @@ require('packer').startup(function(use)
         },
         config = function()
             require('nvim-tree').setup({
-                open_on_setup = true,
+                open_on_setup = false,
                 auto_close = true,
                 update_focused_file = {
                     enable = true,
@@ -196,9 +196,8 @@ require('packer').startup(function(use)
     vim.cmd([[ vmap ga <Plug>(EasyAlign) ]])
 
     -- color and syntax
+    use('ap/vim-css-color')
     use('Mofiqul/vscode.nvim')
-
-    use('mboughaba/i3config.vim')
     use({
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',

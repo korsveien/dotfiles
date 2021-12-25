@@ -1,4 +1,5 @@
 fzf_key_bindings
+fish_default_key_bindings
 
 ##### Variables #####
 set -x _JAVA_AWT_WM_NONREPARENTING 1
@@ -36,8 +37,6 @@ abbr --add ll exa -la
 abbr --add v nvim
 abbr --add vim nvim
 
-abbr --add ne nix-env
-
 # Git
 abbr --add g git
 abbr --add gpf git push -f
@@ -51,6 +50,7 @@ abbr --add gcl git clone
 abbr --add grhh git reset --hard HEAD
 abbr --add gp git push
 abbr --add gst git status
+abbr --add gd git diff --staged
 
 # Docker
 abbr --add d docker
@@ -89,6 +89,8 @@ abbr --add puip wget -O - -q icanhazip.com
 
 # Path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
+fish_add_path $HOME/.local/bin
+fish_add_path /usr/local/sbin
 
 ##### FUNCTIONS ####
 function gco
@@ -134,10 +136,10 @@ end
 ##### THIRD PARTY UTILITIES ####
 [ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
+[ -f ~/.local/share/autojump/autojump.fish ]; and source ~/.local/share/autojump/autojump.fish
+[ -f /home/peder/.cache/yay/autojump/pkg/autojump/usr/share/autojump ]; and source /home/peder/.cache/yay/autojump/pkg/autojump/usr/share/autojump
 
 set fish_function_path $fish_function_path ~/repo/plugin-foreign-env/functions
 fenv source ~/.bashrc
-fenv source $HOME/.nix-profile/etc/profile.d/nix.sh
-fish_add_path /usr/local/sbin
 
 starship init fish | source

@@ -10,7 +10,7 @@ set $blue #498dff
 set $purple #CF83F5
 
 # class                     border  backgr. text  indicator child_border
-    client.focused          #333333 #333333 #ffffff $purple $blue
+    client.focused          #333333 #333333 #ffffff $purple #333333
     client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
     client.unfocused        #333333 #222222 #888888 #292d2e #222222
     client.urgent           #2f343a #900000 #ffffff #900000 #900000
@@ -52,7 +52,7 @@ exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
 
 ### Idle configuration
 exec swayidle -w \
-         timeout 600 'swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8' \
+         timeout 600 'swaylock --screenshots --clock --grace 5 --effect-blur 8x8' \
          timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'playerctl pause && swaylock --screenshots --clock --grace 5 --indicator --effect-blur 8x8'
 #
@@ -72,7 +72,8 @@ input * {
 }
 
 input pointer {
-    accel_profile adaptive
+    accel_profile flat
+    pointer_accel 0
 }
 
 ### Key bindings
@@ -90,7 +91,7 @@ bindsym $mod+l exec swaylock --screenshots --clock --grace 5 --indicator --effec
 bindsym $mod+Shift+Print exec slurp | grim -g - - | curl --form 'file=@-' http://0x0.st | wl-copy && swaynag -m "screenshot uploaded & url copied to clipboard"
 
 # Clipboard manager
-bindsym $mod+Shift+c exec clipman pick -t rofi
+bindsym $mod+Shift+c exec clipman pick -t wofi
 
 # Start a terminal
 bindsym $mod+return exec $term
@@ -116,7 +117,7 @@ bindsym $mod+j fullscreen
 #
 # Resizing containers:
 #
-set $resize_factor 20ppt
+set $resize_factor 15ppt
 
 bindsym $mod+shift+left move left
 bindsym $mod+shift+right move right
@@ -163,6 +164,8 @@ bindsym $mod+f focus mode_toggle
 
 for_window [class="1Password"] floating enable
 for_window [class="Signal"] floating enable
+# for_window [app_id=".*"] floating enable
+# for_window [app_id=".*"] border normal
 
 # Move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -200,5 +203,5 @@ bindsym $mod+Tab exec env RUST_BACKTRACE=1 \
 bindsym $mod+c exec env RUST_BACKTRACE=1 \
     swayr execute-swaymsg-command >> /tmp/swayr.log 2>&1
 
-# bindsym $mod+Shift+c exec env RUST_BACKTRACE=1 \
-#     swayr execute-swayr-command >> /tmp/swayr.log 2>&1
+ bindsym $mod+d exec env RUST_BACKTRACE=1 \
+     swayr execute-swayr-command >> /tmp/swayr.log 2>&1

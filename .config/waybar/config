@@ -63,7 +63,7 @@
         "interval": 5,
         "format-wifi": " ",
         "format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
-        "format-disconnected": "⚠  Disconnected",
+        "format-disconnected": "Disconnected",
         "tooltip-format": "{essid}\n{ipaddr}\n{signalStrength}%"
     },
     "temperature": {
