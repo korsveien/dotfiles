@@ -36,34 +36,31 @@ let g:nvim_tree_show_icons = {
   \ 'folder_arrows': 1,
   \}
 
-lua << EOF
--- stylua: ignore start
-local opt = vim.opt
+set expandtab                " use spaces insted of tabs
+set hidden                   " enable background buffers
+set list                     " show some invisible characters
+set number                   " show line numbers
+set shiftround               " round indent to a multiple of shiftwidth
+set shiftwidth=4             " size of an indent
+set sidescrolloff=8          " columns of context
+set smartcase                " Do not ignore case with capitals
+set smartindent              " Insert indents automatically
+set splitbelow               " Put new windows below current
+set splitright               " Put new windows right of current
+set tabstop=2                " Number of spaces tabs count for
+set termguicolors            " True color support
+set nowrap                   " Disable line wrap
+set undofile                 " Persistent undo
+set hidden
+set ignorecase 
+set signcolumn="yes"
+set updatetime=250
+set cursorline
+set noswapfile
+set completeopt="menuone,noinsert,noselect"
+set wildmode="list,longest" 
 
-opt.completeopt   = {'menuone', 'noinsert', 'noselect'} -- completion options
-opt.expandtab     = true                                -- use spaces insted of tabs
-opt.hidden        = true                                -- enable background buffers
-opt.ignorecase    = true
-opt.list          = true                                -- show some invisible characters
-opt.number        = true                                -- show line numbers
-opt.scrolloff     = 4                                   -- lines of context
-opt.shiftround    = true                                -- round indent to a multiple of shiftwidth
-opt.shiftwidth    = 4                                   -- size of an indent
-opt.sidescrolloff = 8                                   -- columns of context
-opt.smartcase     = true                                -- Do not ignore case with capitals
-opt.smartindent   = true                                -- Insert indents automatically
-opt.splitbelow    = true                                -- Put new windows below current
-opt.splitright    = true                                -- Put new windows right of current
-opt.tabstop       = 2                                   -- Number of spaces tabs count for
-opt.termguicolors = true                                -- True color support
-opt.wildmode      = {'list', 'longest'}                 -- Command-line completion mode
-opt.wrap          = false                               -- Disable line wrap
-opt.signcolumn    = 'yes'
-opt.updatetime    = 250
-opt.cursorline    = true
-opt.undofile      = true                                -- Persistent undo
-vim.cmd [[ set noswapfile ]]
--- stylua: ignore end
+lua << EOF
 
 -- NvimTree config
 require("nvim-tree").setup({
@@ -130,8 +127,8 @@ vim.g.mapleader = " "
 map("", "<leader>y", '"+y') -- Copy to clipboard in normal, visual, select and operator modes
 map("n", "<leader>w", "<cmd>noh<CR>") -- Clear highlights
 map("n", "<leader><leader>", "<C-^>")
-map("n", "<leader>c", ":edit ~/.config/nvim/init.lua<cr>") -- Edit config file
-map("n", "<leader>v", ":source ~/.config/nvim/init.lua<cr>") -- Source config file
+map("n", "<leader>c", ":edit ~/.config/nvim/init.vim<cr>") -- Edit config file
+map("n", "<leader>v", ":source ~/.config/nvim/init.vim<cr>") -- Source config file
 map("n", "]<Space>", "o<esc>k") -- Insert blank line underneath cursor
 map("n", "<cr>", "o<esc>") -- Insert blank line
 map("n", "<bs>", "ddk") -- Remove blank line
