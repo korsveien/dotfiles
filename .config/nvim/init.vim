@@ -60,6 +60,26 @@ set noswapfile
 set completeopt="menuone,noinsert,noselect"
 set wildmode="list,longest" 
 
+"------------------
+"   MAPPINGS
+"------------------
+let mapleader = " "
+
+nnoremap <leader><leader> <c-^>                              " Jump to previous buffer
+nnoremap <leader>w <cmd>noh<cr>                              " Clear search highlights
+nnoremap <leader>c :edit ~/.config/nvim/init.vim<cr>         " Edit config file
+nnoremap <leader>v :source ~/.config/nvim/init.vim<cr>       " Source config file
+nnoremap ]<Space> o<esc>                                     " Insert blank line underneath cursor
+
+" Ignore case on save/close commands
+nnoremap :W :w
+nnoremap :Q :q
+nnoremap :X :x
+
+nnoremap <c-p> :Telescope find_files<cr>
+nnoremap <c-f> :Telescope live_grep<cr>
+nnoremap <c-h> :NvimTreeToggle<cr>
+
 lua << EOF
 
 -- NvimTree config
@@ -109,39 +129,8 @@ pickers = {
   },
 },
 })
-
-------------------
---   MAPPINGS
-------------------
-
-local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
-vim.g.mapleader = " "
-
-map("", "<leader>y", '"+y') -- Copy to clipboard in normal, visual, select and operator modes
-map("n", "<leader>w", "<cmd>noh<CR>") -- Clear highlights
-map("n", "<leader><leader>", "<C-^>")
-map("n", "<leader>c", ":edit ~/.config/nvim/init.vim<cr>") -- Edit config file
-map("n", "<leader>v", ":source ~/.config/nvim/init.vim<cr>") -- Source config file
-map("n", "]<Space>", "o<esc>k") -- Insert blank line underneath cursor
-map("n", "<cr>", "o<esc>") -- Insert blank line
-map("n", "<bs>", "ddk") -- Remove blank line
-
--- Ignore case on save/close commands
-map("n", ":W", ":w")
-map("n", ":Q", ":q")
-map("n", ":X", ":x")
-
-map("n", "<c-p>", ":Telescope find_files<CR>")
-map("n", "<c-f>", ":Telescope live_grep<CR>")
-map("n", "<c-h>", ":NvimTreeToggle<CR>")
 EOF
+
 
 colorscheme gruvbox
 
