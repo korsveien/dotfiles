@@ -21,21 +21,10 @@ call plug#begin(stdpath('data') . 'nvim/plugged')
   Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 call plug#end()
 
-" Open Browser config
-let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
-nmap gx <Plug>(openbrowser-open)
-vmap gx <Plug>(openbrowser-open)
 
-" NvimTree config
-let g:nvim_tree_special_files = {}
-let g:nvim_tree_disable_window_picker = 1
-let g:nvim_tree_show_icons = {
-  \ 'git': 0,
-  \ 'folders': 1,
-  \ 'files': 1,
-  \ 'folder_arrows': 1,
-  \}
-
+"------------------
+"   SETTINGS
+"------------------
 set expandtab                " use spaces insted of tabs
 set hidden                   " enable background buffers
 set list                     " show some invisible characters
@@ -79,6 +68,25 @@ nnoremap :X :x
 nnoremap <c-p> :Telescope find_files<cr>
 nnoremap <c-f> :Telescope live_grep<cr>
 nnoremap <c-h> :NvimTreeToggle<cr>
+
+
+"------------------
+"   PLUGIN CONFIG
+"------------------
+" Open Browser config
+let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
+nmap gx <Plug>(openbrowser-open)
+vmap gx <Plug>(openbrowser-open)
+
+" NvimTree config
+let g:nvim_tree_special_files = {}
+let g:nvim_tree_disable_window_picker = 1
+let g:nvim_tree_show_icons = {
+  \ 'git': 0,
+  \ 'folders': 1,
+  \ 'files': 1,
+  \ 'folder_arrows': 1,
+  \}
 
 lua << EOF
 
@@ -130,7 +138,6 @@ pickers = {
 },
 })
 EOF
-
 
 colorscheme gruvbox
 
