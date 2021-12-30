@@ -19,6 +19,7 @@ call plug#begin(stdpath('data') . 'nvim/plugged')
   Plug 'vim-autoformat/vim-autoformat'
   Plug 'karb94/neoscroll.nvim'
   Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+  Plug 'rhysd/rust-doc.vim'
 call plug#end()
 
 
@@ -73,6 +74,9 @@ nnoremap <c-h> :NvimTreeToggle<cr>
 "------------------
 "   PLUGIN CONFIG
 "------------------
+
+let g:rust_doc#downloaded_rust_doc_dir = '~/Documents/rust-docs'
+
 " Open Browser config
 let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
 nmap gx <Plug>(openbrowser-open)

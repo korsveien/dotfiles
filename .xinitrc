@@ -4,6 +4,7 @@ setxkbmap -layout us -variant altgr-intl
 # Set typematic delay to 200ms and rate to 30Hz
 xset r rate 200 30
 
+
 # systray applets
 sudo nm-applet &>/dev/null &
 sudo cbatticon -u 20 -i standard -c "poweroff" -l 15 -r 3 &
@@ -16,6 +17,8 @@ do
 done &
 
 redshift -l 59.84:10.74 &
+
+xrandr --output eDP1 --output DP1 --auto --left-of eDP1
 
 # start dwm
 exec dwm
