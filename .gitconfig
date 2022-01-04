@@ -1,5 +1,5 @@
 [user]
-    name = Peder Korsveien
+    name = pederpus
     useConfigOnly = true
     email = github.e26i1@aleeas.com
 [includeIf "gitdir:~/Code/vy/"]
