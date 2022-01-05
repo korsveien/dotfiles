@@ -44,7 +44,7 @@ set nowrap                   " Disable line wrap
 set undofile                 " Persistent undo
 set hidden
 set ignorecase
-set signcolumn="yes"
+set signcolumn=yes
 set updatetime=250
 set cursorline
 set noswapfile
@@ -148,4 +148,3 @@ let g:vscode_style = "dark"
 colorscheme vscode
 
 colorscheme gruvbox-material
-
