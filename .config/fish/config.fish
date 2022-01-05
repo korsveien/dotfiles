@@ -32,8 +32,7 @@ abbr --add yp yadm push
 abbr --add ys yadm status
 abbr --add yc yadm commit -m \"Update config\"
 
-abbr --add l exa -l
-abbr --add ll exa -la
+abbr --add l exa -la
 abbr --add v nvim
 abbr --add vim nvim
 
@@ -51,6 +50,7 @@ abbr --add grhh git reset --hard HEAD
 abbr --add gp git push
 abbr --add gst git status
 abbr --add gd git diff --staged
+abbr --add gcb git checkout -b
 
 # Docker
 abbr --add d docker
