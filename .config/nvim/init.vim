@@ -5,9 +5,8 @@ au BufWrite *.rs :Autoformat
 "     PLUGINS
 "------------------
 call plug#begin(stdpath('data') . 'nvim/plugged')
-  Plug 'morhetz/gruvbox'
   Plug 'Mofiqul/vscode.nvim'
-  Plug 'rebelot/kanagawa.nvim'
+  Plug 'sainnhe/gruvbox-material'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'tpope/vim-commentary'
   Plug 'tyru/open-browser.vim'
@@ -44,7 +43,7 @@ set termguicolors            " True color support
 set nowrap                   " Disable line wrap
 set undofile                 " Persistent undo
 set hidden
-set ignorecase 
+set ignorecase
 set signcolumn="yes"
 set updatetime=250
 set cursorline
@@ -145,8 +144,8 @@ pickers = {
 })
 EOF
 
-colorscheme kanagawa
-colorscheme gruvbox
-
 let g:vscode_style = "dark"
 colorscheme vscode
+
+colorscheme gruvbox-material
+
