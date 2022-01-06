@@ -50,6 +50,7 @@ set cursorline
 set noswapfile
 set completeopt="menuone,noinsert,noselect"
 set wildmode="list,longest" 
+set clipboard=unnamedplus
 
 "------------------
 "   MAPPINGS
@@ -83,16 +84,6 @@ let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
 
-" NvimTree config
-let g:nvim_tree_special_files = {}
-let g:nvim_tree_disable_window_picker = 1
-let g:nvim_tree_show_icons = {
-  \ 'git': 0,
-  \ 'folders': 1,
-  \ 'files': 1,
-  \ 'folder_arrows': 1,
-  \}
-
 lua << EOF
 
 -- NvimTree config
@@ -105,6 +96,11 @@ require("nvim-tree").setup({
   view = {
     auto_resize = true,
   },
+  git = {
+    enable = true,
+    ignore = false,
+    timeout = 300,
+  }
 })
 
 -- Telescope config
@@ -139,6 +135,7 @@ pickers = {
   find_files = {
     layout_strategy = "center",
     previewer = false,
+    hidden = true,
   },
 },
 })
