@@ -1,7 +1,7 @@
 [user]
     name = pederpus
     useConfigOnly = true
-    email = github.e26i1@aleeas.com
+    email = pederpus@pm.me
 [includeIf "gitdir:~/Code/vy/"]
     path = ~/Code/vy/.gitconfig
 [core]
