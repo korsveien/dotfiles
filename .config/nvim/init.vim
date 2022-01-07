@@ -50,7 +50,7 @@ set cursorline
 set noswapfile
 set completeopt="menuone,noinsert,noselect"
 set wildmode="list,longest" 
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 "------------------
 "   MAPPINGS
