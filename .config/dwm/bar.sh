@@ -1,7 +1,7 @@
 #! /usr/bin/fish
 
 function cpu
-    echo "CPU" (grep -o "^[^ ]*" /proc/loadavg)
+    echo " "(grep -o "^[^ ]*" /proc/loadavg)
 end
 
 function battery
@@ -32,5 +32,5 @@ function clock
 end
 
 while true
-    sleep 1 && xsetroot -name (echo (mem) (brightness) (wlan) (battery) (clock))
+    sleep 1 && xsetroot -name (echo (cpu) (brightness) (wlan) (battery) (clock))
 end
