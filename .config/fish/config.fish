@@ -91,7 +91,7 @@ abbr --add puip wget -O - -q icanhazip.com
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path /usr/local/sbin
-fish_add_path $HOME/go
+fish_add_path $HOME/go/bin
 
 ##### FUNCTIONS ####
 function gco
@@ -118,11 +118,15 @@ function pi
 end
 
 function pr
-    pacman -Qq | fzf --multi --preview 'sudo pacman -R {}' | xargs -ro sudo pacman -R
+    pacman -Qq | fzf --multi --preview 'sudo pacman -Rns {}' | xargs -ro sudo pacman -Rns
 end
 
 function yi
     yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S
+end
+
+function yr
+    yay -Qq | fzf --multi --preview 'sudo yay -Rns {}' | xargs -ro sudo yay -Rns
 end
 
 function gcm
