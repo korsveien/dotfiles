@@ -75,6 +75,8 @@ nnoremap :X :x
 
 nnoremap <c-p> :Telescope find_files<cr>
 nnoremap <c-f> :Telescope live_grep<cr>
+nnoremap <c-m> :Telescope marks<cr>
+nnoremap <c-e> :Telescope buffers<cr>
 nnoremap <c-h> :NvimTreeToggle<cr>
 
 "------------------
@@ -194,6 +196,16 @@ defaults = {
 },
 pickers = {
   find_files = {
+    layout_strategy = "center",
+    previewer = false,
+    hidden = true,
+  },
+  marks = {
+    layout_strategy = "center",
+    previewer = false,
+    hidden = true,
+  },
+  buffers = {
     layout_strategy = "center",
     previewer = false,
     hidden = true,
