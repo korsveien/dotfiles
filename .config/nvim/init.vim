@@ -108,12 +108,13 @@ nnoremap <leader><a> :COQnow [--shut-up]<CR>
 
 
 lua << EOF
-
 vim.g.coq_settings = {
     keymap = {
         jump_to_mark = "<c-,>"
     }
 }
+
+require('gitsigns').setup()
 
 -- LSP config
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
