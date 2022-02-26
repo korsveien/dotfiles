@@ -22,6 +22,7 @@ call plug#begin(stdpath('data') . 'nvim/plugged')
   Plug 'vim-autoformat/vim-autoformat'
   Plug 'karb94/neoscroll.nvim'
   Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+  Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
   Plug 'rust-lang/rust.vim'
   Plug 'khaveesh/vim-fish-syntax'
   Plug 'neovim/nvim-lspconfig'
@@ -61,7 +62,7 @@ set clipboard^=unnamed,unnamedplus
 "------------------
 let mapleader = " "
 
-nnoremap <c-l> :make run<cr>
+
 
 nnoremap <leader><leader> <c-^>                              " Jump to previous buffer
 nnoremap <leader>w <cmd>noh<cr>                              " Clear search highlights
@@ -77,6 +78,8 @@ nnoremap :X :x
 nnoremap <c-p> :Telescope find_files<cr>
 nnoremap <c-f> :Telescope live_grep<cr>
 nnoremap <c-e> :Telescope buffers<cr>
+nnoremap <c-t> :Telescope lsp_document_symbols<cr>
+nnoremap <c-l> :Telescope lsp_code_actions<cr>
 nnoremap <c-h> :NvimTreeToggle<cr>
 
 "------------------
@@ -103,8 +106,6 @@ vmap gx <Plug>(openbrowser-open)
 
 " COQ
 nnoremap <leader><a> :COQnow [--shut-up]<CR>
-
-
 
 
 lua << EOF
@@ -139,7 +140,6 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<M-CR>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 end
 
@@ -221,6 +221,11 @@ pickers = {
     hidden = true,
   },
   buffers = {
+    layout_strategy = "center",
+    previewer = false,
+    hidden = true,
+  },
+  lsp_document_symbols = {
     layout_strategy = "center",
     previewer = false,
     hidden = true,
