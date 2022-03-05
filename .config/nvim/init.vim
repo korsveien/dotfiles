@@ -1,5 +1,6 @@
 au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}
 au BufWrite *.rs,*.go :Autoformat
+autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
 
 "------------------
 "     PLUGINS
@@ -57,6 +58,7 @@ set completeopt="menuone,noinsert,noselect"
 set wildmode="list,longest" 
 set clipboard^=unnamed,unnamedplus
 
+
 "------------------
 "   MAPPINGS
 "------------------
@@ -85,6 +87,11 @@ nnoremap <c-h> :NvimTreeToggle<cr>
 "------------------
 "   PLUGIN CONFIG
 "------------------
+
+" autoformat
+let g:formatdef_tf_format = '"terraform fmt -"'
+let g:formatters_tf = ['tf_format']
+
 nmap <silent> <leader<r> :make run<CR>
 
 " vim-test
@@ -145,10 +152,11 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'rust_analyzer' }
+local servers = { 'rust_analyzer', 'terraformls' }
 
 local coq = require "coq"
 local lspconfig = require "lspconfig"
+
 
 for _, server in pairs(servers) do
 
