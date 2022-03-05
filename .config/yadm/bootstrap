@@ -1,0 +1,43 @@
+#!/bin/sh
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+
+  # install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew..."
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+
+  if [ -f "$HOME/dotfiles/Brewfile" ]; then
+    echo "Updating homebrew bundle..."
+    brew bundle --global
+  fi
+
+  if [ -d "$HOME/.iterm2" ]; then
+    echo "Setting iTerm preference folder"
+    defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/dotfiles/iterm2.plist"
+  fi
+
+fi
+
+if command -v nvim >/dev/null 2>&1; then
+  echo "Bootstraping Neovim"
+  nvim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+fi
+
+
+echo "Setting defaults..."
+source "$HOME/dotfiles/defaults.sh"
+
+echo "Updating the yadm repo origin URL"
+yadm remote set-url origin "git@github.com:pederpus/dotfiles.git"
+
+chsh -s fish
+echo "Switched to fish, restart terminal to use!"
+
+echo "...Done!"
+exit 0
+
+
