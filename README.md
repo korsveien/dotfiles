@@ -36,3 +36,5 @@ Lists of useful tools for enhancing productivity and quality of life.
 
 ### Homebrew Packages
 
+See the contents of Brewfile.
+
