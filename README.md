@@ -4,17 +4,12 @@ Home for system configuration and lists of useful tools.
 
 This repo is managed using [yadm](https://yadm.io/).
 
-## Prerequisites
-
-Git needs to be installed and a ssh-key needs to be configured for write access to repo.
-
 ## How to setup a new system
 
-Make sure`yadm` is installed and run the following command:
-
-```
-yadm clone git@github.com:pederpus/dotfiles.git
-```
+1. Install prerequisites for Homebrew: `xcode-select --install`
+2. Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+3. Clone this repo using yadm: `    yadm clone https://github.com/pederpus/dotfiles.git`
+4. Bootstrap with yadm: `yadm bootstrap`
 
 ## Tools
 
