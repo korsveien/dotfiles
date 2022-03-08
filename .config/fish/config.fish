@@ -23,18 +23,21 @@ abbr --add p python3
 
 abbr --add nrb npm run build
 
+# envchain
 abbr --add ea envchain aws
 abbr --add en envchain nexus
 abbr --add eh envchain github
 
+abbr --add l exa -la
+abbr --add v nvim
+abbr --add vim nvim
+
+# yadm
 abbr --add y yadm
 abbr --add yp yadm push
 abbr --add ys yadm status
 abbr --add yc yadm commit -m \"Update config\"
 
-abbr --add l exa -la
-abbr --add v nvim
-abbr --add vim nvim
 
 # Git
 abbr --add g git
@@ -66,6 +69,9 @@ abbr --add mtree envchain nexus mvn dependency:tree
 # Java
 abbr --add jls /usr/libexec/java_home -V
 abbr --add jh echo $JAVA_HOME
+
+# Homebrew
+abbr --add buu brew update && brew upgrade
 
 
 # IntelliJ

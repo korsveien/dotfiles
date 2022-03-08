@@ -5,7 +5,7 @@ autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
 "------------------
 "     PLUGINS
 "------------------
-call plug#begin(stdpath('data') . 'nvim/plugged')
+call plug#begin(stdpath('data') . '/plugged')
   Plug 'sainnhe/gruvbox-material'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'tpope/vim-commentary'
@@ -57,6 +57,8 @@ set noswapfile
 set completeopt="menuone,noinsert,noselect"
 set wildmode="list,longest" 
 set clipboard^=unnamed,unnamedplus
+
+set shell=/bin/bash
 
 
 "------------------
