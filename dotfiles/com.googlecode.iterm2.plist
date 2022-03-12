@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Command</key>
+	<string></string>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>gruvbox</key>
@@ -348,6 +350,8 @@
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>6E6DC630-E497-4BC9-85B5-1ACA2DCA501B</string>
+	<key>DimInactiveSplitPanes</key>
+	<true/>
 	<key>DisableFullscreenTransparency</key>
 	<true/>
 	<key>HapticFeedbackForEsc</key>
@@ -362,6 +366,8 @@
 			<key>ASCII Anti Aliased</key>
 			<true/>
 			<key>ASCII Ligatures</key>
+			<false/>
+			<key>Allow Title Reporting</key>
 			<false/>
 			<key>Ambiguous Double Width</key>
 			<false/>
@@ -627,7 +633,7 @@
 			<key>Columns</key>
 			<integer>80</integer>
 			<key>Command</key>
-			<string></string>
+			<string>/usr/local/bin/fish</string>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -668,7 +674,7 @@
 				<real>0.90980392694473267</real>
 			</dict>
 			<key>Custom Command</key>
-			<string>No</string>
+			<string>Custom Shell</string>
 			<key>Custom Directory</key>
 			<string>No</string>
 			<key>Default Bookmark</key>
@@ -698,6 +704,8 @@
 			<real>1</real>
 			<key>Idle Code</key>
 			<integer>0</integer>
+			<key>Initial Text</key>
+			<string></string>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -1062,7 +1070,7 @@
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
-			<false/>
+			<true/>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -1091,6 +1099,8 @@
 			<string>/Users/peder</string>
 		</dict>
 	</array>
+	<key>OnlyWhenMoreTabs</key>
+	<false/>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -1124,8 +1134,14 @@
 			<string>kNextWindowPointerAction</string>
 		</dict>
 	</dict>
+	<key>PromptOnQuit</key>
+	<false/>
+	<key>SavePasteHistory</key>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
+	<key>SplitPaneDimmingAmount</key>
+	<real>0.09728697100889333</real>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
 	<key>UseBorder</key>

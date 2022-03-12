@@ -86,6 +86,9 @@ nnoremap <c-t> :Telescope lsp_document_symbols<cr>
 nnoremap <c-l> :Telescope lsp_code_actions<cr>
 nnoremap <c-h> :NvimTreeToggle<cr>
 
+" Copy to systen clipboard on mac
+vmap '' :w !pbcopy<CR><CR>
+
 "------------------
 "   PLUGIN CONFIG
 "------------------

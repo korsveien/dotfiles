@@ -1,9 +1,8 @@
 fzf_key_bindings
 fish_default_key_bindings
 
-##### Variables #####
+###### Variables #####
 set -x _JAVA_AWT_WM_NONREPARENTING 1
-
 set -x NVM_DIR $HOME/.nvm
 
 #https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
@@ -18,9 +17,12 @@ set -x HOMEBREW_NO_AUTO_UPDATE 1
 bind \cj up-or-search
 bind \ck down-or-search
 
-##### ABBREVIATIONS #####
+###### ABBREVIATIONS #####
 abbr --add p python3
+abbr --add l exa -la
+abbr --add puip wget -O - -q icanhazip.com
 
+# npm
 abbr --add nrb npm run build
 
 # envchain
@@ -28,7 +30,7 @@ abbr --add ea envchain aws
 abbr --add en envchain nexus
 abbr --add eh envchain github
 
-abbr --add l exa -la
+# vim
 abbr --add v nvim
 abbr --add vim nvim
 
@@ -38,72 +40,65 @@ abbr --add yp yadm push
 abbr --add ys yadm status
 abbr --add yc yadm commit -m \"Update config\"
 
-
-# Git
+# git
 abbr --add g git
 abbr --add gpf git push -f
+abbr --add gpu git push --set-upstream-to origin (git rev-parse --abbrev-ref HEAD)
 abbr --add gl git log --all --decorate --oneline --graph
 abbr --add gc git commit -m
 abbr --add gs git status
 abbr --add ga git add -p
 abbr --add gamend git commit --amend --reuse-message=HEAD
-abbr --add gb git branch
 abbr --add gcl git clone
 abbr --add grhh git reset --hard HEAD
 abbr --add gp git push
 abbr --add gst git status
 abbr --add gd git diff --staged
-abbr --add gcb git checkout -b
+abbr --add gbn git checkout -b
+abbr --add gco git checkout
+abbr --add gb git branch
 
-# Docker
+
+# docker
 abbr --add d docker
 abbr --add di docker images
 abbr --add dps docker ps
 
-# Maven
+# maven
 abbr --add mid envchain nexus mvn install -DskipTests
 abbr --add mci envchain nexus mvn clean install
 abbr --add mcid envchain nexus mvn clean install -DskipTests
 abbr --add mtree envchain nexus mvn dependency:tree
 
-# Java
+# java
 abbr --add jls /usr/libexec/java_home -V
 abbr --add jh echo $JAVA_HOME
 
-# Homebrew
-abbr --add buu brew update && brew upgrade
-
-
-# IntelliJ
+# intellij
 abbr --add ij envchain nexus,aws idea
 
-# Terraform
+# terraform
 abbr --add tf envchain aws terraform
 abbr --add t terraform
 
-# Tmux
+# tmux
 abbr --add tl tmux list-sessions
 abbr --add ta tmux attach-session -t
 abbr --add tk tmux kill-session -t
 
+# configs
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish
 abbr --add av nvim ~/.config/alacritty/alacritty.yml
 abbr --add sv nvim ~/.config/sway/config
 
-abbr --add puip wget -O - -q icanhazip.com
-
-# Path
+# path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path /usr/local/sbin
 fish_add_path $HOME/go/bin
 
-##### FUNCTIONS ####
-function gco
-    git checkout (git for-each-ref refs/heads/ --format='%(refname:short)' | fzf)
-end
-
+###### FUNCTIONS ####
 function jset
     set -Ux JAVA_HOME (/usr/libexec/java_home -v $argv[1])
     source ~/.config/fish/config.fish
@@ -117,6 +112,10 @@ end
 function ho
     set repo (git remote show origin | rg github.com | head -n 1 | cut -d':' -f3 | cut -d'.' -f1)
     open "https://github.com/$repo"
+end
+
+function bi
+    brew search | fzf --multi --preview 'brew search {1}' | xargs -ro brew install
 end
 
 function pi
@@ -144,7 +143,7 @@ function rente_studie
 end
 
 
-##### THIRD PARTY UTILITIES ####
+#### THIRD PARTY UTILITIES ####
 [ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 [ -f ~/.local/share/autojump/autojump.fish ]; and source ~/.local/share/autojump/autojump.fish
