@@ -99,6 +99,10 @@ fish_add_path /usr/local/sbin
 fish_add_path $HOME/go/bin
 
 ###### FUNCTIONS ####
+function fish_greeeting
+    echo The time is (set_color yellow; date +%T; set_color normal) and this machine is called $hostname
+end
+
 function jset
     set -Ux JAVA_HOME (/usr/libexec/java_home -v $argv[1])
     source ~/.config/fish/config.fish
@@ -147,7 +151,6 @@ end
 [ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 [ -f ~/.local/share/autojump/autojump.fish ]; and source ~/.local/share/autojump/autojump.fish
-[ -f /home/peder/.cache/yay/autojump/pkg/autojump/usr/share/autojump ]; and source /home/peder/.cache/yay/autojump/pkg/autojump/usr/share/autojump
 
 set fish_function_path $fish_function_path ~/repo/plugin-foreign-env/functions
 fenv source ~/.bashrc
