@@ -2,8 +2,8 @@
 
 echo "Setting defaults..."
 defaults write com.apple.systemsound 'com.apple.sound.uiaudio.enabled' -int 0
-defaults write -g InitialKeyRepeat -float 8.5
-defaults write -g KeyRepeat -int 1
+defaults write -g InitialKeyRepeat -int 15
+defaults write -g KeyRepeat -int 2
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0.1
