@@ -19,7 +19,7 @@ bind \ck down-or-search
 
 ###### ABBREVIATIONS #####
 abbr --add p python3
-abbr --add l exa -la
+abbr --add l ls -la
 abbr --add puip wget -O - -q icanhazip.com
 
 # npm
@@ -155,4 +155,3 @@ end
 set fish_function_path $fish_function_path ~/repo/plugin-foreign-env/functions
 fenv source ~/.bashrc
 
-starship init fish | source
