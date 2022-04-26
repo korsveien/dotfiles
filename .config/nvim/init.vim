@@ -7,7 +7,6 @@ autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
 "------------------
 call plug#begin(stdpath('data') . '/plugged')
   Plug 'sainnhe/gruvbox-material'
-  Plug 'flazz/vim-colorschemes'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -248,4 +247,3 @@ pickers = {
 EOF
 
 colorscheme gruvbox-material
-colorscheme ir_black
