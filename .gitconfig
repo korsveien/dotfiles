@@ -1,7 +1,7 @@
 [user]
     name = pederpus
     useConfigOnly = true
-    email = pederpus@pm.me
+    email = pederpus@icloud.com
 [includeIf "gitdir:~/Code/vy/"]
     path = ~/Code/vy/.gitconfig
 [core]
@@ -41,7 +41,7 @@
     file-style = bold yellow ul
     file-decoration-style = none
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
