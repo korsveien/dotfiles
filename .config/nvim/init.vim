@@ -6,6 +6,7 @@ autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
 "     PLUGINS
 "------------------
 call plug#begin(stdpath('data') . '/plugged')
+  Plug 'https://github.com/hashivim/vim-terraform'
   Plug 'sainnhe/gruvbox-material'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'tpope/vim-commentary'
