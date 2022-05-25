@@ -8,6 +8,7 @@ autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
 call plug#begin(stdpath('data') . '/plugged')
   Plug 'https://github.com/hashivim/vim-terraform'
   Plug 'sainnhe/gruvbox-material'
+  Plug 'kyazdani42/nvim-tree.lua'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -18,8 +19,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'lewis6991/gitsigns.nvim'
-  Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'kyazdani42/nvim-tree.lua'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'vim-autoformat/vim-autoformat'
   Plug 'karb94/neoscroll.nvim'
@@ -79,6 +78,9 @@ nnoremap ]<Space> o<esc>                                     " Insert blank line
 nnoremap :W :w
 nnoremap :Q :q
 nnoremap :X :x
+
+" If i want to quit, I want to quit
+nnoremap :q :q!
 
 nnoremap <c-p> :Telescope find_files<cr>
 nnoremap <c-f> :Telescope live_grep<cr>
@@ -220,6 +222,7 @@ defaults = {
     "node_modules",
     "plugged",
     "target",
+    ".git",
   },
 },
 pickers = {
