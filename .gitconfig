@@ -2,7 +2,8 @@
     name = pederpus
     useConfigOnly = true
     email = pederpus@icloud.com
-[includeIf "gitdir:~/Developer/digipost"]
+    signingKey = 4EC0514291BF2C20
+[includeIf "gitdir:~/Developer/digipost/"]
     path = ~/Developer/digipost/.gitconfig
 [core]
     editor = nvim
