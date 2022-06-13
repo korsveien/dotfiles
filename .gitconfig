@@ -2,11 +2,14 @@
     name = pederpus
     useConfigOnly = true
     email = pederpus@icloud.com
-[includeIf "gitdir:~/Code/vy/"]
-    path = ~/Code/vy/.gitconfig
+[includeIf "gitdir:~/Developer/digipost"]
+    path = ~/Developer/digipost/.gitconfig
 [core]
     editor = nvim
     autocrlf = input
+    sshCommand = ssh -i ~/.ssh/id_ed25519
+[commit]
+    gpgsign = true
 [color]
     ui = true
 [push]
