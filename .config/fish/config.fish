@@ -25,11 +25,6 @@ abbr --add puip wget -O - -q icanhazip.com
 # npm
 abbr --add nrb npm run build
 
-# envchain
-abbr --add ea envchain aws
-abbr --add en envchain nexus
-abbr --add eh envchain github
-
 # vim
 abbr --add v nvim
 abbr --add vim nvim
@@ -74,9 +69,6 @@ abbr --add mtree envchain nexus mvn dependency:tree
 abbr --add jls /usr/libexec/java_home -V
 abbr --add jh echo $JAVA_HOME
 
-# intellij
-abbr --add ij envchain nexus,aws idea
-
 # terraform
 abbr --add tf envchain aws terraform
 abbr --add t terraform
@@ -89,8 +81,6 @@ abbr --add tk tmux kill-session -t
 # configs
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish
-abbr --add av nvim ~/.config/alacritty/alacritty.yml
-abbr --add sv nvim ~/.config/sway/config
 
 # path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
@@ -152,6 +142,4 @@ end
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 [ -f ~/.local/share/autojump/autojump.fish ]; and source ~/.local/share/autojump/autojump.fish
 
-set fish_function_path $fish_function_path ~/repo/plugin-foreign-env/functions
-fenv source ~/.bashrc
-
+source ~/.env
