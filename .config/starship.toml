@@ -1,2 +1,3 @@
-[aws]
-symbol = " "
+[kubernetes]
+disabled=false
+style="blue bold"

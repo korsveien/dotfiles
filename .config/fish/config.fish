@@ -11,6 +11,9 @@ set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_STATE_HOME $HOME/.local/state
 set -x XDG_CACHE_HOME $HOME/.cache
 
+# Terraform cache
+set -gx TF_PLUGIN_CACHE_DIR ~/.terraform.d/plugin-cache
+
 # Disable automatic homebrew update
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 
@@ -18,9 +21,13 @@ bind \cj up-or-search
 bind \ck down-or-search
 
 ###### ABBREVIATIONS #####
+abbr --add i idea
 abbr --add p python3
 abbr --add l ls -la
 abbr --add puip wget -O - -q icanhazip.com
+
+# kubectl
+abbr --add k kubectl
 
 # npm
 abbr --add nrb npm run build
@@ -38,7 +45,6 @@ abbr --add yc yadm commit -m \"Update config\"
 # git
 abbr --add g git
 abbr --add gpf git push -f
-abbr --add gpu git push --set-upstream-to origin (git rev-parse --abbrev-ref HEAD)
 abbr --add gl git log --all --decorate --oneline --graph
 abbr --add gc git commit -m
 abbr --add gs git status
@@ -60,17 +66,16 @@ abbr --add di docker images
 abbr --add dps docker ps
 
 # maven
-abbr --add mid envchain nexus mvn install -DskipTests
-abbr --add mci envchain nexus mvn clean install
-abbr --add mcid envchain nexus mvn clean install -DskipTests
-abbr --add mtree envchain nexus mvn dependency:tree
+abbr --add mid mvn install -DskipTests
+abbr --add mci mvn clean install
+abbr --add mcid mvn clean install -DskipTests
+abbr --add mtree mvn dependency:tree
 
 # java
 abbr --add jls /usr/libexec/java_home -V
 abbr --add jh echo $JAVA_HOME
 
 # terraform
-abbr --add tf envchain aws terraform
 abbr --add t terraform
 
 # tmux
@@ -136,10 +141,17 @@ function rente_studie
     curl -s 'https://www.lanekassen.no/api/episerver/v2.0/content/7344' | jq .flytendeRente.value
 end
 
+function gpu
+    git push --set-upstream-to origin (git rev-parse --abbrev-ref HEAD)
+end
+
+
 
 #### THIRD PARTY UTILITIES ####
 [ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 [ -f ~/.local/share/autojump/autojump.fish ]; and source ~/.local/share/autojump/autojump.fish
 
-source ~/.env
+source ~/.env.fish
+
+starship init fish | source
