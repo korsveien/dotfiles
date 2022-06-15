@@ -155,3 +155,4 @@ end
 source ~/.env.fish
 
 starship init fish | source
+
