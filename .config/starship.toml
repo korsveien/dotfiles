@@ -2,12 +2,13 @@ format="""
 $directory(blue)$git_branch$git_status\\$ 
 """
 
-right_format="""$jobs$time"""
+right_format="""$jobs$kubernetes$time"""
 
 add_newline=false
 
 [kubernetes]
 disabled=false
+format= "\\[[$cluster](blue) in [$namespace](blue)\\] "
 style="blue bold"
 
 [directory]
