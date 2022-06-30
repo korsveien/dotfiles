@@ -2,20 +2,20 @@ format="""
 $directory(blue)$git_branch$git_status\\$ 
 """
 
-right_format="""$jobs$kubernetes$time"""
+right_format= """$kubernetes"""
 
 add_newline=false
 
 [kubernetes]
 disabled=false
-format= "\\[[$cluster](blue) in [$namespace](blue)\\] "
+format= "\\[[$context](blue)\\] "
 style="blue bold"
 
 [directory]
 format="[$path]($style) "
 style="green"
 truncate_to_repo=false
-truncation_length=1
+truncation_length=2
 fish_style_pwd_dir_length=1
 
 [git_branch]

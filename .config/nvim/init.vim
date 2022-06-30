@@ -1,13 +1,13 @@
-au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}
-au BufWrite *.rs,*.go :Autoformat
-autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
+autocmd TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}
+autocmd BufWritePre *.tf,*.go,*.vim lua vim.lsp.buf.formatting()
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+autocmd BufWinEnter * if &filetype == 'help' | wincmd L | endif
 
 "------------------
 "     PLUGINS
 "------------------
 call plug#begin(stdpath('data') . '/plugged')
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'sainnhe/gruvbox-material'
+    Plug 'pederpus/gruvbox-material'
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'tpope/vim-commentary'
@@ -20,7 +20,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'lewis6991/gitsigns.nvim'
     Plug 'terryma/vim-multiple-cursors'
-    Plug 'vim-autoformat/vim-autoformat'
     Plug 'karb94/neoscroll.nvim'
     Plug 'rust-lang/rust.vim'
     Plug 'khaveesh/vim-fish-syntax'
@@ -31,6 +30,9 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/vim-vsnip'
+    Plug 'google/vim-jsonnet'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'hashivim/vim-terraform'
 call plug#end()
 
 
@@ -39,7 +41,7 @@ call plug#end()
 "------------------
 set expandtab                " use spaces insted of tabs
 set hidden                   " enable background buffers
-set list                     " show some invisible characters
+set listchars=trail:-        " show some invisible characters
 set number                   " show line numbers
 set shiftround               " round indent to a multiple of shiftwidth
 set shiftwidth=4             " size of an indent
@@ -61,9 +63,17 @@ set noswapfile
 set completeopt="menuone,noinsert,noselect"
 set wildmode="list,longest" 
 set clipboard^=unnamed,unnamedplus
-
 set shell=/bin/bash
 
+"------------------
+"   STATUSLINE
+"------------
+" set statusline+=%f " Show file path
+" set statusline+=%m " Show modified state
+" set statusline+=%= " Left/Right separator
+" set statusline+=%l,
+" set statusline+=%c
+" set statusline+=\ %{fugitive#statusline()}\  " Display current git branch
 
 "------------------
 "   MAPPINGS
@@ -72,7 +82,7 @@ let mapleader = " "
 
 nnoremap <leader><leader> <c-^>                              " Jump to previous buffer
 nnoremap <leader>w <cmd>noh<cr>                              " Clear search highlights
-nnoremap <leader>c :edit ~/.config/nvim/init.vim<cr>         " Edit config file
+nnoremap <leader>c :vsplit ~/.config/nvim/init.vim<cr>       " Edit config file
 nnoremap <leader>v :source ~/.config/nvim/init.vim<cr>       " Source config file
 nnoremap ]<Space> o<esc>                                     " Insert blank line underneath cursor
 
@@ -88,21 +98,16 @@ nnoremap <c-p> :Telescope find_files<cr>
 nnoremap <c-f> :Telescope live_grep<cr>
 nnoremap <c-e> :Telescope buffers<cr>
 nnoremap <c-t> :Telescope lsp_document_symbols<cr>
-nnoremap <c-l> :Telescope lsp_code_actions<cr>
 nnoremap <c-h> :NvimTreeToggle<cr>
-
-" Copy to systen clipboard on mac
-vmap '' :w !pbcopy<CR><CR>
+nnoremap <c-l> :NvimTreeResize 50<cr>
 
 "------------------
 "   PLUGIN CONFIG
 "------------------
 
-" autoformat
-let g:formatdef_tf_format = '"terraform fmt -"'
-let g:formatters_tf = ['tf_format']
-
-nmap <silent> <leader<r> :make run<CR>
+" fugitive/rhubarb
+nnoremap <c-g> :GBrowse<CR>
+nnoremap <c-b> :Git blame<CR>
 
 " vim-test
 nmap <silent> <leader>t :TestNearest<CR>
@@ -122,72 +127,12 @@ nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
 
 lua <<EOF
-
--- Treesitter config
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = { "hcl", "vim", "lua", "rust", "go", "kotlin", "java", "javascript", "fish", "typescript"},
-
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-
-  -- List of parsers to ignore installing (for "all")
-  --ignore_install = { "javascript" },
-
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-
-    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-    -- the name of the parser)
-    -- list of language that will be disabled
-    -- disable = { "c", "rust" },
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
-
-require('gitsigns').setup()
-
--- LSP config
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-end
-
-local servers = { 'rust_analyzer', 'terraformls' }
-local lspconfig = require "lspconfig"
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require'statusline'
+require'plugins'
+require'lsp'
 
 ------------------
-------------------
--- Setup nvim-cmp
-------------------
+--  NVIM CMP
 ------------------
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -274,26 +219,24 @@ sources = cmp.config.sources({
 })
 })
 
-for _, server in pairs(servers) do
-  lspconfig[server].setup {
-      capabilities = capabilities
-  }
-end
 
 -- NvimTree config
 require("nvim-tree").setup({
-  open_on_setup = false,
+  open_on_setup = true,
   update_focused_file = {
     enable = true,
   },
   view = {
-    auto_resize = true,
+    adaptive_size = true,
   },
   git = {
     enable = true,
     ignore = false,
     timeout = 300,
-  }
+  },
+  renderer = {
+      full_name = true
+    }
 })
 
 -- Telescope config
