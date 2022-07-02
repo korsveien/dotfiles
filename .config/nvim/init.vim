@@ -19,7 +19,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/lewis6991/gitsigns.nvim'
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/karb94/neoscroll.nvim'
-    Plug 'https://github.com/ahmedkhalf/project.nvim'
 
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
@@ -136,7 +135,18 @@ local foreground = '#ecdbb2'
 
 local black = '#353535'
 local blue = '#549699'
+local red = '#d73925'
+local green = '#a8a521'
+local yellow = '#dfa82a'
+local magenta = '#bf7897'
+local cyan = '#79aa7d'
+local white = '#b7a996'
 
-vim.api.nvim_set_hl(0, 'NvimTreeOpenedFile', { fg = foreground, bg = "#549699" })
+vim.api.nvim_set_hl(0, 'NvimTreeOpenedFile', { fg = blue, bg = background })
 vim.api.nvim_set_hl(0, 'NvimTreeFolderIcon', { fg = blue, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeFolderName', { fg = foreground, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeOpenedFolderName', { fg = foreground, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeFileName', { fg = foreground, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeFileIcon', { fg = foreground, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeCursorLine', { fg = foreground, bg = white })
 EOF

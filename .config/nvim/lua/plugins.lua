@@ -43,11 +43,8 @@ require('gitsigns').setup {
 -- File tree
 require("nvim-tree").setup({
     open_on_setup = true,
-    respect_buf_cwd = true,
-    update_cwd = true,
     update_focused_file = {
         enable = true,
-        update_cwd = true,
     },
     view = {
         adaptive_size = true,
@@ -63,7 +60,7 @@ require("nvim-tree").setup({
         icons = {
             glyphs = {
                 git = {
-                    ignored = 'x',
+                    ignored = '',
                     unstaged = '*',
                     untracked = 'u',
                 }
@@ -74,10 +71,6 @@ require("nvim-tree").setup({
         enable = true
     },
 })
-
-
--- Projects
-require 'project_nvim'.setup {}
 
 -- Telescope
 local actions = require("telescope.actions")
