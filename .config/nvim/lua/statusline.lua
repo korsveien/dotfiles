@@ -12,18 +12,25 @@ local function filename()
 end
 
 local function modified_flag()
-    return " %m"
+    return "%m"
+end
+
+local function percentage()
+    return "%p%%"
+end
+
+local function lines_in_buffer()
+    return "%L"
 end
 
 local function get_active_lsp_clients()
-    local active_clients = ''
     local clients = vim.lsp.get_active_clients()
     for _, client in ipairs(clients) do
         if client ~= nil then
-            return client.name
+            return '[' .. client.name .. ']'
         end
     end
-    return string.format('%s', active_clients)
+    return ''
 end
 
 function StatusLine()
@@ -32,7 +39,10 @@ function StatusLine()
     statusline = statusline .. get_git_status()
     statusline = statusline .. modified_flag()
     statusline = statusline .. "%="
-    statusline = statusline .. "%="
+    statusline = statusline .. percentage()
+    statusline = statusline .. " L:"
+    statusline = statusline .. lines_in_buffer()
+    statusline = statusline .. " "
     statusline = statusline .. get_active_lsp_clients()
     statusline = statusline .. " "
 

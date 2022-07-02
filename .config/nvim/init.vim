@@ -129,3 +129,14 @@ require'lsp'
 EOF
 
 colorscheme gruvbox-material
+
+lua <<EOF
+local background = '#252525'
+local foreground = '#ecdbb2'
+
+local black = '#353535'
+local blue = '#549699'
+
+vim.api.nvim_set_hl(0, 'NvimTreeOpenedFile', { fg = foreground, bg = "#549699" })
+vim.api.nvim_set_hl(0, 'NvimTreeFolderIcon', { fg = blue, bg = background })
+EOF

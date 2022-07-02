@@ -75,7 +75,6 @@ require("nvim-tree").setup({
     },
 })
 
-vim.api.nvim_set_hl(0, 'NvimTreeOpenedFile', { fg = "#549699", bg = "#549699" })
 
 -- Projects
 require 'project_nvim'.setup {}
