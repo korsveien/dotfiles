@@ -149,4 +149,8 @@ vim.api.nvim_set_hl(0, 'NvimTreeOpenedFolderName', { fg = foreground, bg = backg
 vim.api.nvim_set_hl(0, 'NvimTreeFileName', { fg = foreground, bg = background })
 vim.api.nvim_set_hl(0, 'NvimTreeFileIcon', { fg = foreground, bg = background })
 vim.api.nvim_set_hl(0, 'NvimTreeCursorLine', { fg = foreground, bg = white })
+
+vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = foreground, bg = white })
+vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = foreground, bg = white })
+-- vim.api.nvim_set_hl(0, 'TelescopeResultsFileIcon', { fg = foreground, bg = white })
 EOF
