@@ -19,10 +19,12 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/lewis6991/gitsigns.nvim'
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/karb94/neoscroll.nvim'
+    Plug 'https://github.com/ziontee113/icon-picker.nvim'
 
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
     Plug 'https://github.com/nvim-lua/plenary.nvim'
+    Plug 'https://github.com/stevearc/dressing.nvim'
 
     " LSP and autocompletion
     Plug 'https://github.com/neovim/nvim-lspconfig'
@@ -39,6 +41,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/hashivim/vim-terraform'
     Plug 'https://github.com/rust-lang/rust.vim'
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
+
 call plug#end()
 
 
@@ -130,6 +133,7 @@ EOF
 colorscheme gruvbox-material
 
 lua <<EOF
+
 local background = '#252525'
 local foreground = '#ecdbb2'
 
