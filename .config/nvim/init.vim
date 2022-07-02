@@ -10,14 +10,20 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/pederpus/gruvbox-material'
     Plug 'https://github.com/kyazdani42/nvim-tree.lua'
     Plug 'https://github.com/kyazdani42/nvim-web-devicons'
-    Plug 'https://github.com/tpope/vim-commentary'
-    Plug 'https://github.com/tpope/vim-fugitive'
-    Plug 'https://github.com/tpope/vim-rhubarb'
     Plug 'https://github.com/vim-test/vim-test'
     Plug 'https://github.com/tyru/open-browser.vim'
     Plug 'https://github.com/lewis6991/gitsigns.nvim'
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/karb94/neoscroll.nvim'
+    Plug 'https://github.com/jiangmiao/auto-pairs'
+
+    Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+    " Tim Pope essentials
+    Plug 'https://github.com/tpope/vim-commentary'
+    Plug 'https://github.com/tpope/vim-fugitive'
+    Plug 'https://github.com/tpope/vim-rhubarb'
+    Plug 'https://github.com/tpope/vim-unimpaired'
 
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
@@ -39,42 +45,11 @@ call plug#begin(stdpath('data') . '/plugged')
 
     " Language support
     Plug 'https://github.com/google/vim-jsonnet'
-    Plug 'https://github.com/jiangmiao/auto-pairs'
     Plug 'https://github.com/hashivim/vim-terraform'
     Plug 'https://github.com/rust-lang/rust.vim'
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
 
 call plug#end()
-
-
-"------------------
-"   SETTINGS
-"------------------
-set expandtab                " use spaces insted of tabs
-set hidden                   " enable background buffers
-set listchars=trail:-        " show some invisible characters
-set number                   " show line numbers
-set shiftround               " round indent to a multiple of shiftwidth
-set shiftwidth=4             " size of an indent
-set sidescrolloff=8          " columns of context
-set smartcase                " Do not ignore case with capitals
-set smartindent              " Insert indents automatically
-set splitbelow               " Put new windows below current
-set splitright               " Put new windows right of current
-set tabstop=2                " Number of spaces tabs count for
-set termguicolors            " True color support
-set nowrap                   " Disable line wrap
-set undofile                 " Persistent undo
-set hidden
-set ignorecase
-set signcolumn=yes
-set updatetime=250
-set cursorline
-set noswapfile
-set completeopt="menuone,noinsert,noselect"
-set wildmode="list,longest" 
-set clipboard^=unnamed,unnamedplus
-set shell=/bin/bash
 
 "------------------
 "   MAPPINGS
@@ -84,8 +59,6 @@ let mapleader = " "
 nnoremap <leader><leader> <c-^>                              " Jump to previous buffer
 nnoremap <leader>w <cmd>noh<cr>                              " Clear search highlights
 nnoremap <leader>c :vsplit ~/.config/nvim/init.vim<cr>       " Edit config file
-nnoremap <leader>v :source ~/.config/nvim/init.vim<cr>       " Source config file
-nnoremap ]<Space> o<esc>                                     " Insert blank line underneath cursor
 
 " Ignore case on save/close commands
 nnoremap :W :w
@@ -127,20 +100,43 @@ nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
 
 lua <<EOF
-require'config/nvimtree'
 require'config/gitsigns'
-require'config/telescope'
+require'config/lsp'
 require'config/nvimtree'
-require'config.statusline'
-require'config.lsp'
+require'config/nvimtree'
+require'config/settings'
+require'config/statusline'
+require'config/telescope'
+require'config/treesitter'
 EOF
 
 colorscheme gruvbox-material
 
 lua <<EOF
-
 -- FIXME: must be after colorscheme
-require 'config.highlights'
+local background = '#252525'
+local foreground = '#ecdbb2'
 
--- vim.api.nvim_set_hl(0, 'TelescopeResultsFileIcon', { fg = foreground, bg = white })
+local black = '#353535'
+local blue = '#549699'
+local cyan = '#79aa7d'
+local green = '#a8a521'
+local magenta = '#bf7897'
+local red = '#d73925'
+local white = '#b7a996'
+local yellow = '#dfa82a'
+
+vim.api.nvim_set_hl(0, 'NvimTreeOpenedFile', { fg = blue, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeFolderIcon', { fg = blue, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeFolderName', { fg = foreground, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeOpenedFolderName', { fg = foreground, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeFileName', { fg = foreground, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeFileIcon', { fg = foreground, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeCursorLine', { fg = foreground, bg = white })
+
+vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = foreground, bg = white })
+vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = foreground, bg = white })
+
+vim.api.nvim_set_hl(0, 'Search', { fg = black, bg = yellow })
+vim.api.nvim_set_hl(0, 'Visual', { fg = black, bg = white })
 EOF
