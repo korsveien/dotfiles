@@ -15,12 +15,17 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/tpope/vim-rhubarb'
     Plug 'https://github.com/vim-test/vim-test'
     Plug 'https://github.com/tyru/open-browser.vim'
-    Plug 'https://github.com/nvim-lua/popup.nvim'
-    Plug 'https://github.com/nvim-lua/plenary.nvim'
     Plug 'https://github.com/nvim-telescope/telescope.nvim'
     Plug 'https://github.com/lewis6991/gitsigns.nvim'
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/karb94/neoscroll.nvim'
+    Plug 'https://github.com/ahmedkhalf/project.nvim'
+
+    " Utility libraries
+    Plug 'https://github.com/nvim-lua/popup.nvim'
+    Plug 'https://github.com/nvim-lua/plenary.nvim'
+
+    " LSP and autocompletion
     Plug 'https://github.com/neovim/nvim-lspconfig'
     Plug 'https://github.com/hrsh7th/cmp-nvim-lsp'
     Plug 'https://github.com/hrsh7th/cmp-buffer'
@@ -28,7 +33,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/hrsh7th/cmp-cmdline'
     Plug 'https://github.com/hrsh7th/nvim-cmp'
     Plug 'https://github.com/hrsh7th/vim-vsnip'
-    Plug 'https://github.com/ahmedkhalf/project.nvim'
 
     " Language support
     Plug 'https://github.com/google/vim-jsonnet'
@@ -111,7 +115,6 @@ let test#strategy = 'neovim'
 "let test#neovim#term_position = "vert"
 let test#neovim#start_normal = 1
 
-
 let g:rust_doc#downloaded_rust_doc_dir = '~/Documents/rust-docs'
 
 " Open Browser config
@@ -123,7 +126,6 @@ lua <<EOF
 require'statusline'
 require'plugins'
 require'lsp'
-
 EOF
 
 colorscheme gruvbox-material

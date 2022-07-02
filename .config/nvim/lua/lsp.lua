@@ -8,6 +8,7 @@ vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
+-- FIXME: on attach is unused
 local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -35,6 +36,7 @@ for _, server in pairs(servers) do
     }
 end
 
+-- TODO: Generalize setup of lsp servers
 lspconfig['sumneko_lua'].setup {
     capabilities = capabilities,
     settings = {

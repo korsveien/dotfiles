@@ -60,7 +60,6 @@ require("nvim-tree").setup({
     renderer = {
         full_name = true,
         highlight_git = true,
-        highlight_opened_files = 'none',
         icons = {
             glyphs = {
                 git = {
@@ -86,7 +85,7 @@ local actions = require("telescope.actions")
 
 require("telescope").setup({
     defaults = {
-        prompt_prefix = "   ",
+        prompt_prefix = "  ",
         selection_caret = "  ",
         entry_prefix = "  ",
         initial_mode = "insert",
