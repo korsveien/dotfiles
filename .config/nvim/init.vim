@@ -15,16 +15,18 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/tpope/vim-rhubarb'
     Plug 'https://github.com/vim-test/vim-test'
     Plug 'https://github.com/tyru/open-browser.vim'
-    Plug 'https://github.com/nvim-telescope/telescope.nvim'
     Plug 'https://github.com/lewis6991/gitsigns.nvim'
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/karb94/neoscroll.nvim'
-    Plug 'https://github.com/ziontee113/icon-picker.nvim'
 
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
     Plug 'https://github.com/nvim-lua/plenary.nvim'
-    Plug 'https://github.com/stevearc/dressing.nvim'
+
+    " Telescope
+    Plug 'https://github.com/nvim-telescope/telescope.nvim'
+    Plug 'https://github.com/nvim-telescope/telescope-symbols.nvim'
+    Plug 'https://github.com/nvim-telescope/telescope-github.nvim'
 
     " LSP and autocompletion
     Plug 'https://github.com/neovim/nvim-lspconfig'
@@ -125,36 +127,20 @@ nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
 
 lua <<EOF
-require'statusline'
-require'plugins'
-require'lsp'
+require'config/nvimtree'
+require'config/gitsigns'
+require'config/telescope'
+require'config/nvimtree'
+require'config.statusline'
+require'config.lsp'
 EOF
 
 colorscheme gruvbox-material
 
 lua <<EOF
 
-local background = '#252525'
-local foreground = '#ecdbb2'
+-- FIXME: must be after colorscheme
+require 'config.highlights'
 
-local black = '#353535'
-local blue = '#549699'
-local red = '#d73925'
-local green = '#a8a521'
-local yellow = '#dfa82a'
-local magenta = '#bf7897'
-local cyan = '#79aa7d'
-local white = '#b7a996'
-
-vim.api.nvim_set_hl(0, 'NvimTreeOpenedFile', { fg = blue, bg = background })
-vim.api.nvim_set_hl(0, 'NvimTreeFolderIcon', { fg = blue, bg = background })
-vim.api.nvim_set_hl(0, 'NvimTreeFolderName', { fg = foreground, bg = background })
-vim.api.nvim_set_hl(0, 'NvimTreeOpenedFolderName', { fg = foreground, bg = background })
-vim.api.nvim_set_hl(0, 'NvimTreeFileName', { fg = foreground, bg = background })
-vim.api.nvim_set_hl(0, 'NvimTreeFileIcon', { fg = foreground, bg = background })
-vim.api.nvim_set_hl(0, 'NvimTreeCursorLine', { fg = foreground, bg = white })
-
-vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = foreground, bg = white })
-vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = foreground, bg = white })
 -- vim.api.nvim_set_hl(0, 'TelescopeResultsFileIcon', { fg = foreground, bg = white })
 EOF

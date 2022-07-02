@@ -3,12 +3,12 @@ local function get_git_status()
     local signs = vim.b.gitsigns_status_dict or { head = '', added = 0, changed = 0, removed = 0 }
     local is_head_empty = signs.head ~= ''
     return is_head_empty and string.format(
-        '( %s)', signs.head
+        ' %s', signs.head
     ) or ''
 end
 
 local function filename()
-    return "%<%10.40F "
+    return "%<%10.50F "
 end
 
 local function modified_flag()
@@ -35,8 +35,9 @@ end
 
 function StatusLine()
     local statusline = ""
-    statusline = statusline .. filename()
     statusline = statusline .. get_git_status()
+    statusline = statusline .. "%="
+    statusline = statusline .. filename()
     statusline = statusline .. modified_flag()
     statusline = statusline .. "%="
     statusline = statusline .. percentage()
