@@ -40,6 +40,7 @@ abbr --add vim nvim
 abbr --add y yadm
 abbr --add yp yadm push
 abbr --add ys yadm status
+abbr --add ya yadm add
 abbr --add yc yadm commit -m \"Update config\"
 
 # git
