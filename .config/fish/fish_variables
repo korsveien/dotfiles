@@ -19,7 +19,7 @@ SETUVAR _fish_abbr_fv:nvim\x20/Users/peder/\x2econfig/fish/config\x2efish
 SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_ga:git\x20add\x20\x2dp
 SETUVAR _fish_abbr_gamend:git\x20commit\x20\x2d\x2damend\x20\x2d\x2dreuse\x2dmessage\x3dHEAD
-SETUVAR _fish_abbr_gb:git\x20branch
+SETUVAR _fish_abbr_gb:git\x20branch\x20\x2d\x2dall
 SETUVAR _fish_abbr_gbn:git\x20checkout\x20\x2db
 SETUVAR _fish_abbr_gc:git\x20commit\x20\x2dm
 SETUVAR _fish_abbr_gcb:git\x20checkout\x20\x2db

@@ -57,7 +57,7 @@ abbr --add gst git status
 abbr --add gd git diff --staged
 abbr --add gbn git checkout -b
 abbr --add gco git checkout
-abbr --add gb git branch
+abbr --add gb git branch --all
 
 
 # docker
