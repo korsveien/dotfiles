@@ -1,16 +1,18 @@
 [user]
-	name = pederpus
+    name = pederpus
     useConfigOnly = true
-	email = pederpus@icloud.com
+    email = pederpus@icloud.com
     signingKey = 4EC0514291BF2C20
 [includeIf "gitdir:~/Developer/digipost/"]
     path = ~/Developer/digipost/.gitconfig
+[includeIf "gitdir:/home/peder/"]
+    path = /home/peder/.gitconfig-linux
 [core]
     editor = nvim
     autocrlf = input
     sshCommand = ssh -i ~/.ssh/id_ed25519
     hooksPath = /Users/peder/.githooks
-	excludesFile = ~/.gitignore
+    excludesFile = ~/.gitignore
 [commit]
     gpgsign = true
 [color]

@@ -3,6 +3,9 @@ autocmd BufWritePre *.tf,*.go,*.vim,*.lua lua vim.lsp.buf.formatting()
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWinEnter * if &filetype == 'help' | wincmd L | endif
 
+set clipboard& clipboard^=unnamed,unnamedplus
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif"
+
 "------------------
 "     PLUGINS
 "------------------
@@ -16,6 +19,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/karb94/neoscroll.nvim'
     Plug 'https://github.com/jiangmiao/auto-pairs'
     Plug 'https://github.com/akinsho/toggleterm.nvim', {'tag' : 'v1.*'}
+    Plug 'https://github.com/ojroques/vim-oscyank'
 
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
@@ -47,6 +51,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/hrsh7th/cmp-cmdline'
     Plug 'https://github.com/hrsh7th/nvim-cmp'
     Plug 'https://github.com/hrsh7th/vim-vsnip'
+    Plug 'https://github.com/rafamadriz/friendly-snippets'
 
     " Language support
     Plug 'https://github.com/google/vim-jsonnet'
@@ -60,9 +65,7 @@ call plug#end()
 "   MAPPINGS
 "------------------
 let mapleader = " "
-
 nnoremap <leader><leader> <c-^>                              " Jump to previous buffer
-nnoremap <leader>w <cmd>noh<cr>                              " Clear search highlights
 nnoremap <leader>c :vsplit ~/.config/nvim/init.vim<cr>       " Edit config file
 
 " Ignore case on save/close commands
@@ -74,20 +77,18 @@ nnoremap :X :x
 nnoremap :q :q!
 
 nnoremap <c-p> :Telescope find_files<cr>
-nnoremap <c-f> :Telescope live_grep<cr>
+nnoremap <c-g> :Telescope live_grep<cr>
 nnoremap <c-e> :Telescope buffers<cr>
 nnoremap <c-t> :Telescope lsp_document_symbols<cr>
-
 nnoremap <c-h> :NvimTreeToggle<cr>
-nnoremap <c-l> :NvimTreeResize 50<cr>
 
 "------------------
 "   PLUGIN CONFIG
 "------------------
 
 " fugitive/rhubarb
-nnoremap <c-g> :GBrowse<CR>
-nnoremap <c-b> :Git blame<CR>
+nnoremap <leader>o :GBrowse<CR>
+nnoremap <leader>b :Git blame<CR>
 
 " vim-test
 nmap <silent> <leader>t :TestNearest<CR>
@@ -116,15 +117,18 @@ require'config/treesitter'
 require'config/colors'
 
 require'project_nvim'.setup {
-    patterns = { '.git' },
+    patterns = { '.git', 'Makefile'},
     exclude_dirs = { '.cargo/*', 'node_modules/*'},
 }
 
 require'toggleterm'.setup{
-    size = 100,
+    size = vim.api.nvim_win_get_width(0) * 0.4,
     shell = 'fish',
-    open_mapping = '<f12>',
+    open_mapping = '<c-l>',
     direction = 'vertical',
+    on_open = function(term)
+        term.dir = vim.fn.getcwd()
+    end,
 }
 
 EOF

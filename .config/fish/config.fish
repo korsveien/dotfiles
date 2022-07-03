@@ -153,7 +153,7 @@ end
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 [ -f ~/.local/share/autojump/autojump.fish ]; and source ~/.local/share/autojump/autojump.fish
 
-source ~/.env.fish
+[ -f ~/.env.fish ]; and source ~/.env.fish
 
 starship init fish | source
 

@@ -1,12 +1,12 @@
 local actions = require("telescope.actions")
 
-vim.api.nvim_set_keymap('n', '<f2>',
+vim.api.nvim_set_keymap('n', '<c-f>',
     '<cmd>lua require(\'telescope.builtin\').grep_string({search = vim.fn.expand("<cword>")})<cr>', {})
 
 require('telescope').load_extension('gh')
 require('telescope').load_extension('projects')
 
-require("telescope").setup({
+require 'telescope'.setup({
     defaults = {
         prompt_prefix = "  ",
         selection_caret = "  ",
@@ -30,6 +30,7 @@ require("telescope").setup({
             "plugged",
             "target",
             ".git",
+            "pkg",
         },
     },
     pickers = {
