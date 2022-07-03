@@ -22,4 +22,4 @@ vim.opt.updatetime    = 250
 vim.opt.cursorline    = true
 vim.opt.completeopt   = 'menuone,noinsert,noselect'
 vim.opt.wildmode      = 'list,longest'
-vim.opt.shell         = '/bin/bash'
+vim.opt.shell         = '/bin/bash' -- NvimTree slows down when using fish

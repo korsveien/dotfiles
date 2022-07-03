@@ -15,6 +15,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/karb94/neoscroll.nvim'
     Plug 'https://github.com/jiangmiao/auto-pairs'
+    Plug 'https://github.com/akinsho/toggleterm.nvim', {'tag' : 'v1.*'}
 
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
@@ -30,6 +31,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/tpope/vim-rhubarb'
     Plug 'https://github.com/tpope/vim-unimpaired'
+    Plug 'https://github.com/tpope/vim-surround'
 
     " Telescope
     Plug 'https://github.com/nvim-telescope/telescope.nvim'
@@ -117,4 +119,12 @@ require'project_nvim'.setup {
     patterns = { '.git' },
     exclude_dirs = { '.cargo/*', 'node_modules/*'},
 }
+
+require'toggleterm'.setup{
+    size = 100,
+    shell = 'fish',
+    open_mapping = '<f12>',
+    direction = 'vertical',
+}
+
 EOF
