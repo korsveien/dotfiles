@@ -115,20 +115,11 @@ require'config/statusline'
 require'config/telescope'
 require'config/treesitter'
 require'config/colors'
+require'config/terminal'
 
 require'project_nvim'.setup {
     patterns = { '.git', 'Makefile'},
     exclude_dirs = { '.cargo/*', 'node_modules/*'},
-}
-
-require'toggleterm'.setup{
-    size = vim.api.nvim_win_get_width(0) * 0.4,
-    shell = 'fish',
-    open_mapping = '<c-l>',
-    direction = 'vertical',
-    on_open = function(term)
-        term.dir = vim.fn.getcwd()
-    end,
 }
 
 EOF
