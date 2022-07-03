@@ -20,8 +20,9 @@ vim.api.nvim_set_hl(0, 'NvimTreeOpenedFolderName', { fg = foreground, bg = backg
 vim.api.nvim_set_hl(0, 'NvimTreeFileName', { fg = foreground, bg = background })
 vim.api.nvim_set_hl(0, 'NvimTreeFileIcon', { fg = foreground, bg = background })
 vim.api.nvim_set_hl(0, 'NvimTreeCursorLine', { fg = foreground, bg = white })
-vim.api.nvim_set_hl(0, 'NvimTreeGitNew', { fg = red, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeGitNew', { fg = blue, bg = background })
 vim.api.nvim_set_hl(0, 'NvimTreeGitStaged', { fg = green, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeGitDirty', { fg = red, bg = background })
 
 vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = foreground, bg = white })
 vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = foreground, bg = white })
