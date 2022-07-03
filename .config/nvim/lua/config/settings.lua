@@ -1,27 +1,25 @@
 vim.cmd [[
-set expandtab                " use spaces insted of tabs
-set hidden                   " enable background buffers
-set listchars=trail:-        " show some invisible characters
-set number                   " show line numbers
-set shiftround               " round indent to a multiple of shiftwidth
-set shiftwidth=4             " size of an indent
-set sidescrolloff=8          " columns of context
-set smartcase                " Do not ignore case with capitals
-set smartindent              " Insert indents automatically
-set splitbelow               " Put new windows below current
-set splitright               " Put new windows right of current
-set tabstop=2                " Number of spaces tabs count for
-set termguicolors            " True color support
-set nowrap                   " Disable line wrap
-set undofile                 " Persistent undo
-set hidden
-set ignorecase
-set signcolumn=yes
-set updatetime=250
-set cursorline
-set noswapfile
-set completeopt="menuone,noinsert,noselect"
-set wildmode="list,longest" 
-set clipboard^=unnamed,unnamedplus
-set shell=/bin/bash
+set clipboard ^= "unnamed, unnamedplus"
 ]]
+vim.opt.expandtab     = true -- use spaces insted of tabs
+vim.opt.hidden        = true -- enable background buffers
+vim.opt.listchars     = 'trail:-' -- show some invisible characters
+vim.opt.number        = true -- show line numbers
+vim.opt.shiftround    = true -- round indent to a multiple of shiftwidth
+vim.opt.shiftwidth    = 4 -- size of an indent
+vim.opt.sidescrolloff = 8 -- columns of context
+vim.opt.smartcase     = true -- do not ignore case with capitals
+vim.opt.smartindent   = true -- insert indents automatically
+vim.opt.splitright    = true -- put new windows right of current
+vim.opt.tabstop       = 2 -- number of spaces tabs count for
+vim.opt.termguicolors = true -- true color support
+vim.wo.wrap           = false -- disable line wrap
+vim.opt.undofile      = true -- persistent undo
+vim.opt.hidden        = true
+vim.opt.ignorecase    = true
+vim.opt.signcolumn    = 'yes'
+vim.opt.updatetime    = 250
+vim.opt.cursorline    = true
+vim.opt.completeopt   = 'menuone,noinsert,noselect'
+vim.opt.wildmode      = 'list,longest'
+vim.opt.shell         = '/bin/bash'

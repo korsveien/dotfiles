@@ -41,7 +41,7 @@ function StatusLine()
     statusline = statusline .. modified_flag()
     statusline = statusline .. "%="
     statusline = statusline .. percentage()
-    statusline = statusline .. " L:"
+    statusline = statusline .. " "
     statusline = statusline .. lines_in_buffer()
     statusline = statusline .. " "
     statusline = statusline .. get_active_lsp_clients()
