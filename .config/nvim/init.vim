@@ -7,9 +7,8 @@ autocmd BufWinEnter * if &filetype == 'help' | wincmd L | endif
 "     PLUGINS
 "------------------
 call plug#begin(stdpath('data') . '/plugged')
+
     Plug 'https://github.com/pederpus/gruvbox-material'
-    Plug 'https://github.com/kyazdani42/nvim-tree.lua'
-    Plug 'https://github.com/kyazdani42/nvim-web-devicons'
     Plug 'https://github.com/vim-test/vim-test'
     Plug 'https://github.com/tyru/open-browser.vim'
     Plug 'https://github.com/lewis6991/gitsigns.nvim'
@@ -17,7 +16,14 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/karb94/neoscroll.nvim'
     Plug 'https://github.com/jiangmiao/auto-pairs'
 
-    Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " Utility libraries
+    Plug 'https://github.com/nvim-lua/popup.nvim'
+    Plug 'https://github.com/nvim-lua/plenary.nvim'
+
+    " File explorer
+    Plug 'https://github.com/kyazdani42/nvim-tree.lua'
+    Plug 'https://github.com/kyazdani42/nvim-web-devicons'
+    Plug 'https://github.com/ahmedkhalf/project.nvim'
 
     " Tim Pope essentials
     Plug 'https://github.com/tpope/vim-commentary'
@@ -25,16 +31,13 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/tpope/vim-rhubarb'
     Plug 'https://github.com/tpope/vim-unimpaired'
 
-    " Utility libraries
-    Plug 'https://github.com/nvim-lua/popup.nvim'
-    Plug 'https://github.com/nvim-lua/plenary.nvim'
-
     " Telescope
     Plug 'https://github.com/nvim-telescope/telescope.nvim'
     Plug 'https://github.com/nvim-telescope/telescope-symbols.nvim'
     Plug 'https://github.com/nvim-telescope/telescope-github.nvim'
 
     " LSP and autocompletion
+    Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'https://github.com/neovim/nvim-lspconfig'
     Plug 'https://github.com/hrsh7th/cmp-nvim-lsp'
     Plug 'https://github.com/hrsh7th/cmp-buffer'
@@ -72,6 +75,7 @@ nnoremap <c-p> :Telescope find_files<cr>
 nnoremap <c-f> :Telescope live_grep<cr>
 nnoremap <c-e> :Telescope buffers<cr>
 nnoremap <c-t> :Telescope lsp_document_symbols<cr>
+
 nnoremap <c-h> :NvimTreeToggle<cr>
 nnoremap <c-l> :NvimTreeResize 50<cr>
 
@@ -103,9 +107,14 @@ lua <<EOF
 require'config/gitsigns'
 require'config/lsp'
 require'config/nvimtree'
-require'config/settings'
+require'config/options'
 require'config/statusline'
 require'config/telescope'
 require'config/treesitter'
 require'config/colors'
+
+require'project_nvim'.setup {
+    patterns = { '.git' },
+    exclude_dirs = { '.cargo/*', 'node_modules/*'},
+}
 EOF

@@ -5,6 +5,7 @@ require("nvim-tree").setup({
     },
     view = {
         adaptive_size = true,
+        signcolumn = 'no',
     },
     git = {
         enable = true,
@@ -14,6 +15,7 @@ require("nvim-tree").setup({
     renderer = {
         full_name = true,
         highlight_git = true,
+        root_folder_modifier = ':.',
         icons = {
             glyphs = {
                 git = {

@@ -1,6 +1,9 @@
 local actions = require("telescope.actions")
 
+vim.api.nvim_set_keymap('n', '<f2>', '<cmd>lua require(\'telescope.builtin\').grep_string({search = vim.fn.expand("<cword>")})<cr>', {})
+
 require('telescope').load_extension('gh')
+require('telescope').load_extension('projects')
 
 require("telescope").setup({
     defaults = {
