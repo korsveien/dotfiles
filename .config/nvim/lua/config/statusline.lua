@@ -16,7 +16,7 @@ local function modified_flag()
 end
 
 local function percentage()
-    return "%p%%"
+    return "%3p%%"
 end
 
 local function lines_in_buffer()
