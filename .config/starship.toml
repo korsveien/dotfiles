@@ -1,5 +1,5 @@
 format="""
-$directory$git_branch$git_status | $kubernetes\n\\$ 
+$directory $git_branch$git_status | $kubernetes\n\\$ 
 """
 
 add_newline=true
@@ -9,7 +9,7 @@ disabled=false
 format= "[ﴱ](blue) $cluster in $namespace"
 
 [directory]
-format="[$path]($style) "
+format="[$path]($style)"
 style="blue"
 truncate_to_repo=false
 truncation_length=3
@@ -19,7 +19,7 @@ fish_style_pwd_dir_length=1
 format='\([](magenta) $branch\)'
 
 [git_status]
-format="$modified "
+format="$modified"
 modified = "[*](red)"
 
 [time]
