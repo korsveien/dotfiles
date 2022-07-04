@@ -1,5 +1,5 @@
 format="""
-$directory(blue)$git_branch$git_status\\$ 
+$directory(blue)$git_branch$git_status\n\\$ 
 """
 
 right_format= """$kubernetes"""
