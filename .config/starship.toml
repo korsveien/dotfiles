@@ -1,25 +1,22 @@
 format="""
-$directory(blue)$git_branch$git_status\n\\$ 
+$directory$git_branch$git_status | $kubernetes\n\\$ 
 """
 
-right_format= """$kubernetes"""
-
-add_newline=false
+add_newline=true
 
 [kubernetes]
 disabled=false
-format= "\\[[$context](blue)\\] "
-style="blue bold"
+format= "[ﴱ](blue) $cluster in $namespace"
 
 [directory]
 format="[$path]($style) "
-style="green"
+style="blue"
 truncate_to_repo=false
-truncation_length=2
+truncation_length=3
 fish_style_pwd_dir_length=1
 
 [git_branch]
-format='\($branch\)'
+format='\([](magenta) $branch\)'
 
 [git_status]
 format="$modified "
