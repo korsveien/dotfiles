@@ -116,10 +116,5 @@ require'config/telescope'
 require'config/treesitter'
 require'config/colors'
 require'config/terminal'
-
-require'project_nvim'.setup {
-    patterns = { '.git', 'Makefile'},
-    exclude_dirs = { '.cargo/*', 'node_modules/*'},
-}
-
+require'config/projects'
 EOF
