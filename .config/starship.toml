@@ -1,12 +1,12 @@
 format="""
-$directory$git_branch$git_status | $kubernetes\n\\$ 
+$directory$git_branch$git_status$kubernetes\n\\$ 
 """
 
 add_newline=true
 
 [kubernetes]
 disabled=false
-format= "[ﴱ](blue) $cluster in $namespace"
+format= "| [ﴱ](blue) $cluster in $namespace"
 
 [directory]
 format="[$path]($style)"
