@@ -82,6 +82,8 @@ nnoremap <c-e> :Telescope buffers<cr>
 nnoremap <c-t> :Telescope lsp_document_symbols<cr>
 nnoremap <c-h> :NvimTreeToggle<cr>
 
+nnoremap <leader>v :nohl<cr>
+
 "------------------
 "   PLUGIN CONFIG
 "------------------

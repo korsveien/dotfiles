@@ -7,3 +7,7 @@ require 'toggleterm'.setup {
         term.cmd = 'cd ' .. vim.fn.getcwd()
     end,
 }
+
+vim.cmd [[
+    tnoremap <C-.> <C-\><C-n>
+]]
