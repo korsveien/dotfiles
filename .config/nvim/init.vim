@@ -1,5 +1,5 @@
 autocmd TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}
-autocmd BufWritePre *.tf,*.go,*.vim,*.lua lua vim.lsp.buf.formatting()
+autocmd BufWritePre *.tf,*.go,*.vim,*.lua,*.md lua vim.lsp.buf.formatting()
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWinEnter * if &filetype == 'help' | wincmd L | endif
 
@@ -58,6 +58,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/hashivim/vim-terraform'
     Plug 'https://github.com/rust-lang/rust.vim'
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
+    Plug 'https://github.com/moorereason/vim-markdownfmt'
 
 call plug#end()
 
@@ -87,6 +88,8 @@ nnoremap <leader>v :nohl<cr>
 "------------------
 "   PLUGIN CONFIG
 "------------------
+
+let g:markdownfmt_autosave=1
 
 " fugitive/rhubarb
 nnoremap <leader>o :GBrowse<CR>
@@ -120,3 +123,4 @@ require'config/colors'
 require'config/terminal'
 require'config/projects'
 EOF
+

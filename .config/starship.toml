@@ -6,7 +6,7 @@ add_newline=true
 
 [kubernetes]
 disabled=false
-format= "| [ﴱ](blue) $cluster in $namespace"
+format= " | [ﴱ](blue) $cluster:$namespace"
 
 [directory]
 format="[$path]($style)"

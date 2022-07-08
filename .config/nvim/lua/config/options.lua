@@ -1,5 +1,6 @@
 vim.cmd [[
 set clipboard ^="unnamed, unnamedplus"
+set noswapfile
 ]]
 vim.opt.expandtab     = true -- use spaces insted of tabs
 vim.opt.hidden        = true -- enable background buffers
