@@ -77,6 +77,8 @@ nnoremap :X :x
 " If i want to quit, I want to quit
 nnoremap :q :q!
 
+nnoremap <c-q> :q!<cr>
+
 nnoremap <c-p> :Telescope find_files<cr>
 nnoremap <c-g> :Telescope live_grep<cr>
 nnoremap <c-e> :Telescope buffers<cr>
@@ -88,8 +90,15 @@ nnoremap <leader>v :nohl<cr>
 "------------------
 "   PLUGIN CONFIG
 "------------------
+"
+
+let g:minimap_width = 10
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
 
 let g:markdownfmt_autosave=1
+
+nnoremap <c-f> <cmd>Telescope live_grep<cr>
 
 " fugitive/rhubarb
 nnoremap <leader>o :GBrowse<CR>

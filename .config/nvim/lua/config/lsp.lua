@@ -34,7 +34,7 @@ local on_attach = function(_, bufnr)
 end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = { 'rust_analyzer', 'terraformls', 'gopls', 'yamlls' }
+local servers = { 'rust_analyzer', 'terraformls', 'gopls', 'yamlls','sourcekit-lsp' }
 local lspconfig = require "lspconfig"
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
