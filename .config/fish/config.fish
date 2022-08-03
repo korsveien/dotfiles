@@ -93,6 +93,8 @@ contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path /usr/local/sbin
 fish_add_path $HOME/go/bin
+fish_add_path $HOME/.krew/bin
+
 
 ###### FUNCTIONS ####
 function fish_greeeting
