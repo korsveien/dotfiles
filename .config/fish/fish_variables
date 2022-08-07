@@ -3,19 +3,19 @@
 SETUVAR --export JAVA_HOME:/Users/peder/Library/Java/JavaVirtualMachines/adopt\x2dopenjdk\x2d14\x2e0\x2e2/Contents/Home
 SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_av:nvim\x20/Users/peder/\x2econfig/alacritty/alacritty\x2eyml
-SETUVAR _fish_abbr_azpass:set\x20\x2dx\x20PASSWORD_STORE_DIR\x20/Users/peder/Developer/digipost/azure\x2dpasswords
+SETUVAR _fish_abbr_azpass:set\x20\x2dx\x20PASSWORD_STORE_DIR\x20/Users/peder/code/digipost/azure\x2dpasswords
 SETUVAR _fish_abbr_buu:brew\x20update
 SETUVAR _fish_abbr_d:docker
 SETUVAR _fish_abbr_dgp_2D_proxy:dp\x20az\x2dproxy\x20background
 SETUVAR _fish_abbr_dgp_2D_stop_2D_proxy:dp\x20az\x2dproxy\x20kill\x2dall
 SETUVAR _fish_abbr_di:docker\x20images
-SETUVAR _fish_abbr_dppass:set\x20\x2dx\x20PASSWORD_STORE_DIR\x20/Users/peder/Developer/digipost/digipost\x2dpasswords
+SETUVAR _fish_abbr_dppass:set\x20\x2dx\x20PASSWORD_STORE_DIR\x20/Users/peder/code/digipost/digipost\x2dpasswords
 SETUVAR _fish_abbr_dps:docker\x20ps
 SETUVAR _fish_abbr_ea:envchain\x20aws
 SETUVAR _fish_abbr_eh:envchain\x20github
 SETUVAR _fish_abbr_en:envchain\x20nexus
-SETUVAR _fish_abbr_fs:source\x20/home/peder/\x2econfig/fish/config\x2efish
-SETUVAR _fish_abbr_fv:nvim\x20/home/peder/\x2econfig/fish/config\x2efish
+SETUVAR _fish_abbr_fs:source\x20/Users/peder/\x2econfig/fish/config\x2efish
+SETUVAR _fish_abbr_fv:nvim\x20/Users/peder/\x2econfig/fish/config\x2efish
 SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_ga:git\x20add\x20\x2dp
 SETUVAR _fish_abbr_gamend:git\x20commit\x20\x2d\x2damend\x20\x2d\x2dreuse\x2dmessage\x3dHEAD
@@ -40,14 +40,13 @@ SETUVAR _fish_abbr_jh:echo\x20/Users/peder/Library/Java/JavaVirtualMachines/adop
 SETUVAR _fish_abbr_jls:/usr/libexec/java_home\x20\x2dV
 SETUVAR _fish_abbr_k:kubectl
 SETUVAR _fish_abbr_l:ls\x20\x2dla
-SETUVAR _fish_abbr_ll:exa\x20\x2dla
 SETUVAR _fish_abbr_mci:mvn\x20clean\x20install
 SETUVAR _fish_abbr_mcid:mvn\x20clean\x20install\x20\x2dDskipTests
 SETUVAR _fish_abbr_mid:mvn\x20install\x20\x2dDskipTests
 SETUVAR _fish_abbr_mtree:mvn\x20dependency\x3atree
 SETUVAR _fish_abbr_ne:nix\x2denv
 SETUVAR _fish_abbr_nrb:npm\x20run\x20build
-SETUVAR _fish_abbr_opspass:set\x20\x2dx\x20PASSWORD_STORE_DIR\x20/Users/peder/Developer/digipost/passwords
+SETUVAR _fish_abbr_opspass:set\x20\x2dx\x20PASSWORD_STORE_DIR\x20/Users/peder/code/digipost/passwords
 SETUVAR _fish_abbr_p:python3
 SETUVAR _fish_abbr_puip:wget\x20\x2dO\x20\x2d\x20\x2dq\x20icanhazip\x2ecom
 SETUVAR _fish_abbr_sv:nvim\x20/Users/peder/\x2econfig/sway/config
@@ -94,4 +93,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/peder/go/bin\x1e/Users/peder/Developer/digipost/digipost/scripts\x1e/Users/peder/Developer/digipost/go/bin\x1e/usr/local/opt/postgresql\x4011/bin\x1e/Users/peder/go/bin\x1e/usr/local/lib/ruby/gems/3\x2e0\x2e0/bin\x1e/usr/local/opt/ruby/bin\x1e/Users/peder/\x2elocal/bin\x1e/usr/local/sbin\x1e/Users/peder/\x2ecargo/bin\x1e/Users/peder/\x2efig/bin\x1e/home/peder/\x2ecargo/bin
+SETUVAR fish_user_paths:/Users/peder/\x2ekrew/bin\x1e/Users/peder/code/digipost/digipost/scripts\x1e/Users/peder/code/digipost/go/bin\x1e/home/peder/go/bin\x1e/Users/peder/Developer/digipost/digipost/scripts\x1e/Users/peder/Developer/digipost/go/bin\x1e/usr/local/opt/postgresql\x4011/bin\x1e/Users/peder/go/bin\x1e/usr/local/lib/ruby/gems/3\x2e0\x2e0/bin\x1e/usr/local/opt/ruby/bin\x1e/Users/peder/\x2elocal/bin\x1e/usr/local/sbin\x1e/Users/peder/\x2ecargo/bin\x1e/Users/peder/\x2efig/bin\x1e/home/peder/\x2ecargo/bin
