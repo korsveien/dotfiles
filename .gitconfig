@@ -1,12 +1,10 @@
 [user]
-    name = pederpus
+    name = peder
     useConfigOnly = true
-    email = pederpus@icloud.com
-    signingKey = 4EC0514291BF2C20
+    email = peder@korsveien.me
+    signingKey = 851B03E2DC8FC409
 [includeIf "gitdir:~/Developer/digipost/"]
-    path = ~/Developer/digipost/.gitconfig
-[includeIf "gitdir:/home/peder/"]
-    path = /home/peder/.gitconfig-linux
+    path = ~/code/digipost/.gitconfig
 [core]
     editor = nvim
     autocrlf = input
