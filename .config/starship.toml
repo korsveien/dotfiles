@@ -36,4 +36,4 @@ style_root="red"
 [hostname]
 ssh_only=false
 format="[$hostname]($style)"
-style="yellow"kj
+style="yellow"
