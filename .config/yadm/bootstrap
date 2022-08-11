@@ -25,8 +25,6 @@ if [ "$system_type" = "Darwin" ]; then
 
 fi
 
-if 
-
 if command -v nvim >/dev/null 2>&1; then
   echo "Bootstraping Neovim"
   nvim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
