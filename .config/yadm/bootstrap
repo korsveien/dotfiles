@@ -20,7 +20,12 @@ if [ "$system_type" = "Darwin" ]; then
     defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/dotfiles/iterm2.plist"
   fi
 
+  echo "Setting defaults..."
+  source "$HOME/dotfiles/defaults.sh"
+
 fi
+
+if 
 
 if command -v nvim >/dev/null 2>&1; then
   echo "Bootstraping Neovim"
@@ -28,11 +33,8 @@ if command -v nvim >/dev/null 2>&1; then
 fi
 
 
-echo "Setting defaults..."
-source "$HOME/dotfiles/defaults.sh"
-
 echo "Updating the yadm repo origin URL"
-yadm remote set-url origin "git@github.com:pederpus/dotfiles.git"
+yadm remote set-url origin "git@github.com:korsveien/dotfiles.git"
 
 chsh -s fish
 echo "Switched to fish, restart terminal to use!"
