@@ -29,7 +29,7 @@ style="black dimmed"
 
 [username]
 format = "[$user]($style)"
-show_always=true
+show_always=false
 style_user="yellow"
 style_root="red"
 
