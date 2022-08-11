@@ -42,4 +42,3 @@ echo "Switched to fish, restart terminal to use!"
 echo "...Done!"
 exit 0
 
-
