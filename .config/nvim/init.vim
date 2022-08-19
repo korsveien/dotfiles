@@ -11,14 +11,14 @@ autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSC
 "------------------
 call plug#begin(stdpath('data') . '/plugged')
 
-    Plug 'https://github.com/pederpus/gruvbox-material'
     Plug 'https://github.com/vim-test/vim-test'
     Plug 'https://github.com/tyru/open-browser.vim'
-    Plug 'https://github.com/lewis6991/gitsigns.nvim'
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/karb94/neoscroll.nvim'
     Plug 'https://github.com/jiangmiao/auto-pairs'
-    Plug 'https://github.com/akinsho/toggleterm.nvim', {'tag' : 'v1.*'}
+    Plug 'https://github.com/lewis6991/gitsigns.nvim'
+
+    " For copy/paste on iPad/Blink
     Plug 'https://github.com/ojroques/vim-oscyank'
 
     " Utility libraries
@@ -60,6 +60,13 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
     Plug 'https://github.com/moorereason/vim-markdownfmt'
 
+    " Notes and documentation
+    Plug 'https://github.com/vimwiki/vimwiki'
+    Plug 'https://github.com/junegunn/goyo.vim'
+
+    " Colors
+    Plug 'https://github.com/pederpus/gruvbox-material'
+
 call plug#end()
 
 "------------------
@@ -87,18 +94,23 @@ nnoremap <c-h> :NvimTreeToggle<cr>
 
 nnoremap <leader>v :nohl<cr>
 
+nnoremap <leader>j :% !jq<cr> :set ft=json<cr>
+
 "------------------
 "   PLUGIN CONFIG
 "------------------
 "
-
-let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
-
 let g:markdownfmt_autosave=1
 
+nnoremap <c-t> <Plug>VimwikiToggleListItem
+vnoremap <c-t> <Plug>VimwikiToggleListItem
+
+
 nnoremap <c-f> <cmd>Telescope live_grep<cr>
+
+" " Surround with Quote
+nmap <Leader>' ysiw'
+nmap <Leader>" ysiw"
 
 " fugitive/rhubarb
 nnoremap <leader>o :GBrowse<CR>
@@ -129,7 +141,6 @@ require'config/statusline'
 require'config/telescope'
 require'config/treesitter'
 require'config/colors'
-require'config/terminal'
 require'config/projects'
 EOF
 

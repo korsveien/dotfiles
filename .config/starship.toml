@@ -1,8 +1,8 @@
 format="""
-$username@$hostname:$directory$git_branch$git_status$kubernetes\n\\$ 
+$username$hostname$directory$git_branch$git_status$kubernetes\n\\$ 
 """
 
-add_newline=true
+add_newline=false
 
 [kubernetes]
 disabled=false
@@ -28,12 +28,12 @@ format="[$time]($style)"
 style="black dimmed"
 
 [username]
-format = "[$user]($style)"
+format = "[$user@]($style)"
 show_always=false
 style_user="yellow"
 style_root="red"
 
 [hostname]
-ssh_only=false
-format="[$hostname]($style)"
+ssh_only=true
+format="[$hostname:]($style)"
 style="yellow"
