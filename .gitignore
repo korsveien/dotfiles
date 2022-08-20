@@ -1,0 +1,5 @@
+.DS_Store
+~/.config/gh/hosts
+.idea/
+node_modules/
+.config/fish/fish_variables
