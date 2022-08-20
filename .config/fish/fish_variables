@@ -14,8 +14,8 @@ SETUVAR _fish_abbr_dps:docker\x20ps
 SETUVAR _fish_abbr_ea:envchain\x20aws
 SETUVAR _fish_abbr_eh:envchain\x20github
 SETUVAR _fish_abbr_en:envchain\x20nexus
-SETUVAR _fish_abbr_fs:source\x20/Users/peder/\x2econfig/fish/config\x2efish
-SETUVAR _fish_abbr_fv:nvim\x20/Users/peder/\x2econfig/fish/config\x2efish
+SETUVAR _fish_abbr_fs:source\x20/home/peder/\x2econfig/fish/config\x2efish
+SETUVAR _fish_abbr_fv:nvim\x20/home/peder/\x2econfig/fish/config\x2efish
 SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_ga:git\x20add\x20\x2dp
 SETUVAR _fish_abbr_gamend:git\x20commit\x20\x2d\x2damend\x20\x2d\x2dreuse\x2dmessage\x3dHEAD
