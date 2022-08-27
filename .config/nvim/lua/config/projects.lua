@@ -1,5 +1,5 @@
 require 'project_nvim'.setup {
-    patterns = { '.git', 'Makefile', 'main.tf' },
+    patterns = { '.git', 'Makefile', 'main.tf', 'init.vim', 'init.lua' },
     exclude_dirs = { '.cargo/*', 'node_modules/*' },
 }
 

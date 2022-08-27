@@ -35,11 +35,13 @@ end
 
 function StatusLine()
     local statusline = ""
-    statusline = statusline .. get_git_status()
-    statusline = statusline .. "%="
     statusline = statusline .. filename()
     statusline = statusline .. modified_flag()
     statusline = statusline .. "%="
+    statusline = statusline .. " "
+    statusline = statusline .. "%="
+    statusline = statusline .. get_git_status()
+    statusline = statusline .. " "
     statusline = statusline .. percentage()
     statusline = statusline .. " "
     statusline = statusline .. lines_in_buffer()

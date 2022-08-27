@@ -1,5 +1,4 @@
 autocmd TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}
-autocmd BufWritePre *.tf,*.go,*.vim,*.lua,*.md lua vim.lsp.buf.formatting()
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWinEnter * if &filetype == 'help' | wincmd L | endif
 
@@ -11,6 +10,8 @@ autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSC
 "------------------
 call plug#begin(stdpath('data') . '/plugged')
 
+    Plug 'https://github.com/chentoast/marks.nvim'
+
     Plug 'https://github.com/vim-test/vim-test'
     Plug 'https://github.com/tyru/open-browser.vim'
     Plug 'https://github.com/terryma/vim-multiple-cursors'
@@ -18,17 +19,15 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/jiangmiao/auto-pairs'
     Plug 'https://github.com/lewis6991/gitsigns.nvim'
 
-    " For copy/paste on iPad/Blink
-    Plug 'https://github.com/ojroques/vim-oscyank'
-
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
     Plug 'https://github.com/nvim-lua/plenary.nvim'
-
+    
     " File explorer
     Plug 'https://github.com/kyazdani42/nvim-tree.lua'
     Plug 'https://github.com/kyazdani42/nvim-web-devicons'
     Plug 'https://github.com/ahmedkhalf/project.nvim'
+    Plug 'https://github.com/ruanyl/vim-gh-line'
 
     " Tim Pope essentials
     Plug 'https://github.com/tpope/vim-commentary'
@@ -40,7 +39,6 @@ call plug#begin(stdpath('data') . '/plugged')
     " Telescope
     Plug 'https://github.com/nvim-telescope/telescope.nvim'
     Plug 'https://github.com/nvim-telescope/telescope-symbols.nvim'
-    Plug 'https://github.com/nvim-telescope/telescope-github.nvim'
 
     " LSP and autocompletion
     Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -52,95 +50,99 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/hrsh7th/nvim-cmp'
     Plug 'https://github.com/hrsh7th/vim-vsnip'
     Plug 'https://github.com/rafamadriz/friendly-snippets'
+    Plug 'https://github.com/kosayoda/nvim-lightbulb'
 
     " Language support
     Plug 'https://github.com/google/vim-jsonnet'
     Plug 'https://github.com/hashivim/vim-terraform'
     Plug 'https://github.com/rust-lang/rust.vim'
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
-    Plug 'https://github.com/moorereason/vim-markdownfmt'
+    Plug 'https://github.com/LnL7/vim-nix'
+    Plug 'https://github.com/prettier/vim-prettier'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
     " Notes and documentation
     Plug 'https://github.com/vimwiki/vimwiki'
-    Plug 'https://github.com/junegunn/goyo.vim'
+    Plug 'https://github.com/jamessan/vim-gnupg'
+    Plug 'https://github.com/alok/notational-fzf-vim'
+    Plug 'https://github.com/junegunn/fzf'
 
     " Colors
-    Plug 'https://github.com/pederpus/gruvbox-material'
+    Plug 'https://github.com/korsveien/gruvbox-material'
+    Plug 'https://github.com/w0ng/vim-hybrid'
 
 call plug#end()
+
+"------------------
+"   PLUGIN CONFIG
+"------------------
+autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.md,*.yaml,*.html Prettier
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
+let g:nv_search_paths = ['~/vimwiki/tech/']
+
+" vim-test
+" nmap <silent> <leader>t :TestNearest<CR>
+" nmap <silent> <leader>T :TestFile<CR>
+" nmap <silent> <leader>l :TestLast<CR>
+let test#strategy = 'neovim'
+"let test#neovim#term_position = "vert"
+let test#neovim#start_normal = 1
+
 
 "------------------
 "   MAPPINGS
 "------------------
 let mapleader = " "
 nnoremap <leader><leader> <c-^>                              " Jump to previous buffer
-nnoremap <leader>c :vsplit ~/.config/nvim/init.vim<cr>       " Edit config file
-
-" Ignore case on save/close commands
-nnoremap :W :w
-nnoremap :Q :q
-nnoremap :X :x
-
-" If i want to quit, I want to quit
-nnoremap :q :q!
+nnoremap <leader>c :e ~/.config/nvim/init.vim<cr>            " Edit config file
+nnoremap <leader>w :nohl<cr>
+nnoremap <leader>j :% !jq<cr> :set ft=json<cr>
+nnoremap <leader>o :execute "topleft 10 split ~/vimwiki/todo/" . strftime('%Y-%W') . ".md"<cr>
+nnoremap <leader>s :execute "topleft 10 split ~/vimwiki/scratch/" . strftime('%Y-%m-%d') . ".md"<cr>
+nnoremap <leader>m <Plug>MarkdownPreview
+nnoremap <leader>y :Goyo<cr>
 
 nnoremap <c-q> :q!<cr>
-
 nnoremap <c-p> :Telescope find_files<cr>
 nnoremap <c-g> :Telescope live_grep<cr>
-nnoremap <c-e> :Telescope buffers<cr>
-nnoremap <c-t> :Telescope lsp_document_symbols<cr>
+nnoremap <c-b> :Telescope buffers<cr>
+nnoremap <c-`> :Telescope marks<cr>
 nnoremap <c-h> :NvimTreeToggle<cr>
-
-nnoremap <leader>v :nohl<cr>
-
-nnoremap <leader>j :% !jq<cr> :set ft=json<cr>
-
-"------------------
-"   PLUGIN CONFIG
-"------------------
-"
-let g:markdownfmt_autosave=1
-
-nnoremap <c-t> <Plug>VimwikiToggleListItem
-vnoremap <c-t> <Plug>VimwikiToggleListItem
-
-
+nnoremap <silent> <c-s> :NV<CR>
 nnoremap <c-f> <cmd>Telescope live_grep<cr>
+nnoremap <c-l> <Plug>VimwikiToggleListItem
+vnoremap <c-l> <Plug>VimwikiToggleListItem
+nnoremap <c-t> :VimwikiTable<cr>
+nnoremap <c-k> "_dd
+nnoremap <c-e> A
+nnoremap <c-a> I
+inoremap <c-e> <esc>A
+inoremap <c-a> <esc>I
 
-" " Surround with Quote
-nmap <Leader>' ysiw'
-nmap <Leader>" ysiw"
 
-" fugitive/rhubarb
-nnoremap <leader>o :GBrowse<CR>
-nnoremap <leader>b :Git blame<CR>
 
-" vim-test
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>l :TestLast<CR>
-
-let test#strategy = 'neovim'
-"let test#neovim#term_position = "vert"
-let test#neovim#start_normal = 1
-
-let g:rust_doc#downloaded_rust_doc_dir = '~/Documents/rust-docs'
-
-" Open Browser config
-let g:netrw_nogx = get(g:, 'netrw_nogx', 1)
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
 
+nmap :W :w
+nmap :Q :q
+nmap :X :x
+
 lua <<EOF
+
+require'config/colors'
 require'config/gitsigns'
 require'config/lsp'
+require'config/marks'
 require'config/nvimtree'
 require'config/options'
+require'config/projects'
 require'config/statusline'
 require'config/telescope'
 require'config/treesitter'
-require'config/colors'
-require'config/projects'
 EOF
 

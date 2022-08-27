@@ -1,9 +1,6 @@
 format="""
-$username$hostname$directory$git_branch$git_status$kubernetes\n\\$ 
+$username$hostname$directory$git_branch$git_status$kubernetes$azure$status$jobs$cmd_duration\n\\$ 
 """
-
-right_format="$cmd_duration"
-
 add_newline=false
 
 [kubernetes]
@@ -43,3 +40,13 @@ style="yellow"
 [cmd_duration]
 format="[$duration]($style)"
 style="bold red"
+
+[azure]
+disabled = false
+format = " | [$symbol($subscription)]($style) "
+symbol = "ﴃ "
+style = "blue bold"
+
+[jobs]
+style = "bold red"
+

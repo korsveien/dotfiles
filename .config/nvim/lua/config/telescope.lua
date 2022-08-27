@@ -5,7 +5,6 @@ local actions = require("telescope.actions")
 --
 -- vim.api.nvim_set_keymap('n', '<c-f>', '<cmd>Telescope live_grep<cr>')
 
-require('telescope').load_extension('gh')
 require('telescope').load_extension('projects')
 
 require 'telescope'.setup({
