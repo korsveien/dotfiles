@@ -15,14 +15,11 @@ require 'telescope'.setup({
         initial_mode = "insert",
         mappings = {
             i = {
+                ["<C-[>"] = actions.close,
                 ["<esc>"] = actions.close,
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
-            },
-            n = {
-                ["<C-j>"] = actions.move_selection_next,
-                ["<C-k>"] = actions.move_selection_previous,
-            },
+            }
         },
         sorting_strategy = "ascending",
         layout_strategy = "vertical",

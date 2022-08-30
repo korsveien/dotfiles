@@ -3,7 +3,6 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWinEnter * if &filetype == 'help' | wincmd L | endif
 
 set clipboard& clipboard^=unnamed,unnamedplus
-autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif"
 
 "------------------
 "     PLUGINS
@@ -24,7 +23,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/nvim-lua/plenary.nvim'
     
     " File explorer
-    Plug 'https://github.com/kyazdani42/nvim-tree.lua'
+    Plug 'https://github.com/kyazdani42/nvim-tree.lua', { 'on' : 'NvimTreeToggle'}
     Plug 'https://github.com/kyazdani42/nvim-web-devicons'
     Plug 'https://github.com/ahmedkhalf/project.nvim'
     Plug 'https://github.com/ruanyl/vim-gh-line'
@@ -63,13 +62,11 @@ call plug#begin(stdpath('data') . '/plugged')
 
     " Notes and documentation
     Plug 'https://github.com/vimwiki/vimwiki'
-    Plug 'https://github.com/jamessan/vim-gnupg'
     Plug 'https://github.com/alok/notational-fzf-vim'
     Plug 'https://github.com/junegunn/fzf'
 
     " Colors
     Plug 'https://github.com/korsveien/gruvbox-material'
-    Plug 'https://github.com/w0ng/vim-hybrid'
 
 call plug#end()
 
@@ -81,8 +78,8 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_global_ext = 0
-let g:nv_search_paths = ['~/vimwiki/tech/']
+let g:vimwiki_url_maxsave = 0
+let g:nv_search_paths = ['~/vimwiki/tech/', '~/vimwiki/digipost/']
 
 " vim-test
 " nmap <silent> <leader>t :TestNearest<CR>
@@ -118,10 +115,6 @@ nnoremap <c-l> <Plug>VimwikiToggleListItem
 vnoremap <c-l> <Plug>VimwikiToggleListItem
 nnoremap <c-t> :VimwikiTable<cr>
 nnoremap <c-k> "_dd
-nnoremap <c-e> A
-nnoremap <c-a> I
-inoremap <c-e> <esc>A
-inoremap <c-a> <esc>I
 
 
 

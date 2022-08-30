@@ -1,5 +1,8 @@
-fzf_key_bindings
-fish_default_key_bindings
+fish_vi_key_bindings
+
+bind -M insert \cj up-or-search
+bind -M insert \ck down-or-search
+bind -M insert \cf forward-char
 
 ###### Variables #####
 set -x _JAVA_AWT_WM_NONREPARENTING 1
@@ -88,6 +91,14 @@ abbr --add tk tmux kill-session -t
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish
 
+abbr --add o cat ~/vimwiki/todo/(date '+%Y-W%W').md
+abbr --add oo nvim ~/vimwiki/todo/(date '+%Y-W%W').md
+abbr --add s bat ~/vimwiki/scratch/(date '+%Y-%m-%d').md
+abbr --add ss nvim ~/vimwiki/scratch/(date '+%Y-%m-%d').md
+abbr --add sss subl ~/vimwiki/scratch/(date '+%Y-%m-%d').md
+abbr --add vv nvim ~/.config/nvim/init.vim
+abbr --ad ww nvim ~/vimwiki/index.md
+
 # path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
 fish_add_path $HOME/.local/bin
@@ -98,7 +109,7 @@ fish_add_path $HOME/.krew/bin
 
 ###### FUNCTIONS ####
 function fish_greeeting
-    echo The time is (set_color yellow; date +%T; set_color normal) and this machine is called $hostname
+    cat ~/vimwiki/todo/(date '+%Y-W%W').md
 end
 
 function jset
@@ -154,9 +165,8 @@ end
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 [ -f ~/.local/share/autojump/autojump.fish ]; and source ~/.local/share/autojump/autojump.fish
 
-[ -f ~/.digipost.fish ]; and source ~/.digipost.fish
+#[ -f ~/.digipost.fish ]; and source ~/.digipost.fish
 
 starship init fish | source
 
 set -x GPG_TTY (tty)
-

@@ -1,4 +1,4 @@
-vim.cmd [[ colorscheme gruvbox-material ]]
+vim.cmd [[ colorscheme gruvbox-material]]
 
 -- FIXME: must be after colorscheme
 local background = '#252525'
