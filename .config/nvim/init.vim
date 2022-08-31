@@ -64,6 +64,8 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/vimwiki/vimwiki'
     Plug 'https://github.com/alok/notational-fzf-vim'
     Plug 'https://github.com/junegunn/fzf'
+    Plug 'https://github.com/junegunn/goyo.vim'
+    Plug 'https://github.com/junegunn/limelight.vim'
 
     " Colors
     Plug 'https://github.com/korsveien/gruvbox-material'
@@ -75,7 +77,9 @@ call plug#end()
 "------------------
 autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.md,*.yaml,*.html Prettier
 autocmd! User GoyoEnter Limelight
+autocmd! User GoyoEnter set wrap
 autocmd! User GoyoLeave Limelight!
+autocmd! User GoyoLeave set nowrap 
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_url_maxsave = 0
@@ -98,7 +102,7 @@ nnoremap <leader><leader> <c-^>                              " Jump to previous 
 nnoremap <leader>c :e ~/.config/nvim/init.vim<cr>            " Edit config file
 nnoremap <leader>w :nohl<cr>
 nnoremap <leader>j :% !jq<cr> :set ft=json<cr>
-nnoremap <leader>o :execute "topleft 10 split ~/vimwiki/todo/" . strftime('%Y-%W') . ".md"<cr>
+nnoremap <leader>t :execute "topleft 10 split ~/vimwiki/todo/" . strftime('%Y-W%W') . ".md"<cr>
 nnoremap <leader>s :execute "topleft 10 split ~/vimwiki/scratch/" . strftime('%Y-%m-%d') . ".md"<cr>
 nnoremap <leader>m <Plug>MarkdownPreview
 nnoremap <leader>y :Goyo<cr>

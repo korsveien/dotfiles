@@ -29,7 +29,7 @@
 [pull]
     ff = only
 [github]
-    user = pederpus
+    user = korsveien
 [init]
     defaultBranch = main
 [pager]
@@ -46,8 +46,3 @@
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     file-decoration-style = none
-[filter "lfs"]
-    process = git-lfs filter-process
-    required = true
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f

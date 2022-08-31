@@ -97,7 +97,8 @@ abbr --add s bat ~/vimwiki/scratch/(date '+%Y-%m-%d').md
 abbr --add ss nvim ~/vimwiki/scratch/(date '+%Y-%m-%d').md
 abbr --add sss subl ~/vimwiki/scratch/(date '+%Y-%m-%d').md
 abbr --add vv nvim ~/.config/nvim/init.vim
-abbr --ad ww nvim ~/vimwiki/index.md
+abbr --add ww nvim ~/vimwiki/index.md
+abbr --add r ranger
 
 # path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
