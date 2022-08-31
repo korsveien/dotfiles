@@ -168,6 +168,7 @@ end
 
 #[ -f ~/.digipost.fish ]; and source ~/.digipost.fish
 
+set -x GPG_TTY (tty)
+
 starship init fish | source
 
-set -x GPG_TTY (tty)
