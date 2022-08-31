@@ -5,6 +5,7 @@ bind -M insert \ck down-or-search
 bind -M insert \cf forward-char
 
 ###### Variables #####
+
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set -x NVM_DIR $HOME/.nvm
 
@@ -109,10 +110,6 @@ fish_add_path $HOME/.krew/bin
 
 
 ###### FUNCTIONS ####
-function fish_greeeting
-    cat ~/vimwiki/todo/(date '+%Y-W%W').md
-end
-
 function jset
     set -Ux JAVA_HOME (/usr/libexec/java_home -v $argv[1])
     source ~/.config/fish/config.fish
