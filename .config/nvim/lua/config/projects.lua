@@ -1,6 +1,6 @@
 require 'project_nvim'.setup {
-    patterns = { '.git', 'Makefile', 'main.tf', 'init.vim', 'init.lua' },
+    patterns = { '.git', 'Makefile', 'init.vim', 'init.lua' },
     exclude_dirs = { '.cargo/*', 'node_modules/*' },
 }
 
-vim.api.nvim_set_keymap('n', '<c-m>', ':Telescope projects<cr>', { silent = true })
+vim.api.nvim_set_keymap('n', '<C-m>', ':Telescope projects<cr>', { silent = true })

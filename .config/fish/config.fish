@@ -100,6 +100,7 @@ abbr --add sss subl ~/vimwiki/scratch/(date '+%Y-%m-%d').md
 abbr --add vv nvim ~/.config/nvim/init.vim
 abbr --add ww nvim ~/vimwiki/index.md
 abbr --add r ranger
+abbr --add buu brew update && brew upgrade
 
 # path
 contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin

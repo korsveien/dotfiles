@@ -106,6 +106,7 @@ nnoremap <leader>t :execute "topleft 10 split ~/vimwiki/todo/" . strftime('%Y-W%
 nnoremap <leader>s :execute "topleft 10 split ~/vimwiki/scratch/" . strftime('%Y-%m-%d') . ".md"<cr>
 nnoremap <leader>m <Plug>MarkdownPreview
 nnoremap <leader>y :Goyo<cr>
+nnoremap <leader>ho :GBrowse<cr>
 
 nnoremap <c-q> :q!<cr>
 nnoremap <c-p> :Telescope find_files<cr>
