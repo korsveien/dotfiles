@@ -83,7 +83,7 @@ autocmd! User GoyoLeave set nowrap
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_url_maxsave = 0
-let g:nv_search_paths = ['~/vimwiki/tech/', '~/vimwiki/digipost/']
+let g:nv_search_paths = ['~/vimwiki/tech/', '~/vimwiki/digipost/', '~/code/digipost/docs']
 
 " vim-test
 " nmap <silent> <leader>t :TestNearest<CR>

@@ -4,50 +4,49 @@ bind -M insert \cj up-or-search
 bind -M insert \ck down-or-search
 bind -M insert \cf forward-char
 
-###### Variables #####
-
+####### Variables #####
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set -x NVM_DIR $HOME/.nvm
 
-#https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
+##https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_STATE_HOME $HOME/.local/state
 set -x XDG_CACHE_HOME $HOME/.cache
 
-# Terraform cache
-set -gx TF_PLUGIN_CACHE_DIR ~/.terraform.d/plugin-cache
+## Terraform cache
+set -x TF_PLUGIN_CACHE_DIR ~/.terraform.d/plugin-cache
 
-# Disable automatic homebrew update
+## Disable automatic homebrew update
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 
 bind \cj up-or-search
 bind \ck down-or-search
 
-###### ABBREVIATIONS #####
+####### ABBREVIATIONS #####
 abbr --add i idea
 abbr --add p python3
 abbr --add l ls -la
 abbr --add puip wget -O - -q icanhazip.com
 
-# kubectl
+## kubectl
 abbr --add k kubectl
 
-# npm
+## npm
 abbr --add nrb npm run build
 
-# vim
+## vim
 abbr --add v nvim
 abbr --add vim nvim
 
-# yadm
+## yadm
 abbr --add y yadm
 abbr --add yp yadm push
 abbr --add ys yadm status
 abbr --add ya yadm add
 abbr --add yc yadm commit -m \"Update config\"
 
-# git
+## git
 abbr --add g git
 abbr --add gpf git push -f
 abbr --add gl git log --all --decorate --oneline --graph
@@ -61,34 +60,28 @@ abbr --add gp git push
 abbr --add gst git status
 abbr --add gd git diff --staged
 abbr --add gbn git checkout -b
-abbr --add gco git checkout
 abbr --add gb git branch --all
 
 
-# docker
+## docker
 abbr --add d docker
 abbr --add di docker images
 abbr --add dps docker ps
 
-# maven
+## maven
 abbr --add mid mvn install -DskipTests
 abbr --add mci mvn clean install
 abbr --add mcid mvn clean install -DskipTests
 abbr --add mtree mvn dependency:tree
 
-# java
+## java
 abbr --add jls /usr/libexec/java_home -V
 abbr --add jh echo $JAVA_HOME
 
-# terraform
+## terraform
 abbr --add t terraform
 
-# tmux
-abbr --add tl tmux list-sessions
-abbr --add ta tmux attach-session -t
-abbr --add tk tmux kill-session -t
-
-# configs
+## configs
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish
 
@@ -100,17 +93,17 @@ abbr --add sss subl ~/vimwiki/scratch/(date '+%Y-%m-%d').md
 abbr --add vv nvim ~/.config/nvim/init.vim
 abbr --add ww nvim ~/vimwiki/index.md
 abbr --add r ranger
-abbr --add buu brew update && brew upgrade
+abbr --add buu brew update \&\& brew upgrade
 
-# path
-contains ~/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths ~/.cargo/bin
+## path
+fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path /usr/local/sbin
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/.krew/bin
 
 
-###### FUNCTIONS ####
+####### FUNCTIONS ####
 function jset
     set -Ux JAVA_HOME (/usr/libexec/java_home -v $argv[1])
     source ~/.config/fish/config.fish
@@ -150,23 +143,19 @@ function gcm
     git checkout main || git checkout master
 end
 
-function rente_studie
-    curl -s 'https://www.lanekassen.no/api/episerver/v2.0/content/7344' | jq .flytendeRente.value
-end
-
 function gpu
     git push --set-upstream-to origin (git rev-parse --abbrev-ref HEAD)
 end
 
+function gco
+    git branch --all | fzf | cut -d'/' -f3| xargs git checkout
+end
 
-#### THIRD PARTY UTILITIES ####
-[ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
+
+##### THIRD PARTY UTILITIES ####
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
-[ -f ~/.local/share/autojump/autojump.fish ]; and source ~/.local/share/autojump/autojump.fish
-
-#[ -f ~/.digipost.fish ]; and source ~/.digipost.fish
+[ -f ~/.digipost.fish ]; and source ~/.digipost.fish
 
 set -x GPG_TTY (tty)
 
 starship init fish | source
-

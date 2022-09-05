@@ -10,19 +10,19 @@ return {
 
     keys = {
         {
-            key = 'd',
+            key = 'Return',
             mods = 'CMD',
             action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }, 
         },
         {
-            key = 'd',
+            key = 'Return',
             mods = 'CMD|SHIFT',
             action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }, 
         },
-        { key = "[", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Left"}},
-        { key = "[", mods = "CMD|SHIFT", action=wezterm.action{ActivatePaneDirection="Down"}},
-        { key = "]", mods = "CMD|SHIFT", action=wezterm.action{ActivatePaneDirection="Up"}},
-        { key = "]", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Right"}},
+        { key = "h", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Left"}},
+        { key = "j", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Down"}},
+        { key = "k", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Up"}},
+        { key = "l", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Right"}},
     },
 
     send_composed_key_when_left_alt_is_pressed = true,
