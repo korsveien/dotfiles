@@ -25,7 +25,6 @@ call plug#begin(stdpath('data') . '/plugged')
     " File explorer
     Plug 'https://github.com/kyazdani42/nvim-tree.lua', { 'on' : 'NvimTreeToggle'}
     Plug 'https://github.com/kyazdani42/nvim-web-devicons'
-    Plug 'https://github.com/ahmedkhalf/project.nvim'
     Plug 'https://github.com/ruanyl/vim-gh-line'
 
     " Tim Pope essentials
@@ -83,7 +82,7 @@ autocmd! User GoyoLeave set nowrap
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_url_maxsave = 0
-let g:nv_search_paths = ['~/vimwiki/tech/', '~/vimwiki/digipost/', '~/code/digipost/docs']
+let g:nv_search_paths = ['~/vimwiki/tech/', '~/vimwiki/digipost/', '~/code/digipost/docs', '~/code/digipost/azure-migration']
 
 " vim-test
 " nmap <silent> <leader>t :TestNearest<CR>
@@ -108,7 +107,6 @@ nnoremap <leader>m <Plug>MarkdownPreview
 nnoremap <leader>y :Goyo<cr>
 nnoremap <leader>ho :GBrowse<cr>
 
-nnoremap <c-q> :q!<cr>
 nnoremap <c-p> :Telescope find_files<cr>
 nnoremap <c-g> :Telescope live_grep<cr>
 nnoremap <c-b> :Telescope buffers<cr>
@@ -127,7 +125,8 @@ nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
 
 nmap :W :w
-nmap :Q :q
+nmap :Q :q!
+nmap :q :q!
 nmap :X :x
 
 lua <<EOF
@@ -138,7 +137,6 @@ require'config/lsp'
 require'config/marks'
 require'config/nvimtree'
 require'config/options'
-require'config/projects'
 require'config/statusline'
 require'config/telescope'
 require'config/treesitter'

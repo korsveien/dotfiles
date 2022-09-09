@@ -26,3 +26,4 @@ vim.opt.wildmode      = 'list,longest'
 vim.opt.shell         = '/bin/bash' -- NvimTree slows down when using fish
 vim.opt.fcs           = 'eob: '
 vim.opt.textwidth     = 144
+vim.opt.mouse         = 'a'

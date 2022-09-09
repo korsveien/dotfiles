@@ -14,6 +14,8 @@ set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_STATE_HOME $HOME/.local/state
 set -x XDG_CACHE_HOME $HOME/.cache
 
+set -x EDITOR nvim
+
 ## Terraform cache
 set -x TF_PLUGIN_CACHE_DIR ~/.terraform.d/plugin-cache
 
@@ -94,6 +96,8 @@ abbr --add vv nvim ~/.config/nvim/init.vim
 abbr --add ww nvim ~/vimwiki/index.md
 abbr --add r ranger
 abbr --add buu brew update \&\& brew upgrade
+
+abbr --add h helm
 
 ## path
 fish_add_path $HOME/.cargo/bin

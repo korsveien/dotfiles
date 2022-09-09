@@ -16,7 +16,7 @@ return {
         },
         {
             key = 'Return',
-            mods = 'CMD|SHIFT',
+            mods = 'CMD|CTRL',
             action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }, 
         },
         { key = "h", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Left"}},
@@ -24,6 +24,10 @@ return {
         { key = "k", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Up"}},
         { key = "l", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Right"}},
     },
+
+    colors = {
+        cursor_fg = 'black',
+    };
 
     send_composed_key_when_left_alt_is_pressed = true,
     send_composed_key_when_right_alt_is_pressed = false,
