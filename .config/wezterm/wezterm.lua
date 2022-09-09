@@ -3,10 +3,13 @@ local wezterm = require 'wezterm'
 
 return {
     color_scheme = "Gruvbox dark, hard (base16)",
-    font_size = 17.0,
+    font_size = 16.0,
     use_fancy_tab_bar = true,
     hide_tab_bar_if_only_one_tab = true,
     pane_focus_follows_mouse = true,
+
+    initial_rows = 50,
+    initial_cols = 90,
 
     keys = {
         {

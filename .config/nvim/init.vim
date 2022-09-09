@@ -26,6 +26,9 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/kyazdani42/nvim-tree.lua', { 'on' : 'NvimTreeToggle'}
     Plug 'https://github.com/kyazdani42/nvim-web-devicons'
     Plug 'https://github.com/ruanyl/vim-gh-line'
+    Plug 'https://github.com/ahmedkhalf/project.nvim'
+
+    Plug 'https://github.com/akinsho/toggleterm.nvim'
 
     " Tim Pope essentials
     Plug 'https://github.com/tpope/vim-commentary'
@@ -140,5 +143,7 @@ require'config/options'
 require'config/statusline'
 require'config/telescope'
 require'config/treesitter'
+require'config/project'
+require'config/toggleterm'
 EOF
 

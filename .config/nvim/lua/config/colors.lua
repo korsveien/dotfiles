@@ -7,7 +7,6 @@ local foreground = '#ecdbb2'
 local black = '#353535'
 local blue = '#549699'
 local green = '#a8a521'
-local red = '#d73925'
 local white = '#b7a996'
 local yellow = '#dfa82a'
 
@@ -20,9 +19,9 @@ vim.api.nvim_set_hl(0, 'NvimTreeFileName', { fg = foreground, bg = background })
 vim.api.nvim_set_hl(0, 'NvimTreeFileIcon', { fg = foreground, bg = background })
 vim.api.nvim_set_hl(0, 'NvimTreeCursorLine', { fg = black, bg = white })
 
-vim.api.nvim_set_hl(0, 'NvimTreeGitNew', { fg = red, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeGitNew', { fg = yellow, bg = background })
 vim.api.nvim_set_hl(0, 'NvimTreeGitStaged', { fg = green, bg = background })
-vim.api.nvim_set_hl(0, 'NvimTreeGitDirty', { fg = yellow, bg = background })
+vim.api.nvim_set_hl(0, 'NvimTreeGitDirty', { fg = blue, bg = background })
 
 vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = black, bg = white })
 vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = black, bg = white })
