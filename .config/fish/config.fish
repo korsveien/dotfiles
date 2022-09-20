@@ -51,7 +51,7 @@ abbr --add yc yadm commit -m \"Update config\"
 ## git
 abbr --add g git
 abbr --add gpf git push -f
-abbr --add gl git log --all --decorate --oneline --graph
+abbr --add gl git log --all --decorate --graph
 abbr --add gc git commit -m
 abbr --add gs git status
 abbr --add ga git add -p
@@ -162,4 +162,5 @@ end
 
 set -x GPG_TTY (tty)
 
+helm completion fish | source
 starship init fish | source

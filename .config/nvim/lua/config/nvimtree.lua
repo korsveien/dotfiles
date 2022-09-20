@@ -8,6 +8,7 @@ require("nvim-tree").setup({
         update_root = false,
     },
     view = {
+        hide_root_folder = true,
         adaptive_size = true,
         signcolumn = 'no',
     },

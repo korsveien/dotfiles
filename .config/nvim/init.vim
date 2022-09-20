@@ -28,7 +28,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/ruanyl/vim-gh-line'
     Plug 'https://github.com/ahmedkhalf/project.nvim'
 
-    Plug 'https://github.com/akinsho/toggleterm.nvim'
+    Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
     " Tim Pope essentials
     Plug 'https://github.com/tpope/vim-commentary'
@@ -129,8 +129,8 @@ vmap gx <Plug>(openbrowser-open)
 
 nmap :W :w
 nmap :Q :q!
-nmap :q :q!
 nmap :X :x
+nmap :q :q!
 
 lua <<EOF
 
