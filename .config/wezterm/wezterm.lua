@@ -13,7 +13,7 @@ return {
 
     keys = {
         {
-            key = 'Return',
+            key = 'd',
             mods = 'CMD',
             action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }, 
         },
@@ -22,10 +22,10 @@ return {
             mods = 'CMD|CTRL',
             action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }, 
         },
-        { key = "h", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Left"}},
-        { key = "j", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Down"}},
-        { key = "k", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Up"}},
-        { key = "l", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Right"}},
+        { key = "[", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Left"}},
+        { key = "[", mods = "CMD|SHIFT", action=wezterm.action{ActivatePaneDirection="Down"}},
+        { key = "]", mods = "CMD|SHIFT", action=wezterm.action{ActivatePaneDirection="Up"}},
+        { key = "]", mods = "CMD", action=wezterm.action{ActivatePaneDirection="Right"}},
     },
 
     colors = {
