@@ -1,7 +1,6 @@
-fish_vi_key_bindings
-
 bind -M insert \cj up-or-search
 bind -M insert \ck down-or-search
+
 bind -M insert \cf forward-char
 
 ####### Variables #####
@@ -87,14 +86,8 @@ abbr --add t terraform
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish
 
-abbr --add o cat ~/vimwiki/todo/(date '+%Y-W%W').md
-abbr --add oo nvim ~/vimwiki/todo/(date '+%Y-W%W').md
-abbr --add s bat ~/vimwiki/scratch/(date '+%Y-%m-%d').md
-abbr --add ss nvim ~/vimwiki/scratch/(date '+%Y-%m-%d').md
-abbr --add sss subl ~/vimwiki/scratch/(date '+%Y-%m-%d').md
-abbr --add vv nvim ~/.config/nvim/init.vim
-abbr --add ww nvim ~/vimwiki/index.md
-abbr --add r ranger
+abbr --add o cat ~/obsidian/daily/(date '+%Y-%m-%d').md
+abbr --add oo nvim ~/obsidian/daily/(date '+%Y-%m-%d').md
 abbr --add buu brew update \&\& brew upgrade
 
 abbr --add h helm

@@ -28,8 +28,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/ruanyl/vim-gh-line'
     Plug 'https://github.com/ahmedkhalf/project.nvim'
 
-    Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
-
     " Tim Pope essentials
     Plug 'https://github.com/tpope/vim-commentary'
     Plug 'https://github.com/tpope/vim-fugitive'
@@ -58,9 +56,9 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/hashivim/vim-terraform'
     Plug 'https://github.com/rust-lang/rust.vim'
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
-    Plug 'https://github.com/LnL7/vim-nix'
     Plug 'https://github.com/prettier/vim-prettier'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+    Plug 'https://github.com/fatih/vim-go'
 
     " Notes and documentation
     Plug 'https://github.com/vimwiki/vimwiki'
@@ -111,26 +109,20 @@ nnoremap <leader>y :Goyo<cr>
 nnoremap <leader>ho :GBrowse<cr>
 
 nnoremap <c-p> :Telescope find_files<cr>
-nnoremap <c-g> :Telescope live_grep<cr>
 nnoremap <c-b> :Telescope buffers<cr>
-nnoremap <c-`> :Telescope marks<cr>
 nnoremap <c-h> :NvimTreeToggle<cr>
 nnoremap <silent> <c-s> :NV<CR>
-nnoremap <c-f> <cmd>Telescope live_grep<cr>
-nnoremap <c-l> <Plug>VimwikiToggleListItem
+nnoremap <c-f> :Telescope live_grep<cr>
+nnoremap <c-g> :Telescope grep_string<cr>
 vnoremap <c-l> <Plug>VimwikiToggleListItem
 nnoremap <c-t> :VimwikiTable<cr>
-nnoremap <c-k> "_dd
-
-
 
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
 
 nmap :W :w
-nmap :Q :q!
+nmap :Q :q
 nmap :X :x
-nmap :q :q!
 
 lua <<EOF
 
@@ -144,6 +136,5 @@ require'config/statusline'
 require'config/telescope'
 require'config/treesitter'
 require'config/project'
-require'config/toggleterm'
 EOF
 

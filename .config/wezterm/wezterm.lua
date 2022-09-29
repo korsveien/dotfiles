@@ -9,7 +9,7 @@ return {
     pane_focus_follows_mouse = true,
 
     initial_rows = 50,
-    initial_cols = 90,
+    initial_cols = 140,
 
     keys = {
         {
