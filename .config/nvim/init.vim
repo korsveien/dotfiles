@@ -18,6 +18,8 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/jiangmiao/auto-pairs'
     Plug 'https://github.com/lewis6991/gitsigns.nvim'
 
+    Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
     Plug 'https://github.com/nvim-lua/plenary.nvim'
@@ -57,7 +59,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/rust-lang/rust.vim'
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
     Plug 'https://github.com/prettier/vim-prettier'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
     Plug 'https://github.com/fatih/vim-go'
 
     " Notes and documentation
@@ -100,22 +101,26 @@ let test#neovim#start_normal = 1
 let mapleader = " "
 nnoremap <leader><leader> <c-^>                              " Jump to previous buffer
 nnoremap <leader>c :e ~/.config/nvim/init.vim<cr>            " Edit config file
+nnoremap <leader>s :source ~/.config/nvim/init.vim<cr>       " Edit config file
+
 nnoremap <leader>w :nohl<cr>
 nnoremap <leader>j :% !jq<cr> :set ft=json<cr>
-nnoremap <leader>t :execute "topleft 10 split ~/vimwiki/todo/" . strftime('%Y-W%W') . ".md"<cr>
-nnoremap <leader>s :execute "topleft 10 split ~/vimwiki/scratch/" . strftime('%Y-%m-%d') . ".md"<cr>
-nnoremap <leader>m <Plug>MarkdownPreview
 nnoremap <leader>y :Goyo<cr>
 nnoremap <leader>ho :GBrowse<cr>
 
+
 nnoremap <c-p> :Telescope find_files<cr>
-nnoremap <c-b> :Telescope buffers<cr>
-nnoremap <c-h> :NvimTreeToggle<cr>
-nnoremap <silent> <c-s> :NV<CR>
+nnoremap <m-p> :Telescope projects<cr>
+nnoremap <c-e> :Telescope buffers<cr>
 nnoremap <c-f> :Telescope live_grep<cr>
 nnoremap <c-g> :Telescope grep_string<cr>
-vnoremap <c-l> <Plug>VimwikiToggleListItem
-nnoremap <c-t> :VimwikiTable<cr>
+nnoremap <m-s> :Telescope git_status<cr>
+
+let g:AutoPairsShortcutToggle = '<m-s-p>'
+
+
+nnoremap <c-h> :NvimTreeToggle<cr>
+nnoremap <c-s> :NV<CR>
 
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
@@ -136,5 +141,6 @@ require'config/statusline'
 require'config/telescope'
 require'config/treesitter'
 require'config/project'
+require'config/toggleterm'
 EOF
 

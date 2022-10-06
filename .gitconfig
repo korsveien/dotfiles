@@ -1,10 +1,9 @@
 [user]
-    name = peder
+	name = peder
     useConfigOnly = true
-    email = peder@korsveien.me
-    signingKey = 851B03E2DC8FC409
-[includeIf "gitdir:~/code/digipost/"]
-    path = ~/code/digipost/.gitconfig
+	email = peder@korsveien.me
+[includeIf "gitdir:~/digipost/"]
+    path = ~/digipost/.gitconfig
 [core]
     editor = nvim
     autocrlf = input
@@ -48,3 +47,22 @@
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     file-decoration-style = none
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[diff]
+	tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+	trustExitCode = true
+[merge]
+	tool = Kaleidoscope
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool]
+	prompt = false

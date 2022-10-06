@@ -46,3 +46,5 @@ vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = black, bg = white })
 
 vim.api.nvim_set_hl(0, 'Search', { fg = black, bg = yellow })
 vim.api.nvim_set_hl(0, 'Visual', { fg = black, bg = blue })
+
+vim.api.nvim_set_hl(0, 'IncSearch', { fg = black, bg = blue })

@@ -3,6 +3,9 @@ bind -M insert \ck down-or-search
 
 bind -M insert \cf forward-char
 
+bind -M insert \ca beginning-of-line
+bind -M insert \ce end-of-line
+
 ####### Variables #####
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set -x NVM_DIR $HOME/.nvm
