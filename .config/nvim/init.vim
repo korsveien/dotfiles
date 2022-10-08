@@ -103,7 +103,6 @@ nnoremap <leader><leader> <c-^>                              " Jump to previous 
 nnoremap <leader>c :e ~/.config/nvim/init.vim<cr>            " Edit config file
 nnoremap <leader>s :source ~/.config/nvim/init.vim<cr>       " Edit config file
 
-nnoremap <leader>w :nohl<cr>
 nnoremap <leader>j :% !jq<cr> :set ft=json<cr>
 nnoremap <leader>y :Goyo<cr>
 nnoremap <leader>ho :GBrowse<cr>
@@ -115,6 +114,7 @@ nnoremap <c-e> :Telescope buffers<cr>
 nnoremap <c-f> :Telescope live_grep<cr>
 nnoremap <c-g> :Telescope grep_string<cr>
 nnoremap <m-s> :Telescope git_status<cr>
+nnoremap <c-l> :nohl<cr>
 
 let g:AutoPairsShortcutToggle = '<m-s-p>'
 
@@ -128,6 +128,8 @@ vmap gx <Plug>(openbrowser-open)
 nmap :W :w
 nmap :Q :q
 nmap :X :x
+
+nnoremap <c-q> :q!<cr>
 
 lua <<EOF
 
