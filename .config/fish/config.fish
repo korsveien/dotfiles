@@ -1,3 +1,8 @@
+# Only load in interactive shells (prevents slowness in nvim-tree)
+if not status is-interactive 
+    return
+end
+
 bind -M insert \cj up-or-search
 bind -M insert \ck down-or-search
 
@@ -35,6 +40,7 @@ abbr --add puip wget -O - -q icanhazip.com
 
 ## kubectl
 abbr --add k kubectl
+abbr --add kgp kubectl get pods
 
 ## npm
 abbr --add nrb npm run build
@@ -91,7 +97,9 @@ abbr --add fs source ~/.config/fish/config.fish
 
 abbr --add o cat ~/obsidian/daily/(date '+%Y-%m-%d').md
 abbr --add oo nvim ~/obsidian/daily/(date '+%Y-%m-%d').md
+
 abbr --add buu brew update \&\& brew upgrade
+abbr --add b brew
 
 abbr --add h helm
 
@@ -158,5 +166,33 @@ end
 
 set -x GPG_TTY (tty)
 
+
 helm completion fish | source
-starship init fish | source
+
+function fish_prompt -d "Write out the prompt"
+    set_color grey
+    printf "%s ~> " (date +"%H:%M:%S")
+    set_color normal
+end
+
+function fish_right_prompt -d "Write out the right prompt"
+  set -l exit_code $status
+
+  # Print exit code for failed commands.
+  if test $exit_code -ne 0
+    set_color red
+    echo -n $exit_code
+    set_color normal
+  end
+
+end
+
+#### iTerm 2 integration
+test -n "$TERM_PROGRAM"
+and test $TERM_PROGRAM = iTerm.app
+and test -e {$HOME}/.iterm2_shell_integration.fish
+and source {$HOME}/.iterm2_shell_integration.fish
+
+function iterm2_print_user_vars
+  iterm2_set_user_var kubecontext (kubectl config current-context):(kubectl config view --minify --output 'jsonpath={..namespace}')
+end

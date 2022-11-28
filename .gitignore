@@ -1,5 +1,6 @@
 .DS_Store
 ~/.config/gh/hosts
+~/.config/raycast
 .idea/
 node_modules/
 .config/fish/fish_variables

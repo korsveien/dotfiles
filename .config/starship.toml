@@ -1,5 +1,5 @@
 format="""
-$username$hostname$directory$git_branch$kubernetes$azure$status$jobs$cmd_duration\n\\$ 
+$hostname$kubernetes$azure$status$jobs$cmd_duration\n\\$ 
 """
 add_newline=false
 #command_timeout=10

@@ -9,13 +9,11 @@ set clipboard& clipboard^=unnamed,unnamedplus
 "------------------
 call plug#begin(stdpath('data') . '/plugged')
 
-    Plug 'https://github.com/chentoast/marks.nvim'
 
     Plug 'https://github.com/vim-test/vim-test'
     Plug 'https://github.com/tyru/open-browser.vim'
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/karb94/neoscroll.nvim'
-    Plug 'https://github.com/jiangmiao/auto-pairs'
     Plug 'https://github.com/lewis6991/gitsigns.nvim'
 
     Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
@@ -23,6 +21,7 @@ call plug#begin(stdpath('data') . '/plugged')
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
     Plug 'https://github.com/nvim-lua/plenary.nvim'
+    Plug 'https://github.com/junegunn/fzf'
     
     " File explorer
     Plug 'https://github.com/kyazdani42/nvim-tree.lua', { 'on' : 'NvimTreeToggle'}
@@ -40,18 +39,20 @@ call plug#begin(stdpath('data') . '/plugged')
     " Telescope
     Plug 'https://github.com/nvim-telescope/telescope.nvim'
     Plug 'https://github.com/nvim-telescope/telescope-symbols.nvim'
+    Plug 'https://github.com/axkirillov/easypick.nvim'
 
     " LSP and autocompletion
-    Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'https://github.com/neovim/nvim-lspconfig'
-    Plug 'https://github.com/hrsh7th/cmp-nvim-lsp'
-    Plug 'https://github.com/hrsh7th/cmp-buffer'
-    Plug 'https://github.com/hrsh7th/cmp-path'
-    Plug 'https://github.com/hrsh7th/cmp-cmdline'
-    Plug 'https://github.com/hrsh7th/nvim-cmp'
-    Plug 'https://github.com/hrsh7th/vim-vsnip'
-    Plug 'https://github.com/rafamadriz/friendly-snippets'
-    Plug 'https://github.com/kosayoda/nvim-lightbulb'
+    " Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " Plug 'https://github.com/neovim/nvim-lspconfig'
+    " Plug 'https://github.com/hrsh7th/cmp-nvim-lsp'
+    " Plug 'https://github.com/hrsh7th/cmp-buffer'
+    " Plug 'https://github.com/hrsh7th/cmp-path'
+    " Plug 'https://github.com/hrsh7th/cmp-cmdline'
+    " Plug 'https://github.com/hrsh7th/nvim-cmp'
+    " Plug 'https://github.com/hrsh7th/vim-vsnip'
+    " Plug 'https://github.com/rafamadriz/friendly-snippets'
+    " Plug 'https://github.com/kosayoda/nvim-lightbulb'
+    " Plug 'https://github.com/antoinemadec/FixCursorHold.nvim'
 
     " Language support
     Plug 'https://github.com/google/vim-jsonnet'
@@ -61,15 +62,10 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/prettier/vim-prettier'
     Plug 'https://github.com/fatih/vim-go'
 
-    " Notes and documentation
-    Plug 'https://github.com/vimwiki/vimwiki'
-    Plug 'https://github.com/alok/notational-fzf-vim'
-    Plug 'https://github.com/junegunn/fzf'
-    Plug 'https://github.com/junegunn/goyo.vim'
-    Plug 'https://github.com/junegunn/limelight.vim'
-
-    " Colors
+    " Colors and GUI
+    Plug 'https://github.com/wfxr/minimap.vim'
     Plug 'https://github.com/korsveien/gruvbox-material'
+    Plug 'https://github.com/chentoast/marks.nvim'
 
 call plug#end()
 
@@ -77,14 +73,11 @@ call plug#end()
 "   PLUGIN CONFIG
 "------------------
 autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.md,*.yaml,*.html Prettier
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoEnter set wrap
-autocmd! User GoyoLeave Limelight!
-autocmd! User GoyoLeave set nowrap 
+
+
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_url_maxsave = 0
-let g:nv_search_paths = ['~/vimwiki/tech/', '~/vimwiki/digipost/', '~/code/digipost/docs', '~/code/digipost/azure-migration']
 
 " vim-test
 " nmap <silent> <leader>t :TestNearest<CR>
@@ -94,6 +87,14 @@ let test#strategy = 'neovim'
 "let test#neovim#term_position = "vert"
 let test#neovim#start_normal = 1
 
+let g:terraform_fmt_on_save = 1
+
+let g:minimap_width = 10
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
+
+" Hide statusline in NvimTree
+au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree_1" | set laststatus=0 | else | set laststatus=2 | endif
 
 "------------------
 "   MAPPINGS
@@ -104,7 +105,6 @@ nnoremap <leader>c :e ~/.config/nvim/init.vim<cr>            " Edit config file
 nnoremap <leader>s :source ~/.config/nvim/init.vim<cr>       " Edit config file
 
 nnoremap <leader>j :% !jq<cr> :set ft=json<cr>
-nnoremap <leader>y :Goyo<cr>
 nnoremap <leader>ho :GBrowse<cr>
 
 
@@ -115,9 +115,6 @@ nnoremap <c-f> :Telescope live_grep<cr>
 nnoremap <c-g> :Telescope grep_string<cr>
 nnoremap <m-s> :Telescope git_status<cr>
 nnoremap <c-l> :nohl<cr>
-
-let g:AutoPairsShortcutToggle = '<m-s-p>'
-
 
 nnoremap <c-h> :NvimTreeToggle<cr>
 nnoremap <c-s> :NV<CR>
@@ -135,14 +132,13 @@ lua <<EOF
 
 require'config/colors'
 require'config/gitsigns'
-require'config/lsp'
+--require'config/lsp'
 require'config/marks'
 require'config/nvimtree'
 require'config/options'
 require'config/statusline'
 require'config/telescope'
-require'config/treesitter'
+--require'config/treesitter'
 require'config/project'
-require'config/toggleterm'
 EOF
 
