@@ -187,6 +187,10 @@ function fish_right_prompt -d "Write out the right prompt"
 
 end
 
+# Remove mode prompt
+function fish_mode_prompt
+end
+
 #### iTerm 2 integration
 test -n "$TERM_PROGRAM"
 and test $TERM_PROGRAM = iTerm.app
@@ -196,3 +200,4 @@ and source {$HOME}/.iterm2_shell_integration.fish
 function iterm2_print_user_vars
   iterm2_set_user_var kubecontext (kubectl config current-context):(kubectl config view --minify --output 'jsonpath={..namespace}')
 end
+
