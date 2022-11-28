@@ -132,13 +132,11 @@ lua <<EOF
 
 require'config/colors'
 require'config/gitsigns'
---require'config/lsp'
 require'config/marks'
 require'config/nvimtree'
 require'config/options'
 require'config/statusline'
 require'config/telescope'
---require'config/treesitter'
 require'config/project'
 EOF
 
