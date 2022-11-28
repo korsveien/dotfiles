@@ -170,6 +170,11 @@ set -x GPG_TTY (tty)
 helm completion fish | source
 
 function fish_prompt -d "Write out the prompt"
+    if test $hostname != 'bekk-mac-2459'
+        set_color yellow
+        echo -n "$USER@$hostname "
+        set color normal
+    end
     set_color grey
     printf "%s ~> " (date +"%H:%M:%S")
     set_color normal
