@@ -1,7 +1,8 @@
 [user]
-	name = peder
+    name = peder
     useConfigOnly = true
-	email = peder@korsveien.me
+    email = peder@korsveien.me
+    signingkey = 851B03E2DC8FC409
 [includeIf "gitdir:~/digipost/"]
     path = ~/digipost/.gitconfig
 [core]
