@@ -41,19 +41,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/nvim-telescope/telescope-symbols.nvim'
     Plug 'https://github.com/axkirillov/easypick.nvim'
 
-    " LSP and autocompletion
-    " Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    " Plug 'https://github.com/neovim/nvim-lspconfig'
-    " Plug 'https://github.com/hrsh7th/cmp-nvim-lsp'
-    " Plug 'https://github.com/hrsh7th/cmp-buffer'
-    " Plug 'https://github.com/hrsh7th/cmp-path'
-    " Plug 'https://github.com/hrsh7th/cmp-cmdline'
-    " Plug 'https://github.com/hrsh7th/nvim-cmp'
-    " Plug 'https://github.com/hrsh7th/vim-vsnip'
-    " Plug 'https://github.com/rafamadriz/friendly-snippets'
-    " Plug 'https://github.com/kosayoda/nvim-lightbulb'
-    " Plug 'https://github.com/antoinemadec/FixCursorHold.nvim'
-
     " Language support
     Plug 'https://github.com/google/vim-jsonnet'
     Plug 'https://github.com/hashivim/vim-terraform'
@@ -63,7 +50,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/fatih/vim-go'
 
     " Colors and GUI
-    Plug 'https://github.com/wfxr/minimap.vim'
+    "Plug 'https://github.com/wfxr/minimap.vim'
     Plug 'https://github.com/korsveien/gruvbox-material'
     Plug 'https://github.com/chentoast/marks.nvim'
 

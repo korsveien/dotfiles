@@ -5,11 +5,14 @@ end
 
 bind -M insert \cj up-or-search
 bind -M insert \ck down-or-search
-
 bind -M insert \cf forward-char
-
 bind -M insert \ca beginning-of-line
 bind -M insert \ce end-of-line
+bind -M insert \cx edit_command_buffer
+bind -M normal \cx edit_command_buffer
+bind \cj up-or-search
+bind \ck down-or-search
+
 
 ####### Variables #####
 set -x _JAVA_AWT_WM_NONREPARENTING 1
@@ -28,9 +31,6 @@ set -x TF_PLUGIN_CACHE_DIR ~/.terraform.d/plugin-cache
 
 ## Disable automatic homebrew update
 set -x HOMEBREW_NO_AUTO_UPDATE 1
-
-bind \cj up-or-search
-bind \ck down-or-search
 
 ####### ABBREVIATIONS #####
 abbr --add i idea
@@ -204,5 +204,6 @@ and source {$HOME}/.iterm2_shell_integration.fish
 
 function iterm2_print_user_vars
   iterm2_set_user_var kubecontext (kubectl config current-context):(kubectl config view --minify --output 'jsonpath={..namespace}')
+  #iterm2_set_user_var azurecontext (az account show | jq '.name')
 end
 
