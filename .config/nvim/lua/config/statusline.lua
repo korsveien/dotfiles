@@ -23,6 +23,10 @@ local function lines_in_buffer()
     return "%L"
 end
 
+local function columns_in_buffer()
+    return "%c"
+end
+
 local function get_active_lsp_clients()
     local clients = vim.lsp.get_active_clients()
     for _, client in ipairs(clients) do
@@ -45,7 +49,8 @@ function StatusLine()
     statusline = statusline .. percentage()
     statusline = statusline .. " "
     statusline = statusline .. lines_in_buffer()
-    statusline = statusline .. " "
+    statusline = statusline .. ":"
+    statusline = statusline .. columns_in_buffer()
     statusline = statusline .. get_active_lsp_clients()
     statusline = statusline .. " "
 
