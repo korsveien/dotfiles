@@ -1,4 +1,3 @@
-autocmd TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=700}
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWinEnter * if &filetype == 'help' | wincmd L | endif
 
@@ -10,13 +9,10 @@ set clipboard& clipboard^=unnamed,unnamedplus
 call plug#begin(stdpath('data') . '/plugged')
 
 
-    Plug 'https://github.com/vim-test/vim-test'
     Plug 'https://github.com/tyru/open-browser.vim'
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/karb94/neoscroll.nvim'
     Plug 'https://github.com/lewis6991/gitsigns.nvim'
-
-    Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
@@ -27,7 +23,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/kyazdani42/nvim-tree.lua', { 'on' : 'NvimTreeToggle'}
     Plug 'https://github.com/kyazdani42/nvim-web-devicons'
     Plug 'https://github.com/ruanyl/vim-gh-line'
-    Plug 'https://github.com/ahmedkhalf/project.nvim'
 
     " Tim Pope essentials
     Plug 'https://github.com/tpope/vim-commentary'
@@ -39,7 +34,6 @@ call plug#begin(stdpath('data') . '/plugged')
     " Telescope
     Plug 'https://github.com/nvim-telescope/telescope.nvim'
     Plug 'https://github.com/nvim-telescope/telescope-symbols.nvim'
-    Plug 'https://github.com/axkirillov/easypick.nvim'
 
     " Language support
     Plug 'https://github.com/google/vim-jsonnet'
@@ -52,7 +46,6 @@ call plug#begin(stdpath('data') . '/plugged')
     " Colors and GUI
     "Plug 'https://github.com/wfxr/minimap.vim'
     Plug 'https://github.com/korsveien/gruvbox-material'
-    Plug 'https://github.com/chentoast/marks.nvim'
 
 call plug#end()
 
@@ -61,27 +54,9 @@ call plug#end()
 "------------------
 autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.md,*.yaml,*.html Prettier
 
-
-
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_url_maxsave = 0
-
-" vim-test
-" nmap <silent> <leader>t :TestNearest<CR>
-" nmap <silent> <leader>T :TestFile<CR>
-" nmap <silent> <leader>l :TestLast<CR>
-let test#strategy = 'neovim'
-"let test#neovim#term_position = "vert"
-let test#neovim#start_normal = 1
-
-let g:terraform_fmt_on_save = 1
-
 let g:minimap_width = 10
 let g:minimap_auto_start = 1
 let g:minimap_auto_start_win_enter = 1
-
-" Hide statusline in NvimTree
-au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree_1" | set laststatus=0 | else | set laststatus=2 | endif
 
 "------------------
 "   MAPPINGS
@@ -99,12 +74,10 @@ nnoremap <c-p> :Telescope find_files<cr>
 nnoremap <m-p> :Telescope projects<cr>
 nnoremap <c-e> :Telescope buffers<cr>
 nnoremap <c-f> :Telescope live_grep<cr>
-nnoremap <c-g> :Telescope grep_string<cr>
-nnoremap <m-s> :Telescope git_status<cr>
+nnoremap <c-s-f> :Telescope grep_string<cr>
 nnoremap <c-l> :nohl<cr>
 
 nnoremap <c-h> :NvimTreeToggle<cr>
-nnoremap <c-s> :NV<CR>
 
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
@@ -119,11 +92,9 @@ lua <<EOF
 
 require'config/colors'
 require'config/gitsigns'
-require'config/marks'
 require'config/nvimtree'
 require'config/options'
 require'config/statusline'
 require'config/telescope'
-require'config/project'
 EOF
 

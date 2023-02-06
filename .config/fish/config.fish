@@ -77,6 +77,8 @@ abbr --add gb git branch --all
 abbr --add d docker
 abbr --add di docker images
 abbr --add dps docker ps
+abbr --add dcu docker-compose up
+abbr --add dcd docker-compose down
 
 ## maven
 abbr --add mid mvn install -DskipTests
@@ -102,6 +104,8 @@ abbr --add buu brew update \&\& brew upgrade
 abbr --add b brew
 
 abbr --add h helm
+
+alias python python3
 
 ## path
 fish_add_path $HOME/.cargo/bin
@@ -165,7 +169,6 @@ end
 [ -f ~/.digipost.fish ]; and source ~/.digipost.fish
 
 set -x GPG_TTY (tty)
-
 
 helm completion fish | source
 
