@@ -19,22 +19,12 @@ local function percentage()
     return "%3p%%"
 end
 
-local function lines_in_buffer()
-    return "%L"
+local function current_line()
+    return "%l"
 end
 
-local function columns_in_buffer()
+local function current_column()
     return "%c"
-end
-
-local function get_active_lsp_clients()
-    local clients = vim.lsp.get_active_clients()
-    for _, client in ipairs(clients) do
-        if client ~= nil then
-            return '[' .. client.name .. ']'
-        end
-    end
-    return ''
 end
 
 function StatusLine()
@@ -44,14 +34,13 @@ function StatusLine()
     statusline = statusline .. "%="
     statusline = statusline .. " "
     statusline = statusline .. "%="
-    statusline = statusline .. get_git_status()
+    statusline = statusline .. current_line()
+    statusline = statusline .. ":"
+    statusline = statusline .. current_column()
     statusline = statusline .. " "
     statusline = statusline .. percentage()
     statusline = statusline .. " "
-    statusline = statusline .. lines_in_buffer()
-    statusline = statusline .. ":"
-    statusline = statusline .. columns_in_buffer()
-    statusline = statusline .. get_active_lsp_clients()
+    statusline = statusline .. get_git_status()
     statusline = statusline .. " "
 
     return statusline

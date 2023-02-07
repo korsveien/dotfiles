@@ -44,7 +44,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/fatih/vim-go'
 
     " Colors and GUI
-    "Plug 'https://github.com/wfxr/minimap.vim'
     Plug 'https://github.com/korsveien/gruvbox-material'
 
 call plug#end()
