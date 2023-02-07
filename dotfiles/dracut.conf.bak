@@ -1,0 +1,3 @@
+compress="lz4"
+add_dracutmodules+=" tpm2-tss resume debug "
+kernel_cmdline="rd.timeout=30 rd.luks=1 rd.lvm=0 rd.md=0 rd.luks.uuid=0aff917c-b189-4a43-a562-f38047608f3a root=UUID=0aff917c-b189-4a43-a562-f38047608f3a rootfstype=ext4"
