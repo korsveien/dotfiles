@@ -51,7 +51,7 @@ call plug#end()
 "------------------
 "   PLUGIN CONFIG
 "------------------
-autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.md,*.yaml,*.html Prettier
+autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.md,*.yaml,*.html,*.toml Prettier
 
 let g:minimap_width = 10
 let g:minimap_auto_start = 1

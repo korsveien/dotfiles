@@ -3,6 +3,12 @@ if not status is-interactive
     return
 end
 
+fish_vi_key_bindings
+set fish_cursor_default block
+set fish_cursor_insert underscore
+set fish_cursor_replace_one underscore
+set fish_cursor_visual block
+
 bind -M insert \cj up-or-search
 bind -M insert \ck down-or-search
 bind -M insert \cf forward-char
@@ -23,6 +29,8 @@ set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_STATE_HOME $HOME/.local/state
 set -x XDG_CACHE_HOME $HOME/.cache
+
+set SSH_AUTH_SOCK $HOME/.1password/agent.sock
 
 set -x EDITOR nvim
 
@@ -48,6 +56,12 @@ abbr --add nrb npm run build
 ## vim
 abbr --add v nvim
 abbr --add vim nvim
+
+abbr --add sp sudo pacman
+abbr --add ss sudo systemctl
+
+abbr --add ta tmux a
+abbr --add t tmux
 
 ## yadm
 abbr --add y yadm
@@ -90,15 +104,9 @@ abbr --add mtree mvn dependency:tree
 abbr --add jls /usr/libexec/java_home -V
 abbr --add jh echo $JAVA_HOME
 
-## terraform
-abbr --add t terraform
-
 ## configs
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish
-
-abbr --add o cat ~/obsidian/daily/(date '+%Y-%m-%d').md
-abbr --add oo nvim ~/obsidian/daily/(date '+%Y-%m-%d').md
 
 abbr --add buu brew update \&\& brew upgrade
 abbr --add b brew
