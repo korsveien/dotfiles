@@ -90,9 +90,6 @@ abbr --add mtree mvn dependency:tree
 abbr --add jls /usr/libexec/java_home -V
 abbr --add jh echo $JAVA_HOME
 
-## terraform
-abbr --add t terraform
-
 ## configs
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish
