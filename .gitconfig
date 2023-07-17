@@ -2,7 +2,7 @@
     name = peder
     useConfigOnly = true
     email = peder@korsveien.me
-    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ8gzEYF3BmEPTg0Luj/KKXlmpsZt1WUZqzFLXii64rh
+    signingkey = 851B03E2DC8FC409
 [includeIf "gitdir:~/digipost/"]
     path = ~/digipost/.gitconfig
 [core]
@@ -68,7 +68,3 @@
 	trustExitCode = true
 [mergetool]
 	prompt = false
-[gpg]
-	format = ssh
-[gpg "ssh"]
-	program = /opt/1Password/op-ssh-sign
