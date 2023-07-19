@@ -8,7 +8,6 @@ set clipboard& clipboard^=unnamed,unnamedplus
 "------------------
 call plug#begin(stdpath('data') . '/plugged')
 
-
     Plug 'https://github.com/tyru/open-browser.vim'
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/karb94/neoscroll.nvim'
@@ -34,6 +33,10 @@ call plug#begin(stdpath('data') . '/plugged')
     " Telescope
     Plug 'https://github.com/nvim-telescope/telescope.nvim'
     Plug 'https://github.com/nvim-telescope/telescope-symbols.nvim'
+
+    " Treesitter
+    Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
+    Plug 'https://github.com/nvim-treesitter/nvim-treesitter-context', {'do': ':TSUpdate'}
 
     " Language support
     Plug 'https://github.com/google/vim-jsonnet'
@@ -98,5 +101,6 @@ require'config/options'
 require'config/statusline'
 require'config/telescope'
 require'config/marks'
+require'config/treesitter'
 EOF
 

@@ -37,3 +37,10 @@ Lists of useful tools for enhancing productivity and quality of life.
 ### Homebrew Packages
 
 See the contents of Brewfile.
+
+### How to remove native tab bar and sidebar header in Firefox
+
+1. In Firefox, go to `about:config` and set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`
+2. In Firefox, go to `about:support` and see the "Profile Folder" row to find its location
+3. Create a folder named `chrome` in the profile folder
+4. Copy the `userChrome.css` into the folder you just created

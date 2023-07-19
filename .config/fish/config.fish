@@ -164,21 +164,20 @@ function get_pod_name
     kubectl get pods -o name | cut -d'/' -f2 | fzf
 end
 
-function kget
+function kg
     set podname (get_pod_name)
     kubectl get pod $podname -o yaml | nvim +'set filetype=yaml' -
 end
 
-function kexec
+function kx
     set podname (get_pod_name)
     kubectl exec -it $podname -- sh
 end
 
-function knet
+function kn
     set podname (get_pod_name)
     kubectl debug $podname -it --image=nicolaka/netshoot
 end
-
 
 ##### THIRD PARTY UTILITIES ####
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
