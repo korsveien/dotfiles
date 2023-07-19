@@ -160,6 +160,25 @@ function gco
     git branch --all | fzf | cut -d'/' -f3| xargs git checkout
 end
 
+function get_pod_name
+    kubectl get pods -o name | cut -d'/' -f2 | fzf
+end
+
+function kget
+    set podname (get_pod_name)
+    kubectl get pod $podname -o yaml | nvim +'set filetype=yaml' -
+end
+
+function kexec
+    set podname (get_pod_name)
+    kubectl exec -it $podname -- sh
+end
+
+function knet
+    set podname (get_pod_name)
+    kubectl debug $podname -it --image=nicolaka/netshoot
+end
+
 
 ##### THIRD PARTY UTILITIES ####
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
