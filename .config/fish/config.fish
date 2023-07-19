@@ -8,11 +8,10 @@ bind -M insert \ck down-or-search
 bind -M insert \cf forward-char
 bind -M insert \ca beginning-of-line
 bind -M insert \ce end-of-line
-bind -M insert \cx edit_command_buffer
-bind -M normal \cx edit_command_buffer
 bind \cj up-or-search
 bind \ck down-or-search
 
+bind \cx edit_command_buffer
 
 ####### Variables #####
 set -x _JAVA_AWT_WM_NONREPARENTING 1
@@ -110,6 +109,7 @@ fish_add_path $HOME/.local/bin
 fish_add_path /usr/local/sbin
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/.krew/bin
+fish_add_path $HOME/dotfiles/scripts
 
 
 ####### FUNCTIONS ####
@@ -206,4 +206,6 @@ function iterm2_print_user_vars
   iterm2_set_user_var kubecontext (kubectl config current-context):(kubectl config view --minify --output 'jsonpath={..namespace}')
   #iterm2_set_user_var azurecontext (az account show | jq '.name')
 end
+
+starship init fish | source
 

@@ -43,6 +43,8 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/prettier/vim-prettier'
     Plug 'https://github.com/fatih/vim-go'
 
+    Plug 'https://github.com/chentoast/marks.nvim'
+
     " Colors and GUI
     Plug 'https://github.com/korsveien/gruvbox-material'
 
@@ -95,5 +97,6 @@ require'config/nvimtree'
 require'config/options'
 require'config/statusline'
 require'config/telescope'
+require'config/marks'
 EOF
 

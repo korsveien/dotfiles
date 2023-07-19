@@ -1,12 +1,12 @@
 format="""
-$hostname$kubernetes$azure$status$jobs$cmd_duration\n\\$ 
+$directory | $kubernetes | $azure $status $jobs $cmd_duration\n\\$ 
 """
 add_newline=false
 #command_timeout=10
 
 [kubernetes]
 disabled=false
-format= " | [ﴱ](blue) $cluster:$namespace"
+format= "$cluster:$namespace"
 
 [directory]
 format="[$path]($style)"
@@ -44,9 +44,9 @@ style="bold red"
 
 [azure]
 disabled = false
-format = " | [$symbol($subscription)]($style) "
-symbol = "ﴃ "
-style = "blue bold"
+format = "[$symbol($subscription)]($style) "
+symbol = ""
+style = "blue"
 
 [jobs]
 style = "bold red"
