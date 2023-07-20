@@ -23,6 +23,8 @@ set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_STATE_HOME $HOME/.local/state
 set -x XDG_CACHE_HOME $HOME/.cache
 
+set -gx KUBECONFIG $HOME/.kube/config
+
 set -x EDITOR nvim
 
 ## Terraform cache
@@ -178,6 +180,7 @@ function kn
     set podname (get_pod_name)
     kubectl debug $podname -it --image=nicolaka/netshoot
 end
+
 
 ##### THIRD PARTY UTILITIES ####
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish

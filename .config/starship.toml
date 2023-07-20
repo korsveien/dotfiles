@@ -4,6 +4,12 @@ $directory | $kubernetes | $azure $status $jobs $cmd_duration\n\\$
 add_newline=false
 #command_timeout=10
 
+[status]
+disabled=false
+symbol=''
+signal_symbol=''
+style="red"
+
 [kubernetes]
 disabled=false
 format= "$cluster:$namespace"
@@ -40,7 +46,7 @@ style="yellow"
 
 [cmd_duration]
 format="[$duration]($style)"
-style="bold red"
+style="yellow"
 
 [azure]
 disabled = false
@@ -49,5 +55,7 @@ symbol = ""
 style = "blue"
 
 [jobs]
-style = "bold red"
+number_threshold=1
+symbol='job:'
+style = "green"
 
