@@ -95,13 +95,9 @@ abbr --add jh echo $JAVA_HOME
 ## configs
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish
+abbr --add sv nvim ~/.config/starship.toml
 
-abbr --add o cat ~/obsidian/daily/(date '+%Y-%m-%d').md
-abbr --add oo nvim ~/obsidian/daily/(date '+%Y-%m-%d').md
-
-abbr --add buu brew update \&\& brew upgrade
 abbr --add b brew
-
 abbr --add h helm
 
 alias python python3

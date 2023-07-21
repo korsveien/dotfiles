@@ -1,5 +1,5 @@
 format="""
-$directory | $kubernetes | $azure $status $jobs $cmd_duration\n\\$ 
+$directory | $kubernetes | $azure $custom $status $jobs $cmd_duration\n\\$ 
 """
 add_newline=false
 #command_timeout=10
@@ -58,4 +58,14 @@ style = "blue"
 number_threshold=1
 symbol='job:'
 style = "green"
+
+[custom.proxy_env]
+command = ' echo 🛰️'
+when   = ''' set -q HTTPS_PROXY '''
+shell  = 'fish'
+
+[custom.proxy_server]
+command = ' echo 🌐'
+when   = ''' lsof -i :3128 &>/dev/null '''
+shell  = 'fish'
 
