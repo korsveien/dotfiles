@@ -39,9 +39,10 @@ abbr --add p python3
 abbr --add l ls -la
 abbr --add puip wget -O - -q icanhazip.com
 
-## kubectl
+## kubectl etc.
 abbr --add k kubectl
-abbr --add kgp kubectl get pods
+abbr --add kns kubens
+abbr --add kw watch -n 2 kubectl get pods
 
 ## npm
 abbr --add nrb npm run build
@@ -180,7 +181,6 @@ function kn
     set podname (get_pod_name)
     kubectl debug $podname -it --image=nicolaka/netshoot
 end
-
 
 ##### THIRD PARTY UTILITIES ####
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish

@@ -16,7 +16,6 @@ call plug#begin(stdpath('data') . '/plugged')
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
     Plug 'https://github.com/nvim-lua/plenary.nvim'
-    Plug 'https://github.com/junegunn/fzf'
     
     " File explorer
     Plug 'https://github.com/kyazdani42/nvim-tree.lua', { 'on' : 'NvimTreeToggle'}
@@ -29,6 +28,10 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/tpope/vim-rhubarb'
     Plug 'https://github.com/tpope/vim-unimpaired'
     Plug 'https://github.com/tpope/vim-surround'
+
+    " Junegunn essentiasls
+    Plug 'https://github.com/junegunn/vim-easy-align'
+    Plug 'https://github.com/junegunn/fzf'
 
     " Telescope
     Plug 'https://github.com/nvim-telescope/telescope.nvim'
@@ -61,6 +64,11 @@ autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.md,*.yaml
 let g:minimap_width = 10
 let g:minimap_auto_start = 1
 let g:minimap_auto_start_win_enter = 1
+
+
+" vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 "------------------
 "   MAPPINGS
