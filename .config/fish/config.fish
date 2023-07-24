@@ -131,6 +131,10 @@ function bi
     brew search | fzf --multi --preview 'brew search {1}' | xargs -ro brew install
 end
 
+function br
+    brew leaves | fzf --multi --preview 'brew info {1}' | xargs -ro brew remove
+end
+
 function pi
     pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
 end
