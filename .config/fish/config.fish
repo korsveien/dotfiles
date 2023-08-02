@@ -128,7 +128,7 @@ function ho
 end
 
 function bi
-    brew search | fzf --multi --preview 'brew search {1}' | xargs -ro brew install
+    brew search --eval-all --desc "" | fzf --multi --preview 'brew info {1}' | xargs -ro brew install
 end
 
 function br
