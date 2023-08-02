@@ -44,3 +44,7 @@ See the contents of Brewfile.
 2. In Firefox, go to `about:support` and see the "Profile Folder" row to find its location
 3. Create a folder named `chrome` in the profile folder
 4. Copy the `userChrome.css` into the folder you just created
+
+## Resources
+
+https://openfolder.sh/macos-migrations-with-brewfile
