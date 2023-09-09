@@ -11,7 +11,7 @@ augroup END
 ]]
 vim.opt.expandtab     = true -- use spaces insted of tabs
 vim.opt.hidden        = true -- enable background buffers
-vim.opt.listchars     = 'trail:-' -- show some invisible characters
+vim.opt.listchars     = 'trail:-,tab:>-' -- show some invisible characters
 vim.opt.number        = true -- show line numbers
 vim.opt.shiftround    = true -- round indent to a multiple of shiftwidth
 vim.opt.shiftwidth    = 4 -- size of an indent

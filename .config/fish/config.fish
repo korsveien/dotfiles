@@ -43,6 +43,7 @@ abbr --add puip wget -O - -q icanhazip.com
 abbr --add k kubectl
 abbr --add kns kubens
 abbr --add kw watch -n 2 kubectl get pods
+abbr --add kz kustomize
 
 ## npm
 abbr --add nrb npm run build
@@ -109,6 +110,7 @@ fish_add_path /usr/local/sbin
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/.krew/bin
 fish_add_path $HOME/dotfiles/scripts
+fish_add_path /usr/local/opt/ccache/libexec
 
 
 ####### FUNCTIONS ####
@@ -167,9 +169,27 @@ function get_pod_name
     kubectl get pods -o name | cut -d'/' -f2 | fzf
 end
 
+function get_deployment_name
+    kubectl get deployments -o name | cut -d'/' -f2 | fzf
+end
+
+function get_netpol_name
+    kubectl get netpol -o name | cut -d'/' -f2 | fzf
+end
+
 function kg
     set podname (get_pod_name)
     kubectl get pod $podname -o yaml | nvim +'set filetype=yaml' -
+end
+
+function kgd
+    set deployment_name (get_deployment_name)
+    kubectl get deployment $deployment_name -o yaml | nvim +'set filetype=yaml' -
+end
+
+function kgn
+    set netpolname (get_netpol_name)
+    kubectl describe netpol $netpolname | nvim +'set filetype=yaml'
 end
 
 function kx
@@ -177,9 +197,19 @@ function kx
     kubectl exec -it $podname -- sh
 end
 
-function kn
+function kd
     set podname (get_pod_name)
     kubectl debug $podname -it --image=nicolaka/netshoot
+end
+
+function kl
+    set podname (get_pod_name)
+    kubectl logs $podname
+end
+
+function klo
+    set podname (get_pod_name)
+    kubectl logs -c otc-container $podname | nvim -
 end
 
 ##### THIRD PARTY UTILITIES ####
