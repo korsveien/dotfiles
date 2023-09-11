@@ -49,6 +49,17 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/prettier/vim-prettier'
     Plug 'https://github.com/fatih/vim-go'
 
+    " LSP and Autocompletion
+    Plug 'https://github.com/neovim/nvim-lspconfig'
+    Plug 'https://github.com/williamboman/mason.nvim'
+    Plug 'https://github.com/williamboman/mason-lspconfig.nvim'
+    Plug 'https://github.com/hrsh7th/nvim-cmp/'
+    Plug 'https://github.com/hrsh7th/cmp-nvim-lsp'
+    Plug 'https://github.com/hrsh7th/cmp-buffer'
+    Plug 'https://github.com/hrsh7th/cmp-path'
+    Plug 'https://github.com/hrsh7th/cmp-cmdline'
+    Plug 'https://github.com/hrsh7th/nvim-cmp'
+
     Plug 'https://github.com/chentoast/marks.nvim'
 
     " Colors and GUI
@@ -104,11 +115,16 @@ lua <<EOF
 
 require'config/colors'
 require'config/gitsigns'
+require'config/marks'
+require'config/mason'
 require'config/nvimtree'
 require'config/options'
 require'config/statusline'
 require'config/telescope'
-require'config/marks'
 require'config/treesitter'
+
+require'config/cmp'
+
+require'config/lsp'
 EOF
 
