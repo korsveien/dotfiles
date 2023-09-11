@@ -111,6 +111,7 @@ fish_add_path $HOME/go/bin
 fish_add_path $HOME/.krew/bin
 fish_add_path $HOME/dotfiles/scripts
 fish_add_path /usr/local/opt/ccache/libexec
+fish_add_path /opt/homebrew/opt/openssl@1.1/bin
 
 
 ####### FUNCTIONS ####
