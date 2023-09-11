@@ -1,5 +1,5 @@
 format="""
-$directory$git_branch | $kubernetes | $azure $custom $status $jobs $cmd_duration\n\\$ 
+$directory$git_branch $kubernetes $azure $custom $status $jobs $cmd_duration\n\\$ 
 """
 add_newline=false
 #command_timeout=10
