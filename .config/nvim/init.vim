@@ -49,7 +49,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/prettier/vim-prettier'
     Plug 'https://github.com/fatih/vim-go'
 
-    " LSP and Autocompletion
+    " LSP, Autocompletion and snippets
     Plug 'https://github.com/neovim/nvim-lspconfig'
     Plug 'https://github.com/williamboman/mason.nvim'
     Plug 'https://github.com/williamboman/mason-lspconfig.nvim'
@@ -59,6 +59,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/hrsh7th/cmp-path'
     Plug 'https://github.com/hrsh7th/cmp-cmdline'
     Plug 'https://github.com/hrsh7th/nvim-cmp'
+    Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 
     Plug 'https://github.com/chentoast/marks.nvim'
 

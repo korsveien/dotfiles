@@ -1,5 +1,12 @@
 -- Setup language servers.
+--
+-- To see the features of the LSP server, run:
+-- :lua print(vim.inspect(vim.lsp.protocol.make_client_capabilities()))
+-- 
 local lspconfig = require('lspconfig')
+
+lspconfig.lua_ls.setup {
+}
 
 lspconfig.rust_analyzer.setup {
   settings = {
