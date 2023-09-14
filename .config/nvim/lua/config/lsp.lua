@@ -5,8 +5,11 @@
 -- 
 local lspconfig = require('lspconfig')
 
-lspconfig.lua_ls.setup {
-}
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+
+lspconfig.lua_ls.setup {}
+
+lspconfig.gopls.setup {}
 
 lspconfig.rust_analyzer.setup {
   settings = {

@@ -215,6 +215,7 @@ end
 
 ##### THIRD PARTY UTILITIES ####
 [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+[ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 [ -f ~/.digipost.fish ]; and source ~/.digipost.fish
 
 set -x GPG_TTY (tty)

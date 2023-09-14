@@ -71,12 +71,7 @@ call plug#end()
 "------------------
 "   PLUGIN CONFIG
 "------------------
-autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.md,*.yaml,*.html Prettier
-
-let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
-
+"autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.md,*.yaml,*.html Prettier
 
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
@@ -109,6 +104,9 @@ vmap gx <Plug>(openbrowser-open)
 nmap :W :w
 nmap :Q :q
 nmap :X :x
+nmap :Vs :vs
+nmap :Sp :sp
+nmap :Make :make
 
 nnoremap <c-q> :q!<cr>
 
@@ -125,7 +123,6 @@ require'config/telescope'
 require'config/treesitter'
 
 require'config/cmp'
-
 require'config/lsp'
 EOF
 
