@@ -7,8 +7,15 @@ local lspconfig = require('lspconfig')
 
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
-lspconfig.terraformls.setup {}
-lspconfig.lua_ls.setup {}
+lspconfig.lua_ls.setup {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+}
 lspconfig.gopls.setup {}
 lspconfig.sqlls.setup {} -- https://github.com/joe-re/sql-language-server
 
