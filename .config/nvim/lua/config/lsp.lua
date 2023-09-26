@@ -7,8 +7,8 @@ local lspconfig = require('lspconfig')
 
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
+lspconfig.terraformls.setup {}
 lspconfig.lua_ls.setup {}
-
 lspconfig.gopls.setup {}
 
 lspconfig.rust_analyzer.setup {
