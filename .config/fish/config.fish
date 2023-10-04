@@ -112,9 +112,14 @@ fish_add_path $HOME/.krew/bin
 fish_add_path $HOME/dotfiles/scripts
 fish_add_path /usr/local/opt/ccache/libexec
 fish_add_path /opt/homebrew/opt/openssl@1.1/bin
+fish_add_path $HOME/.local/share/nvim/mason/bin
 
 
 ####### FUNCTIONS ####
+function git_prune
+    git fetch -p | git branch -vv | grep ': gone]' | grep -v "\*" | awk '{print $1}' | xargs -p git branch -D
+end
+
 function jset
     set -Ux JAVA_HOME (/usr/libexec/java_home -v $argv[1])
     source ~/.config/fish/config.fish
@@ -136,14 +141,6 @@ end
 
 function br
     brew leaves | fzf --multi --preview 'brew info {1}' | xargs -ro brew remove
-end
-
-function pi
-    pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
-end
-
-function pr
-    pacman -Qq | fzf --multi --preview 'sudo pacman -Rns {}' | xargs -ro sudo pacman -Rns
 end
 
 function yi

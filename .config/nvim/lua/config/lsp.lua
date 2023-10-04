@@ -10,6 +10,7 @@ vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 lspconfig.terraformls.setup {}
 lspconfig.lua_ls.setup {}
 lspconfig.gopls.setup {}
+lspconfig.sqlls.setup {} -- https://github.com/joe-re/sql-language-server
 
 lspconfig.rust_analyzer.setup {
   settings = {

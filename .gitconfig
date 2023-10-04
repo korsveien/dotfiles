@@ -3,8 +3,8 @@
     useConfigOnly = true
     email = peder@korsveien.me
     signingkey = 851B03E2DC8FC409
-[includeIf "gitdir:~/digipost/"]
-    path = ~/digipost/.gitconfig
+[includeIf "gitdir:~/projects/digipost/"]
+    path = ~/projects/digipost/.gitconfig
 [core]
     editor = nvim
     autocrlf = input

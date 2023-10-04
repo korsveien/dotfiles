@@ -1,5 +1,8 @@
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWinEnter * if &filetype == 'help' | wincmd L | endif
+
+autocmd FileType sql setl formatprg=/usr/local/bin/pg_format\ -
+"autocmd BufWritePre *.sql :% !pg_format
 
 set clipboard& clipboard^=unnamed,unnamedplus
 
@@ -46,7 +49,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/hashivim/vim-terraform'
     Plug 'https://github.com/rust-lang/rust.vim'
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
-    Plug 'https://github.com/prettier/vim-prettier'
     Plug 'https://github.com/fatih/vim-go'
 
     " LSP, Autocompletion and snippets
@@ -90,10 +92,10 @@ nnoremap <leader>ho :GBrowse<cr>
 
 
 nnoremap <c-p> :Telescope find_files<cr>
-nnoremap <m-p> :Telescope projects<cr>
-nnoremap <c-e> :Telescope buffers<cr>
+nnoremap <c-e> :Telescope git_status<cr>
 nnoremap <c-f> :Telescope live_grep<cr>
 nnoremap <c-s-f> :Telescope grep_string<cr>
+
 nnoremap <c-l> :nohl<cr>
 
 nnoremap <c-h> :NvimTreeToggle<cr>
