@@ -98,7 +98,7 @@ nnoremap <c-s-f> :Telescope grep_string<cr>
 
 nnoremap <c-l> :nohl<cr>
 
-nnoremap <c-h> :NvimTreeToggle<cr>
+nnoremap <c-h> :NvimTreeFocus<cr>
 
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
