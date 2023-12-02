@@ -113,7 +113,7 @@ fish_add_path $HOME/dotfiles/scripts
 fish_add_path /usr/local/opt/ccache/libexec
 fish_add_path /opt/homebrew/opt/openssl@1.1/bin
 fish_add_path $HOME/.local/share/nvim/mason/bin
-
+fish_add_path /opt/homebrew/opt/postgresql@15/bin
 
 ####### FUNCTIONS ####
 function git_prune
