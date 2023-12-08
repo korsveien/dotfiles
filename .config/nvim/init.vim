@@ -6,6 +6,9 @@ autocmd FileType sql setl formatprg=/usr/local/bin/pg_format\ -
 
 set clipboard& clipboard^=unnamed,unnamedplus
 
+
+autocmd FileType swift autocmd BufWritePost *.swift :silent exec "!swiftformat %"
+
 "------------------
 "     PLUGINS
 "------------------
@@ -50,6 +53,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/rust-lang/rust.vim'
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
     Plug 'https://github.com/fatih/vim-go'
+    Plug 'https://github.com/windwp/nvim-autopairs'
 
     " LSP, Autocompletion and snippets
     Plug 'https://github.com/neovim/nvim-lspconfig'
@@ -124,7 +128,10 @@ require'config/statusline'
 require'config/telescope'
 require'config/treesitter'
 
+
 require'config/cmp'
 require'config/lsp'
+
+require("nvim-autopairs").setup {}
 EOF
 

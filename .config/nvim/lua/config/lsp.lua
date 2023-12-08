@@ -48,6 +48,13 @@ lspconfig.jsonnet_ls.setup{
 	},
 }
 
+lspconfig["sourcekit"].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    cmd = {
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+    },
+})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
