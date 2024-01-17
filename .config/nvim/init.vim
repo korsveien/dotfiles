@@ -71,6 +71,9 @@ call plug#begin(stdpath('data') . '/plugged')
 
     " Colors and GUI
     Plug 'https://github.com/korsveien/gruvbox-material'
+    Plug 'https://github.com/lifepillar/vim-gruvbox8'
+    Plug 'https://github.com/jeffkreeftmeijer/vim-dim'
+    Plug 'https://github.com/chriskempson/base16-vim'
 
 call plug#end()
 
