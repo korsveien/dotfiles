@@ -44,8 +44,8 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/nvim-telescope/telescope-symbols.nvim'
 
     " Treesitter
-    Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
-    Plug 'https://github.com/nvim-treesitter/nvim-treesitter-context', {'do': ':TSUpdate'}
+    " Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
+    " Plug 'https://github.com/nvim-treesitter/nvim-treesitter-context', {'do': ':TSUpdate'}
 
     " Language support
     Plug 'https://github.com/google/vim-jsonnet'
@@ -55,25 +55,22 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/fatih/vim-go'
     Plug 'https://github.com/windwp/nvim-autopairs'
 
+    " Asciidoc
+    Plug 'https://github.com/habamax/vim-asciidoctor'
+    Plug 'https://github.com/shuntaka9576/preview-asciidoc.vim'
+    Plug 'https://github.com/vim-denops/denops.vim'
+
     " LSP, Autocompletion and snippets
     Plug 'https://github.com/neovim/nvim-lspconfig'
-    Plug 'https://github.com/williamboman/mason.nvim'
-    Plug 'https://github.com/williamboman/mason-lspconfig.nvim'
     Plug 'https://github.com/hrsh7th/nvim-cmp/'
     Plug 'https://github.com/hrsh7th/cmp-nvim-lsp'
-    Plug 'https://github.com/hrsh7th/cmp-buffer'
     Plug 'https://github.com/hrsh7th/cmp-path'
     Plug 'https://github.com/hrsh7th/cmp-cmdline'
-    Plug 'https://github.com/hrsh7th/nvim-cmp'
-    Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
-
-    Plug 'https://github.com/chentoast/marks.nvim'
+    Plug 'https://github.com/hrsh7th/cmp-buffer'
 
     " Colors and GUI
+    Plug 'https://github.com/chentoast/marks.nvim'
     Plug 'https://github.com/korsveien/gruvbox-material'
-    Plug 'https://github.com/lifepillar/vim-gruvbox8'
-    Plug 'https://github.com/jeffkreeftmeijer/vim-dim'
-    Plug 'https://github.com/chriskempson/base16-vim'
 
 call plug#end()
 
@@ -124,17 +121,13 @@ lua <<EOF
 require'config/colors'
 require'config/gitsigns'
 require'config/marks'
-require'config/mason'
 require'config/nvimtree'
 require'config/options'
 require'config/statusline'
 require'config/telescope'
-require'config/treesitter'
-
-
+-- require'config/treesitter'
 require'config/cmp'
 require'config/lsp'
-
 require("nvim-autopairs").setup {}
 EOF
 

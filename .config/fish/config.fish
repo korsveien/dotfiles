@@ -97,6 +97,7 @@ abbr --add jh echo $JAVA_HOME
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish
 abbr --add sv nvim ~/.config/starship.toml
+abbr --add dv nvim ~/.digipost.fish
 
 abbr --add b brew
 abbr --add h helm
@@ -114,6 +115,7 @@ fish_add_path /usr/local/opt/ccache/libexec
 fish_add_path /opt/homebrew/opt/openssl@1.1/bin
 fish_add_path $HOME/.local/share/nvim/mason/bin
 fish_add_path /opt/homebrew/opt/postgresql@15/bin
+fish_add_path $HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 ####### FUNCTIONS ####
 function git_prune
@@ -211,9 +213,9 @@ function klo
 end
 
 ##### THIRD PARTY UTILITIES ####
-[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
-[ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
-[ -f ~/.digipost.fish ]; and source ~/.digipost.fish
+[ -e /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+[ -e /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
+[ -e ~/.digipost.fish ]; and source ~/.digipost.fish
 
 set -x GPG_TTY (tty)
 

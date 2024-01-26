@@ -43,8 +43,21 @@ See the contents of Brewfile.
 1. In Firefox, go to `about:config` and set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`
 2. In Firefox, go to `about:support` and see the "Profile Folder" row to find its location
 3. Create a folder named `chrome` in the profile folder
-4. Copy the `userChrome.css` into the folder you just created
+4. Create `userChrome.css` and into the folder you just created with the following contents:
+
+```css
+/* hides the native tabs */
+#TabsToolbar {
+  visibility: collapse;
+}
+
+/* hides the sidebar */
+#sidebar-header {
+  visibility: collapse !important;
+}
+```
 
 ## Resources
 
-https://openfolder.sh/macos-migrations-with-brewfile
+- https://openfolder.sh/macos-migrations-with-brewfile
+- [How to remove native tab bar in firefox](https://superuser.com/questions/1424478/can-i-hide-native-tabs-at-the-top-of-firefox)
