@@ -70,6 +70,8 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/onsails/lspkind.nvim'
     Plug 'https://github.com/williamboman/mason.nvim'
     Plug 'https://github.com/williamboman/mason-lspconfig.nvim'
+    Plug 'https://github.com/folke/trouble.nvim'
+    Plug 'https://github.com/stevearc/aerial.nvim'
 
     " Colors and GUI
     Plug 'https://github.com/chentoast/marks.nvim'
@@ -105,7 +107,7 @@ nnoremap <c-s-f> :Telescope grep_string<cr>
 
 nnoremap <c-l> :nohl<cr>
 
-nnoremap <c-h> :NvimTreeFocus<cr>
+nnoremap <c-h> :NvimTreeToggle<cr>
 
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
@@ -136,5 +138,14 @@ require("mason").setup()
 require("mason-lspconfig").setup {
     ensure_installed = { "lua_ls", "rust_analyzer", "jsonls", "tsserver", "denols"}
 }
+require("aerial").setup({
+  -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+  on_attach = function(bufnr)
+    -- Jump forwards/backwards with '{' and '}'
+    vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+    vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+  end,
+})
+vim.keymap.set("n", "<C-l>", "<cmd>AerialToggle!<CR>")
 EOF
 
