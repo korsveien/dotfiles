@@ -5,7 +5,16 @@
 -- 
 local lspconfig = require('lspconfig')
 
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+local on_attach = function(client, bufnr)
+  -- format on save
+  if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("Format", { clear = true }),
+      buffer = bufnr,
+      callback = function() vim.lsp.buf.format() end
+    })
+  end
+end
 
 lspconfig.lua_ls.setup {
     settings = {
@@ -16,8 +25,6 @@ lspconfig.lua_ls.setup {
         }
     }
 }
-lspconfig.gopls.setup {}
-lspconfig.sqlls.setup {} -- https://github.com/joe-re/sql-language-server
 
 lspconfig.rust_analyzer.setup {
   settings = {
@@ -48,13 +55,11 @@ lspconfig.jsonnet_ls.setup{
 	},
 }
 
-lspconfig["sourcekit"].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    cmd = {
-        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
-    },
-})
+-- TypeScript
+lspconfig.denols.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

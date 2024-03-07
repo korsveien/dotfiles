@@ -40,8 +40,10 @@ abbr --add l ls -la
 abbr --add puip wget -O - -q icanhazip.com
 
 ## kubectl etc.
-abbr --add k kubectl
-abbr --add kns kubens
+abbr --add ku kubectl
+abbr --add k k9s
+abbr --add ks kubens
+abbr --add kx kubectx
 abbr --add kw watch -n 2 kubectl get pods
 abbr --add kz kustomize
 
@@ -163,53 +165,6 @@ end
 
 function gco
     git branch --all | fzf | cut -d'/' -f3| xargs git checkout
-end
-
-function get_pod_name
-    kubectl get pods -o name | cut -d'/' -f2 | fzf
-end
-
-function get_deployment_name
-    kubectl get deployments -o name | cut -d'/' -f2 | fzf
-end
-
-function get_netpol_name
-    kubectl get netpol -o name | cut -d'/' -f2 | fzf
-end
-
-function kg
-    set podname (get_pod_name)
-    kubectl get pod $podname -o yaml | nvim +'set filetype=yaml' -
-end
-
-function kgd
-    set deployment_name (get_deployment_name)
-    kubectl get deployment $deployment_name -o yaml | nvim +'set filetype=yaml' -
-end
-
-function kgn
-    set netpolname (get_netpol_name)
-    kubectl describe netpol $netpolname | nvim +'set filetype=yaml'
-end
-
-function kx
-    set podname (get_pod_name)
-    kubectl exec -it $podname -- sh
-end
-
-function kd
-    set podname (get_pod_name)
-    kubectl debug $podname -it --image=nicolaka/netshoot
-end
-
-function kl
-    set podname (get_pod_name)
-    kubectl logs $podname
-end
-
-function klo
-    set podname (get_pod_name)
-    kubectl logs -c otc-container $podname | nvim -
 end
 
 ##### THIRD PARTY UTILITIES ####

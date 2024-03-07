@@ -44,8 +44,8 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/nvim-telescope/telescope-symbols.nvim'
 
     " Treesitter
-    " Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
-    " Plug 'https://github.com/nvim-treesitter/nvim-treesitter-context', {'do': ':TSUpdate'}
+    Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
+    Plug 'https://github.com/nvim-treesitter/nvim-treesitter-context', {'do': ':TSUpdate'}
 
     " Language support
     Plug 'https://github.com/google/vim-jsonnet'
@@ -67,6 +67,9 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/hrsh7th/cmp-path'
     Plug 'https://github.com/hrsh7th/cmp-cmdline'
     Plug 'https://github.com/hrsh7th/cmp-buffer'
+    Plug 'https://github.com/onsails/lspkind.nvim'
+    Plug 'https://github.com/williamboman/mason.nvim'
+    Plug 'https://github.com/williamboman/mason-lspconfig.nvim'
 
     " Colors and GUI
     Plug 'https://github.com/chentoast/marks.nvim'
@@ -129,5 +132,9 @@ require'config/telescope'
 require'config/cmp'
 require'config/lsp'
 require("nvim-autopairs").setup {}
+require("mason").setup()
+require("mason-lspconfig").setup {
+    ensure_installed = { "lua_ls", "rust_analyzer", "jsonls", "tsserver", "denols"}
+}
 EOF
 

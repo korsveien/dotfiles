@@ -1,9 +1,9 @@
 [user]
-    name = Peder Korsveien
+	name = Peder Korsveien
     useConfigOnly = true
-    email = peder.korsveien@bekk.no
+	email = peder.korsveien@bekk.no
 [core]
-    editor = vim
+    editor = nvim
     autocrlf = input
     hooksPath = /Users/peder/.githooks
     excludesFile = ~/.gitignore
