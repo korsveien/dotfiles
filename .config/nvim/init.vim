@@ -50,13 +50,8 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/hashivim/vim-terraform'
     Plug 'https://github.com/rust-lang/rust.vim'
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
-    Plug 'https://github.com/fatih/vim-go'
-    Plug 'https://github.com/windwp/nvim-autopairs'
-
-    " Asciidoc
-    Plug 'https://github.com/habamax/vim-asciidoctor'
-    Plug 'https://github.com/shuntaka9576/preview-asciidoc.vim'
     Plug 'https://github.com/vim-denops/denops.vim'
+
 
     " LSP, Autocompletion and snippets
     Plug 'https://github.com/neovim/nvim-lspconfig'
@@ -70,6 +65,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/williamboman/mason-lspconfig.nvim'
     Plug 'https://github.com/folke/trouble.nvim'
     Plug 'https://github.com/stevearc/aerial.nvim'
+    Plug 'https://github.com/windwp/nvim-autopairs'
 
     " Colors and GUI
     Plug 'https://github.com/chentoast/marks.nvim'
@@ -131,9 +127,11 @@ require'config/cmp'
 require'config/lsp'
 require("nvim-autopairs").setup {}
 require("mason").setup()
+
 require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "rust_analyzer", "jsonls", "tsserver", "denols"}
+    ensure_installed = { "lua_ls", "rust_analyzer", "jsonls", "tsserver", "denols", "gopls"}
 }
+
 require("aerial").setup({
   -- optionally use on_attach to set keymaps when aerial has attached to a buffer
   on_attach = function(bufnr)
@@ -142,6 +140,7 @@ require("aerial").setup({
     vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
   end,
 })
+
 vim.keymap.set("n", "<C-t>", "<cmd>AerialToggle!<CR>")
 EOF
 
