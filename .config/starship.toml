@@ -60,12 +60,12 @@ symbol='job:'
 style = "green"
 
 [custom.proxy_env]
-command = ' echo 🛰️'
+command = ' echo [https_proxy]'
 when   = ''' set -q HTTPS_PROXY '''
 shell  = 'fish'
 
 [custom.proxy_server]
-command = ' echo 🌐'
+command = ' echo [proxy@3128]'
 when   = ''' lsof -i :3128 &>/dev/null '''
 shell  = 'fish'
 

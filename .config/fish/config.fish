@@ -17,11 +17,15 @@ bind \cx edit_command_buffer
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set -x NVM_DIR $HOME/.nvm
 
+set -x PSPG_CONF $HOME/.pspgrc
+
 ##https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_STATE_HOME $HOME/.local/state
 set -x XDG_CACHE_HOME $HOME/.cache
+
+set -x DOCKER_HOST unix://$HOME/.colima/default/docker.sock
 
 set -gx KUBECONFIG $HOME/.kube/config
 
@@ -40,7 +44,7 @@ abbr --add l ls -la
 abbr --add puip wget -O - -q icanhazip.com
 
 ## kubectl etc.
-abbr --add ku kubectl
+abbr --add kk kubectl
 abbr --add k k9s
 abbr --add ks kubens
 abbr --add kx kubectx
@@ -171,6 +175,7 @@ end
 [ -e /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
 [ -e /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 [ -e ~/.digipost.fish ]; and source ~/.digipost.fish
+[ -e ~/.env ]; and source ~/.env
 
 set -x GPG_TTY (tty)
 

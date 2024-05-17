@@ -14,7 +14,6 @@ autocmd FileType swift autocmd BufWritePost *.swift :silent exec "!swiftformat %
 "------------------
 call plug#begin(stdpath('data') . '/plugged')
 
-    Plug 'https://github.com/tyru/open-browser.vim'
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/karb94/neoscroll.nvim'
     Plug 'https://github.com/lewis6991/gitsigns.nvim'
@@ -105,12 +104,9 @@ nnoremap <c-e> :Telescope git_status<cr>
 nnoremap <c-f> :Telescope live_grep<cr>
 nnoremap <c-s-f> :Telescope grep_string<cr>
 
-nnoremap <c-l> :nohl<cr>
+nnoremap <c-;> :nohl<cr>
 
 nnoremap <c-h> :NvimTreeToggle<cr>
-
-nmap gx <Plug>(openbrowser-open)
-vmap gx <Plug>(openbrowser-open)
 
 nmap :W :w
 nmap :Q :q
@@ -146,6 +142,6 @@ require("aerial").setup({
     vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
   end,
 })
-vim.keymap.set("n", "<C-l>", "<cmd>AerialToggle!<CR>")
+vim.keymap.set("n", "<C-t>", "<cmd>AerialToggle!<CR>")
 EOF
 
