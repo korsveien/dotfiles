@@ -28,7 +28,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/ruanyl/vim-gh-line'
 
     " Tim Pope essentials
-    Plug 'https://github.com/tpope/vim-commentary'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/tpope/vim-rhubarb'
     Plug 'https://github.com/tpope/vim-unimpaired'
@@ -108,6 +107,7 @@ nnoremap <c-;> :nohl<cr>
 
 nnoremap <c-h> :NvimTreeToggle<cr>
 
+" Shortcuts for fat fingers
 nmap :W :w
 nmap :Q :q
 nmap :X :x
