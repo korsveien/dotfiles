@@ -66,6 +66,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/folke/trouble.nvim'
     Plug 'https://github.com/stevearc/aerial.nvim'
     Plug 'https://github.com/windwp/nvim-autopairs'
+    Plug 'https://github.com/ray-x/lsp_signature.nvim'
 
     " Colors and GUI
     Plug 'https://github.com/chentoast/marks.nvim'
@@ -140,6 +141,8 @@ require("aerial").setup({
     vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
   end,
 })
+
+require "lsp_signature".setup{}
 
 vim.keymap.set("n", "<C-t>", "<cmd>AerialToggle!<CR>")
 EOF
