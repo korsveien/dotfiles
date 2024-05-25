@@ -1,8 +1,10 @@
 " autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWinEnter * if &filetype == 'help' | wincmd L | endif
 
-autocmd FileType sql setl formatprg=/usr/local/bin/pg_format\ -
+autocmd FileType sql setlocal formatprg=/usr/local/bin/pg_format\ -
 "autocmd BufWritePre *.sql :% !pg_format
+
+autocmd FileType typescript setlocal makeprg=ts-node\ %
 
 set clipboard& clipboard^=unnamed,unnamedplus
 
@@ -50,7 +52,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/hashivim/vim-terraform'
     Plug 'https://github.com/rust-lang/rust.vim'
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
-    Plug 'https://github.com/vim-denops/denops.vim'
 
 
     " LSP, Autocompletion and snippets
@@ -113,6 +114,8 @@ nmap :Sp :sp
 nmap :Make :make
 
 nnoremap <c-q> :q!<cr>
+
+nnoremap :make :make!
 
 lua <<EOF
 
