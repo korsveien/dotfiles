@@ -1,5 +1,5 @@
 # Only load in interactive shells (prevents slowness in nvim-tree)
-if not status is-interactive 
+if not status is-interactive
     return
 end
 
@@ -182,13 +182,13 @@ set -x GPG_TTY (tty)
 helm completion fish | source
 
 function fish_prompt -d "Write out the prompt"
-    if test $hostname != 'bekk-mac-2459'
+    if test $hostname != 'bekk-mac-3262.shared'
         set_color yellow
         echo -n "$USER@$hostname "
         set color normal
     end
     set_color grey
-    printf "%s ~> " (date +"%H:%M:%S")
+    printf "%s %s " (iterm2_prompt_mark) (date +"%H:%M:%S")
     set_color normal
 end
 
@@ -221,3 +221,6 @@ end
 
 starship init fish | source
 
+
+# Created by `pipx` on 2024-07-18 11:37:16
+set PATH $PATH /Users/peder/.local/bin
