@@ -2,7 +2,7 @@
 --
 -- To see the features of the LSP server, run:
 -- :lua print(vim.inspect(vim.lsp.protocol.make_client_capabilities()))
--- 
+--
 local lspconfig = require('lspconfig')
 
 local on_attach = function(client, bufnr)
@@ -29,6 +29,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- require('lspconfig.configs').postgres_lsp = {
+--   default_config = {
+--     name = 'postgres_lsp',
+--     cmd = {'postgres_lsp'},
+--     filetypes = {'sql'},
+--     single_file_support = true,
+--     root_dir = util.root_pattern 'root-file.txt'
+--   }
+-- }
+--
+-- lspconfig.configure("postgres_lsp", {force_setup = true})
+
 lspconfig.lua_ls.setup {
     settings = {
         Lua = {
@@ -38,6 +50,9 @@ lspconfig.lua_ls.setup {
         }
     }
 }
+
+require'lspconfig'.terraformls.setup{}
+require'lspconfig'.tflint.setup{}
 
 -- https://github.com/golang/tools/tree/master/gopls
 lspconfig.gopls.setup({})
@@ -71,28 +86,40 @@ lspconfig.rust_analyzer.setup {
   },
 }
 
-lspconfig.jsonnet_ls.setup{
-	settings = {
-		ext_vars = {
-			-- foo = 'bar',
-		},
-		formatting = {
-			-- default values
-			Indent              = 2,
-			MaxBlankLines       = 2,
-			StringStyle         = 'single',
-			CommentStyle        = 'slash',
-			PrettyFieldNames    = true,
-			PadArrays           = false,
-			PadObjects          = true,
-			SortImports         = true,
-			UseImplicitPlus     = true,
-			StripEverything     = false,
-			StripComments       = false,
-			StripAllButComments = false,
-		},
-	},
+lspconfig.yamlls.setup{
+  on_attach = on_attach,
+  settings = {
+    yaml = {
+      schemas = {
+        kubernetes = "/*.k.yaml", -- Example of setting up schema for Kubernetes files
+      },
+      validate = true, -- Enable YAML validation
+    },
+  }
 }
+
+-- lspconfig.jsonnet_ls.setup{
+-- 	settings = {
+-- 		ext_vars = {
+-- 			-- foo = 'bar',
+-- 		},
+-- 		formatting = {
+-- 			-- default values
+-- 			Indent              = 2,
+-- 			MaxBlankLines       = 2,
+-- 			StringStyle         = 'single',
+-- 			CommentStyle        = 'slash',
+-- 			PrettyFieldNames    = true,
+-- 			PadArrays           = false,
+-- 			PadObjects          = true,
+-- 			SortImports         = true,
+-- 			UseImplicitPlus     = true,
+-- 			StripEverything     = false,
+-- 			StripComments       = false,
+-- 			StripAllButComments = false,
+-- 		},
+-- 	},
+-- }
 
 -- TypeScript
 lspconfig.tsserver.setup {

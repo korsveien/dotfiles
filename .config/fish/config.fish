@@ -181,16 +181,16 @@ set -x GPG_TTY (tty)
 
 helm completion fish | source
 
-function fish_prompt -d "Write out the prompt"
-    if test $hostname != 'bekk-mac-3262.shared'
-        set_color yellow
-        echo -n "$USER@$hostname "
-        set color normal
-    end
-    set_color grey
-    printf "%s %s " (iterm2_prompt_mark) (date +"%H:%M:%S")
-    set_color normal
-end
+#function fish_prompt -d "Write out the prompt"
+#    if test $hostname != 'bekk-mac-3262.shared'
+#        set_color yellow
+#        echo -n "$USER@$hostname "
+#        set color normal
+#    end
+#    set_color grey
+#    printf "%s %s " (iterm2_prompt_mark) (date +"%H:%M:%S")
+#    set_color normal
+#end
 
 function fish_right_prompt -d "Write out the right prompt"
   set -l exit_code $status
@@ -209,10 +209,10 @@ function fish_mode_prompt
 end
 
 #### iTerm 2 integration
-test -n "$TERM_PROGRAM"
-and test $TERM_PROGRAM = iTerm.app
-and test -e {$HOME}/.iterm2_shell_integration.fish
-and source {$HOME}/.iterm2_shell_integration.fish
+#test -n "$TERM_PROGRAM"
+#and test $TERM_PROGRAM = iTerm.app
+#and test -e {$HOME}/.iterm2_shell_integration.fish
+#and source {$HOME}/.iterm2_shell_integration.fish
 
 function iterm2_print_user_vars
   iterm2_set_user_var kubecontext (kubectl config current-context):(kubectl config view --minify --output 'jsonpath={..namespace}')
@@ -224,3 +224,6 @@ starship init fish | source
 
 # Created by `pipx` on 2024-07-18 11:37:16
 set PATH $PATH /Users/peder/.local/bin
+
+[ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.fish ]; and source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.fish
+

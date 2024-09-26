@@ -23,7 +23,7 @@ call plug#begin(stdpath('data') . '/plugged')
     " Utility libraries
     Plug 'https://github.com/nvim-lua/popup.nvim'
     Plug 'https://github.com/nvim-lua/plenary.nvim'
-    
+
     " File explorer
     Plug 'https://github.com/kyazdani42/nvim-tree.lua', { 'on' : 'NvimTreeToggle'}
     Plug 'https://github.com/kyazdani42/nvim-web-devicons'
@@ -72,6 +72,7 @@ call plug#begin(stdpath('data') . '/plugged')
     " Colors and GUI
     Plug 'https://github.com/chentoast/marks.nvim'
     Plug 'https://github.com/korsveien/gruvbox-material'
+    Plug 'https://github.com/wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 
 call plug#end()
 
@@ -98,10 +99,10 @@ nnoremap <leader>ho :GBrowse<cr>
 
 nnoremap <c-p> :Telescope find_files<cr>
 nnoremap <c-e> :Telescope git_status<cr>
-nnoremap <c-f> :Telescope live_grep<cr>
-nnoremap <c-s-f> :Telescope grep_string<cr>
+nnoremap <c-s-f> :Telescope live_grep<cr>
+nnoremap <c-f> :Telescope grep_string<cr>
 
-nnoremap <c-;> :nohl<cr>
+nnoremap <c-l> :nohl<cr>
 
 nnoremap <c-h> :NvimTreeToggle<cr>
 
@@ -117,7 +118,31 @@ nnoremap <c-q> :q!<cr>
 
 nnoremap :make :make!
 
+"let g:minimap_width = 10
+"let g:minimap_auto_start = 1
+"let g:minimap_auto_start_win_enter = 1
+let g:minimap_left = 0
+let g:minimap_block_buftypes = ['nofile', 'nowrite', 'quickfix', 'terminal', 'prompt']
+let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'fzf', 'nvimtree' ]
+let g:minimap_git_colors = 1
+
 lua <<EOF
+
+-- https://www.mukeshsharma.dev/2022/02/08/neovim-workflow-for-terraform.html
+-- autoformat terraform files
+vim.cmd([[silent! autocmd! filetypedetect BufRead,BufNewFile *.tf]])
+vim.cmd([[autocmd BufRead,BufNewFile *.hcl set filetype=hcl]])
+vim.cmd([[autocmd BufRead,BufNewFile .terraformrc,terraform.rc set filetype=hcl]])
+vim.cmd([[autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=terraform]])
+vim.cmd([[autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=json]])
+
+-- automatically format *.tf and *.tfvars files with terraform fmt on save and align settings.
+vim.cmd([[let g:terraform_fmt_on_save=1]])
+vim.cmd([[let g:terraform_align=1]])
+
+
+
+--
 
 require'config/colors'
 require'config/gitsigns'
@@ -130,23 +155,16 @@ require'config/telescope'
 require'config/cmp'
 require'config/lsp'
 require("nvim-autopairs").setup {}
-require("mason").setup()
+require("mason").setup{}
 
 require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "rust_analyzer", "jsonls", "tsserver", "denols", "gopls"}
+    ensure_installed = { "lua_ls", "rust_analyzer", "jsonls", "tsserver", "gopls", "yamlls", "terraformls", "tflint"}
 }
 
-require("aerial").setup({
-  -- optionally use on_attach to set keymaps when aerial has attached to a buffer
-  on_attach = function(bufnr)
-    -- Jump forwards/backwards with '{' and '}'
-    vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
-    vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
-  end,
-})
+require("aerial").setup{}
+vim.keymap.set("n", "<C-;>", "<cmd>AerialToggle!<CR>")
 
 require "lsp_signature".setup{}
 
-vim.keymap.set("n", "<C-t>", "<cmd>AerialToggle!<CR>")
 EOF
 

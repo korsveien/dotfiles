@@ -1,15 +1,17 @@
 -- https://github.com/kyazdani42/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
 require("nvim-tree").setup({
     sync_root_with_cwd = false,
-    respect_buf_cwd = true,
+    respect_buf_cwd = false,
     update_focused_file = {
         enable = true,
-        update_root = false,
+        update_root = {
+            enable = false
+        },
     },
     view = {
         adaptive_size = true,
         signcolumn = 'no',
-        centralize_selection = true,
+        centralize_selection = false,
     },
     git = {
         enable = true,
