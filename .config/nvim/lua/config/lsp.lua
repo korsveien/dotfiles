@@ -29,6 +29,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'sh',
+  callback = function()
+    vim.lsp.start({
+      name = 'bash-language-server',
+      cmd = { 'bash-language-server', 'start' },
+    })
+  end,
+})
+
 -- require('lspconfig.configs').postgres_lsp = {
 --   default_config = {
 --     name = 'postgres_lsp',
@@ -41,6 +51,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --
 -- lspconfig.configure("postgres_lsp", {force_setup = true})
 
+-- https://luals.github.io/wiki
 lspconfig.lua_ls.setup {
     settings = {
         Lua = {

@@ -119,7 +119,7 @@ nnoremap <c-q> :q!<cr>
 nnoremap :make :make!
 
 "let g:minimap_width = 10
-"let g:minimap_auto_start = 1
+let g:minimap_auto_start = 1
 "let g:minimap_auto_start_win_enter = 1
 let g:minimap_left = 0
 let g:minimap_block_buftypes = ['nofile', 'nowrite', 'quickfix', 'terminal', 'prompt']
@@ -151,14 +151,28 @@ require'config/nvimtree'
 require'config/options'
 require'config/statusline'
 require'config/telescope'
+require'config/autocmds'
+
 -- require'config/treesitter'
+
 require'config/cmp'
 require'config/lsp'
 require("nvim-autopairs").setup {}
-require("mason").setup{}
 
+-- mason
+require("mason").setup{}
 require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "rust_analyzer", "jsonls", "tsserver", "gopls", "yamlls", "terraformls", "tflint"}
+    ensure_installed = {
+        "lua_ls",
+        "rust_analyzer",
+        "jsonls",
+        "tsserver",
+        "gopls",
+        "yamlls",
+        "terraformls",
+        "tflint",
+        "bashls",
+    }
 }
 
 require("aerial").setup{}

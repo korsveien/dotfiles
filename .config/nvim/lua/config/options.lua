@@ -27,3 +27,4 @@ vim.opt.fcs           = 'eob: '
 vim.opt.textwidth     = 144
 vim.opt.mouse         = 'a'
 vim.opt.confirm       = false
+vim.opt.laststatus    = 3          -- global statusline
