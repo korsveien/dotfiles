@@ -1,7 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "lua", 
-  "vim", "vimdoc", "rust", "yaml", "json" },
+  ensure_installed = { "lua", "vim", "vimdoc", "rust", "yaml", "json" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -34,7 +33,7 @@ require'treesitter-context'.setup{
   separator = nil,
   zindex = 20, -- The Z-index of the context window
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
-} 
+}
 
 vim.keymap.set("n", "[c", function()
   require("treesitter-context").go_to_context()

@@ -4,7 +4,7 @@
 local autocmd_group = vim.api.nvim_create_augroup("Custom auto-commands", { clear = true })
 
 
--- File tree
+-- Open file tree on startup
 -- vim.api.nvim_create_autocmd({ "VimEnter" }, {
 --     callback = function ()
 --         require("nvim-tree.api").tree.open() -- open file tree on startup
@@ -12,3 +12,8 @@ local autocmd_group = vim.api.nvim_create_augroup("Custom auto-commands", { clea
 --     end,
 --     group = autocmd_group,
 -- })
+
+vim.cmd [[
+autocmd BufWinEnter * if &filetype == 'help' | wincmd L | endif
+set clipboard& clipboard^=unnamed,unnamedplus
+]]
