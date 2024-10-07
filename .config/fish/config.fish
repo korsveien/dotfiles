@@ -80,7 +80,7 @@ abbr --add gst git status
 abbr --add gd git diff --staged
 abbr --add gbn git checkout -b
 abbr --add gb git branch --all
-
+abbr --add gpr "git remote prune origin && git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs -r git branch -D"
 
 ## docker
 abbr --add d docker
