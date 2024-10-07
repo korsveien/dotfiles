@@ -2,13 +2,11 @@
 	name = Peder Korsveien
     useConfigOnly = true
 	email = peder.korsveien@bekk.no
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ8gzEYF3BmEPTg0Luj/KKXlmpsZt1WUZqzFLXii64rh
 [core]
     editor = nvim
     autocrlf = input
     excludesFile = ~/.gitignore
-
-[user]
-  signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCYEdnN1ziyreZdjQmx70osnY+FpbcZALZiQ6umWBv6yBPlOFX4vTcEw5JtWWyTogpdk/gW+00T6OnZAAan8EvtF1UFw1rn4AQYT3zY+z4vjcyhB06IR71TAJO28NxeUZkbtOwtPAlXkFfcsGFa+ASbrt9OhzW6p4Xqfk7qnRG4u5TsF0IG0UhIfBz7YIv9kyWaa9OS+Ls2c+AABINQP60IKfbxUMQ8kw9+vGalUG68wZdHo3kYMESRWM+DagwmNw32COV9qYNtjBX6Hk0aMi5DqWsBS7NO/Q76qMUZMX8292XASf9O6Z/a1VSeAkqd/mm8mk5n7fYQ/6jhnz6o14BESojE7TKh5yDNN5OdE+T7nhxznx8+lTId80wv+ljADkOOjgDTZbSrmxMMfdEozduXXw+qwhRcWbWbZe5Q2uXE/6kkavY/jQUe7QjjpL/7HFE4QdCJJu7AK9b7jZJ9c6o/GC3FWmDY9F6lqDSJIk372NmD5dcLezd+mOVytPMJweqjdbh3l81DATDbNDhM0BfJOGyLGS3WI9ercMAPwlRH07wur9U4F3n4oQrhDaLY0nlWjksqS3aNEYNOd5Ww4mbuRh0i08L0/3Jiim2qMqqVCVTfNaDJEA2kfG01fB8n7i3MH2c2mVeagJXaLm/SVpXUAukwikkcNo0pXWT4obylZw==
 
 [gpg]
   format = ssh
