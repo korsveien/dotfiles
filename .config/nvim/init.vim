@@ -28,6 +28,7 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'https://github.com/kyazdani42/nvim-tree.lua', { 'on' : 'NvimTreeToggle'}
     Plug 'https://github.com/kyazdani42/nvim-web-devicons'
     Plug 'https://github.com/ruanyl/vim-gh-line'
+    Plug 'https://github.com/chrishrb/gx.nvim'
 
     " Tim Pope essentials
     Plug 'https://github.com/tpope/vim-fugitive'
@@ -118,8 +119,10 @@ nnoremap <c-q> :q!<cr>
 
 nnoremap :make :make!
 
+nnoremap gx :Browse<cr>
+
 "let g:minimap_width = 10
-let g:minimap_auto_start = 1
+let g:minimap_auto_start = 0
 "let g:minimap_auto_start_win_enter = 1
 let g:minimap_left = 0
 let g:minimap_block_buftypes = ['nofile', 'nowrite', 'quickfix', 'terminal', 'prompt']
@@ -179,6 +182,10 @@ require("aerial").setup{}
 vim.keymap.set("n", "<C-;>", "<cmd>AerialToggle!<CR>")
 
 require "lsp_signature".setup{}
+
+require("gx").setup{
+    keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+}
 
 EOF
 

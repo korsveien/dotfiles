@@ -5,7 +5,6 @@
 [core]
     editor = nvim
     autocrlf = input
-    hooksPath = /Users/peder/.githooks
     excludesFile = ~/.gitignore
 
 [user]
