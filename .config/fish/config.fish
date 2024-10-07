@@ -14,9 +14,7 @@ bind \ck down-or-search
 bind \cx edit_command_buffer
 
 ####### Variables #####
-set -x _JAVA_AWT_WM_NONREPARENTING 1
 set -x NVM_DIR $HOME/.nvm
-
 set -x PSPG_CONF $HOME/.pspgrc
 
 ##https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
@@ -38,6 +36,8 @@ set -x TF_PLUGIN_CACHE_DIR ~/.terraform.d/plugin-cache
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 
 ####### ABBREVIATIONS #####
+abbr --add buu "brew update && brew upgrade"
+
 abbr --add i idea
 abbr --add p python3
 abbr --add l ls -la
@@ -95,18 +95,9 @@ abbr --add mci mvn clean install
 abbr --add mcid mvn clean install -DskipTests
 abbr --add mtree mvn dependency:tree
 
-## java
-abbr --add jls /usr/libexec/java_home -V
-abbr --add jh echo $JAVA_HOME
-
 ## configs
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish
-abbr --add sv nvim ~/.config/starship.toml
-abbr --add dv nvim ~/.digipost.fish
-
-abbr --add b brew
-abbr --add h helm
 
 alias python python3
 
@@ -124,18 +115,9 @@ fish_add_path /opt/homebrew/opt/postgresql@15/bin
 fish_add_path $HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 ####### FUNCTIONS ####
-function git_prune
-    git fetch -p | git branch -vv | grep ': gone]' | grep -v "\*" | awk '{print $1}' | xargs -p git branch -D
-end
-
 function jset
     set -Ux JAVA_HOME (/usr/libexec/java_home -v $argv[1])
     source ~/.config/fish/config.fish
-end
-
-function co
-    set repo (git remote show origin | rg github.com | head -n 1 | cut -d':' -f3 | cut -d'.' -f1)
-    open "https://app.circleci.com/pipelines/github/$repo"
 end
 
 function ho
@@ -143,28 +125,8 @@ function ho
     open "https://github.com/$repo"
 end
 
-function bi
-    brew search --eval-all --desc "" | fzf --multi --preview 'brew info {1}' | xargs -ro brew install
-end
-
-function br
-    brew leaves | fzf --multi --preview 'brew info {1}' | xargs -ro brew remove
-end
-
-function yi
-    yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S
-end
-
-function yr
-    yay -Qq | fzf --multi --preview 'sudo yay -Rns {}' | xargs -ro sudo yay -Rns
-end
-
 function gcm
     git checkout main || git checkout master
-end
-
-function gpu
-    git push --set-upstream-to origin (git rev-parse --abbrev-ref HEAD)
 end
 
 function gco
