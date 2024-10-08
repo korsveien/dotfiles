@@ -220,10 +220,3 @@ function iterm2_print_user_vars
 end
 
 starship init fish | source
-
-
-# Created by `pipx` on 2024-07-18 11:37:16
-set PATH $PATH /Users/peder/.local/bin
-
-[ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.fish ]; and source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.fish
-
