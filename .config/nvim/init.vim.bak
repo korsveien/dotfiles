@@ -30,13 +30,13 @@ call plug#begin(stdpath('data') . '/plugged')
     " Treesitter
     Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
     Plug 'https://github.com/nvim-treesitter/nvim-treesitter-context', {'do': ':TSUpdate'}
+    Plug 'https://github.com/Afourcat/treesitter-terraform-doc.nvim'
 
     " Language support
     Plug 'https://github.com/google/vim-jsonnet'
     Plug 'https://github.com/hashivim/vim-terraform'
     Plug 'https://github.com/rust-lang/rust.vim'
     Plug 'https://github.com/khaveesh/vim-fish-syntax'
-
 
     " LSP, Autocompletion and snippets
     Plug 'https://github.com/neovim/nvim-lspconfig'
@@ -89,7 +89,7 @@ require'config/telescope'
 require'config/autocmds'
 require'config/keymaps'
 
--- require'config/treesitter'
+require'config/treesitter'
 
 require'config/cmp'
 require'config/lsp'
@@ -99,15 +99,15 @@ require("nvim-autopairs").setup {}
 require("mason").setup{}
 require("mason-lspconfig").setup {
     ensure_installed = {
+        "bashls",
+        "gopls",
+        "jsonls",
         "lua_ls",
         "rust_analyzer",
-        "jsonls",
-        "tsserver",
-        "gopls",
-        "yamlls",
         "terraformls",
         "tflint",
-        "bashls",
+        "ts_ls",
+        "yamlls",
     }
 }
 

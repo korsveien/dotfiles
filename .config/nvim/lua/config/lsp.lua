@@ -62,7 +62,12 @@ lspconfig.lua_ls.setup {
     }
 }
 
-require'lspconfig'.terraformls.setup{}
+require'lspconfig'.terraformls.setup{
+    --   on_attach = function()
+    --     -- This register the user command "OpenDoc" that you are able to bind to any key.
+    --     require('treesitter-terraform-doc').setup()
+    -- end,
+}
 require'lspconfig'.tflint.setup{}
 
 -- https://github.com/golang/tools/tree/master/gopls
@@ -133,7 +138,7 @@ lspconfig.yamlls.setup{
 -- }
 
 -- TypeScript
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 }
