@@ -1,4 +1,6 @@
-require'config/plugins'
+require("config.lazy")
+
+vim.cmd([[colorscheme habamax]])
 
 -- https://www.mukeshsharma.dev/2022/02/08/neovim-workflow-for-terraform.html
 -- autoformat terraform files
@@ -11,45 +13,3 @@ vim.cmd([[autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=jso
 -- automatically format *.tf and *.tfvars files with terraform fmt on save and align settings.
 vim.cmd([[let g:terraform_fmt_on_save=1]])
 vim.cmd([[let g:terraform_align=1]])
-
---
-
-require'config/colors'
-require'config/gitsigns'
-require'config/marks'
-require'config/nvimtree'
-require'config/options'
-require'config/statusline'
-require'config/telescope'
-require'config/autocmds'
-require'config/keymaps'
-
--- require'config/treesitter'
-
-require'config/cmp'
-require'config/lsp'
-require("nvim-autopairs").setup {}
-
--- mason
-require("mason").setup{}
-require("mason-lspconfig").setup {
-    ensure_installed = {
-        "lua_ls",
-        "rust_analyzer",
-        "jsonls",
-        "tsserver",
-        "gopls",
-        "yamlls",
-        "terraformls",
-        "tflint",
-        "bashls",
-    }
-}
-
-require("aerial").setup{}
-
-require "lsp_signature".setup{}
-
-require("gx").setup{
-    keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
-}
