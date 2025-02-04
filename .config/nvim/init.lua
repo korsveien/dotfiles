@@ -1,4 +1,4 @@
-require("config.lazy")
+require("config.pluginmanager")
 require("config.keybindings")
 require("config.autocommands")
 
