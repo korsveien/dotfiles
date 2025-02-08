@@ -1,27 +1,25 @@
 return {
   {
     "https://github.com/williamboman/mason.nvim",
+    priority = 100,
   },
-
   {
     "https://github.com/williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup()
-      require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          require("lspconfig")[server_name].setup({})
-        end,
-      })
-    end,
+    priority = 200,
+    ensure_installed = {
+      "lua_ls",
+      "rust_analyzer",
+      "terraformls",
+      "tflint",
+      "tsserver",
+    },
   },
-
   {
     "https://github.com/neovim/nvim-lspconfig",
+    priority = 300,
   },
-
   {
-    "saghen/blink.cmp",
+    "https://github.com/saghen/blink.cmp",
     version = "*",
     opts = {
       keymap = {

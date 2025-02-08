@@ -1,15 +1,29 @@
 -- Convenvience
-vim.keymap.set("n", "<C-q>", ":quit!<CR>")
+vim.keymap.set("n", "<C-q>", "<Cmd>quit!<CR>")
+vim.keymap.set("n", "<leader>j", "<Cmd>set ft=json<CR>") -- Set filetype to json
 
 -- For fat fingers
 vim.keymap.set("n", ":W", ":w")
 vim.keymap.set("n", ":Q", ":q")
 
--- File picker
-vim.keymap.set("n", "<C-p>", ":Telescope find_files<CR>")
+-- Picker
+local builtin = require("telescope.builtin")
+
+vim.keymap.set("n", "<C-p>", "<Cmd>Telescope find_files<CR>")
+
+-- Search for a string in current directory
+vim.keymap.set("n", "<C-f>", "<Cmd>Telescope live_grep<CR>")
+
+-- Search for the word under the cursor
+vim.keymap.set("n", "<C-S-f>", "<Cmd>Telescope grep_string<CR>")
+
+vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
 -- File Tree
-vim.keymap.set("n", "<C-h>", "<Cmd>Neotree toggle<CR>")
+vim.keymap.set("n", "<C-h>", "<Cmd>NvimTreeToggle<CR>")
 
 -- CodeCompanion
 vim.keymap.set({ "n", "v" }, "<Leader>a", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })

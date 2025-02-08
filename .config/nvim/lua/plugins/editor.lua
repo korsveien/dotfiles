@@ -15,4 +15,8 @@ return {
       })
     end,
   },
+
+  {
+    "https://github.com/mg979/vim-visual-multi",
+  },
 }
