@@ -4,3 +4,5 @@ vim.opt.wrap = false
 vim.opt.hidden = true -- switch between buffers without saving changes
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt_local.conceallevel = 2

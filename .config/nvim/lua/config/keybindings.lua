@@ -1,10 +1,9 @@
 -- Convenvience
 vim.keymap.set("n", "<C-q>", "<Cmd>quit!<CR>")
 vim.keymap.set("n", "<leader>j", "<Cmd>set ft=json<CR>") -- Set filetype to json
+vim.keymap.set("n", "<leader>s", "<Cmd>source %<CR>") -- Source the current file
 
 -- For fat fingers
-vim.keymap.set("n", ":W", ":w")
-vim.keymap.set("n", ":Q", ":q")
 
 -- Picker
 local builtin = require("telescope.builtin")
