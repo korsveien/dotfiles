@@ -2,6 +2,7 @@
 vim.keymap.set("n", "<C-q>", "<Cmd>quit!<CR>")
 vim.keymap.set("n", "<leader>j", "<Cmd>set ft=json<CR>") -- Set filetype to json
 vim.keymap.set("n", "<leader>s", "<Cmd>source %<CR>") -- Source the current file
+vim.keymap.set("v", "<leader>y", '"+y') -- Copy to clipboard
 
 -- For fat fingers
 

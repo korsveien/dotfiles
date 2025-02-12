@@ -74,6 +74,7 @@ return {
 
       lspconfig["rust_analyzer"].setup({})
       lspconfig["gopls"].setup({})
+      lspconfig["terraformls"].setup({})
     end,
     priority = 300,
   },
