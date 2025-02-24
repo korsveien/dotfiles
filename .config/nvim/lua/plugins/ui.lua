@@ -94,18 +94,4 @@ return {
   {
     "https://github.com/rebelot/kanagawa.nvim",
   },
-  {
-    "https://github.com/folke/zen-mode.nvim",
-  },
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    opts = {
-      open_mapping = "<C-\\>",
-      direction = "vertical",
-      size = function(term)
-        return vim.o.columns * 0.4
-      end,
-    },
-  },
 }
