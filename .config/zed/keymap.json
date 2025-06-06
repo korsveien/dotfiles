@@ -27,7 +27,14 @@
       "cmd-6": ["pane::ActivateItem", 5],
       "cmd-7": ["pane::ActivateItem", 6],
       "cmd-8": ["pane::ActivateItem", 7],
-      "cmd-9": ["pane::ActivateItem", 8]
+      "cmd-9": ["pane::ActivateItem", 8],
+      "ctrl-h": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-o": "editor::OpenPermalinkToLine"
     }
   },
   {
@@ -36,12 +43,6 @@
     "bindings": {
       "ctrl-k": "editor::ContextMenuPrevious",
       "ctrl-j": "editor::ContextMenuNext"
-    }
-  },
-  {
-    "context": "Workspace",
-    "bindings": {
-      "ctrl-h": "workspace::ToggleLeftDock"
     }
   }
 ]
