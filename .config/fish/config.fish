@@ -38,6 +38,8 @@ set -x HOMEBREW_NO_AUTO_UPDATE 1
 ####### ABBREVIATIONS #####
 abbr --add buu "brew update && brew upgrade"
 
+abbr --add t terraform
+
 abbr --add i idea
 abbr --add p python3
 abbr --add l ls -la
@@ -130,7 +132,7 @@ function gcm
 end
 
 function gco
-    git branch --all | fzf | cut -d'/' -f3| xargs git checkout
+    git branch --all | fzf | cut -d/ -f3 | xargs git checkout
 end
 
 ##### THIRD PARTY UTILITIES ####
@@ -155,14 +157,14 @@ helm completion fish | source
 #end
 
 function fish_right_prompt -d "Write out the right prompt"
-  set -l exit_code $status
+    set -l exit_code $status
 
-  # Print exit code for failed commands.
-  if test $exit_code -ne 0
-    set_color red
-    echo -n $exit_code
-    set_color normal
-  end
+    # Print exit code for failed commands.
+    if test $exit_code -ne 0
+        set_color red
+        echo -n $exit_code
+        set_color normal
+    end
 
 end
 
@@ -177,8 +179,9 @@ end
 #and source {$HOME}/.iterm2_shell_integration.fish
 
 function iterm2_print_user_vars
-  iterm2_set_user_var kubecontext (kubectl config current-context):(kubectl config view --minify --output 'jsonpath={..namespace}')
-  #iterm2_set_user_var azurecontext (az account show | jq '.name')
+    iterm2_set_user_var kubecontext (kubectl config current-context):(kubectl config view --minify --output 'jsonpath={..namespace}')
+    #iterm2_set_user_var azurecontext (az account show | jq '.name')
 end
 
 starship init fish | source
+pyenv init - fish | source
