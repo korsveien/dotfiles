@@ -9,7 +9,9 @@
   {
     "bindings": {
       "ctrl-w": "editor::SelectLargerSyntaxNode",
-      "ctrl-shift-w": "editor::SelectSmallerSyntaxNode"
+      "ctrl-shift-w": "editor::SelectSmallerSyntaxNode",
+      "cmd-shift-l": "workspace::ToggleLeftDock",
+      "cmd-shift-r": "workspace::ToggleRightDock"
     }
   },
   {
