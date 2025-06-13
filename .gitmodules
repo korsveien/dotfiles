@@ -1,0 +1,3 @@
+[submodule ".config/zed/themes/zed-kanagawa"]
+	path = .config/zed/themes/zed-kanagawa
+	url = https://github.com/ethangilmore/zed-kanagawa
