@@ -23,6 +23,9 @@ fi
 echo "Updating the yadm repo origin URL"
 yadm remote set-url origin "git@github.com:korsveien/dotfiles.git"
 
+echo "Symlinking yadm repo to ~/.git in order to use tools like fork"
+ln -s ~/.local/share/yadm/repo.git ~/.git
+
 chsh -s fish
 echo "Switched to fish, restart terminal to use!"
 
