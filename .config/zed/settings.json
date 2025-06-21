@@ -22,9 +22,9 @@
     "diagnostics": true
   },
   "terminal": {
-    "dock": "right"
+    "dock": "bottom"
   },
-  "vim_mode": false,
+  "vim_mode": true,
   "ui_font_size": 16,
   "buffer_font_size": 14,
   "base_keymap": "JetBrains",

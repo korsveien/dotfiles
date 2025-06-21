@@ -8,10 +8,14 @@
 [
   {
     "bindings": {
-      "ctrl-w": "editor::SelectLargerSyntaxNode",
-      "ctrl-shift-w": "editor::SelectSmallerSyntaxNode",
-      "cmd-shift-l": "workspace::ToggleLeftDock",
-      "cmd-shift-r": "workspace::ToggleRightDock"
+      "ctrl-k": "menu::SelectPrevious",
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-f": "file_finder::Toggle",
+      // "v": "editor::SelectLargerSyntaxNode",
+      // "V": "editor::SelectSmallerSyntaxNode",
+      "ctrl-h": "workspace::ToggleLeftDock",
+      "ctrl-l": "workspace::ToggleRightDock",
+      "ctrl-;": "terminal_panel::ToggleFocus"
     }
   },
   {
@@ -32,6 +36,14 @@
     "context": "Editor",
     "bindings": {
       "ctrl-shift-o": "editor::OpenPermalinkToLine"
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "use_key_equivalents": true,
+    "bindings": {
+      "ctrl-k": "editor::ContextMenuPrevious",
+      "ctrl-j": "editor::ContextMenuNext"
     }
   }
 ]

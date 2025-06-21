@@ -1,6 +1,9 @@
+*
+!.*
 .DS_Store
-~/.config/gh/hosts
+!.config/**/*
+.config/gh/hosts
+.config/fish/fish_variables
 .idea/
 node_modules/
-.config/fish/fish_variables
 *.iml
