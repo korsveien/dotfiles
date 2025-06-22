@@ -184,4 +184,3 @@ function iterm2_print_user_vars
 end
 
 starship init fish | source
-pyenv init - fish | source

@@ -10,11 +10,9 @@
     "bindings": {
       "ctrl-k": "menu::SelectPrevious",
       "ctrl-j": "menu::SelectNext",
-      "ctrl-f": "file_finder::Toggle",
-      // "v": "editor::SelectLargerSyntaxNode",
-      // "V": "editor::SelectSmallerSyntaxNode",
+      "ctrl-p": "file_finder::Toggle",
       "ctrl-h": "workspace::ToggleLeftDock",
-      "ctrl-l": "workspace::ToggleRightDock",
+      // "ctrl-l": "workspace::ToggleRightDock",
       "ctrl-;": "terminal_panel::ToggleFocus"
     }
   },

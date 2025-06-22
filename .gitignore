@@ -1,7 +1,4 @@
-*
-!.*
 .DS_Store
-!.config/**/*
 .config/gh/hosts
 .config/fish/fish_variables
 .idea/
