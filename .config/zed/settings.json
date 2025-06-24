@@ -32,5 +32,14 @@
     "mode": "system",
     "light": "One Light",
     "dark": "Github Dark Dimmed"
+  },
+  "cursor_blink": false,
+  "experimental.theme_overrides": {
+    "players": [
+      {
+        "cursor": "#d3869b"
+        // "cursor": "#fe8019"
+      }
+    ]
   }
 }

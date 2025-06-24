@@ -12,7 +12,6 @@
       "ctrl-j": "menu::SelectNext",
       "ctrl-p": "file_finder::Toggle",
       "ctrl-h": "workspace::ToggleLeftDock",
-      // "ctrl-l": "workspace::ToggleRightDock",
       "ctrl-;": "terminal_panel::ToggleFocus"
     }
   },
