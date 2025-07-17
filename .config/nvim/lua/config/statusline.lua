@@ -26,7 +26,7 @@ local function current_column()
 end
 
 function LspClients()
-  local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+  local clients = vim.lsp.get_clients()
   if #clients == 0 then
     return ""
   end

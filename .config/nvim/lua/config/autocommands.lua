@@ -6,9 +6,4 @@ vim.cmd([[cab cc CodeCompanion]])
 
 -- For my fat fingers
 vim.cmd([[cab W write]])
-
 vim.cmd([[cab, Q, "quit"]])
-
--- Zen
-vim.cmd([[cab, Z, "Zenmode"]])
-vim.cmd([[cab, z, "Zenmode"]])
