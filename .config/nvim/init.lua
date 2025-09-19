@@ -15,7 +15,6 @@ vim.g.loaded_netrwPlugin = 1
 -------------
 
 require("config.pluginmanager")
-require("config.keybindings")
 require("config.statusline")
 
 --------------
