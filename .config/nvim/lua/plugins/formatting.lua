@@ -8,6 +8,7 @@ return {
         sh = { "shfmt" },
         rust = { "rustfmt" },
         markdown = { "prettier" },
+        nix = { "nixfmt" },
       },
       format_on_save = {
         timeout_ms = 500,
