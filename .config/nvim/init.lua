@@ -31,6 +31,57 @@ vim.opt.swapfile = true
 vim.opt.wrap = false
 vim.opt_local.conceallevel = 2
 
+
+------------------------
+-- LSP + Autocomplete --
+------------------------
+-- Works best with completeopt=noselect.
+-- Use CTRL-Y to select an item. |complete_CTRL-Y|
+vim.cmd[[set completeopt+=menuone,noselect,popup]]
+vim.lsp.start({
+  name = 'luals',
+  cmd = …,
+  on_attach = function(client, bufnr)
+    vim.lsp.completion.enable(true, client.id, bufnr, {
+      autotrigger = true,
+      convert = function(item)
+        return { abbr = item.label:gsub('%b()', '') }
+      end,
+    })
+  end,
+})
+
+-- Use CTRL-space to trigger LSP completion.
+-- Use CTRL-Y to select an item. |complete_CTRL-Y|
+vim.keymap.set('i', '<c-space>', function()
+  vim.lsp.completion.get()
+end)
+
+vim.lsp.config['luals'] = {
+  -- Command and arguments to start the server.
+  cmd = { 'lua-language-server' },
+  -- Filetypes to automatically attach to.
+  filetypes = { 'lua' },
+  -- Sets the "workspace" to the directory where any of these files is found.
+  -- Files that share a root directory will reuse the LSP server connection.
+  -- Nested lists indicate equal priority, see |vim.lsp.Config|.
+  root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
+  -- Specific settings to send to the server. The schema is server-defined.
+  -- Example: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
+}
+
+vim.lsp.enable('luals')
+
 -----------------
 -- KEYBINDINGS --
 -----------------
