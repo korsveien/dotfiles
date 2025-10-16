@@ -1,7 +1,7 @@
 [user]
 	name = Peder Korsveien
     useConfigOnly = true
-	email = peder.korsveien@bekk.no
+	email = peder@korsveien.me
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ8gzEYF3BmEPTg0Luj/KKXlmpsZt1WUZqzFLXii64rh
 [core]
     editor = nvim
