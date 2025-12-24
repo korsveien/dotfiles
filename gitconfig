@@ -9,12 +9,6 @@
     excludesFile = ~/.gitignore
     hooksPath = ~/.git_hooks
 
-[gpg]
-  format = ssh
-
-[gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-
 [commit]
   gpgsign = true
 
@@ -64,5 +58,3 @@
 	trustExitCode = true
 [mergetool]
 	prompt = false
-[gpg]
-	program = /opt/homebrew/bin/gpg

@@ -1,7 +1,7 @@
 [general]
 import = ["~/.config/alacritty/themes/kanagawa_dragon.toml"]
 [font]
-size = 14
+size = 12
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
