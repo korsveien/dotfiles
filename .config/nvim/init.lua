@@ -2,116 +2,181 @@
 -- PRELUDE --
 -------------
 
--- Set leader before any plugins are loaded
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- Based on: https://github.com/radleylewis/nvim-lite
 
--- Disable netrw as advised by nvim-tree plugin
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- Set leader before any plugins are loaded
+vim.g.mapleader      = " "
+vim.g.maplocalleader = " "
 
 -------------
 -- PLUGINS --
 -------------
+vim.pack.add({
+  "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/rebelot/kanagawa.nvim",
+})
 
-require("config.pluginmanager")
-require("config.statusline")
+--------------
+--   LSP    --
+--------------
+vim.lsp.enable({
+  "gdscript",
+  "lua_ls",
+})
+
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" }
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      telemetry = {
+        enable = false,
+      }
+    }
+  }
+})
+
+-- Command-line completion
+vim.opt.wildmenu = true
+vim.opt.wildmode = "longest:full,full"
+vim.opt.wildignore:append({ "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
 
 --------------
 -- VIM OPTS --
 --------------
 
-vim.opt.clipboard = "unnamedplus"
-vim.opt.hidden = true -- switch between buffers without saving changes
-vim.opt.laststatus = 3 -- global statusline
-vim.opt.number = true -- show line numbers
-vim.opt.splitright = true
-vim.opt.swapfile = false
-vim.opt.swapfile = true
-vim.opt.wrap = false
-vim.opt_local.conceallevel = 2
+-- Basic settings
+vim.opt.number        = true  -- Show line numbers
+vim.opt.wrap          = false -- Do not wrap lines
+vim.opt.scrolloff     = 10    -- Keep 10 lines above/below cursor
+vim.opt.sidescrolloff = 8     -- Keep 8 columns left/right of the cursor
 
-------------------------
--- LSP + Autocomplete --
-------------------------
--- Works best with completeopt=noselect.
--- Use CTRL-Y to select an item. |complete_CTRL-Y|
-vim.cmd([[set completeopt+=menuone,noselect,popup]])
-vim.lsp.start({
-  name = "luals",
-  cmd = "luals",
-  on_attach = function(client, bufnr)
-    vim.lsp.completion.enable(true, client.id, bufnr, {
-      autotrigger = true,
-      convert = function(item)
-        return { abbr = item.label:gsub("%b()", "") }
-      end,
-    })
-  end,
-})
+-- Indentation
+vim.opt.shiftwidth    = 2    -- Indent width
+vim.opt.tabstop       = 2    -- Tab width
+vim.opt.softtabstop   = 2    -- Soft tab stop
+vim.opt.smartindent   = true -- Smart auto-indenting
+vim.opt.expandtab     = true -- Use spaces instesd of tabs
+vim.opt.autoindent    = true -- Copy indent from current line
 
--- Use CTRL-space to trigger LSP completion.
--- Use CTRL-Y to select an item. |complete_CTRL-Y|
-vim.keymap.set("i", "<c-space>", function()
-  vim.lsp.completion.get()
-end)
+-- Search settings
+vim.opt.ignorecase    = true  -- Case insensitive search
+vim.opt.smartcase     = true  -- Case sensitive if uppercase in search
+vim.opt.hlsearch      = false -- Don't highlight search results
+vim.opt.incsearch     = true  -- Show matches as you type
 
-vim.lsp.config["luals"] = {
-  -- Command and arguments to start the server.
-  cmd = { "lua-language-server" },
-  -- Filetypes to automatically attach to.
-  filetypes = { "lua" },
-  -- Sets the "workspace" to the directory where any of these files is found.
-  -- Files that share a root directory will reuse the LSP server connection.
-  -- Nested lists indicate equal priority, see |vim.lsp.Config|.
-  root_markers = { { ".luarc.json", ".luarc.jsonc" }, ".git" },
-  -- Specific settings to send to the server. The schema is server-defined.
-  -- Example: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        globals = { "vim" },
-      },
-    },
-  },
-}
+-- Visual settings
+vim.opt.termguicolors = true  --- Enable 24-bit colors
+vim.opt.signcolumn    = "yes" -- Always show the signcolumn
+vim.opt.colorcolumn   = "100" -- Show column at 100 characters
+vim.opt.showmatch     = true  -- Highlight matching brackets
+vim.opt.matchtime     = 2     -- How long to show matching bracket
+vim.opt.cmdheight     = 1     -- Command line height
+vim.opt.showmode      = false -- Don't show mode in command line
+vim.opt.pumheight     = 10    -- Popup menu height
+vim.opt.pumblend      = 10    -- Popup menu transparency
+vim.opt.winblend      = 0     -- Floating window transparency
+vim.opt.conceallevel  = 0     -- Don't hide markup
+vim.opt.concealcursor = ""    -- Don't hide cursor line markup
+vim.opt.lazyredraw    = true  -- Don't redraw during macros
+vim.opt.synmaxcol     = 300   -- Syntax highlighting limit
 
-vim.lsp.enable("luals")
+-- File handling
+vim.opt.backup        = false                           -- Don't create backup files
+vim.opt.writebackup   = false                           -- Don't create backup before writing
+vim.opt.swapfile      = false                           -- Don't create swap files
+vim.opt.undofile      = true                            -- Persistent undo
+vim.opt.undodir       = vim.fn.expand("~/.vim/undodir") -- Undo directory
+vim.opt.updatetime    = 300                             -- Faster completion
+vim.opt.timeoutlen    = 500                             -- Key timeout duration
+vim.opt.ttimeoutlen   = 0                               -- Key code timeout
+vim.opt.autoread      = true                            -- Auto reload files changed outside vim
+vim.opt.autowrite     = false                           -- Don't auto save
+
+-- Behaviour settings
+vim.opt.hidden        = true               -- Allow hidden buffers
+vim.opt.errorbells    = false              -- No error bells
+vim.opt.backspace     = "indent,eol,start" -- Better backspace behavior
+vim.opt.autochdir     = false              -- Don't auto change directory
+vim.opt.iskeyword:append("-")              -- Treat dash as part of word
+vim.opt.path:append("**")                  -- include subdirectories in search
+vim.opt.selection = "exclusive"            -- Selection behavior
+vim.opt.mouse = "a"                        -- Enable mouse support
+vim.opt.clipboard:append("unnamedplus")    -- Use system clipboard
+vim.opt.modifiable   = true                -- Allow buffer modifications
+vim.opt.encoding     = "UTF-8"             -- Set encoding
+
+-- Split behavior
+vim.opt.splitbelow   = true -- Horizontal splits go below
+vim.opt.splitright   = true -- Vertical splits go right
+
+-- Autocomplete
+vim.opt.complete     = ".,o"                    -- Use buffer and omnifunc
+vim.opt.completeopt  = "fuzzy,menuone,noselect" -- Completion options
+vim.opt.autocomplete = true                     -- Turn on native autocomplete
+vim.opt.pumheight    = 7                        -- Height of popup menu
 
 -----------------
--- KEYBINDINGS --
+--  KEYMAPS    --
 -----------------
-
 -- Convenvience
 vim.keymap.set("n", "<C-q>", "<Cmd>quit!<CR>")
-vim.keymap.set("n", "<leader>j", "<Cmd>set ft=json<CR>") -- Set filetype to json
-vim.keymap.set("n", "<leader>s", "<Cmd>source %<CR>") -- Source the current file
-vim.keymap.set("v", "<leader>y", '"+y') -- Copy to clipboard
+vim.keymap.set("n", "<leader>j", "<Cmd>set ft=json<CR>")        -- Set filetype to json
+vim.keymap.set("n", "<leader>s", "<Cmd>source %<CR>")           -- Source the current file
+vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>") -- Open the nvim config file
+vim.keymap.set("n", "<C-p>", ":Explore<CR>", { desc = "Open file explorer" })
 
--- Picker
-local telescope = require("telescope.builtin")
+-- Move lines up/down
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
-vim.keymap.set("n", "<C-p>", telescope.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<C-f>", telescope.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set("n", "<C-S-f>", telescope.grep_string, { desc = "Search for word under cursor" })
-vim.keymap.set("n", "<C-e>", telescope.buffers, { desc = "Telescope buffers" })
+-- Clear search highlights
+vim.keymap.set("n", "<C-l>", ":nohlsearch<CR>", { desc = "Clear search highlights" })
 
--- File Tree
-vim.keymap.set("n", "<C-h>", "<Cmd>NvimTreeToggle<CR>")
+-- Delete without yanking
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
 
 -------------------
 --  AUTOCOMMANDS --
 -------------------
+-- Basic autocommands
+local augroup = vim.api.nvim_create_augroup("UserConfig", {})
 
 -- Open help window in a vertical split
 vim.cmd([[autocmd FileType help wincmd L]])
 
--- For my fat fingers
-vim.cmd([[cab W write]])
-vim.cmd([[cab, Q, "quit"]])
+-- Format on save
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+
+-- Highlight selection on yank
+vim.cmd [[ autocmd TextYankPost <buffer> lua vim.highlight.on_yank() ]]
+
+-- Auto-resize splits when window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+  group = augroup,
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end,
+})
+
+-- Auto-resize splits when window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+  group = augroup,
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end,
+})
+
+
+-------------------
+--   COLORS      --
+-------------------
 
 -- きれいね
 vim.cmd("colorscheme kanagawa-dragon")
