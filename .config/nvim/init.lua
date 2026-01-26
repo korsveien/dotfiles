@@ -16,40 +16,44 @@ vim.g.loaded_netrwPlugin = 1
 -- PLUGINS --
 -------------
 vim.pack.add({
-  "https://github.com/neovim/nvim-lspconfig",         -- Collection of LSP-configurations
-  "https://github.com/rebelot/kanagawa.nvim",         -- Color scheme
-  "https://github.com/nvim-tree/nvim-tree.lua",       -- File tree
-  "https://github.com/nvim-tree/nvim-web-devicons",   -- Optional dependency of nvim-tree
-  "https://github.com/mg979/vim-visual-multi",        -- Multiple cursors
-  "https://github.com/nvim-telescope/telescope.nvim", -- File picker
-  "https://github.com/nvim-lua/plenary.nvim",         -- Dependeny of Telescope
+    "https://github.com/neovim/nvim-lspconfig",         -- Collection of LSP configurations
+    "https://github.com/rebelot/kanagawa.nvim",         -- Color scheme
+    "https://github.com/nvim-tree/nvim-tree.lua",       -- File tree
+    "https://github.com/nvim-tree/nvim-web-devicons",   -- Optional dependency of nvim-tree
+    "https://github.com/mg979/vim-visual-multi",        -- Multiple cursors
+    "https://github.com/nvim-telescope/telescope.nvim", -- Picker
+    "https://github.com/nvim-lua/plenary.nvim",         -- Dependeny of Telescope
+    "https://github.com/lewis6991/gitsigns.nvim",       -- Git markers in signcolumn
 })
 
-require('nvim-tree')
-require('telescope')
+-- Modularize based on feature
+require('filetree')
+require('picker')
+require('vcs')
+require('statusline')
 
 --------------
 --   LSP    --
 --------------
 vim.lsp.enable({
-  "gdscript",
-  "lua_ls",
+    "gdscript",
+    "lua_ls",
 })
 
 vim.lsp.config("lua_ls", {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" }
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      telemetry = {
-        enable = false,
-      }
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim" }
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            telemetry = {
+                enable = false,
+            }
+        }
     }
-  }
 })
 
 --------------
@@ -127,12 +131,19 @@ vim.opt.autocomplete = true                           -- Turn on native autocomp
 vim.opt.pumheight    = 7                              -- Height of popup menu
 
 vim.keymap.set('i', '<Tab>', function()
-  return vim.fn.pumvisible() == 1 and '<C-n>' or '<Tab>'
+    return vim.fn.pumvisible() == 1 and '<C-n>' or '<Tab>'
 end, { expr = true })
 
 vim.keymap.set('i', '<S-Tab>', function()
-  return vim.fn.pumvisible() == 1 and '<C-p>' or '<S-Tab>'
+    return vim.fn.pumvisible() == 1 and '<C-p>' or '<S-Tab>'
 end, { expr = true })
+
+-- Command line autocomplete
+vim.cmd [[
+  autocmd CmdlineChanged [:\/\?] call wildtrigger()
+  set wildmode=noselect:lastused,full
+  set wildoptions=pum
+]]
 
 -----------------
 --  KEYMAPS    --
@@ -152,9 +163,6 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 -- Clear search highlights
 vim.keymap.set("n", "<C-l>", ":nohlsearch<CR>", { desc = "Clear search highlights" })
 
--- File Tree
-vim.keymap.set("n", "<C-h>", "<Cmd>NvimTreeToggle<CR>")
-
 -------------------
 --  AUTOCOMMANDS --
 -------------------
@@ -169,28 +177,27 @@ vim.cmd [[ autocmd TextYankPost <buffer> lua vim.highlight.on_yank() ]]
 
 -- Auto-resize splits when window is resized
 vim.api.nvim_create_autocmd("VimResized", {
-  callback = function()
-    vim.cmd("tabdo wincmd =")
-  end,
+    callback = function()
+        vim.cmd("tabdo wincmd =")
+    end,
 })
 
 -- Open file to last edit location
 vim.api.nvim_create_autocmd('BufReadPost', {
-  pattern = { '*' },
-  desc = 'When editing a file, always jump to the last known cursor position',
-  callback = function()
-    local line = vim.fn.line '\'"'
-    if
-        line >= 1
-        and line <= vim.fn.line '$'
-        and vim.bo.filetype ~= 'commit'
-        and vim.fn.index({ 'xxd', 'gitrebase' }, vim.bo.filetype) == -1
-    then
-      vim.cmd 'normal! g`"'
-    end
-  end,
+    pattern = { '*' },
+    desc = 'When editing a file, always jump to the last known cursor position',
+    callback = function()
+        local line = vim.fn.line '\'"'
+        if
+            line >= 1
+            and line <= vim.fn.line '$'
+            and vim.bo.filetype ~= 'commit'
+            and vim.fn.index({ 'xxd', 'gitrebase' }, vim.bo.filetype) == -1
+        then
+            vim.cmd 'normal! g`"'
+        end
+    end,
 })
-
 
 -------------------
 --   COLORS      --

@@ -36,3 +36,5 @@ require("nvim-tree").setup(
     },
 }
 )
+
+vim.keymap.set("n", "<C-h>", "<Cmd>NvimTreeToggle<CR>")
