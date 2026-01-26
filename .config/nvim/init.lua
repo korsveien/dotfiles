@@ -5,8 +5,12 @@
 -- Based on: https://github.com/radleylewis/nvim-lite
 
 -- Set leader before any plugins are loaded
-vim.g.mapleader      = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader          = " "
+vim.g.maplocalleader     = " "
+
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw       = 1
+vim.g.loaded_netrwPlugin = 1
 
 -------------
 -- PLUGINS --
@@ -14,7 +18,73 @@ vim.g.maplocalleader = " "
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/rebelot/kanagawa.nvim",
+  "https://github.com/nvim-tree/nvim-tree.lua",
+  "https://github.com/nvim-tree/nvim-web-devicons",
+  "https://github.com/mg979/vim-visual-multi",
+  "https://github.com/nvim-telescope/telescope.nvim",
+  "https://github.com/nvim-lua/plenary.nvim",
 })
+
+require("nvim-tree").setup()
+
+----------------
+-- Telescope  --
+----------------
+local actions = require("telescope.actions")
+require 'telescope'.setup({
+  defaults = {
+    prompt_prefix = "  ",
+    selection_caret = "  ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    mappings = {
+      i = {
+        ["<C-[>"] = actions.close,
+        ["<esc>"] = actions.close,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+      },
+    },
+    sorting_strategy = "ascending",
+    layout_strategy = "vertical",
+    file_ignore_patterns = {
+      "node_modules",
+      "plugged",
+      "target",
+      ".git",
+      "pkg",
+    },
+  },
+  pickers = {
+    find_files = {
+      layout_strategy = "center",
+      previewer = false,
+      hidden = true,
+    },
+    marks = {
+      layout_strategy = "center",
+      previewer = false,
+      hidden = true,
+    },
+    buffers = {
+      layout_strategy = "center",
+      previewer = false,
+      hidden = true,
+    },
+    lsp_document_symbols = {
+      layout_strategy = "center",
+      previewer = false,
+      hidden = true,
+    },
+  },
+})
+
+local builtin = require('telescope.builtin')
+
+vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<C-f>', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<C-m>', builtin.lsp_document_symbols, { desc = 'Telescope document symbols' })
+vim.keymap.set('n', '<C-b>', builtin.buffers, { desc = 'Telescope buffers' })
 
 --------------
 --   LSP    --
@@ -72,7 +142,6 @@ vim.opt.incsearch     = true  -- Show matches as you type
 -- Visual settings
 vim.opt.termguicolors = true  --- Enable 24-bit colors
 vim.opt.signcolumn    = "yes" -- Always show the signcolumn
-vim.opt.colorcolumn   = "100" -- Show column at 100 characters
 vim.opt.showmatch     = true  -- Highlight matching brackets
 vim.opt.matchtime     = 2     -- How long to show matching bracket
 vim.opt.cmdheight     = 1     -- Command line height
@@ -102,33 +171,40 @@ vim.opt.hidden        = true               -- Allow hidden buffers
 vim.opt.errorbells    = false              -- No error bells
 vim.opt.backspace     = "indent,eol,start" -- Better backspace behavior
 vim.opt.autochdir     = false              -- Don't auto change directory
+vim.opt.selection     = "exclusive"        -- Selection behavior
+vim.opt.mouse         = "a"                -- Enable mouse support
+vim.opt.encoding      = "UTF-8"            -- Set encoding
+vim.opt.modifiable    = true               -- Allow buffer modifications
+vim.opt.clipboard:append("unnamedplus")    -- Use system clipboard
 vim.opt.iskeyword:append("-")              -- Treat dash as part of word
 vim.opt.path:append("**")                  -- include subdirectories in search
-vim.opt.selection = "exclusive"            -- Selection behavior
-vim.opt.mouse = "a"                        -- Enable mouse support
-vim.opt.clipboard:append("unnamedplus")    -- Use system clipboard
-vim.opt.modifiable   = true                -- Allow buffer modifications
-vim.opt.encoding     = "UTF-8"             -- Set encoding
 
 -- Split behavior
 vim.opt.splitbelow   = true -- Horizontal splits go below
 vim.opt.splitright   = true -- Vertical splits go right
 
 -- Autocomplete
-vim.opt.complete     = ".,o"                    -- Use buffer and omnifunc
-vim.opt.completeopt  = "fuzzy,menuone,noselect" -- Completion options
-vim.opt.autocomplete = true                     -- Turn on native autocomplete
-vim.opt.pumheight    = 7                        -- Height of popup menu
+vim.opt.complete     = ".,o"                          -- Use buffer and omnifunc
+vim.opt.completeopt  = "fuzzy,menuone,noselect,popup" -- Completion options
+vim.opt.autocomplete = true                           -- Turn on native autocomplete
+vim.opt.pumheight    = 7                              -- Height of popup menu
+
+vim.keymap.set('i', '<Tab>', function()
+  return vim.fn.pumvisible() == 1 and '<C-n>' or '<Tab>'
+end, { expr = true })
+
+vim.keymap.set('i', '<S-Tab>', function()
+  return vim.fn.pumvisible() == 1 and '<C-p>' or '<S-Tab>'
+end, { expr = true })
 
 -----------------
 --  KEYMAPS    --
 -----------------
 -- Convenvience
 vim.keymap.set("n", "<C-q>", "<Cmd>quit!<CR>")
-vim.keymap.set("n", "<leader>j", "<Cmd>set ft=json<CR>")        -- Set filetype to json
-vim.keymap.set("n", "<leader>s", "<Cmd>source %<CR>")           -- Source the current file
+vim.keymap.set("n", "<leader>j", "<Cmd>set ft=json<CR>")            -- Set filetype to json
+vim.keymap.set("n", "<leader>s", "<Cmd>source %<CR>")               -- Source the current file
 vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>") -- Open the nvim config file
-vim.keymap.set("n", "<C-p>", ":Explore<CR>", { desc = "Open file explorer" })
 
 -- Move lines up/down
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
@@ -142,12 +218,12 @@ vim.keymap.set("n", "<C-l>", ":nohlsearch<CR>", { desc = "Clear search highlight
 -- Delete without yanking
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
 
+-- File Tree
+vim.keymap.set("n", "<C-h>", "<Cmd>NvimTreeToggle<CR>")
+
 -------------------
 --  AUTOCOMMANDS --
 -------------------
--- Basic autocommands
-local augroup = vim.api.nvim_create_augroup("UserConfig", {})
-
 -- Open help window in a vertical split
 vim.cmd([[autocmd FileType help wincmd L]])
 
@@ -159,7 +235,6 @@ vim.cmd [[ autocmd TextYankPost <buffer> lua vim.highlight.on_yank() ]]
 
 -- Auto-resize splits when window is resized
 vim.api.nvim_create_autocmd("VimResized", {
-  group = augroup,
   callback = function()
     vim.cmd("tabdo wincmd =")
   end,
@@ -167,9 +242,25 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 -- Auto-resize splits when window is resized
 vim.api.nvim_create_autocmd("VimResized", {
-  group = augroup,
   callback = function()
     vim.cmd("tabdo wincmd =")
+  end,
+})
+
+-- Open file to last edit location
+vim.api.nvim_create_autocmd('BufReadPost', {
+  pattern = { '*' },
+  desc = 'When editing a file, always jump to the last known cursor position',
+  callback = function()
+    local line = vim.fn.line '\'"'
+    if
+        line >= 1
+        and line <= vim.fn.line '$'
+        and vim.bo.filetype ~= 'commit'
+        and vim.fn.index({ 'xxd', 'gitrebase' }, vim.bo.filetype) == -1
+    then
+      vim.cmd 'normal! g`"'
+    end
   end,
 })
 
