@@ -16,75 +16,17 @@ vim.g.loaded_netrwPlugin = 1
 -- PLUGINS --
 -------------
 vim.pack.add({
-  "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/rebelot/kanagawa.nvim",
-  "https://github.com/nvim-tree/nvim-tree.lua",
-  "https://github.com/nvim-tree/nvim-web-devicons",
-  "https://github.com/mg979/vim-visual-multi",
-  "https://github.com/nvim-telescope/telescope.nvim",
-  "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/neovim/nvim-lspconfig",         -- Collection of LSP-configurations
+  "https://github.com/rebelot/kanagawa.nvim",         -- Color scheme
+  "https://github.com/nvim-tree/nvim-tree.lua",       -- File tree
+  "https://github.com/nvim-tree/nvim-web-devicons",   -- Optional dependency of nvim-tree
+  "https://github.com/mg979/vim-visual-multi",        -- Multiple cursors
+  "https://github.com/nvim-telescope/telescope.nvim", -- File picker
+  "https://github.com/nvim-lua/plenary.nvim",         -- Dependeny of Telescope
 })
 
-require("nvim-tree").setup()
-
-----------------
--- Telescope  --
-----------------
-local actions = require("telescope.actions")
-require 'telescope'.setup({
-  defaults = {
-    prompt_prefix = "  ",
-    selection_caret = "  ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    mappings = {
-      i = {
-        ["<C-[>"] = actions.close,
-        ["<esc>"] = actions.close,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
-      },
-    },
-    sorting_strategy = "ascending",
-    layout_strategy = "vertical",
-    file_ignore_patterns = {
-      "node_modules",
-      "plugged",
-      "target",
-      ".git",
-      "pkg",
-    },
-  },
-  pickers = {
-    find_files = {
-      layout_strategy = "center",
-      previewer = false,
-      hidden = true,
-    },
-    marks = {
-      layout_strategy = "center",
-      previewer = false,
-      hidden = true,
-    },
-    buffers = {
-      layout_strategy = "center",
-      previewer = false,
-      hidden = true,
-    },
-    lsp_document_symbols = {
-      layout_strategy = "center",
-      previewer = false,
-      hidden = true,
-    },
-  },
-})
-
-local builtin = require('telescope.builtin')
-
-vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<C-f>', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<C-m>', builtin.lsp_document_symbols, { desc = 'Telescope document symbols' })
-vim.keymap.set('n', '<C-b>', builtin.buffers, { desc = 'Telescope buffers' })
+require('nvim-tree')
+require('telescope')
 
 --------------
 --   LSP    --
@@ -109,11 +51,6 @@ vim.lsp.config("lua_ls", {
     }
   }
 })
-
--- Command-line completion
-vim.opt.wildmenu = true
-vim.opt.wildmode = "longest:full,full"
-vim.opt.wildignore:append({ "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
 
 --------------
 -- VIM OPTS --
@@ -215,9 +152,6 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 -- Clear search highlights
 vim.keymap.set("n", "<C-l>", ":nohlsearch<CR>", { desc = "Clear search highlights" })
 
--- Delete without yanking
-vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
-
 -- File Tree
 vim.keymap.set("n", "<C-h>", "<Cmd>NvimTreeToggle<CR>")
 
@@ -232,13 +166,6 @@ vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
 -- Highlight selection on yank
 vim.cmd [[ autocmd TextYankPost <buffer> lua vim.highlight.on_yank() ]]
-
--- Auto-resize splits when window is resized
-vim.api.nvim_create_autocmd("VimResized", {
-  callback = function()
-    vim.cmd("tabdo wincmd =")
-  end,
-})
 
 -- Auto-resize splits when window is resized
 vim.api.nvim_create_autocmd("VimResized", {
