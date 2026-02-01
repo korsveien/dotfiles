@@ -5,6 +5,7 @@ if status is-interactive
 end
 
 fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.local/share/bob/nvim-bin
 
 fish_vi_key_bindings
 
@@ -73,5 +74,3 @@ end
 # Remove mode prompt
 function fish_mode_prompt
 end
-
-source /usr/share/autojump/autojump.fish
