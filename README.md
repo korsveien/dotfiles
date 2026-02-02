@@ -1,4 +1,7 @@
 # dotfiles
 
-Home for system configuration and lists of useful tools.
+Home for system configuration.
+
+## TODO
+- [ ] Clipboard Manager
 
