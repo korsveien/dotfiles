@@ -4,3 +4,5 @@
 .idea/
 node_modules/
 *.iml
+conf.d
+fish_variables
