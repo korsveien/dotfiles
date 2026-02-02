@@ -6,8 +6,11 @@ end
 
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.local/share/bob/nvim-bin
+fish_add_path /opt/homebrew/bin
 
 fish_vi_key_bindings
+
+set XDG_CONFIG_HOME ~/.config
 
 bind -M insert \cj up-or-search
 bind -M insert \ck down-or-search
