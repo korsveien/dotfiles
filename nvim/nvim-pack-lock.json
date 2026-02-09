@@ -4,6 +4,10 @@
       "rev": "b137f63d89d0285ca76eed12e1923220e0aff8c1",
       "src": "https://github.com/Saghen/blink.cmp"
     },
+    "gdscript-extended-lsp.nvim": {
+      "rev": "201db358aa77c2e8e204f0a527481695960fbf76",
+      "src": "https://github.com/Teatek/gdscript-extended-lsp.nvim"
+    },
     "gitsigns.nvim": {
       "rev": "abf82a65f185bd54adc0679f74b7d6e1ada690c9",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
@@ -39,6 +43,10 @@
     "trouble.nvim": {
       "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
       "src": "https://github.com/folke/trouble.nvim"
+    },
+    "vim-godot": {
+      "rev": "2cecd0c83a7b3f012142a584d53a3a51be246c8e",
+      "src": "https://github.com/habamax/vim-godot"
     },
     "vim-multiple-cursors": {
       "rev": "6456718e1d30b42c04b920c5413ca44f68f08759",
