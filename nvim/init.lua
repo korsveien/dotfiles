@@ -17,7 +17,6 @@ vim.g.loaded_netrwPlugin = 1
 -------------
 vim.pack.add({
     "https://github.com/neovim/nvim-lspconfig",         -- Collection of LSP configurations
-    "https://github.com/rebelot/kanagawa.nvim",         -- Color scheme
     "https://github.com/nvim-tree/nvim-tree.lua",       -- File tree
     "https://github.com/nvim-tree/nvim-web-devicons",   -- Optional dependency of nvim-tree
     "https://github.com/mg979/vim-visual-multi",        -- Multiple cursors
@@ -38,6 +37,8 @@ require('statusline')
 vim.lsp.enable({
     "gdscript",
     "lua_ls",
+    "rust_analyzer",
+    "typescript",
 })
 
 vim.lsp.config("lua_ls", {
@@ -204,4 +205,4 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 -------------------
 
 -- きれいね
-vim.cmd("colorscheme kanagawa-dragon")
+vim.cmd("colorscheme sekigawa")
