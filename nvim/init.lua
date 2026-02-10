@@ -23,6 +23,7 @@ vim.pack.add({
     "https://github.com/nvim-telescope/telescope.nvim", -- Picker
     "https://github.com/nvim-lua/plenary.nvim",         -- Dependeny of Telescope
     "https://github.com/lewis6991/gitsigns.nvim",       -- Git markers in signcolumn
+    "https://github.com/norcalli/nvim-colorizer.lua",   -- Colorize color codes
 })
 
 -- Modularize based on feature
@@ -149,6 +150,10 @@ vim.cmd [[
 -----------------
 --  KEYMAPS    --
 -----------------
+
+-- For my fat fingers
+vim.api.nvim_create_user_command("W", "w", {})
+
 -- Convenvience
 vim.keymap.set("n", "<C-q>", "<Cmd>quit!<CR>")
 vim.keymap.set("n", "<leader>j", "<Cmd>set ft=json<CR>")            -- Set filetype to json
@@ -167,6 +172,7 @@ vim.keymap.set("n", "<C-l>", ":nohlsearch<CR>", { desc = "Clear search highlight
 -------------------
 --  AUTOCOMMANDS --
 -------------------
+
 -- Open help window in a vertical split
 vim.cmd([[autocmd FileType help wincmd L]])
 

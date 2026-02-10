@@ -1,5 +1,6 @@
 -- A subtle colorscheme based on Kanagawa Dragon
 -- Uses fewer colors for a calmer editing experience
+-- Vibe coded with claude
 
 vim.cmd("hi clear")
 if vim.fn.exists("syntax_on") then

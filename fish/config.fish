@@ -77,3 +77,6 @@ end
 # Remove mode prompt
 function fish_mode_prompt
 end
+
+[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+
