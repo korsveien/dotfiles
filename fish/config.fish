@@ -10,7 +10,8 @@ fish_add_path /opt/homebrew/bin
 
 fish_vi_key_bindings
 
-set XDG_CONFIG_HOME ~/.config
+set -gx XDG_CONFIG_HOME ~/.config
+set -gx EDITOR nvim
 
 bind -M insert \cj up-or-search
 bind -M insert \ck down-or-search
@@ -78,5 +79,13 @@ end
 function fish_mode_prompt
 end
 
-[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+function y
+	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+	command yazi $argv --cwd-file="$tmp"
+	if read -z cwd < "$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
+		builtin cd -- "$cwd"
+	end
+	command rm -f -- "$tmp"
+end
 
+[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish

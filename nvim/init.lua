@@ -24,6 +24,7 @@ vim.pack.add({
     "https://github.com/nvim-lua/plenary.nvim",         -- Dependeny of Telescope
     "https://github.com/lewis6991/gitsigns.nvim",       -- Git markers in signcolumn
     "https://github.com/norcalli/nvim-colorizer.lua",   -- Colorize color codes
+    "https://github.com/rebelot/kanagawa.nvim",         -- Color theme
 })
 
 -- Modularize based on feature
