@@ -1,0 +1,10 @@
+[plugin]
+deps = []
+
+[flavor]
+dark = "kanagawa-dragon"
+
+[[flavor.deps]]
+use = "marcosvnmelo/kanagawa-dragon"
+rev = "b9541e8"
+hash = "dc840cf225dbf6f0257617403ad43d8b"

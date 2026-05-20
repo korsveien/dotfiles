@@ -6,3 +6,4 @@ node_modules/
 *.iml
 conf.d
 fish/fish_variables
+fish/fish_completions

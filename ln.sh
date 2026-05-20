@@ -2,9 +2,10 @@
 
 rm -rf ~/.config/nvim
 rm -rf ~/.config/fish
-rm -rf ~/.config/alacritty
+rm -rf ~/.config/kitty
+rm -rf ~/.config/yazi
 
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/fish ~/.config/fish
-ln -s ~/dotfiles/alacritty ~/.config/alacritty
 ln -s ~/dotfiles/kitty ~/.config/kitty
+ln -s ~/dotfiles/yazi ~/.config/yazi
