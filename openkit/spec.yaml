@@ -1,0 +1,5 @@
+schemaVersion: "1"
+kind: mixin
+name: openkit
+displayName: openkit
+description: OpenCode preloaded with config and skills

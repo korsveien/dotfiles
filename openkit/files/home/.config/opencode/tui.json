@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "keybinds": {
+    "dialog.select.submit": "return,tab",
+    "history_previous": "up,ctrl+j",
+    "dialog.select.next": "down,ctrl+n,ctrl+j",
+    "dialog.select.prev": "up,ctrl+p,ctrl+k",
+    "prompt.autocomplete.next": "down,ctrl+n,ctrl+j",
+    "prompt.autocomplete.prev": "up,ctrl+p,ctrl+k",
+    "prompt.autocomplete.hide": "escape,ctrl+[",
+    "session_interrupt": "escape,ctrl+["
+  }
+}

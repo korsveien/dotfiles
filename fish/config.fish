@@ -21,6 +21,10 @@ bind -M insert \ce end-of-line
 bind \cj up-or-search
 bind \ck down-or-search
 
+abbr --add l ls -la
+
+abbr --add box sbx run --kit "$HOME/dotfiles/openkit" opencode .
+
 ## git
 abbr --add g git
 abbr --add gpf git push -f
@@ -42,6 +46,9 @@ abbr --add gpr "git remote prune origin && git branch -vv | grep ': gone]' | awk
 abbr --add v nvim
 abbr --add vim nvim
 
+## tmux
+abbr --add ta tmux attach
+
 ## configs
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish
@@ -60,7 +67,7 @@ function gco
 end
 
 function fish_prompt
-    string join '' -- (set_color green) (prompt_pwd) (set_color normal) \n $fish_git_prompt '$ '
+    string join '' -- (set_color green) (prompt_pwd) (set_color blue) (fish_git_prompt) (set_color normal) \n '$ '
 end
 
 function fish_right_prompt -d "Write out the right prompt"
