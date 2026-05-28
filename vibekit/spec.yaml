@@ -1,5 +1,5 @@
 schemaVersion: "1"
 kind: mixin
-name: openkit
-displayName: openkit
+name: vibekit
+displayName: vibekit
 description: OpenCode preloaded with config and skills

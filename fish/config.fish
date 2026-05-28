@@ -23,7 +23,7 @@ bind \ck down-or-search
 
 abbr --add l ls -la
 
-abbr --add box sbx run --kit "$HOME/dotfiles/openkit" opencode .
+abbr --add box sbx run --kit "$HOME/dotfiles/vibekit" opencode .
 
 ## git
 abbr --add g git

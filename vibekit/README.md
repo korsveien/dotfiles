@@ -1,11 +1,11 @@
-# OpenCode Docker sandbox kit
+# Vibekit
 
 This docker sandbox kit packages a ready-to-use OpenCode sandbox with your local OpenCode config and agent configs.
 
 ## Create a Docker sandbox with this kit in current directory
 
 ```sh
-sbx run --kit "$HOME/dotfiles/openbox" opencode .
+sbx run --kit "$HOME/dotfiles/vibekit" opencode .
 ```
 
 ## Authentication
