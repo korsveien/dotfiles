@@ -3,8 +3,13 @@ kind: mixin
 name: vibekit
 displayName: vibekit
 description: OpenCode preloaded with config and skills
+network:
+  allowedDomains:
+    - cdn.playwright.dev
+    - playwright.download.prss.microsoft.com
+    - cdn.playwright.dev
 commands:
   install:
-    - command: "apt-get update && apt-get install chromium-browser firefox"
+    - command: "npm -g install playwright --with-deps chromium firefox webkit"
   startup:
     - command: ["sh", "-c", "cp -f \"$HOME/.claude/settings.json.bak\" \"$HOME/.claude/settings.json\""]
