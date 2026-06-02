@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "defaultMode": "plan"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "editorMode": "vim"
+}
+

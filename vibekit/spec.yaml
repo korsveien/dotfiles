@@ -3,3 +3,6 @@ kind: mixin
 name: vibekit
 displayName: vibekit
 description: OpenCode preloaded with config and skills
+commands:
+  startup:
+    - command: ["sh", "-c", "cp -f \"$HOME/.claude/settings.json.bak\" \"$HOME/.claude/settings.json\""]
