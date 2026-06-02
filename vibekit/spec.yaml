@@ -4,5 +4,7 @@ name: vibekit
 displayName: vibekit
 description: OpenCode preloaded with config and skills
 commands:
+  install:
+    - command: "apt-get update && apt-get install chromium-browser firefox"
   startup:
     - command: ["sh", "-c", "cp -f \"$HOME/.claude/settings.json.bak\" \"$HOME/.claude/settings.json\""]
