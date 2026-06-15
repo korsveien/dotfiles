@@ -42,5 +42,12 @@
       "tab": "editor::ContextMenuNext",
       "shift-tab": "editor::ContextMenuPrevious"
     }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !menu",
+    "bindings": {
+      "v": "editor::SelectLargerSyntaxNode",
+      "V": "editor::SelectSmallerSyntaxNode"
+    }
   }
 ]

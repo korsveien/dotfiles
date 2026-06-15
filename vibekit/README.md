@@ -1,6 +1,6 @@
 # Vibekit
 
-This docker sandbox kit packages a ready-to-use OpenCode sandbox with your local OpenCode config and agent configs.
+This docker sandbox kit packages a ready-to-use sandbox with your local OpenCode config and agent configs.
 
 ## Create a Docker sandbox with this kit in current directory
 
@@ -29,5 +29,4 @@ Run from this directory:
 ```
 
 ## Notes
-- OpenCode reads config at startup; restart OpenCode after config changes.
 - External skills are discovered from `~/.agents/skills` in the sandbox home.

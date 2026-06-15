@@ -7,3 +7,4 @@ node_modules/
 conf.d
 fish/fish_variables
 fish/fish_completions
+zed/prompts
