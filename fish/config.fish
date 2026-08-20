@@ -5,8 +5,8 @@ if status is-interactive
 end
 
 fish_add_path $HOME/.local/bin
-fish_add_path $HOME/.local/share/bob/nvim-bin
 fish_add_path /opt/homebrew/bin
+fish_add_path $HOME/Applications/IntelliJ\ IDEA.app/Contents/MacOS
 
 fish_vi_key_bindings
 
@@ -23,8 +23,6 @@ bind \ck down-or-search
 
 abbr --add l ls -la
 
-abbr --add box sbx run --kit "$HOME/dotfiles/vibekit" opencode .
-
 ## git
 abbr --add g git
 abbr --add gpf git push -f
@@ -40,7 +38,7 @@ abbr --add gst git status
 abbr --add gd git diff --staged
 abbr --add gbn git checkout -b
 abbr --add gb git branch --all
-abbr --add gpr "git remote prune origin && git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs -r git branch -D"
+abbr --add gpr "git remote prune origin && itongit branch -vv | grep ': gone]' | awk '{print \$1}' | xargs -r git branch -D"
 
 ## vim
 abbr --add v nvim
@@ -97,4 +95,3 @@ end
 
 [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
 
-source ~/.env
