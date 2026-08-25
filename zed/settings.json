@@ -1,0 +1,112 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+	"diff_view_style": "unified",
+ "icon_theme": "Zed (Default)",
+ "cli_default_open_behavior": "existing_window",
+	"proxy": "",
+	"disable_ai": false,
+	"buffer_font_family": ".ZedMono",
+	"ui_font_weight": 500.0,
+	"ui_font_family": ".ZedSans",
+	"agent_buffer_font_size": 16.0,
+	"agent_ui_font_size": 18.0,
+	"buffer_font_weight": 400.0,
+	"agent_servers": {
+		"codex-acp": {
+			"type": "registry"
+		},
+		"claude-acp": {
+			"type": "registry",
+			"default_config_options": {
+				"model": "opus[1m]",
+				"mode": "plan"
+			}
+		}
+	},
+  "edit_predictions": {
+    "provider": "none",
+    "mode": "subtle"
+  },
+  "language_models": {
+    "bedrock": {
+      "authentication_method": "named_profile",
+      "region": "eu-north-1",
+      "profile": "sb1-shared-utvikleropplevelse/claude-code-user",
+    }
+  },
+	"project_panel": {
+		"dock": "right"
+	},
+	"outline_panel": {
+		"dock": "right"
+	},
+	"collaboration_panel": {
+		"dock": "right"
+	},
+	"git_panel": {
+		"dock": "right"
+	},
+	"agent": {
+		"profiles": {},
+		"inline_assistant_model": {
+			"provider": "zed.dev",
+			"model": "claude-sonnet-4-6",
+			"enable_thinking": false
+		},
+		"dock": "left",
+		"default_profile": "ask",
+		"default_model": {
+			"enable_thinking": true,
+			"provider": "amazon-bedrock",
+			"model": "claude-haiku-4-5"
+		},
+		"model_parameters": []
+	},
+	"telemetry": {
+		"metrics": false,
+		"diagnostics": false
+	},
+	"terminal": {
+		"dock": "bottom"
+	},
+	"vim_mode": true,
+	"ui_font_size": 14.0,
+	"buffer_font_size": 14.0,
+	"base_keymap": "JetBrains",
+	"theme": {
+		"mode": "dark",
+		"light": "Kanagawa Dragon",
+		"dark": "Kanagawa Dragon - No Italics"
+	},
+	"cursor_blink": false,
+	// User biome as formatter for these languages
+	"languages": {
+		"Astro": { "formatter": { "language_server": { "name": "biome" } } },
+		"CSS": { "formatter": { "language_server": { "name": "biome" } } },
+		"GraphQL": { "formatter": { "language_server": { "name": "biome" } } },
+		"HTML": { "formatter": { "language_server": { "name": "biome" } } },
+		"JSON": { "formatter": { "language_server": { "name": "biome" } } },
+		"JSONC": { "formatter": { "language_server": { "name": "biome" } } },
+		"JSX": { "formatter": { "language_server": { "name": "biome" } } },
+		"JavaScript": { "formatter": { "language_server": { "name": "biome" } } },
+		"Svelte": { "formatter": { "language_server": { "name": "biome" } } },
+		"TSX": { "formatter": { "language_server": { "name": "biome" } } },
+		"TypeScript": { "formatter": { "language_server": { "name": "biome" } } },
+		"Vue.js": { "formatter": { "language_server": { "name": "biome" } } }
+	},
+	// Enable biome only when biome.json is present
+	"lsp": {
+		"biome": {
+			"settings": {
+				"require_config_file": true
+			}
+		}
+	}
+}

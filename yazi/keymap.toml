@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on   = [ "o", "f" ]
+run  = "plugin open-in-finder"
+desc = "show directory in finder"

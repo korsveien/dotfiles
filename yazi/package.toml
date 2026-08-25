@@ -1,9 +1,6 @@
 [plugin]
 deps = []
 
-[flavor]
-dark = "kanagawa-dragon"
-
 [[flavor.deps]]
 use = "marcosvnmelo/kanagawa-dragon"
 rev = "b9541e8"
