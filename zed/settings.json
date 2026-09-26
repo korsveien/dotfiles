@@ -7,7 +7,10 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-	"diff_view_style": "unified",
+	"active_pane_modifiers": {
+  "border_size": 0.0
+ },
+ "diff_view_style": "unified",
  "icon_theme": "Zed (Default)",
  "cli_default_open_behavior": "existing_window",
 	"proxy": "",
@@ -54,18 +57,28 @@
 		"dock": "right"
 	},
 	"agent": {
-		"profiles": {},
+		"favorite_models": [
+   {
+    "provider": "amazon-bedrock",
+    "model": "claude-sonnet-5",
+    "enable_thinking": true,
+    "effort": "high"
+   }
+  ],
+  "sidebar_side": "left",
+  "profiles": {},
 		"inline_assistant_model": {
-			"provider": "zed.dev",
-			"model": "claude-sonnet-4-6",
+			"provider": "amazon-bedrock",
+			"model": "claude-sonnet-5",
 			"enable_thinking": false
 		},
 		"dock": "left",
 		"default_profile": "ask",
 		"default_model": {
-			"enable_thinking": true,
+			"effort": "high",
+   "enable_thinking": true,
 			"provider": "amazon-bedrock",
-			"model": "claude-haiku-4-5"
+			"model": "claude-sonnet-5"
 		},
 		"model_parameters": []
 	},
@@ -85,7 +98,10 @@
 	"theme": {
 		"mode": "dark",
 		"light": "Kanagawa Dragon",
-		"dark": "Kanagawa Dragon - No Italics"
+		"dark": "Sekigawa"
 	},
 	"cursor_blink": false,
+	"git": {
+  	"worktree_directory": "../wt"
+	}
 }
