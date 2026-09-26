@@ -12,12 +12,14 @@
       "ctrl-j": "menu::SelectNext",
       "ctrl-p": "file_finder::Toggle",
       "ctrl-;": "terminal_panel::ToggleFocus",
-      "cmd-l": "workspace::ToggleLeftDock"
+      "cmd-l": "workspace::ToggleLeftDock",
+      "alt-tab": "agents_sidebar::ToggleThreadSwitcher"
     }
   },
   {
     "context": "Workspace",
     "bindings": {
+      "ctrl-tab": "agents_sidebar::ToggleThreadSwitcher",
       "cmd-1": ["pane::ActivateItem", 0],
       "cmd-2": ["pane::ActivateItem", 1],
       "cmd-3": ["pane::ActivateItem", 2],

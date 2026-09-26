@@ -25,7 +25,7 @@
 		"claude-acp": {
 			"type": "registry",
 			"default_config_options": {
-				"model": "opus[1m]",
+				"model": "sonnet",
 				"mode": "plan"
 			}
 		}
@@ -74,10 +74,12 @@
 		"diagnostics": false
 	},
 	"terminal": {
-		"dock": "bottom"
+  	"font_family": ".ZedMono",
+  	"font_size": 12.0,
+  	"dock": "bottom"
 	},
 	"vim_mode": true,
-	"ui_font_size": 14.0,
+	"ui_font_size": 16.0,
 	"buffer_font_size": 14.0,
 	"base_keymap": "JetBrains",
 	"theme": {
@@ -86,27 +88,4 @@
 		"dark": "Kanagawa Dragon - No Italics"
 	},
 	"cursor_blink": false,
-	// User biome as formatter for these languages
-	"languages": {
-		"Astro": { "formatter": { "language_server": { "name": "biome" } } },
-		"CSS": { "formatter": { "language_server": { "name": "biome" } } },
-		"GraphQL": { "formatter": { "language_server": { "name": "biome" } } },
-		"HTML": { "formatter": { "language_server": { "name": "biome" } } },
-		"JSON": { "formatter": { "language_server": { "name": "biome" } } },
-		"JSONC": { "formatter": { "language_server": { "name": "biome" } } },
-		"JSX": { "formatter": { "language_server": { "name": "biome" } } },
-		"JavaScript": { "formatter": { "language_server": { "name": "biome" } } },
-		"Svelte": { "formatter": { "language_server": { "name": "biome" } } },
-		"TSX": { "formatter": { "language_server": { "name": "biome" } } },
-		"TypeScript": { "formatter": { "language_server": { "name": "biome" } } },
-		"Vue.js": { "formatter": { "language_server": { "name": "biome" } } }
-	},
-	// Enable biome only when biome.json is present
-	"lsp": {
-		"biome": {
-			"settings": {
-				"require_config_file": true
-			}
-		}
-	}
 }
