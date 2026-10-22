@@ -26,8 +26,6 @@ vim.pack.add({
     "https://github.com/norcalli/nvim-colorizer.lua",   -- Colorize color codes
     "https://github.com/rebelot/kanagawa.nvim",         -- Color theme
     "https://github.com/stevearc/conform.nvim",         -- Formatting
-    "https://github.com/smart-splits-nvim/smart-splits.nvim", -- Navigate across Neovim splits and tmux panes
-    "https://github.com/smart-splits-nvim/backend-tmux",      -- tmux backend for smart-splits
 })
 
 -- Modularize based on feature
@@ -36,7 +34,6 @@ require('picker')
 require('vcs')
 require('statusline')
 require('formatting')
-require('splits')
 
 --------------
 --   LSP    --
