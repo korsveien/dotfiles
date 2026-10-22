@@ -47,6 +47,9 @@ abbr --add vim nvim
 ## tmux
 abbr --add ta tmux attach
 
+## opencode
+abbr --add oc opencode
+
 ## configs
 abbr --add fv nvim ~/.config/fish/config.fish
 abbr --add fs source ~/.config/fish/config.fish

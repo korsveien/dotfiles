@@ -4,6 +4,10 @@
       "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "backend-tmux": {
+      "rev": "9e9e6aa9b3eb7a8d3896a993611622ac97abff52",
+      "src": "https://github.com/smart-splits-nvim/backend-tmux"
+    },
     "blink.cmp": {
       "rev": "b137f63d89d0285ca76eed12e1923220e0aff8c1",
       "src": "https://github.com/Saghen/blink.cmp"
@@ -23,6 +27,10 @@
     "cmp_luasnip": {
       "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
       "src": "https://github.com/saadparwaiz1/cmp_luasnip"
+    },
+    "conform.nvim": {
+      "rev": "016802de402556da54c36bd7359b441266b01cdd",
+      "src": "https://github.com/stevearc/conform.nvim"
     },
     "gdscript-extended-lsp.nvim": {
       "rev": "201db358aa77c2e8e204f0a527481695960fbf76",
@@ -67,6 +75,10 @@
     "plenary.nvim": {
       "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "smart-splits.nvim": {
+      "rev": "69ab668d96b54fa15907ac3245548fd8a3ce2318",
+      "src": "https://github.com/smart-splits-nvim/smart-splits.nvim"
     },
     "telescope.nvim": {
       "rev": "ad7d9580338354ccc136e5b8f0aa4f880434dcdc",

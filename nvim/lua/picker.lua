@@ -7,10 +7,11 @@ require 'telescope'.setup({
     initial_mode = "insert",
     mappings = {
       i = {
-        ["<C-[>"] = actions.close,
-        ["<esc>"] = actions.close,
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
+      },
+      n = {
+        ["<esc>"] = actions.close,
       },
     },
     sorting_strategy = "ascending",

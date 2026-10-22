@@ -25,6 +25,9 @@ vim.pack.add({
     "https://github.com/lewis6991/gitsigns.nvim",       -- Git markers in signcolumn
     "https://github.com/norcalli/nvim-colorizer.lua",   -- Colorize color codes
     "https://github.com/rebelot/kanagawa.nvim",         -- Color theme
+    "https://github.com/stevearc/conform.nvim",         -- Formatting
+    "https://github.com/smart-splits-nvim/smart-splits.nvim", -- Navigate across Neovim splits and tmux panes
+    "https://github.com/smart-splits-nvim/backend-tmux",      -- tmux backend for smart-splits
 })
 
 -- Modularize based on feature
@@ -32,15 +35,28 @@ require('filetree')
 require('picker')
 require('vcs')
 require('statusline')
+require('formatting')
+require('splits')
 
 --------------
 --   LSP    --
 --------------
 vim.lsp.enable({
     "gdscript",
+    "kotlin_lsp",
     "lua_ls",
+    "pyright",
     "rust_analyzer",
-    "typescript",
+    "ts_ls",
+})
+
+vim.lsp.config("ts_ls", {
+    init_options = {
+        -- Fallback when the project has no local typescript dependency
+        tsserver = {
+            path = vim.fn.expand("~/.npm/lib/node_modules/typescript/lib"),
+        },
+    },
 })
 
 vim.lsp.config("lua_ls", {
@@ -176,9 +192,6 @@ vim.keymap.set("n", "<C-l>", ":nohlsearch<CR>", { desc = "Clear search highlight
 
 -- Open help window in a vertical split
 vim.cmd([[autocmd FileType help wincmd L]])
-
--- Format on save
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
 -- Highlight selection on yank
 vim.cmd [[ autocmd TextYankPost <buffer> lua vim.highlight.on_yank() ]]
