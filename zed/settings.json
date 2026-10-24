@@ -7,7 +7,8 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-	"active_pane_modifiers": {
+	"accessible_mode": false,
+ "active_pane_modifiers": {
   "border_size": 0.0
  },
  "diff_view_style": "unified",
@@ -28,7 +29,8 @@
 		"claude-acp": {
 			"type": "registry",
 			"default_config_options": {
-				"model": "sonnet",
+				"fast": true,
+    "model": "opus",
 				"mode": "plan"
 			}
 		}
@@ -36,13 +38,6 @@
   "edit_predictions": {
     "provider": "none",
     "mode": "subtle"
-  },
-  "language_models": {
-    "bedrock": {
-      "authentication_method": "named_profile",
-      "region": "eu-north-1",
-      "profile": "sb1-shared-utvikleropplevelse/claude-code-user",
-    }
   },
 	"project_panel": {
 		"dock": "right"
@@ -57,29 +52,53 @@
 		"dock": "right"
 	},
 	"agent": {
-		"favorite_models": [
-   {
-    "provider": "amazon-bedrock",
-    "model": "claude-sonnet-5",
-    "enable_thinking": true,
-    "effort": "high"
+		"threads_sidebar": {
+   "position": "left"
+  },
+  "tool_permissions": {
+   "default": "allow",
+   "tools": {
+    "terminal": {
+     "always_allow": [
+      {
+       "pattern": "^nix"
+      }
+     ],
+     "default": "allow"
+    },
+    "fetch": {
+     "default": "allow"
+    }
    }
-  ],
-  "sidebar_side": "left",
-  "profiles": {},
-		"inline_assistant_model": {
-			"provider": "amazon-bedrock",
-			"model": "claude-sonnet-5",
-			"enable_thinking": false
-		},
+  },
+  "sandbox_permissions": {
+   "allow_unsandboxed": true,
+   "write_paths": [
+    {
+     "requested": "/Users/peder/.cache/nix",
+     "resolved": "/Users/peder/.cache/nix"
+    }
+   ],
+   "network_hosts": [
+    "github.com",
+    "api.github.com",
+    "codeload.github.com",
+    "cache.nixos.org",
+    "raw.githubusercontent.com",
+    "repo.jellyfin.org",
+    "*.mirror.jellyfin.org"
+   ]
+  },
+  "profiles": {
+   "yolo": {
+    "name": "Yolo",
+    "tools": {},
+    "enable_all_context_servers": false,
+    "context_servers": {}
+   }
+  },
 		"dock": "left",
-		"default_profile": "ask",
-		"default_model": {
-			"effort": "high",
-   "enable_thinking": true,
-			"provider": "amazon-bedrock",
-			"model": "claude-sonnet-5"
-		},
+		"default_profile": "write",
 		"model_parameters": []
 	},
 	"telemetry": {
@@ -91,7 +110,7 @@
   	"font_size": 12.0,
   	"dock": "bottom"
 	},
-	"vim_mode": true,
+	"vim_mode": false,
 	"ui_font_size": 16.0,
 	"buffer_font_size": 14.0,
 	"base_keymap": "JetBrains",

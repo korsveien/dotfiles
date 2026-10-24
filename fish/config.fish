@@ -98,3 +98,8 @@ end
 
 [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
 
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/peder/.lmstudio/bin
+# End of LM Studio CLI section
+
