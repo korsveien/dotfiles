@@ -31,7 +31,7 @@
 			"default_config_options": {
 				"fast": true,
     "model": "opus",
-				"mode": "plan"
+				"mode": "auto"
 			}
 		}
 	},

@@ -34,7 +34,16 @@
   {
     "context": "Editor",
     "bindings": {
-      "ctrl-shift-o": "editor::OpenPermalinkToLine"
+      "ctrl-shift-o": "editor::OpenPermalinkToLine",
+      "ctrl-w": "editor::SelectLargerSyntaxNode",
+      "ctrl-shift-w": "editor::SelectSmallerSyntaxNode"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-shift-m": "markdown::OpenPreviewToTheSide",
+      "cmd-alt-m": "markdown::OpenPreview"
     }
   },
   {
