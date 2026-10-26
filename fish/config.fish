@@ -65,7 +65,7 @@ end
 
 function gco
     git branch --all | fzf | cut -d/ -f3 | xargs git checkout
-1end
+end
 
 function gwn
     if test (count $argv) -ne 1
