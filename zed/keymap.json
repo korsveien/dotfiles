@@ -36,7 +36,8 @@
     "bindings": {
       "ctrl-shift-o": "editor::OpenPermalinkToLine",
       "ctrl-w": "editor::SelectLargerSyntaxNode",
-      "ctrl-shift-w": "editor::SelectSmallerSyntaxNode"
+      "ctrl-shift-w": "editor::SelectSmallerSyntaxNode",
+      "cmd-shift-l": "go_to_line::Toggle"
     }
   },
   {
