@@ -13,3 +13,7 @@ ln -s ~/dotfiles/tmux ~/.config/tmux
 ln -s ~/dotfiles/kitty ~/.config/kitty
 ln -s ~/dotfiles/yazi ~/.config/yazi
 ln -s ~/dotfiles/zed ~/.config/zed
+
+mkdir -p ~/.claude ~/.config/opencode
+ln -sf ~/dotfiles/agents/AGENTS.md ~/.claude/CLAUDE.md
+ln -sf ~/dotfiles/agents/AGENTS.md ~/.config/opencode/AGENTS.md
