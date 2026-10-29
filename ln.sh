@@ -1,19 +1,17 @@
 #! /usr/bin/env sh
 
-rm -rf ~/.config/nvim
-rm -rf ~/.config/fish
-rm -rf ~/.config/tmux
-rm -rf ~/.config/kitty
-rm -rf ~/.config/yazi
-rm -rf ~/.config/zed
+# Symlinks
+ln -sfn ~/dotfiles/nvim ~/.config/nvim
+ln -sfn ~/dotfiles/fish ~/.config/fish
+ln -sfn ~/dotfiles/tmux ~/.config/tmux
+ln -sfn ~/dotfiles/kitty ~/.config/kitty
+ln -sfn ~/dotfiles/yazi ~/.config/yazi
+ln -sfn ~/dotfiles/zed ~/.config/zed
+ln -sfn ~/dotfiles/opencode ~/.config/opencode
+ln -sfn ~/dotfiles/bat ~/.config/bat
+bat cache --build
 
-ln -s ~/dotfiles/nvim ~/.config/nvim
-ln -s ~/dotfiles/fish ~/.config/fish
-ln -s ~/dotfiles/tmux ~/.config/tmux
-ln -s ~/dotfiles/kitty ~/.config/kitty
-ln -s ~/dotfiles/yazi ~/.config/yazi
-ln -s ~/dotfiles/zed ~/.config/zed
-
-mkdir -p ~/.claude ~/.config/opencode
-ln -sf ~/dotfiles/agents/AGENTS.md ~/.claude/CLAUDE.md
+# AGENTS.md
+mkdir -p ~/.claude
 ln -sf ~/dotfiles/agents/AGENTS.md ~/.config/opencode/AGENTS.md
+ln -sf ~/dotfiles/agents/AGENTS.md ~/.claude/CLAUDE.md

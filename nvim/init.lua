@@ -222,4 +222,4 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 -------------------
 
 -- きれいね
-vim.cmd("colorscheme sekigawa")
+vim.cmd("colorscheme kanagawa-dragon")

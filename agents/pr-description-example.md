@@ -35,9 +35,9 @@ src/api-generated/
   └─ *.msw.ts    mock-handlere
 ```
 
-- [orval.config.ts:4](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/orval.config.ts#L4): `fetch`-klient, MSW-mocker, `orvalFetcher` som mutator.
-- [transformer.ts:42](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/openapi/document-archive/transformer.ts#L42): slår sammen spec-ene og beholder bare `OPERATIONS_IN_USE`.
-- [document-archive.ts:27](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/src/api-generated/endpoints/document-archive.ts#L27): generert kode, committet.
+- [orval.config.ts:4](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-d07d501da49c456003e1f1181200b7a7fdd4d2b884f1a79577b431f055fdbdd1R4): `fetch`-klient, MSW-mocker, `orvalFetcher` som mutator.
+- [transformer.ts:42](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-451785f271e7e61f15ac11ac4bc939d897e31b38518ad55f684d5f91936c4a7eR42): slår sammen spec-ene og beholder bare `OPERATIONS_IN_USE`.
+- [document-archive.ts:27](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-8b159ed1cde28f54e27b57ececb91eb6004794d798280b511dfa28761e237bddR27): generert kode, committet.
 
 ## Call path
 
@@ -59,12 +59,12 @@ handleResponses      fetch
                      handleResponses
 ```
 
-- [api/index.ts:5](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/src/api/index.ts#L5): setter `Accept` og CSRF-token. Feilhåndteringen er som før.
-- [utils/api.ts:1](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/src/utils/api.ts#L1): mock-grenen er fjernet.
+- [api/index.ts:5](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-a994305944c2770d8ed8f3f158c5faac6c8298c04cdbcb377bed35b55547f75dR5): setter `Accept` og CSRF-token. Feilhåndteringen er som før.
+- [utils/api.ts:14](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-fffbf83140d658a238f6ac0a002e8efffce98a379e58d3bc73217e67a2b0d745L14): mock-grenen er fjernet.
 - I hookene er bare `queryFn` endret. Query keys, `enabled` og timeout er uendret.
-  - [useDob.ts:167](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/src/state/queryData/useDokumenterOgBilag/useDob.ts#L167): `searchDocuments`
-  - [useDobGroups.ts:52](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/src/state/queryData/useDokumenterOgBilag/useDobGroups.ts#L52): `listDocumentGroups`
-  - [useDobDownload.ts:24](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/src/state/queryData/useDokumenterOgBilag/useDobDownload.ts#L24): `getDocument`
+  - [useDob.ts:167](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-ccfc51e39ffd8b6cddf28f499a0e830954e0cde9528dcdeba8ae83657858d7b1R167): `searchDocuments`
+  - [useDobGroups.ts:52](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-ffb1e0c760f44ff10a9ab7df9c5be9ddc44418ecfc95265b0dda00cf4c92876eR52): `listDocumentGroups`
+  - [useDobDownload.ts:24](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-e9493c27c4c418f9b0f3f8b4483e4c18efb7932f2775e8d0fc5363bbdc23f22aR24): `getDocument`
 
 ## Mocker
 
@@ -82,14 +82,14 @@ handleResponses      fetch
 ```
 
 **Test:**
-- [vitest-setup.ts:1](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/vitest-setup.ts#L1): starter og stopper MSW-serveren.
-- [test-server.ts:4](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/src/test-server.ts#L4): registrerer de genererte handlerne som standard.
-- [useDob.hook.test.ts:75](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/src/state/queryData/useDokumenterOgBilag/useDob.hook.test.ts#L75): testene overstyrer med `server.use(…)`.
+- [vitest-setup.ts:1](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-403233ec74bd33c82ba9ac0fa2f654a7ce293a38a5949e1e6bc2af376d9783e1R1): starter og stopper MSW-serveren.
+- [test-server.ts:4](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-809a73f2f3db91db40b9aff804a9aa50c77b93c2f5bf7a4e3cd9967b3ca4458aR4): registrerer de genererte handlerne som standard.
+- [useDob.hook.test.ts:75](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-63609238b7eedbdd0e9f885b5bb2313e5bea96aa8f77b040aa603f1cbc3bb6aaR75): testene overstyrer med `server.use(…)`.
 
 **dev:mock:**
-- [vite.config.ts:10](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/vite.config.ts#L10): bytter inngangspunkt til `mocks/main.ts`.
-- [mocks/main.ts:6](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/mocks/main.ts#L6): starter MSW-workeren og laster appen.
-- [handlers.ts:39](https://github.com/sparebank1utvikling/awl-monorepo/blob/d8487c4ab2c76336cf22ecac6b84718907caac9c/apps/team-bank-og-regnskap/kundefront-bm-min-bedrift/frontend/mocks/handlers.ts#L39): handlere skrevet for hånd med realistiske data. URL-ene til arkivet er generert.
+- [vite.config.ts:10](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-7ed5b2d39af8436acb6e948c9f0b370eba981ae26df61112da8eb47971b63f27R10): bytter inngangspunkt til `mocks/main.ts`.
+- [mocks/main.ts:6](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-73b4fe38e57d5822f2c36132c8eec8d08055a3392e415f3a1e1399a1e28d9e86R6): starter MSW-workeren og laster appen.
+- [handlers.ts:39](https://github.com/sparebank1utvikling/awl-monorepo/pull/115827/files#diff-ff914df6a99783295dd91737d069185f53b9ccd4ef7ae841b74d7fd9927bcad8R39): handlere skrevet for hånd med realistiske data. URL-ene til arkivet er generert.
 
 # Begrensninger
 

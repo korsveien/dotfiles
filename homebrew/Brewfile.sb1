@@ -1,0 +1,130 @@
+tap "docker/tap", trusted: true
+tap "gszhangwei/tools"
+tap "jetbrains/utils", "https://github.com/JetBrains/homebrew-utils"
+tap "navikt/tap"
+tap "zen-browser/browser", "https://github.com/zen-browser/desktop.git", trusted: true
+# Shell extension to jump to frequently used directories
+brew "autojump"
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Microsoft Azure CLI 2.0
+brew "azure-cli"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Programmable completion for Bash 3.2
+brew "bash-completion"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Docker CLI plugin for extended build capabilities with BuildKit
+brew "docker-buildx"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GNU awk utility
+brew "gawk"
+# GitHub command-line tool
+brew "gh"
+# Command-line option parsing utility
+brew "gnu-getopt"
+# C code prettifier
+brew "gnu-indent"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# GNU version of the tar archiving utility
+brew "gnu-tar"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# GNU grep, egrep and fgrep
+brew "grep"
+# Post-modern modal text editor
+brew "helix"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Handy way to save and run project-specific commands
+brew "just"
+# Kubernetes CLI To Manage Your Clusters In Style!
+brew "k9s"
+# Anti-bikeshedding Kotlin linter with built-in formatter
+brew "ktlint"
+# GUI for vim, made for macOS
+brew "macvim"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node@24", link: true
+# Create, run, and share large language models (LLMs)
+brew "ollama", restart_service: :changed
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# AI coding agent, built for the terminal
+brew "opencode"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
+# Static type checker for Python
+brew "pyright"
+# Extremely fast Python linter, written in Rust
+brew "ruff"
+# Experimental Rust compiler front-end for IDEs
+brew "rust-analyzer"
+# Rust toolchain installer
+brew "rustup"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# Terminal multiplexer
+brew "tmux"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Language Server Protocol implementation for TypeScript wrapping tsserver
+brew "typescript-language-server"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
+# Internet file retriever
+brew "wget"
+# JavaScript package manager
+brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
+# AI Coding Assistant Command Template Manager
+brew "gszhangwei/tools/openspdd", trusted: true
+# Official Language Server Protocol for the Kotlin language
+brew "jetbrains/utils/kotlin-lsp", trusted: true
+# Kernel-enforced sandbox wrapper for coding agents
+brew "navikt/tap/cplt", trusted: true
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# Terminal-based AI coding assistant
+cask "claude-code@latest"
+cask "font-jetbrains-mono-nerd-font"
+# GPU-based terminal emulator
+cask "kitty"
+# Discover, download, and run local LLMs
+cask "lm-studio"
+# Clipboard manager
+cask "maccy"
+# Privacy-first voice-to-text dictation with AI agents
+cask "openwhispr"
+# Build, run, and govern agents across the software development lifecycle
+cask "docker/tap/sbx", trusted: true
+# Minimal GUI for AI code agents
+cask "t3-code"
+# Configurable document editor that supports Markdown
+cask "typora"
+npm "agent-browser"
+npm "llm-checker"
+npm "orval"
+npm "typescript"
