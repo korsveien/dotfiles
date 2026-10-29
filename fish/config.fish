@@ -254,7 +254,18 @@ function gwd
 end
 
 function fish_prompt
-    string join '' -- (set_color green) (prompt_pwd) (set_color blue) (fish_git_prompt) (set_color normal) \n '$ '
+    string join '' -- (set_color green) (prompt_pwd) (set_color blue) (fish_git_prompt) (nix_shell_prompt) (set_color normal) \n '$ '
+end
+
+# Shows when inside nix-shell / nix develop (IN_NIX_SHELL) or nix shell (store paths on PATH)
+function nix_shell_prompt
+    if set -q IN_NIX_SHELL
+        set -l label nix
+        set -q name; and test "$name" != nix-shell; and set label "nix:$name"
+        echo -n (set_color yellow)" [$label]"
+    else if string match -q '/nix/store/*' -- $PATH
+        echo -n (set_color yellow)" [nix]"
+    end
 end
 
 function fish_right_prompt -d "Write out the right prompt"
@@ -283,6 +294,11 @@ function y
 end
 
 [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+
+# Proton Pass SSH agent, only on this machine for now
+if test (prompt_hostname) = MacBook-Air-M2
+    set -gx SSH_AUTH_SOCK /Users/peder/.ssh/proton-pass-ssh-agent.sock
+end
 
 
 # Added by LM Studio CLI (lms)
