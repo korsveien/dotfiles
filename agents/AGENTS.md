@@ -17,6 +17,56 @@ relative paths are not clickable, and long plain paths break when the terminal w
 Every mention of a file is a link, also in passing and in lists. If the file is not on disk
 (for example outside a sparse checkout), link to a GitHub permalink at a commit SHA instead.
 
+## Norwegian prose
+
+Applies to all Norwegian text: chat answers, PR descriptions, review comments, issues, docs.
+
+- Bokmål, klarspråk as defined by Språkrådet.
+- Short and concise. Leave out elaboration the reader does not need.
+- Prefer verbs over nouns.
+- Use Norwegian word order, not English sentence structure.
+- No parenthetical asides with extra detail.
+
+### Examples
+
+| Avoid                                                        | Prefer                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------- |
+| Grunnlaget for å fjerne 1 og 2 er det du skrev.              | Jeg fjernet 1 og 2 fordi du skrev at …                  |
+| Det reviewen anbefalte, gjør testen alt.                     | Testen gjør allerede det reviewen anbefalte.            |
+| Kortet og kontomodulen avgjøres av de samme modulbetingelsene. | Kortet og kontomodulen bruker de samme modulbetingelsene. |
+| Skal jeg poste bare funn 4 som en inline-kommentar (som en vanlig «comment», ikke «approve» eller «request changes»)? | Skal jeg poste funn 4 som inline-kommentar? |
+| Det som virker best, er konkrete eksempler på feilene jeg gjør, lagt et sted som lastes inn i hver økt. | Konkrete eksempler i AGENTS.md virker best. |
+| Skrur brukeren den av, får hen tomt dashboard igjen.         | Skrur brukeren den av blir dashboardet tomt igjen.      |
+| Anbefaling: hold modulen utenfor innstillingslistene.        | Hold modulen utenfor innstillingslistene.               |
+
+### Glossary
+
+| Use                         | Not                     | Note                                  |
+| --------------------------- | ----------------------- | ------------------------------------- |
+| commit, branch              | innsjekk, gren          | English technical terms               |
+| committa                    | committet, commitet     | past participle                       |
+| diff, diffen                |                         |                                       |
+| review, reviewen            | gjennomgang             |                                       |
+| poste                       | legge inn               | comments on GitHub                    |
+| fjerne (et funn)            | stryke                  |                                       |
+| funn                        | punkt                   | what a review finds                   |
+| økt                         | sesjon                  | agent session; «sesjon» is a logged-in user session |
+| hen                         |                         | when a pronoun for «brukeren» is needed |
+| spec, call path             | spesifikasjon, kallvei  | see «PR descriptions»                 |
+| lenke                       | link                    |                                       |
+| inline-kommentar            |                         | review comment on a line              |
+
+## PR reviews
+
+During a PR review, end every answer with a link to the PR on GitHub
+(`https://github.com/<org>/<repo>/pull/<nr>`). Find it with `gh pr view --json url -q .url`.
+
+File references in review findings use the `file://` format from «File references» and point
+at a line that the branch changes, so Zed opens the file at the change and shows the diff in the
+gutter. Check the line against `git diff -U0 <base>...HEAD` before linking. Zed has no URL that
+opens the branch diff view itself. If a finding is about a file the branch does not change, link
+to the relevant line in that file.
+
 ## PR descriptions
 
 Write PR descriptions in Norwegian, terse, using the template below. A complete example is in

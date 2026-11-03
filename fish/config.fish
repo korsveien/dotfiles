@@ -89,6 +89,50 @@ function gwn
     and cd $dir
 end
 
+function gwpr
+    set parts (string match -r '^https://github\.com/([^/]+)/([^/]+)/pull/([0-9]+)' -- $argv[1])
+    if test (count $parts) -ne 4
+        echo "usage: gwpr <https://github.com/<owner>/<repo>/pull/<nr>>"
+        return 1
+    end
+    set owner $parts[2]
+    set repo $parts[3]
+    set nr $parts[4]
+    set main_repo ~/git/$repo
+    if not test -e $main_repo/.git
+        echo "no local clone at $main_repo"
+        return 1
+    end
+
+    set branch (gh pr view $nr --repo $owner/$repo --json headRefName --jq .headRefName)
+    or return 1
+    set dir (git -C $main_repo worktree list --porcelain | awk -v ref="branch refs/heads/$branch" '/^worktree /{wt=substr($0,10)} $0==ref{print wt}')
+
+    if test -z "$dir"
+        set dir ~/git/wt/$repo/(string replace -a / - $branch)/$repo
+        git -C $main_repo fetch origin main
+        or return 1
+        git -C $main_repo worktree add --detach $dir origin/main
+        or return 1
+        pushd $dir
+        gh pr checkout $nr --repo $owner/$repo
+        set checkout_status $status
+        popd
+        if test $checkout_status -ne 0
+            git -C $main_repo worktree remove --force $dir
+            rmdir (dirname $dir) 2>/dev/null
+            return 1
+        end
+    else
+        echo "using existing worktree for $branch"
+    end
+
+    set zed_cli (command -v zed; or echo ~/Applications/Zed.app/Contents/MacOS/cli)
+    $zed_cli -e $dir
+    and open zed://agent
+    cd $dir
+end
+
 function gwd
     argparse a/all f/force -- $argv
     or return 1
