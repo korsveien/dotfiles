@@ -59,6 +59,7 @@ Applies to all Norwegian text: chat answers, PR descriptions, review comments, i
 | poste                       | legge inn               | comments on GitHub                    |
 | fjerne (et funn)            | stryke                  |                                       |
 | funn                        | punkt                   | what a review finds                   |
+| fallgruve                   | felle                   | something that easily goes wrong      |
 | økt                         | sesjon                  | agent session; «sesjon» is a logged-in user session |
 | hen                         |                         | when a pronoun for «brukeren» is needed |
 | spec, call path             | spesifikasjon, kallvei  | see «PR descriptions»                 |
@@ -167,6 +168,10 @@ at a line that the branch changes, so Zed opens the file at the change and shows
 gutter. Check the line against `git diff -U0 <base>...HEAD` before linking. Zed has no URL that
 opens the branch diff view itself. If a finding is about a file the branch does not change, link
 to the relevant line in that file.
+
+When addressing review comments, weigh each finding by how likely it is in normal operation. Fix
+the likely ones. Reply "won't fix" with the reason when a finding needs several unlikely events at
+once.
 
 ## PR descriptions
 
