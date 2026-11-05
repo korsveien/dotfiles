@@ -64,7 +64,18 @@ function gcm
 end
 
 function gco
-    git branch --all | fzf | cut -d/ -f3 | xargs git checkout
+    set branch (git for-each-ref --format='%(refname:short)' refs/heads refs/remotes \
+        | string replace -r '^origin/' '' \
+        | string match -v -r '^(HEAD|origin)$' \
+        | sort -u | fzf)
+    or return 1
+    git checkout $branch
+end
+
+function _zed_open_with_agent
+    set zed_cli (command -v zed; or echo ~/Applications/Zed.app/Contents/MacOS/cli)
+    $zed_cli -e $argv[1]
+    and open zed://agent
 end
 
 function gwn
@@ -86,7 +97,9 @@ function gwn
     end
 
     git worktree add --no-track -b $branch $dir origin/main
-    and cd $dir
+    or return 1
+    _zed_open_with_agent $dir
+    cd $dir
 end
 
 function gwpr
@@ -127,9 +140,7 @@ function gwpr
         echo "using existing worktree for $branch"
     end
 
-    set zed_cli (command -v zed; or echo ~/Applications/Zed.app/Contents/MacOS/cli)
-    $zed_cli -e $dir
-    and open zed://agent
+    _zed_open_with_agent $dir
     cd $dir
 end
 
