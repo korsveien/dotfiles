@@ -124,7 +124,7 @@ function gwn
     _zed_open_with_agent $dir
 
     if test (count $issue) -eq 4
-        echo "Use the grill-me skill on GitHub issue $argv[1]. Read the issue with `gh issue view $issue[4] --repo $issue[2]/$repo --comments` first, then grill me on the plan for it." | pbcopy
+        echo "/grill-me GitHub issue $argv[1]. Read the issue with `gh issue view $issue[4] --repo $issue[2]/$repo --comments` first, then grill me on the plan for it." | pbcopy
         echo "grill-me prompt copied. Paste it into a new agent thread in Zed."
     end
 end
