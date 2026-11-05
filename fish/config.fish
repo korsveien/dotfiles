@@ -78,28 +78,56 @@ function _zed_open_with_agent
     and open zed://agent
 end
 
+function _issue_branch_name
+    set slug (string lower -- $argv[2] \
+        | string replace -a æ ae | string replace -a ø o | string replace -a å a \
+        | string replace -r -a '[^a-z0-9]+' - \
+        | string trim -c -)
+    string sub -l 50 -- "$argv[1]-$slug" | string trim -r -c -
+end
+
 function gwn
     if test (count $argv) -ne 1
-        echo "usage: gwn <branch>"
+        echo "usage: gwn <branch> | gwn <https://github.com/<owner>/<repo>/issues/<nr>>"
         return 1
     end
-    set branch $argv[1]
-    set repo (basename (git rev-parse --path-format=absolute --git-common-dir | string replace -r '/\.git$' ''))
-    or return 1
+
+    set issue (string match -r '^https://github\.com/([^/]+)/([^/]+)/issues/([0-9]+)' -- $argv[1])
+    if test (count $issue) -eq 4
+        set repo $issue[3]
+        set main_repo ~/git/$repo
+        if not test -e $main_repo/.git
+            echo "no local clone at $main_repo"
+            return 1
+        end
+        set title (gh issue view $issue[4] --repo $issue[2]/$repo --json title --jq .title)
+        or return 1
+        set branch (_issue_branch_name $issue[4] $title)
+    else
+        set branch $argv[1]
+        set main_repo (string replace -r '/\.git$' '' (git rev-parse --path-format=absolute --git-common-dir))
+        or return 1
+        set repo (basename $main_repo)
+    end
     set dir ~/git/wt/$repo/(string replace -a / - $branch)/$repo
 
-    git fetch origin main
+    git -C $main_repo fetch origin main
     or return 1
-    if test (git branch --show-current) = main
-        git merge --ff-only origin/main
+    if test (git -C $main_repo branch --show-current) = main
+        git -C $main_repo merge --ff-only origin/main
     else
-        git fetch origin main:main
+        git -C $main_repo fetch origin main:main
     end
 
-    git worktree add --no-track -b $branch $dir origin/main
+    git -C $main_repo worktree add --no-track -b $branch $dir origin/main
     or return 1
     _zed_open_with_agent $dir
-    cd $dir
+
+    if test (count $issue) -eq 4
+        pushd $dir
+        claude "Use the grill-me skill on GitHub issue $argv[1]. Read the issue with `gh issue view $issue[4] --repo $issue[2]/$repo --comments` first, then grill me on the plan for it."
+        popd
+    end
 end
 
 function gwpr
@@ -141,7 +169,6 @@ function gwpr
     end
 
     _zed_open_with_agent $dir
-    cd $dir
 end
 
 function gwd
