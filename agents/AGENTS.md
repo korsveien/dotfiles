@@ -158,6 +158,30 @@ STE100 is defined only for English. Apply the same rules to Norwegian text, toge
 | Branchen slettes av `gwd`, og worktreet fjernes.              | `gwd` sletter worktreet og branchen.                 |
 | Det holder på å bygges.                                       | Bygget kjører.                                       |
 
+## Impersonal documentation
+
+Applies to READMEs and documentation, in Norwegian and English: repository docs, wikis such
+as Outline, and Notion pages. It does not apply to chat answers.
+
+- Documentation SHALL NOT refer to the owner or writer personally. Do not use "I", "me", "my",
+  «jeg», «meg» or «min».
+- Describe the system and what it does, not the person who uses it. Use the name of the thing as
+  the subject: "the homelab", "the laptop", «homelab-en».
+- Address the reader only with the imperative. Do not use "your" or «din»: write "the router",
+  not "your router".
+- In Norwegian descriptions, s-passiv is permitted when the agent is not important, for example
+  «Økosystemet til Apple brukes i det daglige». Instructions stay in the imperative, without
+  «du».
+
+### Examples
+
+| Avoid                                                        | Prefer                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------- |
+| Jeg bruker Apple-økosystemet til daglig. NAS-en er den lokale kopien jeg kontrollerer selv. | Økosystemet til Apple brukes i det daglige. Homelab-en eksisterer uavhengig, utenfor denne sfæren. All data tas backup av til homelab-en, slik at dataene er tilgjengelige selv om tilgangen til Apple-kontoen forsvinner. |
+| En backup er bare verdt noe hvis jeg har gjenopprettet fra den. | En backup er bare verdt noe når en gjenoppretting fra den er testet. |
+| Velg lokasjon HEL1 når du bestiller.                         | Velg HEL1 som lokasjon.                                 |
+| Reserve this address for the homelab in your router.         | Reserve this address for the homelab in the router.     |
+
 ## PR reviews
 
 During a PR review, end every answer with a link to the PR on GitHub

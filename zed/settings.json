@@ -1,149 +1,178 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
-	"accessible_mode": false,
- "active_pane_modifiers": {
-  "border_size": 0.0
- },
- "diff_view_style": "unified",
- "icon_theme": "Zed (Default)",
- "cli_default_open_behavior": "existing_window",
-	"proxy": "",
-	"disable_ai": false,
-	"buffer_font_family": ".ZedMono",
-	"ui_font_weight": 500.0,
-	"ui_font_family": ".ZedSans",
-	"agent_buffer_font_size": 16.0,
-	"agent_ui_font_size": 18.0,
-	"buffer_font_weight": 400.0,
-	"agent_servers": {
-		"codex-acp": {
-			"type": "registry"
-		},
-		"claude-acp": {
-			"type": "registry",
-			"default_config_options": {
-				"fast": true,
-    "model": "opus",
-				"mode": "auto"
-			}
-		}
-	},
+  "accessible_mode": false,
+  "active_pane_modifiers": {
+    "border_size": 0.0,
+  },
+  "diff_view_style": "unified",
+  "icon_theme": "Zed (Default)",
+  "cli_default_open_behavior": "existing_window",
+  "proxy": "",
+  "disable_ai": false,
+  "buffer_font_family": ".ZedMono",
+  "ui_font_weight": 500.0,
+  "ui_font_family": ".ZedSans",
+  "agent_buffer_font_size": 16.0,
+  "agent_ui_font_size": 18.0,
+  "buffer_font_weight": 400.0,
+  "agent_servers": {
+    "mistral-vibe": {
+      "default_config_options": {
+        "mode": "auto-approve",
+      },
+      "type": "registry",
+    },
+    "codex-acp": {
+      "type": "registry",
+    },
+    "claude-acp": {
+      "type": "registry",
+      "default_config_options": {
+        "fast": true,
+        "model": "opus",
+        "mode": "auto",
+      },
+    },
+  },
   "edit_predictions": {
-    "provider": "none",
-    "mode": "subtle"
+    "provider": "open_ai_compatible_api",
+    "open_ai_compatible_api": {
+      "api_url": "https://bekk-mac-3262.adelie-pirate.ts.net/v1/completions",
+      "model": "Qwen3 Coder 30B",
+      "prompt_format": "qwen",
+      "max_output_tokens": 512,
+      "prediction_debounce": 300,
+    },
   },
   "language_models": {
-    "ollama": {
-      "api_url": "http://localhost:11434",
+    "llama.cpp": {
+      "api_url": "https://bekk-mac-3262.adelie-pirate.ts.net",
+      "auto_discover": false,
+      "context_window": 2048,
       "available_models": [
         {
-          "name": "qwen2.5-coder:7b",
-          "display_name": "Qwen2.5 Coder 7B",
+          "name": "gpt-oss-20b",
+          "display_name": "GPT-OSS 20B",
           "max_tokens": 32768,
           "supports_tools": true,
-          "supports_thinking": false
-        }
-      ]
-    }
-  },
-	"project_panel": {
-		"dock": "right"
-	},
-	"outline_panel": {
-		"dock": "right"
-	},
-	"collaboration_panel": {
-		"dock": "right"
-	},
-	"git_panel": {
-		"dock": "right"
-	},
-	"agent": {
-		"inline_assistant_model": {
-			"provider": "ollama",
-			"model": "qwen2.5-coder:7b"
-		},
-		"commit_message_model": {
-			"provider": "ollama",
-			"model": "qwen2.5-coder:7b"
-		},
-		"commit_message_instructions": "Use the Conventional Commits format: <type>(<scope>): <description>.",
-		"threads_sidebar": {
-   "position": "left"
-  },
-  "tool_permissions": {
-   "default": "allow",
-   "tools": {
-    "terminal": {
-     "always_allow": [
-      {
-       "pattern": "^nix"
-      }
-     ],
-     "default": "allow"
+          "supports_thinking": true,
+        },
+        {
+          "name": "qwen3-30b",
+          "display_name": "Qwen3 30B",
+          "max_tokens": 32768,
+          "supports_tools": true,
+          "supports_thinking": true,
+        },
+        {
+          "name": "qwen3-coder-30b",
+          "display_name": "Qwen3 Coder 30B",
+          "max_tokens": 32768,
+          "supports_tools": true,
+          "supports_thinking": true,
+        },
+        {
+          "name": "gemma-3-27b",
+          "display_name": "Gemma 3 27B",
+          "max_tokens": 32768,
+          "supports_tools": true,
+          "supports_thinking": true,
+        },
+      ],
     },
-    "fetch": {
-     "default": "allow"
-    }
-   }
   },
-  "sandbox_permissions": {
-   "allow_unsandboxed": true,
-   "write_paths": [
-    {
-     "requested": "/Users/peder/.cache/nix",
-     "resolved": "/Users/peder/.cache/nix"
-    }
-   ],
-   "network_hosts": [
-    "github.com",
-    "api.github.com",
-    "codeload.github.com",
-    "cache.nixos.org",
-    "raw.githubusercontent.com",
-    "repo.jellyfin.org",
-    "*.mirror.jellyfin.org"
-   ]
+  "project_panel": {
+    "dock": "right",
   },
-  "profiles": {
-   "yolo": {
-    "name": "Yolo",
-    "tools": {},
-    "enable_all_context_servers": false,
-    "context_servers": {}
-   }
+  "outline_panel": {
+    "dock": "right",
   },
-		"dock": "left",
-		"default_profile": "write",
-		"model_parameters": []
-	},
-	"telemetry": {
-		"metrics": false,
-		"diagnostics": false
-	},
-	"terminal": {
-  	"font_family": ".ZedMono",
-  	"font_size": 12.0,
-  	"dock": "bottom"
-	},
-	"vim_mode": false,
-	"ui_font_size": 16.0,
-	"buffer_font_size": 14.0,
-	"base_keymap": "JetBrains",
-	"theme": {
-		"mode": "dark",
-		"light": "Kanagawa Dragon",
-		"dark": "Sekigawa"
-	},
-	"cursor_blink": false,
-	"git": {
-  	"worktree_directory": "../wt"
-	}
+  "collaboration_panel": {
+    "dock": "right",
+  },
+  "git_panel": {
+    "dock": "right",
+  },
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "ollama",
+      "model": "qwen2.5-coder:7b",
+    },
+    "commit_message_model": {
+      "provider": "ollama",
+      "model": "qwen2.5-coder:7b",
+    },
+    "commit_message_instructions": "Use the Conventional Commits format: <type>(<scope>): <description>.",
+    "threads_sidebar": {
+      "position": "left",
+    },
+    "tool_permissions": {
+      "default": "allow",
+      "tools": {
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^nix",
+            },
+          ],
+          "default": "allow",
+        },
+        "fetch": {
+          "default": "allow",
+        },
+      },
+    },
+    "sandbox_permissions": {
+      "allow_unsandboxed": true,
+      "write_paths": [
+        {
+          "requested": "/Users/peder/.cache/nix",
+          "resolved": "/Users/peder/.cache/nix",
+        },
+      ],
+      "network_hosts": [
+        "github.com",
+        "api.github.com",
+        "codeload.github.com",
+        "cache.nixos.org",
+        "raw.githubusercontent.com",
+        "repo.jellyfin.org",
+        "*.mirror.jellyfin.org",
+        "bekk-mac-3262.adelie-pirate.ts.net",
+        "*.adelie-pirate.ts.net",
+      ],
+    },
+    "profiles": {
+      "yolo": {
+        "name": "Yolo",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {},
+      },
+    },
+    "dock": "left",
+    "default_profile": "write",
+    "model_parameters": [],
+  },
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false,
+  },
+  "terminal": {
+    "font_family": ".ZedMono",
+    "font_size": 12.0,
+    "dock": "bottom",
+  },
+  "vim_mode": false,
+  "ui_font_size": 16.0,
+  "buffer_font_size": 14.0,
+  "base_keymap": "JetBrains",
+  "theme": {
+    "mode": "dark",
+    "light": "Kanagawa Dragon",
+    "dark": "Sekigawa",
+  },
+  "cursor_blink": false,
+  "git": {
+    "worktree_directory": "../wt",
+  },
 }

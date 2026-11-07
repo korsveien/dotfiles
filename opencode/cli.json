@@ -12,5 +12,13 @@
   },
   "tabs": {
     "mode": "off"
+  },
+  "session": {
+    "verbosity": "low",
+    "permissions": "prompt"
+  },
+  "diffs": {
+    "view": "auto",
+    "tree": true
   }
 }
