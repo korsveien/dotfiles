@@ -42,6 +42,7 @@
       "max_output_tokens": 512,
       "prediction_debounce": 300,
     },
+    "disabled_globs": ["**/.env*", "**/*.pem", "**/*.key", "**/secrets/**"],
   },
   "language_models": {
     "llama.cpp": {

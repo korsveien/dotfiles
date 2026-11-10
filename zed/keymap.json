@@ -56,6 +56,12 @@
     }
   },
   {
+    "context": "AgentPanel",
+    "bindings": {
+      "cmd-n": ["agent::NewExternalAgentThread", { "agent": { "custom": { "name": "claude-acp" } } }]
+    }
+  },
+  {
     "context": "Editor && vim_mode == visual && !menu",
     "bindings": {
       "v": "editor::SelectLargerSyntaxNode",

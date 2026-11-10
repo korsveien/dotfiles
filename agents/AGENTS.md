@@ -14,8 +14,21 @@ The link text is the filename and line; the URL is the absolute path. The termin
 link as a hyperlink, and cmd-click opens the file at that line in Zed. Bare filenames and
 relative paths are not clickable, and long plain paths break when the terminal wraps them.
 
-Every mention of a file is a link, also in passing and in lists. If the file is not on disk
-(for example outside a sparse checkout), link to a GitHub permalink at a commit SHA instead.
+Every mention of a file is a link, also in passing and in lists. In chat answers, all file
+links SHALL open in Zed, also for files that are not on disk in the current version (another
+PR, another branch, outside a sparse checkout). Extract such files with
+`git show <sha>:<path>` to `/tmp/<source>/<path>`, for example `/tmp/pr-120785/…`, and link to
+the copy. Say that the copy is read-only and does not update. GitHub links are only for text
+that is read on GitHub (PR descriptions, issues, review comments).
+
+## Language in code
+
+- Identifiers (variables, functions, types, files) SHALL be in English: `createClient`, not
+  `lagKlient`; `waitForPendingRequests`, not `ventPåKall`.
+- Domain names that the code already uses in Norwegian MAY stay as they are
+  (`DokumenterOgBilag`, `Likviditetsprognose`). Do not translate them in a refactor.
+- Code comments and error messages in code SHALL be in English. See «English prose».
+- Test names follow the language that the test file already uses.
 
 ## Norwegian prose
 
@@ -63,6 +76,8 @@ Applies to all Norwegian text: chat answers, PR descriptions, review comments, i
 | økt                         | sesjon                  | agent session; «sesjon» is a logged-in user session |
 | hen                         |                         | when a pronoun for «brukeren» is needed |
 | spec, call path             | spesifikasjon, kallvei  | see «PR descriptions»                 |
+| pattern, patternet          | mønster, mønsteret      |                                       |
+| renaming, endre navn        | omdøping, omdøpe        | for example «endre variabelnavn»      |
 | lenke                       | link                    |                                       |
 | inline-kommentar            |                         | review comment on a line              |
 
