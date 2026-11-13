@@ -109,7 +109,11 @@ cask "1password"
 cask "claude"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
+cask "font-atkinson-hyperlegible-mono"
+cask "font-commit-mono"
+cask "font-ibm-plex-mono"
 cask "font-jetbrains-mono-nerd-font"
+cask "font-maple-mono"
 # GPU-based terminal emulator
 cask "kitty"
 # Discover, download, and run local LLMs
