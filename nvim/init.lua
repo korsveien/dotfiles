@@ -26,6 +26,7 @@ vim.pack.add({
     "https://github.com/norcalli/nvim-colorizer.lua",   -- Colorize color codes
     "https://github.com/rebelot/kanagawa.nvim",         -- Color theme
     "https://github.com/stevearc/conform.nvim",         -- Formatting
+    "https://github.com/coder/claudecode.nvim",         -- Claude Code IDE integration
 })
 
 -- Modularize based on feature
@@ -34,6 +35,7 @@ require('picker')
 require('vcs')
 require('statusline')
 require('formatting')
+require('claude')
 
 --------------
 --   LSP    --

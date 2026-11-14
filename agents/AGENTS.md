@@ -65,7 +65,7 @@ Applies to all Norwegian text: chat answers, PR descriptions, review comments, i
 | Use                         | Not                     | Note                                  |
 | --------------------------- | ----------------------- | ------------------------------------- |
 | commit, branch              | innsjekk, gren          | English technical terms               |
-| committa                    | committet, commitet     | past participle                       |
+| commitet                    | committa, committet     | past participle                       |
 | et worktree, worktreet      | en worktree, worktreen  | neuter                                |
 | diff, diffen                |                         |                                       |
 | review, reviewen            | gjennomgang             |                                       |
@@ -196,6 +196,51 @@ as Outline, and Notion pages. It does not apply to chat answers.
 | En backup er bare verdt noe hvis jeg har gjenopprettet fra den. | En backup er bare verdt noe når en gjenoppretting fra den er testet. |
 | Velg lokasjon HEL1 når du bestiller.                         | Velg HEL1 som lokasjon.                                 |
 | Reserve this address for the homelab in your router.         | Reserve this address for the homelab in the router.     |
+
+## Notes in Obsidian
+
+The personal Obsidian vault of the user is `sb1u-personal-notes`, in
+`/Users/peder.korsveien/git/sb1u-personal-notes/`. If the user says «legg til i notater» or
+«notater», use this vault.
+
+The vault has no folders for free-standing notes. Put new content in one of these places:
+
+| Content | Place |
+| --- | --- |
+| Work, meetings, analyses and what the user learned | A block in today's daily note, `_daily/YYYY-MM-DD ddd.md` |
+| Tasks | TaskNotes, in `TaskNotes/Tasks/`, linked from the daily note |
+| A concept, pattern, system or team | `Begreper/` |
+| A person | `Personer/` |
+| A book, article, presentation or newsletter | `Kilder/`, with the original file in `_raw/` |
+| A Claude Code thread summary | `Tråder/`, see «Thread summaries» |
+
+Use the templates in `_maler/` for the frontmatter in `Begreper/`, `Personer/` and `Kilder/`. If
+a topic in the daily notes occurs again, make a note for it in `Begreper/` and link to it. The
+format rules are in `~/.claude/skills/engram/obsidian-format.md`. Read them before you write.
+
+The notes in `_raw/confluence/` come from Confluence, and Confluence is the master. Write to
+this folder only when the user asks you to get or update a topic from Confluence. Do not
+correct the content by hand.
+
+Do not save notes in the vault `team-bm-bedrift-wiki`. The team shares that vault.
+
+### Thread summaries
+
+If the user asks for a summary of a Claude Code thread, save it in the vault
+`sb1u-personal-notes`:
+
+- Folder: `/Users/peder.korsveien/git/sb1u-personal-notes/Tråder/`.
+- File name in Norwegian: `YYYY-MM-DD <tema>.md`.
+- Template: `/Users/peder.korsveien/git/sb1u-personal-notes/_maler/Claude-tråd.md`.
+- Frontmatter: `dato`, `tidspunkt`, `stikkord`, `session_id`, `katalog` and the tag
+  `claude-tråd`. `stikkord` is the topic as keywords, no more than 10 words.
+- Body: a resume command `cd <katalog> && claude --resume <session_id>`, then the sections
+  Tema, Funn, Konklusjon and Åpne spørsmål.
+
+Get the session ID and the start time from `~/.claude/projects/<project-key>/<session_id>.jsonl`.
+The first `timestamp` in the file is the start time in UTC. Write it in local time.
+`claude --resume` finds a session only from the directory where it started. Set `katalog` to
+that directory.
 
 ## PR reviews
 

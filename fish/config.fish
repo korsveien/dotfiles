@@ -21,6 +21,12 @@ bind -M insert \ce end-of-line
 bind \cj up-or-search
 bind \ck down-or-search
 
+if status is-interactive; and command -q fzf
+    fzf --fish | source
+    bind -M insert ctrl-r 'history merge; fzf-history-widget'
+    bind ctrl-r 'history merge; fzf-history-widget'
+end
+
 abbr --add l ls -la
 
 ## git
